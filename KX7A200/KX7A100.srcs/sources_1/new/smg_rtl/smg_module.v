@@ -1,0 +1,264 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2024/12/11 22:20:30
+// Design Name: 
+// Module Name: smg_module
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module smg_module(
+    input         iw_sys_clk        ,
+    input         iw_sys_rst        ,
+
+    input  [63:0] iw_user_cmd_data  ,
+    input         iw_user_cmd_valid ,
+    output        ow_user_cmd_rdy   ,
+    
+    input  [63:0] iw_smg_cmd_data   ,
+    input         iw_smg_cmd_valid  ,
+    output        ow_smg_cmd_rdy    ,
+    
+    input         iw_smg_clk        ,
+    input         iw_smg_rst        ,
+    
+    output [ 7:0] ow_SMG_DIG        , // 段选
+    output [ 7:0] ow_SMG_SEL          // 位选
+);
+
+// -------------------------------- localparam ------------------------------ //
+localparam s_IDLE  = 8'd0 ; 
+localparam s_SMG_0 = 8'b0000_0001 ;
+localparam s_SMG_1 = 8'b0000_0010 ;
+localparam s_SMG_2 = 8'b0000_0100 ;
+localparam s_SMG_3 = 8'b0000_1000 ;
+localparam s_SMG_4 = 8'b0001_0000 ;
+localparam s_SMG_5 = 8'b0010_0000 ;
+localparam s_SMG_6 = 8'b0100_0000 ;
+localparam s_SMG_7 = 8'b1000_0000 ;
+
+// -------------------------------- reg ------------------------------ //
+reg [ 7:0] r_SMG_DIG = 1'b0 ; // 段选
+reg [ 7:0] r_SMG_SEL = 1'b0 ; // 位选
+
+reg [ 7:0] s_smg    = 1'b0 ;
+reg [ 7:0] s_smg_r  = 1'b0 ;
+reg [ 7:0] s_smg_rr = 1'b0 ;
+
+reg r_smg_start_en = 1'b0 ;
+reg r_smg_stop_en  = 1'b0 ;
+
+reg [ 7:0] r_smg_data_en   = 1'b0 ; // 八位数码管数据使能
+reg [31:0] r_smg_data      = 1'b0 ; // 八位数码管数据
+reg [ 7:0] r_smg_data_dp   = 1'b0 ; // 八位数码管小数点
+reg [ 3:0] r_smg_data_r    = 1'b0 ; // 一位数码管数据
+reg        r_smg_data_dp_r = 1'b0 ; // 一位数码管dp数据
+reg [ 7:0] r_smg_decode    = 1'b0 ; // 数码管数据译码
+
+// -------------------------------- wire ------------------------------ //
+wire s_smg_en = s_smg == s_smg_r ? 1'b0 :1'b1 ;
+
+wire [63:0] ow_user_cmd_data ;
+wire [63:0] ow_smg_cmd_data  ;
+// -------------------------------- assign ------------------------------ //
+assign ow_SMG_DIG = r_SMG_DIG ;
+assign ow_SMG_SEL = r_SMG_SEL ;
+
+assign ow_user_cmd_rdy = ~ow_user_cmd_full ;
+assign ow_smg_cmd_rdy  = ~ow_smg_cmd_full  ;
+
+// -------------------------------- always ------------------------------ //
+// 状态机 状态转移
+always@(posedge iw_smg_clk)begin
+    if(iw_smg_rst)begin
+        s_smg <= s_IDLE ;
+    end
+    else begin
+        case(s_smg)
+            s_IDLE  : if(r_smg_start_en)s_smg <= s_SMG_0 ;
+            s_SMG_0 : s_smg <= s_SMG_1 ;
+            s_SMG_1 : if(r_smg_stop_en)s_smg <= s_IDLE ; else s_smg <= s_SMG_0 ;
+            default : s_smg <= s_IDLE ;
+        endcase
+    end
+end
+
+// s_smg 状态机对 SMG_SEL 位选信号赋值
+always@(posedge iw_smg_clk)begin
+    if(iw_smg_rst)begin
+        r_SMG_SEL <= s_IDLE  ;
+    end
+    else begin
+        case(s_smg_rr)
+            s_IDLE  : r_SMG_SEL <= s_IDLE  ;
+            s_SMG_0 : r_SMG_SEL <= ~s_SMG_0 ;
+            s_SMG_1 : r_SMG_SEL <= ~s_SMG_1 ;
+            s_SMG_2 : r_SMG_SEL <= ~s_SMG_2 ;
+            s_SMG_3 : r_SMG_SEL <= ~s_SMG_3 ;
+            s_SMG_4 : r_SMG_SEL <= ~s_SMG_4 ;
+            s_SMG_5 : r_SMG_SEL <= ~s_SMG_5 ;
+            s_SMG_6 : r_SMG_SEL <= ~s_SMG_6 ;
+            s_SMG_7 : r_SMG_SEL <= ~s_SMG_7 ;
+            default : ;
+        endcase
+    end
+end
+
+// s_smg 状态机对 SMG_DIG 段选信号赋值
+always@(posedge iw_smg_clk)begin
+    if(iw_smg_rst)begin
+        r_SMG_DIG <= s_IDLE  ;
+    end
+    else begin
+        case(s_smg)
+            s_IDLE  : r_SMG_DIG <= s_IDLE  ;
+            s_SMG_0 : r_SMG_DIG <= r_smg_decode ;
+            s_SMG_1 : r_SMG_DIG <= r_smg_decode ;
+            s_SMG_2 : r_SMG_DIG <= r_smg_decode ;
+            s_SMG_3 : r_SMG_DIG <= r_smg_decode ;
+            s_SMG_4 : r_SMG_DIG <= r_smg_decode ;
+            s_SMG_5 : r_SMG_DIG <= r_smg_decode ;
+            s_SMG_6 : r_SMG_DIG <= r_smg_decode ;
+            s_SMG_7 : r_SMG_DIG <= r_smg_decode ;
+            default : ;
+        endcase
+    end
+end
+
+always@(posedge iw_smg_clk)begin
+    if(iw_smg_rst)begin
+        r_smg_start_en <= 1'b0 ;
+        r_smg_stop_en  <= 1'b0 ;
+        
+        r_smg_data_en  <= 1'b0 ;
+        r_smg_data     <= 1'b0 ;
+        r_smg_data_dp  <= 1'b0 ;
+    end
+    else if(ow_user_cmd_valid)begin // 数码管数据自保持
+        case(ow_user_cmd_data[63:48])
+            16'hfd_d3 : begin
+                r_smg_start_en <= 1'b1 ;
+                r_smg_stop_en  <= 1'b0 ;
+                r_smg_data_en  <= ow_user_cmd_data[47:40] ;
+                r_smg_data     <= ow_user_cmd_data[39: 8] ;
+                r_smg_data_dp  <= ow_user_cmd_data[ 7: 0] ;
+            end
+            16'hfd_d4 : begin
+                r_smg_start_en <= 1'b0 ;
+                r_smg_stop_en  <= 1'b1 ;
+                r_smg_data_en  <= 1'b0 ;
+                r_smg_data     <= 1'b0 ;
+                r_smg_data_dp  <= 1'b0 ;
+            end
+            default : ;
+        endcase
+    end
+    else if(ow_smg_cmd_valid)begin // 数码管数据自保持
+        case(ow_smg_cmd_data[63:48])
+            16'hfd_d3 : begin
+                r_smg_start_en <= 1'b1 ;
+                r_smg_stop_en  <= 1'b0 ;
+                r_smg_data_en  <= ow_smg_cmd_data[47:40] ;
+                r_smg_data     <= ow_smg_cmd_data[39: 8] ;
+                r_smg_data_dp  <= ow_smg_cmd_data[ 7: 0] ;
+            end
+            16'hfd_d4 : begin
+                r_smg_start_en <= 1'b0 ;
+                r_smg_stop_en  <= 1'b1 ;
+                r_smg_data_en  <= 1'b0 ;
+                r_smg_data     <= 1'b0 ;
+                r_smg_data_dp  <= 1'b0 ;
+            end
+            default : ;
+        endcase
+    end
+end
+
+// r_smg_decode 数码管译码
+always@(posedge iw_smg_clk)begin
+	case(s_smg)
+        s_IDLE  : begin r_smg_data_r <= s_IDLE            ; r_smg_data_dp_r <= ~s_IDLE ; end
+        s_SMG_0 : begin r_smg_data_r <= r_smg_data[ 3: 0] ; r_smg_data_dp_r <= ~r_smg_data_dp[0] ; end
+        s_SMG_1 : begin r_smg_data_r <= r_smg_data[ 7: 4] ; r_smg_data_dp_r <= ~r_smg_data_dp[1] ; end
+        s_SMG_2 : begin r_smg_data_r <= r_smg_data[11: 8] ; r_smg_data_dp_r <= ~r_smg_data_dp[2] ; end
+        s_SMG_3 : begin r_smg_data_r <= r_smg_data[15:12] ; r_smg_data_dp_r <= ~r_smg_data_dp[3] ; end
+        s_SMG_4 : begin r_smg_data_r <= r_smg_data[19:16] ; r_smg_data_dp_r <= ~r_smg_data_dp[4] ; end
+        s_SMG_5 : begin r_smg_data_r <= r_smg_data[23:20] ; r_smg_data_dp_r <= ~r_smg_data_dp[5] ; end
+        s_SMG_6 : begin r_smg_data_r <= r_smg_data[27:24] ; r_smg_data_dp_r <= ~r_smg_data_dp[6] ; end
+        s_SMG_7 : begin r_smg_data_r <= r_smg_data[31:28] ; r_smg_data_dp_r <= ~r_smg_data_dp[7] ; end
+	endcase
+	
+	case(r_smg_data_r)
+        4'h0 : r_smg_decode = {r_smg_data_dp_r , 7'b1000000} ;
+        4'h1 : r_smg_decode = {r_smg_data_dp_r , 7'b1111001} ;
+        4'h2 : r_smg_decode = {r_smg_data_dp_r , 7'b0100100} ;
+        4'h3 : r_smg_decode = {r_smg_data_dp_r , 7'b0110000} ;
+        4'h4 : r_smg_decode = {r_smg_data_dp_r , 7'b0011001} ;
+        4'h5 : r_smg_decode = {r_smg_data_dp_r , 7'b0010010} ;
+        4'h6 : r_smg_decode = {r_smg_data_dp_r , 7'b0000010} ;
+        4'h7 : r_smg_decode = {r_smg_data_dp_r , 7'b1111000} ;
+        4'h8 : r_smg_decode = {r_smg_data_dp_r , 7'b0000000} ;
+        4'h9 : r_smg_decode = {r_smg_data_dp_r , 7'b0010000} ;
+        4'ha : r_smg_decode = {r_smg_data_dp_r , 7'b0001000} ;
+        4'hb : r_smg_decode = {r_smg_data_dp_r , 7'b0000011} ;
+        4'hc : r_smg_decode = {r_smg_data_dp_r , 7'b1000110} ;
+        4'hd : r_smg_decode = {r_smg_data_dp_r , 7'b0100001} ;
+        4'he : r_smg_decode = {r_smg_data_dp_r , 7'b0000110} ;
+        4'hf : r_smg_decode = {r_smg_data_dp_r , 7'b0001110} ;
+	endcase
+end
+
+// 状态机 状态打一拍
+always@(posedge iw_smg_clk)begin
+    if(iw_smg_rst)begin
+        s_smg_r  <= s_IDLE ;
+        s_smg_rr <= s_IDLE ;
+    end
+    else begin
+        s_smg_r  <= s_smg   ;
+        s_smg_rr <= s_smg_r ;
+    end
+end
+
+// -------------------------------- module ------------------------------ //
+// 100M_rst - 10M_rst 信号跨时钟域转换
+fifo_bits_cov user_cmd_data_cov_smg_clk (
+    .wr_clk        (iw_sys_clk        ) , // input wire wr_clk
+    .din           (iw_user_cmd_data  ) , // input wire [0 : 0] din   
+    .wr_en         (iw_user_cmd_valid && ow_user_cmd_rdy ) , // input wire wr_en
+    .full          (ow_user_cmd_full ) , // output wire full
+  
+    .rd_clk        (iw_smg_clk        ) , // input wire rd_clk
+    .dout          (ow_user_cmd_data  ) , // output wire [0 : 0] dout
+    .rd_en         (1'b1              ) , // input wire rd_en
+    .empty         (ow_user_cmd_empty ) ,  // output wire empty
+    .valid         (ow_user_cmd_valid )    // output wire valid
+);
+
+// 100M_rst - 10M_rst 信号跨时钟域转换
+fifo_bits_cov smg_cmd_data_cov_smg_clk (
+    .wr_clk        (iw_sys_clk        ) , // input wire wr_clk
+    .din           (iw_smg_cmd_data   ) , // input wire [0 : 0] din   
+    .wr_en         (iw_smg_cmd_valid && ow_smg_cmd_rdy ) , // input wire wr_en
+    .full          (ow_smg_cmd_full   ) , // output wire full
+  
+    .rd_clk        (iw_smg_clk        ) , // input wire rd_clk
+    .dout          (ow_smg_cmd_data   ) , // output wire [0 : 0] dout
+    .rd_en         (1'b1              ) , // input wire rd_en
+    .empty         (ow_smg_cmd_empty  ) ,  // output wire empty
+    .valid         (ow_smg_cmd_valid  )    // output wire valid
+);
+
+endmodule

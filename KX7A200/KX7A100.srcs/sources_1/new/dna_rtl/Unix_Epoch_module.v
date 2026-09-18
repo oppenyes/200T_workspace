@@ -1,0 +1,128 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2025/06/28 11:03:37
+// Design Name: 
+// Module Name: Unix_Epoch_module
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module Unix_Epoch_module(
+    input              iw_sys_clk                 ,
+    input              iw_sys_rst                 ,
+    
+    input              iw_user_cmd_valid          ,
+    input      [ 63:0] iw_user_cmd_data           ,
+    
+    output     [ 55:0] ow_Unix_Epoch_data         ,
+    
+    output reg [  1:0] or_ws2812b_valid           ,
+    output reg [ 23:0] or_ws2812b_GRB             ,
+    input              iw_ws2812b_rdy             ,
+    
+    input              clk_1M                     ,
+    input              iw_1M_rst
+);
+
+// ---------------- localparam ---------------- //
+
+// ---------------- reg ---------------- //
+reg [ 55:0] r_Unix_Epoch_data       = 1'b0 ;
+reg [ 55:0] r_Unix_Epoch_data_cache = 1'b0 ;
+
+reg [ 15:0] r_Unix_Epoch_data_0 = 1'b0 ;
+reg [ 15:0] r_Unix_Epoch_data_1 = 1'b0 ;
+reg [ 15:0] r_Unix_Epoch_data_2 = 1'b0 ;
+reg [  8:0] r_Unix_Epoch_data_3 = 1'b0 ;
+// ---------------- wire ---------------- //
+wire [63:0] ow_user_cmd_data ;
+wire [63:0] w_Unix_Epoch_data ;
+// ---------------- assign ---------------- //
+assign ow_Unix_Epoch_data = w_Unix_Epoch_data[55:0] ;
+// ---------------- always ---------------- //
+always@(posedge clk_1M)begin
+    if(iw_1M_rst)begin
+        r_Unix_Epoch_data       <= 1'b0 ;
+        r_Unix_Epoch_data_cache <= 1'b0 ;
+    end
+    else if(ow_user_cmd_data_valid && ow_user_cmd_data[63:56] == 8'hfe)begin // 命令控制 优先
+        r_Unix_Epoch_data_cache <= ow_user_cmd_data[55:0] ;
+    end
+    else begin
+        r_Unix_Epoch_data  <= r_Unix_Epoch_data_cache + {r_Unix_Epoch_data_3 , r_Unix_Epoch_data_2 , r_Unix_Epoch_data_1 , r_Unix_Epoch_data_0} ;
+    end
+end
+
+always@(posedge clk_1M)begin
+    if(iw_1M_rst)begin
+        r_Unix_Epoch_data_0 <= 1'b0 ;
+        r_Unix_Epoch_data_1 <= 1'b0 ;
+        r_Unix_Epoch_data_2 <= 1'b0 ;
+        r_Unix_Epoch_data_3 <= 1'b0 ;
+    end
+    else begin
+        r_Unix_Epoch_data_0 <= r_Unix_Epoch_data_0 + 1'b1 ;
+        if(&r_Unix_Epoch_data_0)r_Unix_Epoch_data_1 <= r_Unix_Epoch_data_1 + 1'b1 ;
+        if(&r_Unix_Epoch_data_1)r_Unix_Epoch_data_2 <= r_Unix_Epoch_data_2 + 1'b1 ;
+        if(&r_Unix_Epoch_data_2)r_Unix_Epoch_data_3 <= r_Unix_Epoch_data_3 + 1'b1 ;
+    end
+end
+
+always@(posedge iw_sys_clk)begin
+    if(iw_sys_rst)begin
+        or_ws2812b_valid <= 2'b00 ;
+        or_ws2812b_GRB   <= 24'h00_00_00 ;
+    end
+    else if(iw_ws2812b_rdy && ow_Unix_Epoch_data_valid && w_Unix_Epoch_data[55:0] == 56'd500)begin
+        or_ws2812b_valid <= 2'b11 ;
+        or_ws2812b_GRB   <= 24'h00_00_00 ;
+    end
+    else if(iw_ws2812b_rdy && ow_Unix_Epoch_data_valid && w_Unix_Epoch_data[55:0] == 56'd500_000)begin
+        or_ws2812b_valid <= 2'b11 ;
+        or_ws2812b_GRB   <= 24'hff_ff_ff ;
+    end
+    else begin
+        or_ws2812b_valid <= 2'b00 ;
+        or_ws2812b_GRB   <= 24'h00_00_00 ;
+    end
+end
+// ---------------- module ---------------- //
+fifo_bits_cov user_cmd_cov_Unix_Epoch_inst(
+    .wr_clk        (iw_sys_clk        ) , 
+    .din           (iw_user_cmd_data  ) , 
+    .wr_en         (iw_user_cmd_valid ) , 
+    .full          (                  ) , 
+  
+    .rd_clk        (clk_1M                 ) , 
+    .dout          (ow_user_cmd_data       ) , 
+    .rd_en         (1'b1                   ) , 
+    .empty         (                       ) ,  
+    .valid         (ow_user_cmd_data_valid )    
+);
+
+fifo_bits_cov Unix_Epoch_cov_sys_clk_inst(
+    .wr_clk        (clk_1M                   ) , 
+    .din           (r_Unix_Epoch_data        ) , 
+    .wr_en         (1'b1                     ) , 
+    .full          (                         ) , 
+  
+    .rd_clk        (iw_sys_clk               ) , 
+    .dout          (w_Unix_Epoch_data        ) , 
+    .rd_en         (1'b1                     ) , 
+    .empty         (                         ) ,  
+    .valid         (ow_Unix_Epoch_data_valid )    
+);
+
+endmodule

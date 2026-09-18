@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon May 18 09:50:04 2026
+# Process ID: 29312
+# Current directory: D:/Documents/FPGA_RTL/KX7A100/KX7A200/KX7A100.runs/uart_fifo_synth_1
+# Command line: vivado.exe -log uart_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source uart_fifo.tcl
+# Log file: D:/Documents/FPGA_RTL/KX7A100/KX7A200/KX7A100.runs/uart_fifo_synth_1/uart_fifo.vds
+# Journal file: D:/Documents/FPGA_RTL/KX7A100/KX7A200/KX7A100.runs/uart_fifo_synth_1\vivado.jou
+#-----------------------------------------------------------
+source uart_fifo.tcl -notrace

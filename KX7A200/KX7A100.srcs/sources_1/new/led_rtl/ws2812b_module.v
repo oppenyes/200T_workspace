@@ -1,0 +1,193 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2025/02/27 21:15:24
+// Design Name: 
+// Module Name: ws2812b_module
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module ws2812b_module#(
+    CLK_FRE     = 10_000_000 ,
+    WS2812B_NUM = 1
+)(
+    input          iw_sys_clk        ,
+    input          iw_sys_rst        ,
+    
+    input          iw_user_cmd_valid ,
+    input  [511:0] iw_user_cmd_data  ,
+    
+    input          iw_ws2812b_clk    ,
+    input          iw_ws2812b_rst    ,
+    
+    input          iw_ws2812b_valid  ,
+    input  [ 23:0] iw_ws2812b_GRB    ,
+    output         ow_ws2812b_rdy    ,
+    
+    output [  1:0] ow_ws2812b
+);
+
+// ---------------- localparam ---------------- //
+// 1 sys = 100ns
+localparam T0H = 2  ; // 220 ns ~ 330 ns  3 * 100 ns = 300 ns
+localparam T0L = 9  ; // 580 ns ~ 1600 ns 7 * 100 ns = 700 ns
+localparam T1H = 6  ; // 580 ns ~ 1600 ns 7 * 100 ns = 700 ns
+localparam T1L = 9  ; // 220 ns ~ 420 ns  3 * 100 ns = 300 ns
+localparam RST = 499 ; // >50000 ns  500 * 100 ns = 50000 ns
+localparam THL = 9 ; // 220 ns ~ 330 ns  3 * 100 ns = 300 ns
+
+localparam s_IDLE  = 0 ;
+localparam s_SHINE = 1 ;
+localparam s_RST   = 2 ;
+// ---------------- reg ---------------- //
+reg        r_ws2812b_rdy   = 1'b0 ;
+reg [ 1:0] r_ws2812b       = 1'b0 ;
+reg [23:0] r_ws2812b_GRB   = 1'b0 ;
+reg [23:0] r_ws2812b_GRB_r = 1'b0 ;
+
+reg [ 1:0] s_ws2812b       = s_IDLE ;
+reg [ 8:0] r_cnt           = 1'b0  ; // 码元计数器
+reg        r_ws2812b_HL    = 1'b1  ; // 码元高低电平指示
+reg [ 4:0] r_ws2812b_num   = WS2812B_NUM  ; // WS2812B 计数器
+reg [ 4:0] r_ws2812b_shift = 5'd23 ; // GRB 绿红蓝 码字移位寄存器 23 -> 0
+// ---------------- wire ---------------- //
+wire [63:0] ow_user_cmd_data ;
+// ---------------- assign ---------------- //
+assign w_ws2812_refresh = r_ws2812b_GRB == r_ws2812b_GRB_r ? iw_ws2812b_valid && r_ws2812b_rdy : 1'b1 ;
+// ---------------- always ---------------- //
+always@(posedge iw_ws2812b_clk)begin
+    if(ow_user_cmd_data_rdy)begin // 命令控制 优先
+        case(ow_user_cmd_data[63:24])
+            40'hfb_b4f2_bfaa : begin // 打开
+                r_ws2812b_rdy <= 1'b0                   ;
+                r_ws2812b_GRB  <= ow_user_cmd_data[23:0] ;
+            end
+            40'hfb_b9d8_b1d5 : begin // 关闭
+                r_ws2812b_rdy <= 1'b1                   ;
+                r_ws2812b_GRB  <= ow_user_cmd_data[23:0] ;
+            end
+            default : ;
+        endcase
+    end
+    else if(iw_ws2812b_valid && r_ws2812b_rdy)begin
+        r_ws2812b_rdy <= 1'b0           ;
+        r_ws2812b_GRB  <= iw_ws2812b_GRB ;
+    end
+    else if(iw_ws2812b_rst || s_ws2812b == s_RST && r_cnt == RST)begin
+        r_ws2812b_rdy <= 1'b1 ;
+    end
+end
+
+// 主状态机 第一段 状态转换
+always@(posedge iw_ws2812b_clk)begin
+    if(iw_ws2812b_rst)begin
+        s_ws2812b <= s_IDLE ;
+    end
+    else begin
+        case(s_ws2812b)
+            s_IDLE  : if(w_ws2812_refresh)                 s_ws2812b <= s_SHINE ;
+            s_SHINE : if(!r_ws2812b_num && !r_ws2812b_shift && r_cnt == THL) s_ws2812b <= s_RST   ;
+            s_RST   : if(r_cnt == RST)                     s_ws2812b <= s_IDLE  ;
+            default : ;
+        endcase
+    end
+end
+
+// 主状态机 第二段 状态赋值
+always@(posedge iw_ws2812b_clk)begin
+    if(iw_ws2812b_rst)begin
+        r_ws2812b <= 1'b0 ;
+    end
+    else begin
+        case(s_ws2812b)
+            s_IDLE  : r_ws2812b <= 1'b0 ;
+            s_SHINE : r_ws2812b <= {2{r_ws2812b_HL}};
+            s_RST   : r_ws2812b <= 1'b0 ;
+            default : ;
+        endcase
+    end
+end
+
+// WS2812B 计数器
+always@(posedge iw_ws2812b_clk)begin
+    if(s_ws2812b == s_SHINE)begin
+        if(!r_ws2812b_num && !r_ws2812b_shift && r_cnt == THL) r_ws2812b_num <= WS2812B_NUM ;
+        else if(!r_ws2812b_shift && r_cnt == THL) r_ws2812b_num <= r_ws2812b_num - 1'b1 ;
+    end
+    else begin
+        r_ws2812b_num <= WS2812B_NUM ;
+    end
+end
+
+// GRB[23:0] 移位寄存器
+always@(posedge iw_ws2812b_clk)begin
+    if(s_ws2812b == s_SHINE)begin
+        if(!r_ws2812b_shift && r_cnt == THL) r_ws2812b_shift <= 5'd23 ;
+        else if(r_cnt == THL) r_ws2812b_shift <= r_ws2812b_shift - 1'b1 ;
+    end
+    else begin
+        r_ws2812b_shift <= 5'd23 ;
+    end
+end
+
+always@(posedge iw_ws2812b_clk)begin
+    if(iw_ws2812b_rst)begin
+        r_ws2812b_HL <= 1'b1 ;
+    end
+    else if(s_ws2812b == s_SHINE)begin
+        case(r_ws2812b_GRB[r_ws2812b_shift])
+            0 : begin
+                if(r_cnt == T0H) r_ws2812b_HL <= 1'b0 ; 
+                if(r_cnt == T0L) r_ws2812b_HL <= 1'b1 ;
+            end
+            1 : begin
+                if(r_cnt == T1H) r_ws2812b_HL <= 1'b0 ; 
+                if(r_cnt == T1L) r_ws2812b_HL <= 1'b1 ;
+            end
+        endcase
+    end
+end
+
+always@(posedge iw_ws2812b_clk)begin
+    if(s_ws2812b == s_IDLE
+    || s_ws2812b == s_SHINE && r_cnt == THL 
+    || s_ws2812b == s_RST   && r_cnt == RST )begin
+        r_cnt <= 1'b0 ;
+    end
+    else begin
+        r_cnt <= r_cnt + 1'b1 ;
+    end
+end
+
+always@(posedge iw_ws2812b_clk)begin
+    if(iw_ws2812b_rst) r_ws2812b_GRB_r <= 1'b0 ;
+    else r_ws2812b_GRB_r <= r_ws2812b_GRB ;
+end
+
+// ---------------- module ---------------- //
+fifo_bits_cov user_cmd_cov_ws2812b_clk_inst(
+    .wr_clk        (iw_sys_clk        ) , 
+    .din           (iw_user_cmd_data  ) , 
+    .wr_en         (iw_user_cmd_valid ) , 
+    .full          (                  ) , 
+  
+    .rd_clk        (iw_ws2812b_clk       ) , 
+    .dout          (ow_user_cmd_data     ) , 
+    .rd_en         (1'b1                 ) , 
+    .empty         (                     ) ,  
+    .valid         (ow_user_cmd_data_rdy )    
+);
+
+endmodule

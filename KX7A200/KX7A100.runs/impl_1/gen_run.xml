@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a200tfbg484-2" LaunchTime="1789659198">
+  <File Type="ROUTE-PWR" Name="KX7A100_Top_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="KX7A100_Top.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="KX7A100_Top_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="KX7A100_Top_reports.tcl"/>
+  <File Type="BITSTR-MSK" Name="KX7A100_Top.msk"/>
+  <File Type="ROUTE-CLK" Name="KX7A100_Top_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="KX7A100_Top.vdi"/>
+  <File Type="BG-BIT" Name="KX7A100_Top.bit"/>
+  <File Type="BG-DRC" Name="KX7A100_Top.drc"/>
+  <File Type="BG-BGN" Name="KX7A100_Top.bgn"/>
+  <File Type="BG-BIN" Name="KX7A100_Top.bin"/>
+  <File Type="BITSTR-RBT" Name="KX7A100_Top.rbt"/>
+  <File Type="BITSTR-NKY" Name="KX7A100_Top.nky"/>
+  <File Type="BITSTR-BMM" Name="KX7A100_Top_bd.bmm"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="KX7A100_Top_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-MMI" Name="KX7A100_Top.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="KX7A100_Top.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="KX7A100_Top.ltx"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="OPT-DRC" Name="KX7A100_Top_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="KX7A100_Top.hwdef"/>
+  <File Type="PLACE-IO" Name="KX7A100_Top_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="KX7A100_Top_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="KX7A100_Top_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="KX7A100_Top_control_sets_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="KX7A100_Top_incremental_reuse_pre_placed.rpt"/>
+  <File Type="ROUTE-DRC" Name="KX7A100_Top_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="KX7A100_Top_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="KX7A100_Top_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="KX7A100_Top_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="KX7A100_Top_route_status.pb"/>
+  <File Type="ROUTE-DCP" Name="KX7A100_Top_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="KX7A100_Top_routed_error.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="KX7A100_Top_routed_bb.dcp"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="KX7A100_Top_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="KX7A100_Top_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="KX7A100_Top_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW" Name="KX7A100_Top_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="KX7A100_Top_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="KX7A100_Top_bus_skew_routed.rpx"/>
+  <File Type="OPT-DCP" Name="KX7A100_Top_opt.dcp"/>
+  <File Type="PLACE-DCP" Name="KX7A100_Top_placed.dcp"/>
+  <File Type="PWROPT-DCP" Name="KX7A100_Top_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="KX7A100_Top_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="KX7A100_Top_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="KX7A100_Top_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="KX7A100_Top_postroute_physopt_bb.dcp"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="KX7A100_Top_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="KX7A100_Top_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="KX7A100_Top_methodology_drc_routed.rpx"/>
+  <File Type="PDI-FILE" Name="KX7A100_Top.pdi"/>
+  <File Type="RCFI_FILE" Name="KX7A100_Top.rcfi"/>
+  <File Type="CFI_FILE" Name="KX7A100_Top.cfi"/>
+  <File Type="RNPI_FILE" Name="KX7A100_Top.rnpi"/>
+  <File Type="NPI_FILE" Name="KX7A100_Top.npi"/>
+  <File Type="RBD_FILE" Name="KX7A100_Top.rbd"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/uiudp_stack.dcp">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/uiudp_stack.dcp"/>
+        <Attr Name="ImportTime" Val="1686184789"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/dna_rtl/Unix_Epoch_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mclk_rtl/clk_div_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/mclk_rtl/clk_div_module.v"/>
+        <Attr Name="ImportTime" Val="1737205748"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Crossclock_rtl/cmd_cov_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/Crossclock_rtl/cmd_cov_module.v"/>
+        <Attr Name="ImportTime" Val="1742730613"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v"/>
+        <Attr Name="ImportTime" Val="1749516829"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ddr3_app_rtl/ddr3_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v"/>
+        <Attr Name="ImportTime" Val="1749607042"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/dna_rtl/dna_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mclk_rtl/edge_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/mclk_rtl/edge_module.v"/>
+        <Attr Name="ImportTime" Val="1736949763"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/IIC_rtl/eeprom_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/IIC_rtl/eeprom_module.v"/>
+        <Attr Name="ImportTime" Val="1740666697"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/IIC_rtl/iic_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/IIC_rtl/iic_module.v"/>
+        <Attr Name="ImportTime" Val="1736781707"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/key_rtl/key.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/key_rtl/key_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/led_rtl/led_alternating_flicker_drive.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/led_rtl/led_flicker_drive.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/led_rtl/led_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/led_rtl/led_pwm_drive.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/led_rtl/led_run_drive.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/master_wrapper.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/master_wrapper.v"/>
+        <Attr Name="ImportTime" Val="1686184790"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mclk_rtl/mclk_rst_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/mclk_rtl/mclk_rst_module.v"/>
+        <Attr Name="ImportTime" Val="1743268080"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mclk_rtl/reset_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/mclk_rtl/reset_module.v"/>
+        <Attr Name="ImportTime" Val="1736949758"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/uart_rtl/rx.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/uart_rtl/rx.v"/>
+        <Attr Name="ImportTime" Val="1737199655"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/smg_rtl/smg_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/test_data_generator_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/test_data_generator_module.v"/>
+        <Attr Name="ImportTime" Val="1740748576"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v"/>
+        <Attr Name="ImportTime" Val="1686184789"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_example_design_resets.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_example_design_resets.v"/>
+        <Attr Name="ImportTime" Val="1686184789"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_reset_sync.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_reset_sync.v"/>
+        <Attr Name="ImportTime" Val="1686184789"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_sync_block.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_sync_block.v"/>
+        <Attr Name="ImportTime" Val="1686184789"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/uart_rtl/tx.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/uart_rtl/tx.v"/>
+        <Attr Name="ImportTime" Val="1737180310"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/uart_rtl/uart_module.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/uart_rtl/uart_module.v"/>
+        <Attr Name="ImportTime" Val="1737199778"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/uart_rtl/uart_rx.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/uart_rtl/uart_rx.v"/>
+        <Attr Name="ImportTime" Val="1737205613"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/uart_rtl/uart_tx.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/uart_rtl/uart_tx.v"/>
+        <Attr Name="ImportTime" Val="1737202644"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/udp_64x4096_fifo.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/udp_64x4096_fifo.v"/>
+        <Attr Name="ImportTime" Val="1713757530"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/udp_rtl/udp_drive.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/new/udp_rtl/udp_drive.v"/>
+        <Attr Name="ImportTime" Val="1742726823"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/led_rtl/ws2812b_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/KX7A100_Top.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/mig_7series_0/mig_b.prj">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../KX7075_Template/KX7075_Template_8GiB/KX7075_Template.srcs/sources_1/ip/mig_7series_0/mig_b.prj"/>
+        <Attr Name="ImportTime" Val="1751387276"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="ScopedToCell" Val="mig_7series_0"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/mig_7series_0/mig_a.prj">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="ScopedToCell" Val="mig_7series_0"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="KX7A100_Top"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/KX7A100_PIN.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream">
+      <Option Id="BinFile">1</Option>
+    </Step>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="mig_7series_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="vio_dna"/>
+  <BlockFileSet Type="BlockSrcs" Name="axis_data_fifo_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifo_bits_cov"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifo_72x512"/>
+  <BlockFileSet Type="BlockSrcs" Name="vio_FMC"/>
+  <BlockFileSet Type="BlockSrcs" Name="clk_wiz_mclk"/>
+  <BlockFileSet Type="BlockSrcs" Name="uart_fifo"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifo_ddr3_rd"/>
+  <BlockFileSet Type="BlockSrcs" Name="axis_data_fifo_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="axis_dwidth_converter_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="axis_dwidth_converter_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="tri_mode_ethernet_mac_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifo_bit_cov"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifo_ddr3_wr"/>
+</GenRun>
