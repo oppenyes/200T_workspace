@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a200tfbg484-2
 
@@ -119,6 +117,7 @@ read_verilog -library xil_defaultlib {
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_sync_block.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/tx.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_data_loopback_module.v
+  D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_bridge_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_rx.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_tx.v
@@ -190,6 +189,9 @@ read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/fifo_
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr_clocks.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr_ooc.xdc]
+
+read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/xfft_0/xfft_0.xci
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

@@ -101,6 +101,31 @@ wire         iw_uart_tx_en         ;
 wire         ow_uart_tx_rdy        ;
 wire         ow_uart_tx_done       ;
 wire         ow_uart_rx_data_rdy   ;
+wire         ow_uart_fft_frame_ready;
+wire [15:0]  ow_fft_config_tdata;
+wire         ow_fft_config_tvalid;
+wire         iw_fft_config_tready;
+wire [31:0]  ow_fft_data_tdata;
+wire         ow_fft_data_tvalid;
+wire         iw_fft_data_tready;
+wire         ow_fft_data_tlast;
+wire [31:0]  iw_fft_data_tdata;
+wire [23:0]  iw_fft_data_tuser;
+wire         iw_fft_data_tvalid;
+wire         ow_fft_data_tready;
+wire         iw_fft_data_tlast;
+wire [7:0]   iw_fft_status_tdata;
+wire         iw_fft_status_tvalid;
+wire         ow_fft_frame_done;
+wire [12:0]  ow_fft_input_count;
+wire [12:0]  ow_fft_output_count;
+wire         ow_fft_event_frame_started;
+wire         ow_fft_event_tlast_unexpected;
+wire         ow_fft_event_tlast_missing;
+wire         ow_fft_event_overflow;
+wire         ow_fft_event_status_halt;
+wire         ow_fft_event_data_in_halt;
+wire         ow_fft_event_data_out_halt;
 wire [  63:0] ow_ETH_rx_data       ;
 wire [  63:0] iw_ETH_udp_fifo_wr_data  ;
 // 串口/网口 发送解析接收到的用户命令
@@ -309,6 +334,56 @@ uart_data_loopback_module uart_data_loopback_module_inst(
     .or_uart_tx_en    (iw_uart_tx_en       ) ,
     .or_uart_tx_num   (iw_uart_tx_num      ) ,
     .or_uart_tx_data  (iw_uart_tx_data     )
+);
+
+uart_fft_bridge_module uart_fft_bridge_module_inst(
+    .iw_sys_clk              (clk_100M                      ) ,
+    .iw_sys_rst              (ow_100M_rst                   ) ,
+    .iw_uart_rx_valid        (ow_uart_rx_data_rdy           ) ,
+    .iw_uart_rx_data         (ow_uart_rx_data               ) ,
+    .iw_uart_rx_num          (ow_uart_rx_num                ) ,
+    .ow_uart_frame_ready     (ow_uart_fft_frame_ready       ) ,
+    .os_axis_config_tdata    (ow_fft_config_tdata           ) ,
+    .os_axis_config_tvalid   (ow_fft_config_tvalid          ) ,
+    .iw_s_axis_config_tready (iw_fft_config_tready          ) ,
+    .os_axis_data_tdata      (ow_fft_data_tdata             ) ,
+    .os_axis_data_tvalid     (ow_fft_data_tvalid            ) ,
+    .iw_s_axis_data_tready   (iw_fft_data_tready            ) ,
+    .os_axis_data_tlast      (ow_fft_data_tlast             ) ,
+    .iw_m_axis_data_tdata    (iw_fft_data_tdata             ) ,
+    .iw_m_axis_data_tuser    (iw_fft_data_tuser             ) ,
+    .iw_m_axis_data_tvalid   (iw_fft_data_tvalid            ) ,
+    .os_m_axis_data_tready   (ow_fft_data_tready            ) ,
+    .iw_m_axis_data_tlast    (iw_fft_data_tlast             ) ,
+    .ow_fft_frame_done       (ow_fft_frame_done             ) ,
+    .ow_fft_input_count      (ow_fft_input_count            ) ,
+    .ow_fft_output_count     (ow_fft_output_count           )
+);
+
+xfft_0 xfft_0_inst(
+    .aclk                        (clk_100M                       ) ,
+    .s_axis_config_tdata         (ow_fft_config_tdata            ) ,
+    .s_axis_config_tvalid        (ow_fft_config_tvalid           ) ,
+    .s_axis_config_tready        (iw_fft_config_tready           ) ,
+    .s_axis_data_tdata           (ow_fft_data_tdata              ) ,
+    .s_axis_data_tvalid          (ow_fft_data_tvalid             ) ,
+    .s_axis_data_tready          (iw_fft_data_tready             ) ,
+    .s_axis_data_tlast           (ow_fft_data_tlast              ) ,
+    .m_axis_data_tdata           (iw_fft_data_tdata              ) ,
+    .m_axis_data_tuser           (iw_fft_data_tuser              ) ,
+    .m_axis_data_tvalid          (iw_fft_data_tvalid             ) ,
+    .m_axis_data_tready          (ow_fft_data_tready             ) ,
+    .m_axis_data_tlast           (iw_fft_data_tlast              ) ,
+    .m_axis_status_tdata         (iw_fft_status_tdata            ) ,
+    .m_axis_status_tvalid        (iw_fft_status_tvalid           ) ,
+    .m_axis_status_tready        (1'b1                           ) ,
+    .event_frame_started         (ow_fft_event_frame_started     ) ,
+    .event_tlast_unexpected      (ow_fft_event_tlast_unexpected  ) ,
+    .event_tlast_missing         (ow_fft_event_tlast_missing     ) ,
+    .event_fft_overflow          (ow_fft_event_overflow          ) ,
+    .event_status_channel_halt   (ow_fft_event_status_halt       ) ,
+    .event_data_in_channel_halt  (ow_fft_event_data_in_halt      ) ,
+    .event_data_out_channel_halt (ow_fft_event_data_out_halt     )
 );
 
 udp_drive udp_drive_inst(

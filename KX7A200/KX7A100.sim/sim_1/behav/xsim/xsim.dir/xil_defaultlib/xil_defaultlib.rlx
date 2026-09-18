@@ -1,0 +1,8 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+D:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/sim/xfft_0.vhd,1789710048,vhdl,,,,xfft_0,,,,,,,,
+D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sim_1/new/uart_fft_bridge_tb.v,1789717833,verilog,,,,uart_fft_bridge_tb,,,,,,,,
+D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_bridge_module.v,1789719108,verilog,,D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sim_1/new/uart_fft_bridge_tb.v,,uart_fft_bridge_module,,,,,,,,

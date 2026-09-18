@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //----------------- 2023.10.30 V1.0 ---------------//
-// ÕâÊÇÒ»¸ö³¬´óºÅ FIFO ? ¹ş¹şO(¡É_¡É)O¹ş¹ş~
+// è¿™æ˜¯ä¸€ä¸ªè¶…å¤§å· FIFO ? å“ˆå“ˆO(âˆ©_âˆ©)Oå“ˆå“ˆ~
 module ddr3_cache_module(
     input          iw_ddr3_fifo_wr_clk   ,
     input          iw_ddr3_fifo_wr_rst   ,
@@ -23,19 +23,19 @@ module ddr3_cache_module(
     output         ow_ddr3_clk_sync_rst ,
     output         ow_init_calib_complete ,
 //***************** DDR *********************//
-    inout   [63:0] ddr3_dq      , // DDR3 Êı¾İ
-    inout   [7:0]  ddr3_dqs_n   , // DDR3 dqs¸º
-    inout   [7:0]  ddr3_dqs_p   , // DDR3 dqsÕı  
-    output  [15:0] ddr3_addr    , // DDR3 µØÖ·   
-    output  [2:0]  ddr3_ba      , // DDR3 banck Ñ¡Ôñ
-    output         ddr3_ras_n   , // DDR3 ĞĞÑ¡Ôñ
-    output         ddr3_cas_n   , // DDR3 ÁĞÑ¡Ôñ
-    output         ddr3_we_n    , // DDR3 ¶ÁĞ´Ñ¡Ôñ
-    output         ddr3_reset_n , // DDR3 ¸´Î»
-    output  [1:0]  ddr3_ck_p    , // DDR3 Ê±ÖÓÕı
-    output  [1:0]  ddr3_ck_n    , // DDR3 Ê±ÖÓ¸º
-    output  [1:0]  ddr3_cke     , // DDR3 Ê±ÖÓÊ¹ÄÜ
-    output  [1:0]  ddr3_cs_n    , // DDR3 Æ¬Ñ¡
+    inout   [63:0] ddr3_dq      , // DDR3 æ•°æ®
+    inout   [7:0]  ddr3_dqs_n   , // DDR3 dqsè´Ÿ
+    inout   [7:0]  ddr3_dqs_p   , // DDR3 dqsæ­£  
+    output  [15:0] ddr3_addr    , // DDR3 åœ°å€   
+    output  [2:0]  ddr3_ba      , // DDR3 banck é€‰æ‹©
+    output         ddr3_ras_n   , // DDR3 è¡Œé€‰æ‹©
+    output         ddr3_cas_n   , // DDR3 åˆ—é€‰æ‹©
+    output         ddr3_we_n    , // DDR3 è¯»å†™é€‰æ‹©
+    output         ddr3_reset_n , // DDR3 å¤ä½
+    output  [1:0]  ddr3_ck_p    , // DDR3 æ—¶é’Ÿæ­£
+    output  [1:0]  ddr3_ck_n    , // DDR3 æ—¶é’Ÿè´Ÿ
+    output  [1:0]  ddr3_cke     , // DDR3 æ—¶é’Ÿä½¿èƒ½
+    output  [1:0]  ddr3_cs_n    , // DDR3 ç‰‡é€‰
     output  [7:0]  ddr3_dm      , // DDR3_dm
     output  [1:0]  ddr3_odt       // DDR3_odt
 );
@@ -46,12 +46,12 @@ wire [ 31:0] ow_ddr3_wr_addr_cnt ;
 wire [511:0] ow_ddr3_rd_data     ;
 wire [ 31:0] ow_ddr3_rd_addr_cnt ;
 
-wire [511:0] ow_ddr3_wr_cache ; // ¸ßÎ»ÎªÊı¾İÓĞĞ§Î»
+wire [511:0] ow_ddr3_wr_cache ; // é«˜ä½ä¸ºæ•°æ®æœ‰æ•ˆä½
 wire [511:0] w_ddr3_fifo_rd_cache      ;
 
-// ×Ü¹²Ğ´ÈëµÄÊı¾İ¸öÊı
+// æ€»å…±å†™å…¥çš„æ•°æ®ä¸ªæ•°
 reg  [31:0] r_ddr3_wr_addr_num = 1'b0 ;
-// ddr3 ¶ÁÈ¡Ê¹ÄÜÊ± £¬ddr3 ¶ÁÈ¡µØÖ·µÈÓÚ ÉÏ´ÎĞ´ÈëµÄµØÖ·Ê± £¬ w_ddr3_rd_LSB À­¸ß
+// ddr3 è¯»å–ä½¿èƒ½æ—¶ ï¼Œddr3 è¯»å–åœ°å€ç­‰äº ä¸Šæ¬¡å†™å…¥çš„åœ°å€æ—¶ ï¼Œ w_ddr3_rd_LSB æ‹‰é«˜
 assign w_ddr3_rd_LSB = iw_ddr3_rd_valid && ow_ddr3_rd_rdy && ow_ddr3_rd_addr_cnt == r_ddr3_wr_addr_num ;
 always@(posedge ow_ddr3_clk)begin
     if(ow_ddr3_clk_sync_rst)begin
@@ -62,8 +62,8 @@ always@(posedge ow_ddr3_clk)begin
     end
 end
 
-// ****************************************** ddr3 ¶ÁĞ´Ê¹ÄÜºÍÖĞ¶Ï *********************************************** //
-// iw_ddr3_fifo_rd_pre_en ĞÅºÅ¿çÊ±ÖÓÓò×ª»» (Âı×ª¿ì)
+// ****************************************** ddr3 è¯»å†™ä½¿èƒ½å’Œä¸­æ–­ *********************************************** //
+// iw_ddr3_fifo_rd_pre_en ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢ (æ…¢è½¬å¿«)
 fifo_bit_cov iw_ddr3_fifo_rd_pre_en_cov_ddr3_clk (
     .wr_clk        (iw_ddr3_fifo_rd_clk                  ) , // input wire wr_clk
     .din           (iw_ddr3_fifo_rd_pre_en               ) , // input wire [0 : 0] din   
@@ -77,8 +77,8 @@ fifo_bit_cov iw_ddr3_fifo_rd_pre_en_cov_ddr3_clk (
     .valid         (ow_ddr3_fifo_rd_en_cov_ddr3_clk_valid )
 );
 assign w_ddr3_fifo_rd_en_ddr3_clk = w_ddr3_fifo_rd_en_ddr3_clk_cache && ow_ddr3_fifo_rd_en_cov_ddr3_clk_valid ;
-// ow_ddr3_fifo_wr_ddr3_rd_en Âö³åĞÅºÅÀ­¸ß r_ddr3_rd_valid
-// w_ddr3_rd_LSB         Âö³åĞÅºÅÀ­µÍ r_ddr3_rd_valid
+// ow_ddr3_fifo_wr_ddr3_rd_en è„‰å†²ä¿¡å·æ‹‰é«˜ r_ddr3_rd_valid
+// w_ddr3_rd_LSB         è„‰å†²ä¿¡å·æ‹‰ä½ r_ddr3_rd_valid
 reg r_ddr3_rd_valid = 1'b0 ;
 always@(posedge ow_ddr3_clk)begin
     if(ow_ddr3_clk_sync_rst)begin
@@ -103,7 +103,7 @@ always@(posedge ow_ddr3_clk)begin
     else ir_ddr3_addr_clear <= 1'b0 ;
 end
 
-// ×Ô¶¨Òå "fifo½«Âú"Éî¶ÈÎª192 ĞÅºÅ¿çÊ±ÖÓÓò×ª»» (Âı×ª¿ì)
+// è‡ªå®šä¹‰ "fifoå°†æ»¡"æ·±åº¦ä¸º192 ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢ (æ…¢è½¬å¿«)
 fifo_bit_cov w_ddr3_fifo_rd_cache_prog_empty_cov_ddr3_clk (
     .wr_clk        (iw_ddr3_fifo_rd_clk                                ) , // input wire wr_clk
     .din           (w_ddr3_fifo_rd_cache_prog_empty                    ) , // input wire [0 : 0] din   
@@ -117,17 +117,17 @@ fifo_bit_cov w_ddr3_fifo_rd_cache_prog_empty_cov_ddr3_clk (
     .valid         (ow_ddr3_fifo_rd_cache_prog_empty_cov_ddr3_clk_valid )
 );
 assign w_ddr3_fifo_rd_cache_prog_empty_ddr3_clk = ow_ddr3_fifo_rd_cache_prog_empty_cov_ddr3_clk_valid ;
-// ×Ô¶¨Òå "fifo½«Âú½«¿Õ" ĞÅºÅ¿ØÖÆddr3¶ÁĞ´Ê¹ÄÜ
+// è‡ªå®šä¹‰ "fifoå°†æ»¡å°†ç©º" ä¿¡å·æ§åˆ¶ddr3è¯»å†™ä½¿èƒ½
 reg r_fifo_cache_tx_rdy = 1'b0 ;
 always@(posedge ow_ddr3_clk)begin
     if(w_ddr3_fifo_rd_cache_prog_full)r_fifo_cache_tx_rdy <= 1'b0 ;
     else if(w_ddr3_fifo_rd_cache_prog_empty_ddr3_clk)r_fifo_cache_tx_rdy <= 1'b1 ;
 end
 
-// ddr3 ¶ÁÈ¡Ê¹ÄÜ £¬ÓÃ»§ en ĞÅºÅÀ­¸ß valid ¶ÁÈ¡µØÖ·µÈÓÚĞ´ÈëµØÖ·ºóÀ­µÍ valid ; ×Ô¶¨Òå "fifo½«Âú½«¿Õ" ĞÅºÅ¿ØÖÆddr3¶ÁĞ´Ê¹ÄÜ
+// ddr3 è¯»å–ä½¿èƒ½ ï¼Œç”¨æˆ· en ä¿¡å·æ‹‰é«˜ valid è¯»å–åœ°å€ç­‰äºå†™å…¥åœ°å€åæ‹‰ä½ valid ; è‡ªå®šä¹‰ "fifoå°†æ»¡å°†ç©º" ä¿¡å·æ§åˆ¶ddr3è¯»å†™ä½¿èƒ½
 assign iw_ddr3_rd_valid = r_ddr3_rd_valid && r_fifo_cache_tx_rdy  ; 
 
-// ddr3 Ç°¼¶¿çÊ±ÖÓÓò½ÓÊÕ»º´æ fifo
+// ddr3 å‰çº§è·¨æ—¶é’ŸåŸŸæ¥æ”¶ç¼“å­˜ fifo
 fifo_ddr3_wr fifo_ddr3_wr_inst (
     .wr_clk        (iw_ddr3_fifo_wr_clk                             ) , // input wire wr_clk
     .din           (iw_ddr3_fifo_wr_data                            ) , // input wire [63 : 0] din   
@@ -144,7 +144,7 @@ assign ow_ddr3_fifo_wr_rdy   = !w_ddr3_fifo_wr_cache_full ;
 assign iw_ddr3_wr_valid = ow_ddr3_fifo_wr_cache_valid ;
 assign iw_ddr3_wr_data  = ow_ddr3_wr_cache ;
 
-// ddr3 ºó¼¶¿çÊ±ÖÓÓò·¢ËÍ»º´æ fifo
+// ddr3 åçº§è·¨æ—¶é’ŸåŸŸå‘é€ç¼“å­˜ fifo
 fifo_ddr3_rd fifo_ddr3_rd_inst (
     .wr_clk        (ow_ddr3_clk                             ) , // input wire wr_clk
     .din           (ow_ddr3_rd_data                         ) , // input wire [64 : 0] din   
@@ -176,7 +176,7 @@ assign ow_ddr3_fifo_rd_data     = w_ddr3_fifo_rd_cache ;
 //    .probe8 (ow_ddr3_fifo_rd_data_rdy       ) ,
 //    .probe9 (ow_ddr3_fifo_rd_data           )   // [63:0] 
 //);
-// iw_ddr3_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»» (Âı×ª¿ì)
+// iw_ddr3_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢ (æ…¢è½¬å¿«)
 fifo_bit_cov iw_ddr3_rst_cov_200M (
     .wr_clk        (iw_ddr3_fifo_wr_clk       ) , // input wire wr_clk
     .din           (iw_ddr3_rst               ) , // input wire [0 : 0] din   
@@ -191,47 +191,47 @@ fifo_bit_cov iw_ddr3_rst_cov_200M (
 );
 assign iw_ddr3_rst_200M = ow_ddr3_rst_cov_200M_valid ;
 
-// ddr3 ¶ÁĞ´Ä£¿é
+// ddr3 è¯»å†™æ¨¡å—
 ddr3_module ddr3_module_inst(
 //********** DDR MIG interface***********//
-    .iw_clk_200M           (iw_clk_200M          ) , // ddr3 ÊäÈëÊ±ÖÓ Artix7 Îª 200MHz
+    .iw_clk_200M           (iw_clk_200M          ) , // ddr3 è¾“å…¥æ—¶é’Ÿ Artix7 ä¸º 200MHz
     .iw_200M_rst           (iw_200M_rst          ) ,
-    .iw_ddr3_rst           (iw_ddr3_rst_200M     ) , // ddr3 ÊäÈë¸´Î» ÉèÖÃ¸ßÓĞĞ§
+    .iw_ddr3_rst           (iw_ddr3_rst_200M     ) , // ddr3 è¾“å…¥å¤ä½ è®¾ç½®é«˜æœ‰æ•ˆ
 
-    .ow_ddr3_clk           (ow_ddr3_clk          ) , // ddr3 Ä£¿é·µ»ØÓÃ»§Ê±ÖÓ
-    .ow_ddr3_clk_sync_rst  (ow_ddr3_clk_sync_rst ) , // ddr3 Ä£¿é·µ»Ø¸´Î»
-    .ow_init_calib_complete(ow_init_calib_complete) , // ddr3 Ä£¿é³õÊ¼»¯Ğ£×¼Íê³É
+    .ow_ddr3_clk           (ow_ddr3_clk          ) , // ddr3 æ¨¡å—è¿”å›ç”¨æˆ·æ—¶é’Ÿ
+    .ow_ddr3_clk_sync_rst  (ow_ddr3_clk_sync_rst ) , // ddr3 æ¨¡å—è¿”å›å¤ä½
+    .ow_init_calib_complete(ow_init_calib_complete) , // ddr3 æ¨¡å—åˆå§‹åŒ–æ ¡å‡†å®Œæˆ
 
-    .ow_ddr3_wr_rdy       (ow_ddr3_wr_rdy       ) , // ÓÃ»§Ğ´·´Ñ¹
-    .iw_ddr3_wr_valid     (iw_ddr3_wr_valid     ) , // ÓÃ»§Ğ´Ê¹ÄÜ
-    .iw_ddr3_wr_data      (iw_ddr3_wr_data      ) , // ÓÃ»§Ğ´Êı¾İ          [127:0]
-    .ow_ddr3_wr_addr_cnt  (ow_ddr3_wr_addr_cnt  ) , // ÓÃ»§Ğ´µØÖ·¼ÆÊıÆ÷    [ 23:0]
+    .ow_ddr3_wr_rdy       (ow_ddr3_wr_rdy       ) , // ç”¨æˆ·å†™åå‹
+    .iw_ddr3_wr_valid     (iw_ddr3_wr_valid     ) , // ç”¨æˆ·å†™ä½¿èƒ½
+    .iw_ddr3_wr_data      (iw_ddr3_wr_data      ) , // ç”¨æˆ·å†™æ•°æ®          [127:0]
+    .ow_ddr3_wr_addr_cnt  (ow_ddr3_wr_addr_cnt  ) , // ç”¨æˆ·å†™åœ°å€è®¡æ•°å™¨    [ 23:0]
 
-    .ow_ddr3_rd_rdy       (ow_ddr3_rd_rdy       ) , // ÓÃ»§¶Á·´Ñ¹
-    .iw_ddr3_rd_valid     (iw_ddr3_rd_valid     ) , // ÓÃ»§¶ÁÊ¹ÄÜ
-    .ow_ddr3_rd_data_rdy  (ow_ddr3_rd_data_rdy  ) , // ÓÃ»§¶ÁÊı¾İ·´Ñ¹
-    .ow_ddr3_rd_data      (ow_ddr3_rd_data      ) , // ÓÃ»§¶ÁÊı¾İ         [127:0]
-    .ow_ddr3_rd_addr_cnt  (ow_ddr3_rd_addr_cnt  ) , // ÓÃ»§¶ÁµØÖ·¼ÆÊıÆ÷   [ 23:0]
+    .ow_ddr3_rd_rdy       (ow_ddr3_rd_rdy       ) , // ç”¨æˆ·è¯»åå‹
+    .iw_ddr3_rd_valid     (iw_ddr3_rd_valid     ) , // ç”¨æˆ·è¯»ä½¿èƒ½
+    .ow_ddr3_rd_data_rdy  (ow_ddr3_rd_data_rdy  ) , // ç”¨æˆ·è¯»æ•°æ®åå‹
+    .ow_ddr3_rd_data      (ow_ddr3_rd_data      ) , // ç”¨æˆ·è¯»æ•°æ®         [127:0]
+    .ow_ddr3_rd_addr_cnt  (ow_ddr3_rd_addr_cnt  ) , // ç”¨æˆ·è¯»åœ°å€è®¡æ•°å™¨   [ 23:0]
     
-    .iw_ddr3_addr_clear   (ir_ddr3_addr_clear   ) , // ddr3_addr ¸´Î»ĞÅºÅ
+    .iw_ddr3_addr_clear   (ir_ddr3_addr_clear   ) , // ddr3_addr å¤ä½ä¿¡å·
 //***************** DDR *********************//
-    .ddr3_dq      (ddr3_dq      ) , //DDR3 Êı¾İ
-    .ddr3_dqs_n   (ddr3_dqs_n   ) , //DDR3 dqs¸º
-    .ddr3_dqs_p   (ddr3_dqs_p   ) , //DDR3 dqsÕı  
-    .ddr3_addr    (ddr3_addr    ) , //DDR3 µØÖ·   
-    .ddr3_ba      (ddr3_ba      ) , //DDR3 banck Ñ¡Ôñ
-    .ddr3_ras_n   (ddr3_ras_n   ) , //DDR3 ĞĞÑ¡Ôñ
-    .ddr3_cas_n   (ddr3_cas_n   ) , //DDR3 ÁĞÑ¡Ôñ
-    .ddr3_we_n    (ddr3_we_n    ) , //DDR3 ¶ÁĞ´Ñ¡Ôñ
-    .ddr3_reset_n (ddr3_reset_n ) , //DDR3 ¸´Î»
-    .ddr3_ck_p    (ddr3_ck_p    ) , //DDR3 Ê±ÖÓÕı
-    .ddr3_ck_n    (ddr3_ck_n    ) , //DDR3 Ê±ÖÓ¸º
-    .ddr3_cke     (ddr3_cke     ) , //DDR3 Ê±ÖÓÊ¹ÄÜ
-    .ddr3_cs_n    (ddr3_cs_n    ) , //DDR3 Æ¬Ñ¡
+    .ddr3_dq      (ddr3_dq      ) , //DDR3 æ•°æ®
+    .ddr3_dqs_n   (ddr3_dqs_n   ) , //DDR3 dqsè´Ÿ
+    .ddr3_dqs_p   (ddr3_dqs_p   ) , //DDR3 dqsæ­£  
+    .ddr3_addr    (ddr3_addr    ) , //DDR3 åœ°å€   
+    .ddr3_ba      (ddr3_ba      ) , //DDR3 banck é€‰æ‹©
+    .ddr3_ras_n   (ddr3_ras_n   ) , //DDR3 è¡Œé€‰æ‹©
+    .ddr3_cas_n   (ddr3_cas_n   ) , //DDR3 åˆ—é€‰æ‹©
+    .ddr3_we_n    (ddr3_we_n    ) , //DDR3 è¯»å†™é€‰æ‹©
+    .ddr3_reset_n (ddr3_reset_n ) , //DDR3 å¤ä½
+    .ddr3_ck_p    (ddr3_ck_p    ) , //DDR3 æ—¶é’Ÿæ­£
+    .ddr3_ck_n    (ddr3_ck_n    ) , //DDR3 æ—¶é’Ÿè´Ÿ
+    .ddr3_cke     (ddr3_cke     ) , //DDR3 æ—¶é’Ÿä½¿èƒ½
+    .ddr3_cs_n    (ddr3_cs_n    ) , //DDR3 ç‰‡é€‰
     .ddr3_dm      (ddr3_dm      ) , //DDR3_dm
     .ddr3_odt     (ddr3_odt     ) , //DDR3_odt
 
-    .ow_error_flag(ow_error_flag)   //´íÎó±êÖ¾Î»
+    .ow_error_flag(ow_error_flag)   //é”™è¯¯æ ‡å¿—ä½
 );
 
 endmodule

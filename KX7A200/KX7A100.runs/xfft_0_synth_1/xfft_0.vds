@@ -1,0 +1,270 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Sep 18 13:40:52 2026
+# Process ID: 32220
+# Current directory: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1
+# Command line: vivado.exe -log xfft_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source xfft_0.tcl
+# Log file: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1/xfft_0.vds
+# Journal file: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source xfft_0.tcl -notrace
+Command: synth_design -top xfft_0 -part xc7a200tfbg484-2 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg484-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 23620
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1007.297 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'xfft_0' [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/synth/xfft_0.vhd:87]
+	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
+	Parameter C_PART bound to: xc7a200tfbg484-2 - type: string 
+	Parameter C_S_AXIS_CONFIG_TDATA_WIDTH bound to: 16 - type: integer 
+	Parameter C_S_AXIS_DATA_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXIS_DATA_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXIS_DATA_TUSER_WIDTH bound to: 24 - type: integer 
+	Parameter C_M_AXIS_STATUS_TDATA_WIDTH bound to: 8 - type: integer 
+	Parameter C_THROTTLE_SCHEME bound to: 1 - type: integer 
+	Parameter C_CHANNELS bound to: 1 - type: integer 
+	Parameter C_NFFT_MAX bound to: 12 - type: integer 
+	Parameter C_ARCH bound to: 3 - type: integer 
+	Parameter C_HAS_NFFT bound to: 0 - type: integer 
+	Parameter C_USE_FLT_PT bound to: 0 - type: integer 
+	Parameter C_INPUT_WIDTH bound to: 16 - type: integer 
+	Parameter C_TWIDDLE_WIDTH bound to: 16 - type: integer 
+	Parameter C_OUTPUT_WIDTH bound to: 16 - type: integer 
+	Parameter C_HAS_SCALING bound to: 1 - type: integer 
+	Parameter C_HAS_BFP bound to: 0 - type: integer 
+	Parameter C_HAS_ROUNDING bound to: 0 - type: integer 
+	Parameter C_HAS_ACLKEN bound to: 0 - type: integer 
+	Parameter C_HAS_ARESETN bound to: 0 - type: integer 
+	Parameter C_HAS_OVFLO bound to: 1 - type: integer 
+	Parameter C_HAS_NATURAL_INPUT bound to: 1 - type: integer 
+	Parameter C_HAS_NATURAL_OUTPUT bound to: 1 - type: integer 
+	Parameter C_HAS_CYCLIC_PREFIX bound to: 0 - type: integer 
+	Parameter C_HAS_XK_INDEX bound to: 1 - type: integer 
+	Parameter C_DATA_MEM_TYPE bound to: 1 - type: integer 
+	Parameter C_TWIDDLE_MEM_TYPE bound to: 1 - type: integer 
+	Parameter C_BRAM_STAGES bound to: 5 - type: integer 
+	Parameter C_REORDER_MEM_TYPE bound to: 1 - type: integer 
+	Parameter C_USE_HYBRID_RAM bound to: 0 - type: integer 
+	Parameter C_OPTIMIZE_GOAL bound to: 0 - type: integer 
+	Parameter C_CMPY_TYPE bound to: 1 - type: integer 
+	Parameter C_BFLY_TYPE bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xfft_v9_1_5' declared at 'd:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/hdl/xfft_v9_1_vh_rfs.vhd:103739' bound to instance 'U0' of component 'xfft_v9_1_5' [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/synth/xfft_0.vhd:200]
+INFO: [Synth 8-256] done synthesizing module 'xfft_0' (59#1) [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/synth/xfft_0.vhd:87]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:01:01 ; elapsed = 00:01:15 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:02 ; elapsed = 00:01:16 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:02 ; elapsed = 00:01:16 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.532 . Memory (MB): peak = 2329.719 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2977 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2329.719 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 355 instances were transformed.
+  FD => FDRE: 6 instances
+  FDE => FDRE: 277 instances
+  FDR => FDRE: 58 instances
+  RAMB18 => RAMB18E1: 14 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.470 . Memory (MB): peak = 2329.719 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:01:13 ; elapsed = 00:01:29 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg484-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:13 ; elapsed = 00:01:29 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:13 ; elapsed = 00:01:29 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:18 ; elapsed = 00:01:36 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6040] Register sin_addr_2s_comp/use_output_reg.D_OUT_reg driving address of a ROM cannot be packed in BRAM/URAM because of presence of initial value.
+WARNING: [Synth 8-6040] Register cos_addr_2s_comp/use_output_reg.D_OUT_reg driving address of a ROM cannot be packed in BRAM/URAM because of presence of initial value.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:27 ; elapsed = 00:01:46 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:36 ; elapsed = 00:01:55 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:40 ; elapsed = 00:01:59 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:45 ; elapsed = 00:02:05 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:49 ; elapsed = 00:02:09 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:49 ; elapsed = 00:02:09 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:51 ; elapsed = 00:02:11 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:51 ; elapsed = 00:02:12 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:52 ; elapsed = 00:02:12 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:52 ; elapsed = 00:02:12 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |    51|
+|2     |DSP48E1  |    15|
+|4     |LUT1     |    64|
+|5     |LUT2     |   731|
+|6     |LUT3     |  1492|
+|7     |LUT4     |   324|
+|8     |LUT5     |    47|
+|9     |LUT6     |   515|
+|10    |MUXCY    |  1310|
+|11    |RAM64X1S |    31|
+|12    |RAMB18   |    14|
+|13    |RAMB18E1 |     5|
+|16    |SRL16E   |  1321|
+|17    |SRLC32E  |   134|
+|18    |XORCY    |  1244|
+|19    |FD       |     6|
+|20    |FDE      |   277|
+|21    |FDR      |    57|
+|22    |FDRE     |  5041|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:52 ; elapsed = 00:02:12 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:43 ; elapsed = 00:02:04 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+Synthesis Optimization Complete : Time (s): cpu = 00:01:52 ; elapsed = 00:02:12 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.448 . Memory (MB): peak = 2329.719 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 3010 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2329.719 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 788 instances were transformed.
+  (MUXCY,XORCY) => CARRY4: 403 instances
+  FD => FDRE: 6 instances
+  FDE => FDRE: 277 instances
+  FDR => FDRE: 57 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 31 instances
+  RAMB18 => RAMB18E1: 14 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+19 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:00 ; elapsed = 00:02:32 . Memory (MB): peak = 2329.719 ; gain = 1322.422
+INFO: [Common 17-1381] The checkpoint 'D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1/xfft_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP xfft_0, cache-ID = 5e06bf7af47108b0
+INFO: [Coretcl 2-1174] Renamed 982 cell refs.
+INFO: [Common 17-1381] The checkpoint 'D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/xfft_0_synth_1/xfft_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file xfft_0_utilization_synth.rpt -pb xfft_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 18 13:43:44 2026...
