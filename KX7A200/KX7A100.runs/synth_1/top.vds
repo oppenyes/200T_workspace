@@ -1,0 +1,1176 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Sep 18 12:36:15 2026
+# Process ID: 27044
+# Current directory: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1
+# Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/top.vds
+# Journal file: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace
+Command: synth_design -top top -part xc7a200tfbg484-2
+Starting synth_design
+WARNING: [IP_Flow 19-5178] IP tri_mode_ethernet_mac_0 will not be generated with lower license level. If you would like to generate with the current available license levels, please reset and regenerate.
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg484-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 30408
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1008.418 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:22]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 921600 - type: integer 
+	Parameter UART_RX_NUM bound to: 7 - type: integer 
+	Parameter eeprom_memory bound to: 4 - type: integer 
+	Parameter tx bound to: 64'b1100000011101110110101001100001011010110111100010000110100001010 
+INFO: [Synth 8-6157] synthesizing module 'mclk_rst_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/mclk_rst_module.v:22]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_mclk' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/clk_wiz_mclk_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_mclk' (1#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/clk_wiz_mclk_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'reset_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/reset_module.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'reset_module' (2#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/reset_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'edge_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/edge_module.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'edge_module' (3#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/edge_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+	Parameter P_CLK_DIV bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_module' (4#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_module__parameterized0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+	Parameter P_CLK_DIV bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_module__parameterized0' (4#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_module__parameterized1' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+	Parameter P_CLK_DIV bound to: 20 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_module__parameterized1' (4#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_module__parameterized2' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+	Parameter P_CLK_DIV bound to: 100 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_module__parameterized2' (4#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_module__parameterized3' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+	Parameter P_CLK_DIV bound to: 250 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_module__parameterized3' (4#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_module__parameterized4' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+	Parameter P_CLK_DIV bound to: 10000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_module__parameterized4' (4#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
+INFO: [Synth 8-6157] synthesizing module 'fifo_bit_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_bit_cov_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_bit_cov' (5#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_bit_cov_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mclk_rst_module' (6#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/mclk_rst_module.v:22]
+INFO: [Synth 8-6157] synthesizing module 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/Unix_Epoch_module.v:22]
+INFO: [Synth 8-6157] synthesizing module 'fifo_bits_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_bits_cov_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_bits_cov' (7#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_bits_cov_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'Unix_Epoch_module' (8#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/Unix_Epoch_module.v:22]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:197]
+WARNING: [Synth 8-7071] port 'or_ws2812b_valid' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:192]
+WARNING: [Synth 8-7071] port 'or_ws2812b_GRB' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:192]
+WARNING: [Synth 8-7071] port 'iw_ws2812b_rdy' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:192]
+WARNING: [Synth 8-7023] instance 'Unix_Epoch_module' of module 'Unix_Epoch_module' has 10 connections declared, but only 7 given [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:192]
+INFO: [Synth 8-6157] synthesizing module 'dna_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v:22]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v:150]
+INFO: [Synth 8-6157] synthesizing module 'vio_dna' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/vio_dna_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'vio_dna' (9#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/vio_dna_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'DNA_PORT' [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:11984]
+	Parameter SIM_DNA_VALUE bound to: 57'b100100011010001010110011110001001101010111100110111101111 
+INFO: [Synth 8-6155] done synthesizing module 'DNA_PORT' (10#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:11984]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_dna_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v:150]
+INFO: [Synth 8-6155] done synthesizing module 'dna_module' (11#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v:22]
+INFO: [Synth 8-6157] synthesizing module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key_module.v:23]
+INFO: [Synth 8-6157] synthesizing module 'key' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key.v:21]
+	Parameter P_KEY_S0 bound to: 2'b00 
+	Parameter P_KEY_S1 bound to: 2'b01 
+	Parameter P_KEY_S2 bound to: 2'b10 
+	Parameter P_KEY_S3 bound to: 2'b11 
+INFO: [Synth 8-226] default block is never used [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'key' (12#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'key_module' (13#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key_module.v:23]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_cap_n' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:219]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_en' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:220]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_up' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:221]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_down' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:222]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_once' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:223]
+INFO: [Synth 8-6157] synthesizing module 'led_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_module.v:22]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'led_pwm_drive' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_pwm_drive.v:22]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter P_CNT_1US bound to: 99 - type: integer 
+	Parameter P_CNT_1MS bound to: 10'b1111100111 
+	Parameter P_CNT_1MS_1000 bound to: 10'b1111100111 
+INFO: [Synth 8-6155] done synthesizing module 'led_pwm_drive' (14#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_pwm_drive.v:22]
+INFO: [Synth 8-6157] synthesizing module 'led_flicker_drive' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_flicker_drive.v:23]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter FLICKER_RATE bound to: 9999999 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'led_flicker_drive' (15#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_flicker_drive.v:23]
+INFO: [Synth 8-6157] synthesizing module 'led_alternating_flicker_drive' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_alternating_flicker_drive.v:22]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter FLICKER_RATE bound to: 9999999 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'led_alternating_flicker_drive' (16#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_alternating_flicker_drive.v:22]
+INFO: [Synth 8-6157] synthesizing module 'led_run_drive' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_run_drive.v:22]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter RUN_RATE bound to: 9999999 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'led_run_drive' (17#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_run_drive.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'led_module' (18#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_module.v:22]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_LED_PIN' does not match port width (4) of module 'led_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:235]
+INFO: [Synth 8-6157] synthesizing module 'ws2812b_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/ws2812b_module.v:22]
+	Parameter CLK_FRE bound to: 10000000 - type: integer 
+	Parameter WS2812B_NUM bound to: 2 - type: integer 
+	Parameter T0H bound to: 2 - type: integer 
+	Parameter T0L bound to: 9 - type: integer 
+	Parameter T1H bound to: 6 - type: integer 
+	Parameter T1L bound to: 9 - type: integer 
+	Parameter RST bound to: 499 - type: integer 
+	Parameter THL bound to: 9 - type: integer 
+	Parameter s_IDLE bound to: 0 - type: integer 
+	Parameter s_SHINE bound to: 1 - type: integer 
+	Parameter s_RST bound to: 2 - type: integer 
+WARNING: [Synth 8-689] width (512) of port connection 'din' does not match port width (64) of module 'fifo_bits_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/ws2812b_module.v:182]
+INFO: [Synth 8-6155] done synthesizing module 'ws2812b_module' (19#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/ws2812b_module.v:22]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_ws2812b' does not match port width (2) of module 'ws2812b_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:255]
+INFO: [Synth 8-6157] synthesizing module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/smg_rtl/smg_module.v:22]
+	Parameter s_IDLE bound to: 8'b00000000 
+	Parameter s_SMG_0 bound to: 8'b00000001 
+	Parameter s_SMG_1 bound to: 8'b00000010 
+	Parameter s_SMG_2 bound to: 8'b00000100 
+	Parameter s_SMG_3 bound to: 8'b00001000 
+	Parameter s_SMG_4 bound to: 8'b00010000 
+	Parameter s_SMG_5 bound to: 8'b00100000 
+	Parameter s_SMG_6 bound to: 8'b01000000 
+	Parameter s_SMG_7 bound to: 8'b10000000 
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/smg_rtl/smg_module.v:191]
+INFO: [Synth 8-6155] done synthesizing module 'smg_module' (20#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/smg_rtl/smg_module.v:22]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:263]
+WARNING: [Synth 8-689] width (2) of port connection 'ow_SMG_SEL' does not match port width (8) of module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:274]
+INFO: [Synth 8-6157] synthesizing module 'uart_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_module.v:22]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 921600 - type: integer 
+	Parameter UART_RX_NUM bound to: 7 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'uart_rx' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_rx.v:22]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 921600 - type: integer 
+	Parameter UART_RX_NUM bound to: 7 - type: integer 
+	Parameter BAUD_DIV_coe bound to: 2140 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'rx' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/rx.v:21]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 921600 - type: integer 
+	Parameter START bound to: 4'b0000 
+	Parameter BIT0 bound to: 4'b0001 
+	Parameter BIT1 bound to: 4'b0010 
+	Parameter BIT2 bound to: 4'b0011 
+	Parameter BIT3 bound to: 4'b0100 
+	Parameter BIT4 bound to: 4'b0101 
+	Parameter BIT5 bound to: 4'b0110 
+	Parameter BIT6 bound to: 4'b0111 
+	Parameter BIT7 bound to: 4'b1000 
+	Parameter STOP bound to: 4'b1001 
+	Parameter BAUD_DIV_coe0 bound to: 16'b0000000001101011 
+	Parameter BAUD_DIV_coe1 bound to: 16'b0000000000110101 
+INFO: [Synth 8-6155] done synthesizing module 'rx' (21#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/rx.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (22#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_rx.v:22]
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_tx.v:21]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 921600 - type: integer 
+	Parameter BAUD_DIV_coe0 bound to: 16'b0000000001101011 
+	Parameter BAUD_DIV_coe1 bound to: 16'b0000000000110101 
+INFO: [Synth 8-226] default block is never used [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_tx.v:152]
+INFO: [Synth 8-6157] synthesizing module 'tx' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/tx.v:21]
+	Parameter CLK_FRE bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 921600 - type: integer 
+	Parameter START bound to: 4'b0000 
+	Parameter BIT0 bound to: 4'b0001 
+	Parameter BIT1 bound to: 4'b0010 
+	Parameter BIT2 bound to: 4'b0011 
+	Parameter BIT3 bound to: 4'b0100 
+	Parameter BIT4 bound to: 4'b0101 
+	Parameter BIT5 bound to: 4'b0110 
+	Parameter BIT6 bound to: 4'b0111 
+	Parameter BIT7 bound to: 4'b1000 
+	Parameter STOP bound to: 4'b1001 
+	Parameter BAUD_DIV_coe0 bound to: 16'b0000000001101011 
+	Parameter BAUD_DIV_coe1 bound to: 16'b0000000000110101 
+INFO: [Synth 8-6155] done synthesizing module 'tx' (23#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/tx.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (24#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_tx.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'uart_module' (25#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_module.v:22]
+INFO: [Synth 8-6157] synthesizing module 'uart_data_loopback_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_data_loopback_module.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'uart_data_loopback_module' (26#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_data_loopback_module.v:10]
+INFO: [Synth 8-6157] synthesizing module 'udp_drive' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:3]
+	Parameter WAIT_UDP_DATA bound to: 2'b00 
+	Parameter WAIT_ACK bound to: 2'b01 
+	Parameter SEND_UDP_DATA bound to: 2'b10 
+	Parameter DELAY bound to: 2'b11 
+INFO: [Synth 8-6157] synthesizing module 'udp_64x4096_fifo' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_64x4096_fifo.v:22]
+INFO: [Synth 8-6157] synthesizing module 'fifo_72x512' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_72x512_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_72x512' (27#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_72x512_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'udp_64x4096_fifo' (28#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_64x4096_fifo.v:22]
+INFO: [Synth 8-226] default block is never used [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:141]
+INFO: [Synth 8-6157] synthesizing module 'master_wrapper' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/master_wrapper.v:3]
+INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0_example_design_resets' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_example_design_resets.v:3]
+INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0_sync_block' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_sync_block.v:63]
+	Parameter INITIALISE bound to: 1'b0 
+	Parameter DEPTH bound to: 5 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'FDRE' [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:13724]
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_R_INVERTED bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDRE' (29#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:13724]
+INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0_sync_block' (30#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_sync_block.v:63]
+INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0_reset_sync' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_reset_sync.v:66]
+	Parameter INITIALISE bound to: 1'b1 
+	Parameter DEPTH bound to: 5 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'FDPE' [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:13664]
+	Parameter INIT bound to: 1'b1 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_PRE_INVERTED bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDPE' (31#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:13664]
+INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0_reset_sync' (32#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_reset_sync.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0_example_design_resets' (33#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_example_design_resets.v:3]
+INFO: [Synth 8-6157] synthesizing module 'uiudp_stack' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/uiudp_stack_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'uiudp_stack' (34#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/uiudp_stack_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'axis_data_fifo_1' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_data_fifo_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_data_fifo_1' (35#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_data_fifo_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'axis_data_fifo_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_data_fifo_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_data_fifo_0' (36#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_data_fifo_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_dwidth_converter_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_0' (37#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_dwidth_converter_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_1' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_dwidth_converter_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_1' (38#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/axis_dwidth_converter_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/tri_mode_ethernet_mac_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0' (39#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/tri_mode_ethernet_mac_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0_axi_lite_sm' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:64]
+	Parameter STARTUP bound to: 0 - type: integer 
+	Parameter UPDATE_SPEED bound to: 1 - type: integer 
+	Parameter RESET_MAC_TX bound to: 16 - type: integer 
+	Parameter RESET_MAC_RX bound to: 17 - type: integer 
+	Parameter CNFG_MDIO bound to: 18 - type: integer 
+	Parameter CNFG_FLOW bound to: 19 - type: integer 
+	Parameter CNFG_FILTER bound to: 22 - type: integer 
+	Parameter CNFG_LO_ADDR bound to: 20 - type: integer 
+	Parameter CNFG_HI_ADDR bound to: 21 - type: integer 
+	Parameter CHECK_SPEED bound to: 25 - type: integer 
+	Parameter IDLE bound to: 0 - type: integer 
+	Parameter READ bound to: 1 - type: integer 
+	Parameter WRITE bound to: 2 - type: integer 
+	Parameter DONE bound to: 3 - type: integer 
+	Parameter CONFIG_FLOW_CTRL_ADD bound to: 17'b00000010000001100 
+	Parameter RECEIVER_ADD bound to: 17'b00000010000000100 
+	Parameter TRANSMITTER_ADD bound to: 17'b00000010000001000 
+	Parameter SPEED_CONFIG_ADD bound to: 17'b00000010000010000 
+	Parameter CONFIG_UNI0_CTRL_ADD bound to: 17'b00000011100000000 
+	Parameter CONFIG_UNI1_CTRL_ADD bound to: 17'b00000011100000100 
+	Parameter CONFIG_ADDR_CTRL_ADD bound to: 17'b00000011100001000 
+INFO: [Synth 8-251] ** Note: Programming MAC speed [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:217]
+INFO: [Synth 8-251] ** Note: Reseting MAC RX [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:232]
+INFO: [Synth 8-251] ** Note: Reseting MAC TX [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:243]
+INFO: [Synth 8-251] ** Note: Disabling Flow control.... [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:253]
+INFO: [Synth 8-251] ** Note: Configuring unicast address(low word).... [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:261]
+INFO: [Synth 8-251] ** Note: Configuring unicast address(high word).... [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:269]
+INFO: [Synth 8-251] ** Note: Setting core to promiscuous mode.... [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:277]
+INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0_axi_lite_sm' (40#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'master_wrapper' (41#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/master_wrapper.v:3]
+WARNING: [Synth 8-7071] port 'ip_rx_error' of module 'master_wrapper' is unconnected for instance 'master_wrapper_inst' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:210]
+WARNING: [Synth 8-7023] instance 'master_wrapper_inst' of module 'master_wrapper' has 41 connections declared, but only 40 given [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:210]
+INFO: [Synth 8-226] default block is never used [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:278]
+INFO: [Synth 8-6155] done synthesizing module 'udp_drive' (42#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:3]
+INFO: [Synth 8-6157] synthesizing module 'cmd_cov_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/Crossclock_rtl/cmd_cov_module.v:22]
+INFO: [Synth 8-6157] synthesizing module 'uart_fifo' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/uart_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fifo' (43#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/uart_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'cmd_cov_module' (44#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/Crossclock_rtl/cmd_cov_module.v:22]
+INFO: [Synth 8-6157] synthesizing module 'ddr3_cache_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v:4]
+INFO: [Synth 8-6157] synthesizing module 'fifo_ddr3_wr' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_ddr3_wr_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_ddr3_wr' (45#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_ddr3_wr_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_ddr3_rd' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_ddr3_rd_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_ddr3_rd' (46#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/fifo_ddr3_rd_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'ddr3_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:3]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (47#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/mig_7series_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'device_temp' of module 'mig_7series_0' is unconnected for instance 'mig_7series_0_inst' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:118]
+WARNING: [Synth 8-7023] instance 'mig_7series_0_inst' of module 'mig_7series_0' has 39 connections declared, but only 38 given [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:118]
+INFO: [Synth 8-6155] done synthesizing module 'ddr3_module' (48#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:3]
+WARNING: [Synth 8-689] width (32) of port connection 'ow_ddr3_wr_addr_cnt' does not match port width (28) of module 'ddr3_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v:208]
+WARNING: [Synth 8-689] width (32) of port connection 'ow_ddr3_rd_addr_cnt' does not match port width (28) of module 'ddr3_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v:214]
+INFO: [Synth 8-6155] done synthesizing module 'ddr3_cache_module' (49#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v:4]
+INFO: [Synth 8-6157] synthesizing module 'eeprom_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/eeprom_module.v:22]
+	Parameter eeprom_memory bound to: 4 - type: integer 
+	Parameter tx bound to: 64'b1100000011101110110101001100001011010110111100010000110100001010 
+INFO: [Synth 8-6157] synthesizing module 'iic_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/iic_module.v:22]
+	Parameter eeprom_memory bound to: 4 - type: integer 
+	Parameter s_IDLE bound to: 4'b0000 
+	Parameter s_slave_address bound to: 4'b0001 
+	Parameter s_wr_first_word_address bound to: 4'b0010 
+	Parameter s_wr_second_word_address bound to: 4'b0011 
+	Parameter s_wr_data bound to: 4'b0100 
+	Parameter s_rd_data bound to: 4'b0101 
+	Parameter IDLE bound to: 4'b0000 
+	Parameter START bound to: 4'b0001 
+	Parameter BIT0 bound to: 4'b0010 
+	Parameter BIT1 bound to: 4'b0011 
+	Parameter BIT2 bound to: 4'b0100 
+	Parameter BIT3 bound to: 4'b0101 
+	Parameter BIT4 bound to: 4'b0110 
+	Parameter BIT5 bound to: 4'b0111 
+	Parameter BIT6 bound to: 4'b1000 
+	Parameter BIT7 bound to: 4'b1001 
+	Parameter ACK bound to: 4'b1010 
+	Parameter STOP bound to: 4'b1011 
+	Parameter L_IIC_WR bound to: 1'b0 
+	Parameter L_IIC_RD bound to: 1'b1 
+INFO: [Synth 8-6157] synthesizing module 'IOBUF' [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (50#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+INFO: [Synth 8-6155] done synthesizing module 'iic_module' (51#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/iic_module.v:22]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_iic_sdi_data' does not match port width (512) of module 'iic_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/eeprom_module.v:142]
+INFO: [Synth 8-6155] done synthesizing module 'eeprom_module' (52#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/eeprom_module.v:22]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'eeprom_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:415]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'eeprom_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:434]
+INFO: [Synth 8-6157] synthesizing module 'test_data_generator_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/test_data_generator_module.v:22]
+	Parameter s_test_data_IDLE bound to: 2'b00 
+	Parameter s_test_data_WRITE bound to: 2'b01 
+	Parameter s_test_data_WAIT bound to: 2'b10 
+	Parameter s_test_data_READ bound to: 2'b11 
+INFO: [Synth 8-6155] done synthesizing module 'test_data_generator_module' (53#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/test_data_generator_module.v:22]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'test_data_generator_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:450]
+INFO: [Synth 8-6157] synthesizing module 'IOBUF__parameterized0' [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IOBUF__parameterized0' (53#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+INFO: [Synth 8-6157] synthesizing module 'vio_FMC' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/vio_FMC_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'vio_FMC' (54#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-27044-LXY/realtime/vio_FMC_stub.v:6]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_FMC_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:502]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_PRSNT'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:467]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_PG_M2C'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:474]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_PG_C2M'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:481]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_RES1'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:495]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_RES0'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:488]
+INFO: [Synth 8-6155] done synthesizing module 'top' (55#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:22]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 1048.828 ; gain = 40.410
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1053.535 ; gain = 45.117
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1053.535 ; gain = 45.117
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.699 . Memory (MB): peak = 1063.250 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 7 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/uiudp_stack/uiudp_stack_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/uiudp_stack_inst'
+Finished Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/uiudp_stack/uiudp_stack_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/uiudp_stack_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc] for cell 'ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc] for cell 'ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_dna/vio_dna/vio_dna_in_context.xdc] for cell 'dna_module_inst/vio_dna_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_dna/vio_dna/vio_dna_in_context.xdc] for cell 'dna_module_inst/vio_dna_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0/axis_data_fifo_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_packet_fifo0'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0/axis_data_fifo_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_packet_fifo0'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0/axis_data_fifo_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_packet_fifo0'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0/axis_data_fifo_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_packet_fifo0'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_FMC/vio_FMC/vio_FMC_in_context.xdc] for cell 'vio_FMC_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_FMC/vio_FMC/vio_FMC_in_context.xdc] for cell 'vio_FMC_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1/axis_data_fifo_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_async_fifo0'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1/axis_data_fifo_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_async_fifo0'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1/axis_data_fifo_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_async_fifo0'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1/axis_data_fifo_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_async_fifo0'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'Unix_Epoch_module/user_cmd_cov_Unix_Epoch_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'Unix_Epoch_module/user_cmd_cov_Unix_Epoch_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'Unix_Epoch_module/Unix_Epoch_cov_sys_clk_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'Unix_Epoch_module/Unix_Epoch_cov_sys_clk_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'ws2812b_module_inst/user_cmd_cov_ws2812b_clk_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'ws2812b_module_inst/user_cmd_cov_ws2812b_clk_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'smg_module_inst/user_cmd_data_cov_smg_clk'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'smg_module_inst/user_cmd_data_cov_smg_clk'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'smg_module_inst/smg_cmd_data_cov_smg_clk'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'smg_module_inst/smg_cmd_data_cov_smg_clk'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'udp_drive_inst/udp_64x4096_fifo_inst/fifo_rd_en_wr_clk_cov_rd_clk'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'udp_drive_inst/udp_64x4096_fifo_inst/fifo_rd_en_wr_clk_cov_rd_clk'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'udp_drive_inst/ETH_rx_data_cov_sys_clk'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'udp_drive_inst/ETH_rx_data_cov_sys_clk'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'eeprom_module_inst_0/user_cmd_cov_iic_clk_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'eeprom_module_inst_0/user_cmd_cov_iic_clk_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'eeprom_module_inst_1/user_cmd_cov_iic_clk_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'eeprom_module_inst_1/user_cmd_cov_iic_clk_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'test_data_generator_module_inst/fifo_bits_cov_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bits_cov/fifo_bits_cov/fifo_bits_cov_in_context.xdc] for cell 'test_data_generator_module_inst/fifo_bits_cov_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/clk_wiz_mclk/clk_wiz_mclk/clk_wiz_mclk_in_context.xdc] for cell 'mclk_rst_module_inst/clk_wiz_mclk'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/clk_wiz_mclk/clk_wiz_mclk/clk_wiz_mclk_in_context.xdc] for cell 'mclk_rst_module_inst/clk_wiz_mclk'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_rd/fifo_ddr3_rd/fifo_ddr3_rd_in_context.xdc] for cell 'ddr3_cache_module_inst/fifo_ddr3_rd_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_rd/fifo_ddr3_rd/fifo_ddr3_rd_in_context.xdc] for cell 'ddr3_cache_module_inst/fifo_ddr3_rd_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_72x512/fifo_72x512/fifo_72x512_in_context.xdc] for cell 'udp_drive_inst/udp_64x4096_fifo_inst/fifo_72x512_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_72x512/fifo_72x512/fifo_72x512_in_context.xdc] for cell 'udp_drive_inst/udp_64x4096_fifo_inst/fifo_72x512_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_dwidth_converter_1/axis_dwidth_converter_1/axis_dwidth_converter_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_axis_dwidth_converter0'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_dwidth_converter_1/axis_dwidth_converter_1/axis_dwidth_converter_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_axis_dwidth_converter0'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_dwidth_converter_0/axis_dwidth_converter_0/axis_dwidth_converter_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_axis_dwidth_converter0'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_dwidth_converter_0/axis_dwidth_converter_0/axis_dwidth_converter_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_axis_dwidth_converter0'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_15M625_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_15M625_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_200M_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_200M_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_125M_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_125M_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_50M_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_50M_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_31M25_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_31M25_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_25M_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_25M_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_10M_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_10M_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_5M_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_5M_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_1M_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_1M_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_400k_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_400k_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_100k_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_100k_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_1k_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'mclk_rst_module_inst/mclk_rst_cov_1k_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'ddr3_cache_module_inst/iw_ddr3_fifo_rd_pre_en_cov_ddr3_clk'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'ddr3_cache_module_inst/iw_ddr3_fifo_rd_pre_en_cov_ddr3_clk'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'ddr3_cache_module_inst/w_ddr3_fifo_rd_cache_prog_empty_cov_ddr3_clk'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'ddr3_cache_module_inst/w_ddr3_fifo_rd_cache_prog_empty_cov_ddr3_clk'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'ddr3_cache_module_inst/iw_ddr3_rst_cov_200M'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_bit_cov/fifo_bit_cov/fifo_bit_cov_in_context.xdc] for cell 'ddr3_cache_module_inst/iw_ddr3_rst_cov_200M'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/uart_fifo/uart_fifo/uart_fifo_in_context.xdc] for cell 'cmd_cov_module_inst/uart_fifo_rst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/uart_fifo/uart_fifo/uart_fifo_in_context.xdc] for cell 'cmd_cov_module_inst/uart_fifo_rst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr/fifo_ddr3_wr_in_context.xdc] for cell 'ddr3_cache_module_inst/fifo_ddr3_wr_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr/fifo_ddr3_wr_in_context.xdc] for cell 'ddr3_cache_module_inst/fifo_ddr3_wr_inst'
+Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc]
+Finished Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1266.668 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 7 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 7 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.154 . Memory (MB): peak = 1266.668 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'ddr3_cache_module_inst/iw_ddr3_rst_cov_200M' at clock pin 'rd_clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'mclk_rst_module_inst/mclk_rst_cov_125M_rst' at clock pin 'rd_clk' is different from the actual clock period '8.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'mclk_rst_module_inst/mclk_rst_cov_200M_rst' at clock pin 'rd_clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'udp_drive_inst/master_wrapper_inst/rx_async_fifo0' at clock pin 's_axis_aclk' is different from the actual clock period '8.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '100.000' specified during out-of-context synthesis of instance 'udp_drive_inst/master_wrapper_inst/rx_axis_dwidth_converter0' at clock pin 'aclk' is different from the actual clock period '8.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'udp_drive_inst/master_wrapper_inst/tx_async_fifo0' at clock pin 'm_axis_aclk' is different from the actual clock period '8.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '100.000' specified during out-of-context synthesis of instance 'udp_drive_inst/master_wrapper_inst/tx_axis_dwidth_converter0' at clock pin 'aclk' is different from the actual clock period '8.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'udp_drive_inst/master_wrapper_inst/tx_packet_fifo0' at clock pin 's_axis_aclk' is different from the actual clock period '8.000', this can lead to different synthesis results.
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:28 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg484-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:28 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 2).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 3).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[10]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[10]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[11]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 6).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[11]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 7).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[12]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 8).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[12]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 9).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[13]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 10).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[13]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 11).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[14]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 12).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[14]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 13).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[15]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 14).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[15]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 15).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 16).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 17).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 18).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 19).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 20).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 21).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 22).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 23).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 24).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 25).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 26).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 27).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 28).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 29).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[8]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 30).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[8]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 31).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[9]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 32).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[9]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 33).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ba[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 34).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ba[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 35).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ba[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 36).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ba[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 37).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ba[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 38).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ba[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 39).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_cas_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 40).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_cas_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 41).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_n[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 42).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ck_n[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 43).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_n[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 44).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ck_n[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 45).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_p[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 46).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ck_p[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 47).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_p[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 48).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ck_p[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 49).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_cke[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 50).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_cke[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 51).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_cke[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 52).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_cke[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 53).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_cs_n[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 54).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_cs_n[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 55).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_cs_n[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 56).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_cs_n[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 57).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 58).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 59).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 60).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 61).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 62).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 63).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 64).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 65).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 66).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 67).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 68).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 69).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 70).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 71).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 72).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 73).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 74).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 75).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[10]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 76).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[10]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 77).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[11]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 78).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[11]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 79).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[12]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 80).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[12]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 81).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[13]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 82).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[13]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 83).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[14]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 84).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[14]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 85).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[15]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 86).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[15]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 87).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[16]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 88).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[16]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 89).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[17]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 90).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[17]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 91).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[18]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 92).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[18]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 93).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[19]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 94).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[19]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 95).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 96).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 97).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[20]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 98).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[20]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 99).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[21]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 100).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[21]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 101).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[22]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 102).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[22]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 103).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[23]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 104).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[23]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 105).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[24]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 106).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[24]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 107).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[25]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 108).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[25]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 109).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[26]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 110).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[26]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 111).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[27]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 112).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[27]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 113).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[28]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 114).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[28]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 115).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[29]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 116).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[29]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 117).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 118).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 119).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[30]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 120).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[30]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 121).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[31]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 122).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[31]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 123).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[32]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 124).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[32]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 125).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[33]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 126).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[33]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 127).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[34]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 128).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[34]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 129).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[35]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 130).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[35]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 131).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[36]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 132).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[36]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 133).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[37]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 134).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[37]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 135).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[38]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 136).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[38]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 137).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[39]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 138).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[39]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 139).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 140).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 141).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[40]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 142).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[40]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 143).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[41]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 144).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[41]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 145).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[42]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 146).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[42]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 147).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[43]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 148).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[43]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 149).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[44]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 150).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[44]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 151).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[45]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 152).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[45]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 153).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[46]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 154).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[46]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 155).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[47]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 156).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[47]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 157).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[48]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 158).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[48]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 159).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[49]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 160).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[49]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 161).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 162).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 163).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[50]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 164).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[50]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 165).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[51]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 166).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[51]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 167).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[52]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 168).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[52]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 169).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[53]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 170).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[53]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 171).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[54]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 172).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[54]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 173).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[55]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 174).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[55]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 175).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[56]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 176).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[56]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 177).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[57]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 178).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[57]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 179).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[58]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 180).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[58]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 181).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[59]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 182).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[59]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 183).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 184).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 185).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[60]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 186).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[60]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 187).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[61]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 188).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[61]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 189).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[62]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 190).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[62]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 191).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[63]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 192).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[63]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 193).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 194).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 195).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 196).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 197).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[8]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 198).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[8]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 199).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[9]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 200).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[9]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 201).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 202).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 203).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 204).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 205).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 206).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 207).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 208).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 209).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 210).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 211).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 212).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 213).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 214).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 215).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 216).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 217).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 218).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 219).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 220).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 221).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 222).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 223).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 224).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 225).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 226).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[4]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 227).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 228).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[5]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 229).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 230).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[6]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 231).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 232).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[7]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 233).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_odt[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 234).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_odt[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 235).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_odt[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 236).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_odt[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 237).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ras_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 238).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ras_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 239).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_reset_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 240).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_reset_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 241).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_we_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 242).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_we_n. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 243).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_rx_ctl. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 6).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_rx_ctl. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 7).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_rxc. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 8).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_rxc. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 9).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 10).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 11).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 12).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 13).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 14).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 15).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 16).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_rxd[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 17).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_tx_ctl. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 18).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_tx_ctl. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 19).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_txc. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 20).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_txc. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 21).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_txd[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 22).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_txd[0]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 23).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_txd[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 24).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_txd[1]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 25).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_txd[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 26).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_txd[2]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 27).
+Applied set_property IO_BUFFER_TYPE = NONE for PHYA_rgmii_txd[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 28).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for PHYA_rgmii_txd[3]. (constraint file  d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0/tri_mode_ethernet_mac_0_in_context.xdc, line 29).
+Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for dna_module_inst/vio_dna_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/rx_packet_fifo0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/tx_packet_fifo0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for vio_FMC_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/rx_async_fifo0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/tx_async_fifo0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/ETH_rx_data_cov_sys_clk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Unix_Epoch_module/Unix_Epoch_cov_sys_clk_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for test_data_generator_module_inst/fifo_bits_cov_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/udp_64x4096_fifo_inst/fifo_rd_en_wr_clk_cov_rd_clk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for smg_module_inst/smg_cmd_data_cov_smg_clk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Unix_Epoch_module/user_cmd_cov_Unix_Epoch_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for eeprom_module_inst_0/user_cmd_cov_iic_clk_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for eeprom_module_inst_1/user_cmd_cov_iic_clk_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ws2812b_module_inst/user_cmd_cov_ws2812b_clk_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for smg_module_inst/user_cmd_data_cov_smg_clk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/clk_wiz_mclk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/fifo_ddr3_rd_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/udp_64x4096_fifo_inst/fifo_72x512_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/rx_axis_dwidth_converter0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/tx_axis_dwidth_converter0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/iw_ddr3_fifo_rd_pre_en_cov_ddr3_clk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/iw_ddr3_rst_cov_200M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_100k_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_10M_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_125M_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_15M625_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_1M_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_1k_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_200M_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_25M_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_31M25_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_400k_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_50M_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for mclk_rst_module_inst/mclk_rst_cov_5M_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/w_ddr3_fifo_rd_cache_prog_empty_cov_ddr3_clk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for cmd_cov_module_inst/uart_fifo_rst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/fifo_ddr3_wr_inst. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:29 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_key_reg' in module 'key'
+INFO: [Synth 8-802] inferred FSM for state register 's_smg_reg' in module 'smg_module'
+INFO: [Synth 8-802] inferred FSM for state register 'rx_state_reg' in module 'rx'
+INFO: [Synth 8-802] inferred FSM for state register 'or_tx_state_reg' in module 'tx'
+INFO: [Synth 8-802] inferred FSM for state register 'axi_state_reg' in module 'tri_mode_ethernet_mac_0_axi_lite_sm'
+INFO: [Synth 8-802] inferred FSM for state register 's_state_reg' in module 'iic_module'
+INFO: [Synth 8-802] inferred FSM for state register 's_test_data_reg' in module 'test_data_generator_module'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                P_KEY_S0 |                               00 |                               00
+                P_KEY_S1 |                               01 |                               01
+                P_KEY_S2 |                               10 |                               10
+                P_KEY_S3 |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_key_reg' using encoding 'sequential' in module 'key'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_IDLE |                              001 |                         00000000
+                 s_SMG_0 |                              010 |                         00000001
+                 s_SMG_1 |                              100 |                         00000010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 's_smg_reg' using encoding 'one-hot' in module 'smg_module'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    STOP |                       0000000001 |                             1001
+                   START |                       0000000010 |                             0000
+                    BIT0 |                       0000000100 |                             0001
+                    BIT1 |                       0000001000 |                             0010
+                    BIT2 |                       0000010000 |                             0011
+                    BIT3 |                       0000100000 |                             0100
+                    BIT4 |                       0001000000 |                             0101
+                    BIT5 |                       0010000000 |                             0110
+                    BIT6 |                       0100000000 |                             0111
+                    BIT7 |                       1000000000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rx_state_reg' using encoding 'one-hot' in module 'rx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   START |                       0000000001 |                             0000
+                    BIT0 |                       0000000010 |                             0001
+                    BIT1 |                       0000000100 |                             0010
+                    BIT2 |                       0000001000 |                             0011
+                    BIT3 |                       0000010000 |                             0100
+                    BIT4 |                       0000100000 |                             0101
+                    BIT5 |                       0001000000 |                             0110
+                    BIT6 |                       0010000000 |                             0111
+                    BIT7 |                       0100000000 |                             1000
+                    STOP |                       1000000000 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'or_tx_state_reg' using encoding 'one-hot' in module 'tx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 STARTUP |                             0000 |                            00000
+            UPDATE_SPEED |                             0001 |                            00001
+            RESET_MAC_RX |                             0010 |                            10001
+            RESET_MAC_TX |                             0011 |                            10000
+               CNFG_FLOW |                             0100 |                            10011
+            CNFG_LO_ADDR |                             0101 |                            10100
+            CNFG_HI_ADDR |                             0110 |                            10101
+             CNFG_FILTER |                             0111 |                            10110
+             CHECK_SPEED |                             1000 |                            11001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'axi_state_reg' using encoding 'sequential' in module 'tri_mode_ethernet_mac_0_axi_lite_sm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_IDLE |                              001 |                             0000
+         s_slave_address |                              100 |                             0001
+               s_rd_data |                              000 |                             0101
+s_wr_second_word_address |                              011 |                             0011
+               s_wr_data |                              010 |                             0100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 's_state_reg' using encoding 'sequential' in module 'iic_module'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+        s_test_data_IDLE |                               00 |                               00
+        s_test_data_READ |                               01 |                               11
+       s_test_data_WRITE |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 's_test_data_reg' using encoding 'sequential' in module 'test_data_generator_module'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:35 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   64 Bit       Adders := 3     
+	   3 Input   64 Bit       Adders := 1     
+	   2 Input   56 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 21    
+	   2 Input   11 Bit       Adders := 4     
+	   2 Input   10 Bit       Adders := 3     
+	   2 Input    9 Bit       Adders := 4     
+	   3 Input    9 Bit       Adders := 4     
+	   2 Input    8 Bit       Adders := 2     
+	   2 Input    7 Bit       Adders := 2     
+	   2 Input    6 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 4     
++---XORs : 
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	             4096 Bit    Registers := 1     
+	              512 Bit    Registers := 10    
+	              128 Bit    Registers := 1     
+	               64 Bit    Registers := 4     
+	               56 Bit    Registers := 2     
+	               37 Bit    Registers := 1     
+	               32 Bit    Registers := 6     
+	               21 Bit    Registers := 1     
+	               17 Bit    Registers := 5     
+	               16 Bit    Registers := 21    
+	               12 Bit    Registers := 2     
+	               11 Bit    Registers := 5     
+	               10 Bit    Registers := 4     
+	                9 Bit    Registers := 10    
+	                8 Bit    Registers := 14    
+	                7 Bit    Registers := 9     
+	                6 Bit    Registers := 2     
+	                4 Bit    Registers := 11    
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 118   
++---Muxes : 
+	   3 Input 4096 Bit        Muxes := 1     
+	  13 Input  512 Bit        Muxes := 2     
+	   2 Input  512 Bit        Muxes := 5     
+	   2 Input  128 Bit        Muxes := 3     
+	   2 Input   64 Bit        Muxes := 9     
+	   4 Input   64 Bit        Muxes := 3     
+	   2 Input   37 Bit        Muxes := 1     
+	   3 Input   32 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 4     
+	   9 Input   32 Bit        Muxes := 1     
+	   2 Input   30 Bit        Muxes := 2     
+	   2 Input   17 Bit        Muxes := 2     
+	   9 Input   17 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 10    
+	   3 Input   16 Bit        Muxes := 4     
+	   2 Input   10 Bit        Muxes := 4     
+	   3 Input   10 Bit        Muxes := 3     
+	   2 Input    9 Bit        Muxes := 5     
+	   2 Input    8 Bit        Muxes := 9     
+	   3 Input    8 Bit        Muxes := 7     
+	  10 Input    8 Bit        Muxes := 2     
+	   4 Input    8 Bit        Muxes := 1     
+	   4 Input    7 Bit        Muxes := 2     
+	   2 Input    7 Bit        Muxes := 4     
+	   3 Input    7 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 4     
+	   4 Input    6 Bit        Muxes := 2     
+	  14 Input    4 Bit        Muxes := 4     
+	   5 Input    4 Bit        Muxes := 4     
+	   4 Input    4 Bit        Muxes := 1     
+	  65 Input    4 Bit        Muxes := 2     
+	  66 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 2     
+	   9 Input    4 Bit        Muxes := 2     
+	  10 Input    4 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 5     
+	   3 Input    3 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 6     
+	   3 Input    2 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 13    
+	   5 Input    2 Bit        Muxes := 1     
+	   6 Input    2 Bit        Muxes := 1     
+	  13 Input    1 Bit        Muxes := 14    
+	   2 Input    1 Bit        Muxes := 108   
+	   5 Input    1 Bit        Muxes := 12    
+	   3 Input    1 Bit        Muxes := 16    
+	   4 Input    1 Bit        Muxes := 22    
+	  65 Input    1 Bit        Muxes := 4     
+	  10 Input    1 Bit        Muxes := 4     
+	   9 Input    1 Bit        Muxes := 9     
+	   6 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:01:04 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst0/iw_sys_clk' to 'i_1/clk_125M'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst1/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst2/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst3/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst4/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst5/iw_sys_clk' to 'i_1/clk_10M'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst6/iw_sys_clk' to 'i_1/clk_10M'
+INFO: [Synth 8-5819] Moved 7 constraints on hierarchical pins to their respective driving/loading pins
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:01:12 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:01:18 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:01:24 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:01:24 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:46 ; elapsed = 00:01:25 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:46 ; elapsed = 00:01:25 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:46 ; elapsed = 00:01:25 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:46 ; elapsed = 00:01:25 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                                                     | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|top         | udp_drive_inst/master_wrapper_inst/axi_lite_controller_0/count_shift_reg[20] | 21     | 1     | NO           | NO                 | YES               | 0      | 1       | 
++------------+------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+------------------------+----------+
+|      |BlackBox name           |Instances |
++------+------------------------+----------+
+|1     |vio_FMC                 |         1|
+|2     |fifo_bits_cov           |        10|
+|3     |uart_fifo               |         1|
+|4     |fifo_bit_cov            |        15|
+|5     |fifo_ddr3_wr            |         1|
+|6     |fifo_ddr3_rd            |         1|
+|7     |mig_7series_0           |         1|
+|8     |vio_dna                 |         1|
+|9     |clk_wiz_mclk            |         1|
+|10    |uiudp_stack             |         1|
+|11    |axis_data_fifo_1        |         2|
+|12    |axis_data_fifo_0        |         2|
+|13    |axis_dwidth_converter_0 |         1|
+|14    |axis_dwidth_converter_1 |         1|
+|15    |tri_mode_ethernet_mac_0 |         1|
+|16    |fifo_72x512             |         1|
++------+------------------------+----------+
+
+Report Cell Usage: 
++------+----------------------+------+
+|      |Cell                  |Count |
++------+----------------------+------+
+|1     |axis_data_fifo        |     1|
+|2     |axis_data_fifo_0_     |     1|
+|3     |axis_data_fifo        |     1|
+|4     |axis_data_fifo_1_     |     1|
+|5     |axis_dwidth_converter |     2|
+|7     |clk_wiz_mclk          |     1|
+|8     |fifo_72x512           |     1|
+|9     |fifo_bit_cov          |     1|
+|10    |fifo_bit_cov_         |    14|
+|24    |fifo_bits_cov         |     1|
+|25    |fifo_bits_cov_        |     9|
+|34    |fifo_ddr3_rd          |     1|
+|35    |fifo_ddr3_wr          |     1|
+|36    |mig_7series           |     1|
+|37    |tri_mode_ethernet_mac |     1|
+|38    |uart_fifo             |     1|
+|39    |uiudp_stack           |     1|
+|40    |vio_FMC               |     1|
+|41    |vio_dna               |     1|
+|42    |BUFG                  |     1|
+|43    |CARRY4                |   221|
+|44    |DNA_PORT              |     1|
+|45    |LUT1                  |    56|
+|46    |LUT2                  |   424|
+|47    |LUT3                  |   363|
+|48    |LUT4                  |   203|
+|49    |LUT5                  |   275|
+|50    |LUT6                  |   547|
+|51    |MUXF7                 |    65|
+|52    |MUXF8                 |    16|
+|53    |SRLC32E               |     1|
+|54    |FDCE                  |     2|
+|55    |FDPE                  |    25|
+|56    |FDRE                  |  3930|
+|57    |FDSE                  |    10|
+|58    |IBUF                  |     2|
+|59    |IOBUF                 |     7|
+|60    |OBUF                  |    26|
+|61    |OBUFT                 |    96|
++------+----------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:46 ; elapsed = 00:01:25 . Memory (MB): peak = 1273.883 ; gain = 265.465
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:01:14 . Memory (MB): peak = 1273.883 ; gain = 45.117
+Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:01:25 . Memory (MB): peak = 1273.883 ; gain = 265.465
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.198 . Memory (MB): peak = 1273.883 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 309 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1273.883 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 7 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 7 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+180 Infos, 35 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:01:36 . Memory (MB): peak = 1273.883 ; gain = 265.465
+INFO: [Common 17-1381] The checkpoint 'D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 18 12:38:07 2026...

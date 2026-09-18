@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module KX7A200_Top(
+module top(
 //----------------- sys ----------------//
     input         iw_SYS_CLK              ,
     
@@ -51,19 +51,19 @@ module KX7A200_Top(
     inout         io_FMC_PG_C2M       ,
     inout  [ 1:0] io_FMC_RES          ,
 //----------------- DDR ----------------//
-    inout  [63:0] ddr3_dq             , // DDR3 Êı¾İ
-    inout  [7:0]  ddr3_dqs_n          , // DDR3 dqs¸º
-    inout  [7:0]  ddr3_dqs_p          , // DDR3 dqsÕı  
-    output [15:0] ddr3_addr           , // DDR3 µØÖ·   
-    output [2:0]  ddr3_ba             , // DDR3 banck Ñ¡Ôñ
-    output        ddr3_ras_n          , // DDR3 ĞĞÑ¡Ôñ
-    output        ddr3_cas_n          , // DDR3 ÁĞÑ¡Ôñ
-    output        ddr3_we_n           , // DDR3 ¶ÁĞ´Ñ¡Ôñ
-    output        ddr3_reset_n        , // DDR3 ¸´Î»
-    output [1:0]  ddr3_ck_p           , // DDR3 Ê±ÖÓÕı
-    output [1:0]  ddr3_ck_n           , // DDR3 Ê±ÖÓ¸º
-    output [1:0]  ddr3_cke            , // DDR3 Ê±ÖÓÊ¹ÄÜ
-    output [1:0]  ddr3_cs_n           , // DDR3 Æ¬Ñ¡
+    inout  [63:0] ddr3_dq             , // DDR3 æ•°æ®
+    inout  [7:0]  ddr3_dqs_n          , // DDR3 dqsè´Ÿ
+    inout  [7:0]  ddr3_dqs_p          , // DDR3 dqsæ­£  
+    output [15:0] ddr3_addr           , // DDR3 åœ°å€   
+    output [2:0]  ddr3_ba             , // DDR3 banck é€‰æ‹©
+    output        ddr3_ras_n          , // DDR3 è¡Œé€‰æ‹©
+    output        ddr3_cas_n          , // DDR3 åˆ—é€‰æ‹©
+    output        ddr3_we_n           , // DDR3 è¯»å†™é€‰æ‹©
+    output        ddr3_reset_n        , // DDR3 å¤ä½
+    output [1:0]  ddr3_ck_p           , // DDR3 æ—¶é’Ÿæ­£
+    output [1:0]  ddr3_ck_n           , // DDR3 æ—¶é’Ÿè´Ÿ
+    output [1:0]  ddr3_cke            , // DDR3 æ—¶é’Ÿä½¿èƒ½
+    output [1:0]  ddr3_cs_n           , // DDR3 ç‰‡é€‰
     output [7:0]  ddr3_dm             , // DDR3_dm
     output [1:0]  ddr3_odt            , // DDR3_odt
 //-------------- test_pin --------------//
@@ -86,20 +86,24 @@ localparam [63:0] tx = 64'hc0_ee_d4_c2_d6_f1_0d_0a ;
 wire [1:0] iw_FMC_RES   ;
 wire [1:0] ow_FMC_RES   ;
 wire [1:0] ow_FMC_RES_T ;
-// Unix_Epoch Î¢Ãë¼ÆÊıÆ÷
+// Unix_Epoch å¾®ç§’è®¡æ•°å™¨
 wire [  55:0] ow_Unix_Epoch_data ;
-// ½âÎö½ÓÊÕµ½µÄÓÃ»§ÃüÁî
+// è§£ææ¥æ”¶åˆ°çš„ç”¨æˆ·å‘½ä»¤
 wire [ 511:0] ow_user_cmd_data ;
 wire [   6:0] ow_user_cmd_num  ;
 
-// ´®¿Ú/Íø¿Ú ·¢ËÍºÍ½ÓÊÕÊı¾İ
+// ä¸²å£/ç½‘å£ å‘é€å’Œæ¥æ”¶æ•°æ®
 wire [   9:0] iw_uart_tx_num      ;
 wire [4095:0] iw_uart_tx_data     ;
 wire [ 511:0] ow_uart_rx_data     ;
 wire [   6:0] ow_uart_rx_num      ;
+wire         iw_uart_tx_en         ;
+wire         ow_uart_tx_rdy        ;
+wire         ow_uart_tx_done       ;
+wire         ow_uart_rx_data_rdy   ;
 wire [  63:0] ow_ETH_rx_data       ;
 wire [  63:0] iw_ETH_udp_fifo_wr_data  ;
-// ´®¿Ú/Íø¿Ú ·¢ËÍ½âÎö½ÓÊÕµ½µÄÓÃ»§ÃüÁî
+// ä¸²å£/ç½‘å£ å‘é€è§£ææ¥æ”¶åˆ°çš„ç”¨æˆ·å‘½ä»¤
 wire [ 511:0] ow_uart_tx_cmd_data ;
 wire [   6:0] ow_uart_tx_cmd_num  ;
 wire [  63:0] ow_ETH_tx_cmd_data  ;
@@ -114,9 +118,8 @@ wire [  63:0] iw_smg_cmd_data     ;
 wire [  23:0] iw_ws2812b_GRB      ;
 wire [  63:0] iw_time_data        ;
 // -------------------------------- assign ------------------------------ //
-assign iw_uart_tx_en   = ow_uart_tx_cmd_data_valid ;
-assign iw_uart_tx_num  = ow_uart_tx_cmd_data_valid ? 7'd8 : 7'd8 ;
-assign iw_uart_tx_data = ow_uart_tx_cmd_data_valid ? ow_uart_tx_cmd_data : 1'b0 ;
+// UART RX/TX is intentionally isolated from cmd_cov_module in this phase.
+// The completed UART frame is returned unchanged by uart_data_loopback_module.
 
 assign iw_ETH_udp_fifo_wr_valid   = ow_ddr3_fifo_rd_data_rdy ;
 assign iw_ETH_udp_fifo_wr_data    = ow_ddr3_fifo_rd_data     ;
@@ -267,8 +270,8 @@ smg_module smg_module_inst(
     .iw_smg_clk        (clk_1k            ) ,
     .iw_smg_rst        (ow_1k_rst         ) ,
 
-    .ow_SMG_DIG        (ow_SMG_DIG        ) , // ¶ÎÑ¡
-    .ow_SMG_SEL        (ow_SMG_SEL        )   // Î»Ñ¡
+    .ow_SMG_DIG        (ow_SMG_DIG        ) , // æ®µé€‰
+    .ow_SMG_SEL        (ow_SMG_SEL        )   // ä½é€‰
 );
 
 uart_module#(
@@ -291,6 +294,21 @@ uart_module#(
 
     .iw_rx               (iw_UART_RX          ) ,
     .ow_tx               (ow_UART_TX          )
+);
+
+uart_data_loopback_module uart_data_loopback_module_inst(
+    .iw_sys_clk       (clk_100M            ) ,
+    .iw_sys_rst       (ow_100M_rst         ) ,
+
+    .iw_uart_rx_valid (ow_uart_rx_data_rdy ) ,//å®šä¹‰å®åœ¨æ˜¯ä¸å‡†ç¡®
+    .iw_uart_rx_data  (ow_uart_rx_data     ) ,
+    .iw_uart_rx_num   (ow_uart_rx_num      ) ,
+
+    .iw_uart_tx_rdy   (ow_uart_tx_rdy      ) ,
+    .iw_uart_tx_done  (ow_uart_tx_done     ) ,
+    .or_uart_tx_en    (iw_uart_tx_en       ) ,
+    .or_uart_tx_num   (iw_uart_tx_num      ) ,
+    .or_uart_tx_data  (iw_uart_tx_data     )
 );
 
 udp_drive udp_drive_inst(
@@ -325,9 +343,10 @@ cmd_cov_module cmd_cov_module_inst(
     .iw_sys_clk                (clk_100M                  ) ,
     .iw_sys_rst                (ow_100M_rst               ) ,
 
-    .iw_uart_rx_cmd_data_valid (ow_uart_rx_data_rdy       ) ,
-    .iw_uart_rx_cmd_data       (ow_uart_rx_data           ) ,
-    .iw_uart_rx_cmd_num        (ow_uart_rx_num            ) ,
+    // UART is bypassed for the loopback phase; Ethernet command routing stays.
+    .iw_uart_rx_cmd_data_valid (1'b0                       ) ,
+    .iw_uart_rx_cmd_data       (512'd0                     ) ,
+    .iw_uart_rx_cmd_num        (7'd0                       ) ,
     
     .iw_ETH_rx_cmd_data        (ow_ETH_rx_data            ) ,
     .iw_ETH_rx_cmd_data_valid  (ow_ETH_rx_data_rdy        ) ,
@@ -336,7 +355,7 @@ cmd_cov_module cmd_cov_module_inst(
     .ow_user_cmd_data          (ow_user_cmd_data          ) ,
     .ow_user_cmd_num           (ow_user_cmd_num           ) ,
 
-    .iw_uart_tx_rdy            (ow_uart_tx_rdy            ) ,
+    .iw_uart_tx_rdy            (1'b0                       ) ,
     .ow_uart_tx_cmd_data_valid (ow_uart_tx_cmd_data_valid ) ,
     .ow_uart_tx_cmd_data       (ow_uart_tx_cmd_data       ) ,
     .ow_uart_tx_cmd_num        (ow_uart_tx_cmd_num        ) ,
@@ -352,7 +371,7 @@ ddr3_cache_module ddr3_cache_module_inst(
     .iw_ddr3_fifo_wr_rst        (ow_100M_rst           ) ,
     .ow_ddr3_fifo_wr_rdy        (ow_ddr3_fifo_wr_rdy   ) ,
     .iw_ddr3_fifo_wr_valid      (iw_ddr3_fifo_wr_valid ) ,
-    .iw_ddr3_fifo_wr_data       (iw_ddr3_fifo_wr_data  ) , // ddr3 Ô¤¶ÁÈ¡
+    .iw_ddr3_fifo_wr_data       (iw_ddr3_fifo_wr_data  ) , // ddr3 é¢„è¯»å–
 // tx
     .iw_ddr3_fifo_rd_clk        (clk_100M                   ) ,
     .iw_ddr3_fifo_rd_rst        (ow_100M_rst                ) ,
@@ -361,27 +380,27 @@ ddr3_cache_module ddr3_cache_module_inst(
     .ow_ddr3_fifo_rd_data       (ow_ddr3_fifo_rd_data       ) , // [63:0]
     .ow_ddr3_fifo_rd_data_rdy   (ow_ddr3_fifo_rd_data_rdy   ) ,
 //********** DDR MIG APP interface***********//
-    .iw_clk_200M                (clk_200M    ) , // ddr3 ÊäÈëÊ±ÖÓ Artix7 Îª 200MHz
-    .iw_200M_rst                (ow_200M_rst ) , // Ê±ÖÓ¸´Î»
-    .iw_ddr3_rst                (r_ddr3_rst  ) , // ddr3 ÊäÈë¸´Î» ÉèÖÃ¸ßÓĞĞ§
+    .iw_clk_200M                (clk_200M    ) , // ddr3 è¾“å…¥æ—¶é’Ÿ Artix7 ä¸º 200MHz
+    .iw_200M_rst                (ow_200M_rst ) , // æ—¶é’Ÿå¤ä½
+    .iw_ddr3_rst                (r_ddr3_rst  ) , // ddr3 è¾“å…¥å¤ä½ è®¾ç½®é«˜æœ‰æ•ˆ
 
-    .ow_ddr3_clk                (ow_ddr3_clk ) ,           // ddr3 Ä£¿é·µ»ØÓÃ»§Ê±ÖÓ  
-    .ow_ddr3_clk_sync_rst       (ow_ddr3_clk_sync_rst  ) ,  // ddr3 Ä£¿é·µ»Ø¸´Î»    
-    .ow_init_calib_complete     (ow_init_calib_complete) , // ddr3 Ä£¿é³õÊ¼»¯Ğ£×¼Íê³É
+    .ow_ddr3_clk                (ow_ddr3_clk ) ,           // ddr3 æ¨¡å—è¿”å›ç”¨æˆ·æ—¶é’Ÿ  
+    .ow_ddr3_clk_sync_rst       (ow_ddr3_clk_sync_rst  ) ,  // ddr3 æ¨¡å—è¿”å›å¤ä½    
+    .ow_init_calib_complete     (ow_init_calib_complete) , // ddr3 æ¨¡å—åˆå§‹åŒ–æ ¡å‡†å®Œæˆ
 //***************** DDR *********************//
-    .ddr3_dq      (ddr3_dq      ) , // DDR3 Êı¾İ
-    .ddr3_dqs_n   (ddr3_dqs_n   ) , // DDR3 dqs¸º
-    .ddr3_dqs_p   (ddr3_dqs_p   ) , // DDR3 dqsÕı  
-    .ddr3_addr    (ddr3_addr    ) , // DDR3 µØÖ·   
-    .ddr3_ba      (ddr3_ba      ) , // DDR3 banck Ñ¡Ôñ
-    .ddr3_ras_n   (ddr3_ras_n   ) , // DDR3 ĞĞÑ¡Ôñ
-    .ddr3_cas_n   (ddr3_cas_n   ) , // DDR3 ÁĞÑ¡Ôñ
-    .ddr3_we_n    (ddr3_we_n    ) , // DDR3 ¶ÁĞ´Ñ¡Ôñ
-    .ddr3_reset_n (ddr3_reset_n ) , // DDR3 ¸´Î»
-    .ddr3_ck_p    (ddr3_ck_p    ) , // DDR3 Ê±ÖÓÕı
-    .ddr3_ck_n    (ddr3_ck_n    ) , // DDR3 Ê±ÖÓ¸º
-    .ddr3_cke     (ddr3_cke     ) , // DDR3 Ê±ÖÓÊ¹ÄÜ
-    .ddr3_cs_n    (ddr3_cs_n    ) , // DDR3 Æ¬Ñ¡
+    .ddr3_dq      (ddr3_dq      ) , // DDR3 æ•°æ®
+    .ddr3_dqs_n   (ddr3_dqs_n   ) , // DDR3 dqsè´Ÿ
+    .ddr3_dqs_p   (ddr3_dqs_p   ) , // DDR3 dqsæ­£  
+    .ddr3_addr    (ddr3_addr    ) , // DDR3 åœ°å€   
+    .ddr3_ba      (ddr3_ba      ) , // DDR3 banck é€‰æ‹©
+    .ddr3_ras_n   (ddr3_ras_n   ) , // DDR3 è¡Œé€‰æ‹©
+    .ddr3_cas_n   (ddr3_cas_n   ) , // DDR3 åˆ—é€‰æ‹©
+    .ddr3_we_n    (ddr3_we_n    ) , // DDR3 è¯»å†™é€‰æ‹©
+    .ddr3_reset_n (ddr3_reset_n ) , // DDR3 å¤ä½
+    .ddr3_ck_p    (ddr3_ck_p    ) , // DDR3 æ—¶é’Ÿæ­£
+    .ddr3_ck_n    (ddr3_ck_n    ) , // DDR3 æ—¶é’Ÿè´Ÿ
+    .ddr3_cke     (ddr3_cke     ) , // DDR3 æ—¶é’Ÿä½¿èƒ½
+    .ddr3_cs_n    (ddr3_cs_n    ) , // DDR3 ç‰‡é€‰
     .ddr3_dm      (ddr3_dm      ) , // DDR3_dm
     .ddr3_odt     (ddr3_odt     )   // DDR3_odt
 );
