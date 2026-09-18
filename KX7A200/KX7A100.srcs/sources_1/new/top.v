@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module top(
+module KX7A200_Top(
 //----------------- sys ----------------//
     input         iw_SYS_CLK              ,
     
@@ -186,90 +186,90 @@ mclk_rst_module mclk_rst_module_inst(
     .ow_1k_rst     (ow_1k_rst    )
 );
 
-// Unix_Epoch_module Unix_Epoch_module(
-//     .iw_sys_clk          (clk_100M            ) ,
-//     .iw_sys_rst          (ow_100M_rst         ) ,
+Unix_Epoch_module Unix_Epoch_module(
+    .iw_sys_clk          (clk_100M            ) ,
+    .iw_sys_rst          (ow_100M_rst         ) ,
 
-//     .iw_user_cmd_valid   (ow_user_cmd_valid   ) ,
-//     .iw_user_cmd_data    (ow_user_cmd_data    ) ,
+    .iw_user_cmd_valid   (ow_user_cmd_valid   ) ,
+    .iw_user_cmd_data    (ow_user_cmd_data    ) ,
 
-//     .clk_1M              (clk_1M              ) ,
-//     .iw_1M_rst           (ow_1M_rst           ) ,
+    .clk_1M              (clk_1M              ) ,
+    .iw_1M_rst           (ow_1M_rst           ) ,
 
-//     .ow_Unix_Epoch_data  (ow_Unix_Epoch_data  )
-// );
+    .ow_Unix_Epoch_data  (ow_Unix_Epoch_data  )
+);
 
-// dna_module dna_module_inst(
-//     .iw_sys_clk (clk_100M    ) ,
-//     .iw_sys_rst (ow_100M_rst ) ,
+dna_module dna_module_inst(
+    .iw_sys_clk (clk_100M    ) ,
+    .iw_sys_rst (ow_100M_rst ) ,
 
-//     .iw_locked  (ow_locked   ) ,
+    .iw_locked  (ow_locked   ) ,
 
-//     .ow_dna_ok  (ow_dna_ok   ) 
-// );
+    .ow_dna_ok  (ow_dna_ok   ) 
+);
 
-// key_module key_module_inst(
-//     .iw_key_clk   (clk_100M     ) ,
-//     .iw_sys_rst   (ow_100M_rst  ) ,
+key_module key_module_inst(
+    .iw_key_clk   (clk_100M     ) ,
+    .iw_sys_rst   (ow_100M_rst  ) ,
 
-//     .iw_KEY_PIN   (iw_KEY_PIN   ) ,
-//     .ow_KEY_cap_n (ow_KEY_cap_n ) ,
-//     .ow_KEY_en    (ow_KEY_en    ) ,
-//     .ow_KEY_up    (ow_KEY_up    ) ,
-//     .ow_KEY_down  (ow_KEY_down  ) ,
-//     .ow_KEY_once  (ow_KEY_once  )
-// );
+    .iw_KEY_PIN   (iw_KEY_PIN   ) ,
+    .ow_KEY_cap_n (ow_KEY_cap_n ) ,
+    .ow_KEY_en    (ow_KEY_en    ) ,
+    .ow_KEY_up    (ow_KEY_up    ) ,
+    .ow_KEY_down  (ow_KEY_down  ) ,
+    .ow_KEY_once  (ow_KEY_once  )
+);
 
-// led_module#(
-//     .CLK_FRE            (CLK_FRE           )
-// )led_module_inst(
-//     .iw_led_clk         (clk_100M          ) ,
-//     .iw_led_rst         (ow_100M_rst       ) ,
+led_module#(
+    .CLK_FRE            (CLK_FRE           )
+)led_module_inst(
+    .iw_led_clk         (clk_100M          ) ,
+    .iw_led_rst         (ow_100M_rst       ) ,
 
-//     .iw_user_cmd_valid  (ow_user_cmd_valid ) ,
-//     .iw_user_cmd_data   (ow_user_cmd_data  ) ,
+    .iw_user_cmd_valid  (ow_user_cmd_valid ) ,
+    .iw_user_cmd_data   (ow_user_cmd_data  ) ,
 
-//     .ow_LED_PIN         (ow_LED_PIN        )
-// );
+    .ow_LED_PIN         (ow_LED_PIN        )
+);
 
-// ws2812b_module#(
-//     .CLK_FRE      (10_000_000) ,
-//     .WS2812B_NUM  (2         )
-// )ws2812b_module_inst(
-//     .iw_sys_clk        (clk_100M          ) ,
-//     .iw_sys_rst        (ow_100M_rst       ) ,
+ws2812b_module#(
+    .CLK_FRE      (10_000_000) ,
+    .WS2812B_NUM  (2         )
+)ws2812b_module_inst(
+    .iw_sys_clk        (clk_100M          ) ,
+    .iw_sys_rst        (ow_100M_rst       ) ,
 
-//     .iw_user_cmd_valid (ow_user_cmd_valid ) ,
-//     .iw_user_cmd_data  (ow_user_cmd_data  ) ,
+    .iw_user_cmd_valid (ow_user_cmd_valid ) ,
+    .iw_user_cmd_data  (ow_user_cmd_data  ) ,
 
-//     .iw_ws2812b_clk    (clk_10M           ) ,
-//     .iw_ws2812b_rst    (ow_10M_rst        ) ,
+    .iw_ws2812b_clk    (clk_10M           ) ,
+    .iw_ws2812b_rst    (ow_10M_rst        ) ,
 
-//     .iw_ws2812b_valid  (iw_ws2812b_valid  ) ,
-//     .iw_ws2812b_GRB    (iw_ws2812b_GRB    ) ,
-//     .ow_ws2812b_rdy    (ow_ws2812b_rdy    ) ,
+    .iw_ws2812b_valid  (iw_ws2812b_valid  ) ,
+    .iw_ws2812b_GRB    (iw_ws2812b_GRB    ) ,
+    .ow_ws2812b_rdy    (ow_ws2812b_rdy    ) ,
 
-//     .ow_ws2812b        (ow_WS2812B        )
-// );
+    .ow_ws2812b        (ow_WS2812B        )
+);
 
-// smg_module smg_module_inst(
-//     .iw_sys_clk        (clk_100M          ) ,
-//     .iw_sys_rst        (ow_100M_rst       ) ,
+smg_module smg_module_inst(
+    .iw_sys_clk        (clk_100M          ) ,
+    .iw_sys_rst        (ow_100M_rst       ) ,
 
-//     .iw_user_cmd_valid (ow_user_cmd_valid ) ,
-//     .iw_user_cmd_data  (ow_user_cmd_data  ) ,
-//     .ow_user_cmd_rdy   (ow_user_cmd_rdy   ) ,
+    .iw_user_cmd_valid (ow_user_cmd_valid ) ,
+    .iw_user_cmd_data  (ow_user_cmd_data  ) ,
+    .ow_user_cmd_rdy   (ow_user_cmd_rdy   ) ,
 
-//     .iw_smg_cmd_data   (iw_smg_cmd_data   ) ,
-//     .iw_smg_cmd_valid  (iw_smg_cmd_valid  ) ,
-//     .ow_smg_cmd_rdy    (ow_smg_cmd_rdy    ) ,
+    .iw_smg_cmd_data   (iw_smg_cmd_data   ) ,
+    .iw_smg_cmd_valid  (iw_smg_cmd_valid  ) ,
+    .ow_smg_cmd_rdy    (ow_smg_cmd_rdy    ) ,
 
-//     .iw_smg_clk        (clk_1k            ) ,
-//     .iw_smg_rst        (ow_1k_rst         ) ,
+    .iw_smg_clk        (clk_1k            ) ,
+    .iw_smg_rst        (ow_1k_rst         ) ,
 
-//     .ow_SMG_DIG        (ow_SMG_DIG        ) , // 段选
-//     .ow_SMG_SEL        (ow_SMG_SEL        )   // 位选
-// );
+    .ow_SMG_DIG        (ow_SMG_DIG        ) , // 段选
+    .ow_SMG_SEL        (ow_SMG_SEL        )   // 位选
+);
 
 uart_module#(
     .CLK_FRE             (CLK_FRE             ) ,
