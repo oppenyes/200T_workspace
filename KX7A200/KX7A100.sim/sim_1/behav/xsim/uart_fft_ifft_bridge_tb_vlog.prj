@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_ifft_bridge_module.v" \
+"../../../../KX7A100.srcs/sim_1/new/uart_fft_ifft_bridge_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

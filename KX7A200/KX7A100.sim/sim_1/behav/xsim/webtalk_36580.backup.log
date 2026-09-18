@@ -2,11 +2,12 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Sep 18 16:37:45 2026
-# Process ID: 3276
+# Start of session at: Fri Sep 18 16:07:34 2026
+# Process ID: 36580
 # Current directory: D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim
-# Command line: wbtcv.exe -mode batch -source D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim/xsim.dir/uart_fft_ifft_bridge_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv.exe -mode batch -source D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim/xsim.dir/uart_fft_bridge_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
-source D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim/xsim.dir/uart_fft_ifft_bridge_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+source D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/xsim/xsim.dir/uart_fft_bridge_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Fri Sep 18 16:07:34 2026...
