@@ -2,27 +2,284 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Sep 17 23:31:49 2026
-# Process ID: 3412
+# Start of session at: Sun Sep 20 13:54:28 2026
+# Process ID: 23532
 # Current directory: D:/Desktop/200T_workspace/KX7A200
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6000 D:\Desktop\200T_workspace\KX7A200\KX7A100.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6888 D:\Desktop\200T_workspace\KX7A200\KX7A100.xpr
 # Log file: D:/Desktop/200T_workspace/KX7A200/vivado.log
 # Journal file: D:/Desktop/200T_workspace/KX7A200\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project D:/Desktop/200T_workspace/KX7A200/KX7A100.xpr
-INFO: [Project 1-313] Project file moved from 'D:/Documents/FPGA_RTL/KX7A100/KX7A200' since last save.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2020.2/data/ip'.
 WARNING: [IP_Flow 19-5178] IP tri_mode_ethernet_mac_0 will not be generated with lower license level. If you would like to generate with the current available license levels, please reset and regenerate.
-open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 1006.820 ; gain = 0.000
+open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:27 . Memory (MB): peak = 998.082 ; gain = 0.000
 update_compile_order -fileset sources_1
-reset_run impl_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'ModelSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/modelsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [USF-ModelSim-47] Finding simulator installation...
+INFO: [USF-ModelSim-49] Using simulator executables from 'D:\Program\modeltech64_2020.4\win64'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-modelsim-7] Finding pre-compiled libraries...
+INFO: [USF-modelsim-11] File 'D:/Xilinx/compile_simlib/modelsim/modelsim.ini' copied to run dir:'D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/modelsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'uart_fft_ifft_bridge_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/modelsim/tx_ptp_pkt_buff_init.mem'
+INFO: [USF-ModelSim-107] Finding global include files...
+INFO: [USF-ModelSim-108] Finding include directories and verilog header directory paths...
+INFO: [USF-ModelSim-109] Fetching design files from 'sim_1'...
+INFO: [USF-ModelSim-2] ModelSim::Compile design
+INFO: [USF-ModelSim-15] Creating automatic 'do' files...
+INFO: [USF-ModelSim-69] Executing 'COMPILE and ANALYZE' step in 'D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/modelsim'
+Reading pref.tcl
+
+# 2020.4
+
+# do {uart_fft_ifft_bridge_tb_compile.do}
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:55:51 on Sep 20,2026
+# vcom -93 -work xil_defaultlib ../../../../KX7A100.gen/sources_1/ip/xfft_0/sim/xfft_0.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity xfft_0
+# -- Compiling architecture xfft_0_arch of xfft_0
+# End time: 13:55:52 on Sep 20,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:55:52 on Sep 20,2026
+# vlog -incr -work xil_defaultlib ../../../../KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_ifft_bridge_module.v ../../../../KX7A100.srcs/sim_1/new/uart_fft_ifft_bridge_tb.v 
+# -- Compiling module uart_fft_ifft_bridge_module
+# -- Compiling module uart_fft_ifft_bridge_tb
+# 
+# Top level modules:
+# 	uart_fft_ifft_bridge_tb
+# End time: 13:55:52 on Sep 20,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:55:52 on Sep 20,2026
+# vlog -work xil_defaultlib glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 13:55:52 on Sep 20,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+INFO: [USF-ModelSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-ModelSim-4] ModelSim::Simulate design
+INFO: [USF-ModelSim-69] Executing 'SIMULATE' step in 'D:/Desktop/200T_workspace/KX7A200/KX7A100.sim/sim_1/behav/modelsim'
+Program launched (PID=35524)
+launch_simulation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 998.082 ; gain = 0.000
+update_compile_order -fileset sources_1
+reset_run synth_1
 launch_runs impl_1 -jobs 16
-[Thu Sep 17 23:33:18 2026] Launched impl_1...
+[Sun Sep 20 15:28:24 2026] Launched synth_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/runme.log
+[Sun Sep 20 15:28:24 2026] Launched impl_1...
 Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/runme.log
-exit
-INFO: [Common 17-206] Exiting Vivado at Fri Sep 18 00:00:28 2026...
+add_files -norecurse D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/fft_uart_tx_module.v
+reset_run synth_1
+update_compile_order -fileset sources_1
+launch_runs impl_1 -jobs 16
+[Sun Sep 20 15:31:33 2026] Launched synth_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/runme.log
+[Sun Sep 20 15:31:33 2026] Launched impl_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+[Sun Sep 20 16:06:53 2026] Launched synth_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/runme.log
+[Sun Sep 20 16:06:53 2026] Launched impl_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/runme.log
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+create_ip -name ila -vendor xilinx.com -library ip -version 6.2 -module_name ila_fft_debug
+set_property -dict [list CONFIG.C_PROBE12_WIDTH {12} CONFIG.C_PROBE11_WIDTH {6} CONFIG.C_PROBE10_WIDTH {32} CONFIG.C_PROBE7_WIDTH {12} CONFIG.C_PROBE3_WIDTH {12} CONFIG.C_PROBE2_WIDTH {13} CONFIG.C_PROBE1_WIDTH {7} CONFIG.C_DATA_DEPTH {8192} CONFIG.C_NUM_OF_PROBES {14} CONFIG.Component_Name {ila_fft_debug}] [get_ips ila_fft_debug]
+WARNING: [Vivado 12-3523] Attempt to change 'Component_Name' from 'ila_fft_debug' to 'ila_fft_debug' is not allowed and is ignored.
+generate_target {instantiation_template} [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci]
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'ila_fft_debug'...
+generate_target all [get_files  d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci]
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ila_fft_debug'...
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'd:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_fft_debug_ooc.xdc'
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ila_fft_debug'...
+INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'ila_fft_debug'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'ila_fft_debug'...
+catch { config_ip_cache -export [get_ips -all ila_fft_debug] }
+export_ip_user_files -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci]
+launch_runs ila_fft_debug_synth_1 -jobs 16
+[Sun Sep 20 16:14:34 2026] Launched ila_fft_debug_synth_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/ila_fft_debug_synth_1/runme.log
+export_simulation -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci] -directory D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/sim_scripts -ip_user_files_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files -ipstatic_source_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/Xilinx/compile_simlib/modelsim} {questa=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/questa} {riviera=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/riviera} {activehdl=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+create_ip -name vio -vendor xilinx.com -library ip -version 3.0 -module_name vio_fft_debug
+set_property -dict [list CONFIG.C_NUM_PROBE_OUT {3} CONFIG.C_EN_PROBE_IN_ACTIVITY {0} CONFIG.C_NUM_PROBE_IN {0} CONFIG.Component_Name {vio_fft_debug}] [get_ips vio_fft_debug]
+WARNING: [Vivado 12-3523] Attempt to change 'Component_Name' from 'vio_fft_debug' to 'vio_fft_debug' is not allowed and is ignored.
+generate_target {instantiation_template} [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci]
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'vio_fft_debug'...
+generate_target all [get_files  d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci]
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'vio_fft_debug'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'vio_fft_debug'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'vio_fft_debug'...
+catch { config_ip_cache -export [get_ips -all vio_fft_debug] }
+export_ip_user_files -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci]
+launch_runs vio_fft_debug_synth_1 -jobs 16
+[Sun Sep 20 16:15:26 2026] Launched vio_fft_debug_synth_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/vio_fft_debug_synth_1/runme.log
+export_simulation -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci] -directory D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/sim_scripts -ip_user_files_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files -ipstatic_source_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/Xilinx/compile_simlib/modelsim} {questa=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/questa} {riviera=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/riviera} {activehdl=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1
+
+launch_runs impl_1 -jobs 16
+[Sun Sep 20 16:15:40 2026] Launched ila_fft_debug_synth_1, vio_fft_debug_synth_1, synth_1...
+Run output will be captured here:
+ila_fft_debug_synth_1: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/ila_fft_debug_synth_1/runme.log
+vio_fft_debug_synth_1: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/vio_fft_debug_synth_1/runme.log
+synth_1: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/runme.log
+[Sun Sep 20 16:15:40 2026] Launched impl_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Sun Sep 20 17:30:43 2026] Launched impl_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/runme.log
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2020.2
+  **** Build date : Nov 18 2020 at 10:01:48
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2020.2
+  ****** Build date   : Nov 04 2020-05:02:56
+    **** Build number : 2020.2.1604437376
+      ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 1313.945 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Xilinx/1234-tulA
+set_property PROGRAM.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.bit} [get_hw_devices xc7a200t_0]
+set_property PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property FULL_PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+current_hw_device [get_hw_devices xc7a200t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a200t_0] 0]
+INFO: [Labtools 27-1435] Device xc7a200t (JTAG device index = 0) is not programmed (DONE status = 0).
+set_property PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property FULL_PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property PROGRAM.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.bit} [get_hw_devices xc7a200t_0]
+program_hw_devices [get_hw_devices xc7a200t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a200t_0] 0]
+INFO: [Labtools 27-2302] Device xc7a200t (JTAG device index = 0) is programmed with a design that has 1 ILA core(s).
+INFO: [Labtools 27-2302] Device xc7a200t (JTAG device index = 0) is programmed with a design that has 2 VIO core(s).
+INFO: [Labtools 27-1889] Uploading output probe values for VIO core [hw_vio_2]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Sep-20 17:34:27
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2026-Sep-20 17:34:28
+INFO: [Labtools 27-3304] ILA Waveform data saved to file D:/Desktop/200T_workspace/KX7A200/KX7A100.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Sep-20 17:35:28
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2026-Sep-20 17:35:28
+INFO: [Labtools 27-3304] ILA Waveform data saved to file D:/Desktop/200T_workspace/KX7A200/KX7A100.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Xilinx/1234-tulA
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.C_PROBE13_WIDTH {12} CONFIG.C_PROBE12_WIDTH {6} CONFIG.C_PROBE11_WIDTH {32} CONFIG.C_PROBE10_WIDTH {1} CONFIG.C_PROBE8_WIDTH {12} CONFIG.C_PROBE7_WIDTH {32} CONFIG.C_NUM_OF_PROBES {15}] [get_ips ila_fft_debug]
+reset_run ila_fft_debug_synth_1
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ila_fft_debug'...
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'd:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_fft_debug_ooc.xdc'
+INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'ila_fft_debug'...
+[Sun Sep 20 18:54:01 2026] Launched ila_fft_debug_synth_1, synth_1...
+Run output will be captured here:
+ila_fft_debug_synth_1: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/ila_fft_debug_synth_1/runme.log
+synth_1: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/runme.log
+[Sun Sep 20 18:54:02 2026] Launched impl_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/runme.log
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Xilinx/1234-tulA
+INFO: [Labtools 27-1435] Device xc7a200t (JTAG device index = 0) is not programmed (DONE status = 0).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Sun Sep 20 19:07:18 2026] Launched impl_1...
+Run output will be captured here: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/runme.log
+set_property PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property FULL_PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property PROGRAM.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.bit} [get_hw_devices xc7a200t_0]
+program_hw_devices [get_hw_devices xc7a200t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a200t_0] 0]
+INFO: [Labtools 27-2302] Device xc7a200t (JTAG device index = 0) is programmed with a design that has 1 ILA core(s).
+INFO: [Labtools 27-2302] Device xc7a200t (JTAG device index = 0) is programmed with a design that has 2 VIO core(s).
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes ow_fft_data_tvalid -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Sep-20 19:10:26
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2026-Sep-20 19:10:32
+INFO: [Labtools 27-3304] ILA Waveform data saved to file D:/Desktop/200T_workspace/KX7A200/KX7A100.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {ow_fft_data_tdata} }
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup

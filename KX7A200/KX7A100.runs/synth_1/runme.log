@@ -18,19 +18,20 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200
 INFO: [Device 21-403] Loading part xc7a200tfbg484-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 33568
+INFO: [Synth 8-7075] Helper process launched with PID 29556
+WARNING: [Synth 8-992] w_vio_tx_start_pulse is already implicitly declared earlier [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:647]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1009.387 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1006.688 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:22]
 	Parameter CLK_FRE bound to: 100000000 - type: integer 
 	Parameter BAUD_RATE bound to: 921600 - type: integer 
-	Parameter UART_RX_NUM bound to: 7 - type: integer 
+	Parameter UART_RX_NUM bound to: 63 - type: integer 
 	Parameter eeprom_memory bound to: 4 - type: integer 
 	Parameter tx bound to: 64'b1100000011101110110101001100001011010110111100010000110100001010 
 INFO: [Synth 8-6157] synthesizing module 'mclk_rst_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/mclk_rst_module.v:22]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_mclk' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/clk_wiz_mclk_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_mclk' (1#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/clk_wiz_mclk_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_mclk' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/clk_wiz_mclk_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_mclk' (1#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/clk_wiz_mclk_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'reset_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/reset_module.v:21]
 INFO: [Synth 8-6155] done synthesizing module 'reset_module' (2#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/reset_module.v:21]
 INFO: [Synth 8-6157] synthesizing module 'edge_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/edge_module.v:21]
@@ -53,22 +54,22 @@ INFO: [Synth 8-6155] done synthesizing module 'clk_div_module__parameterized3' (
 INFO: [Synth 8-6157] synthesizing module 'clk_div_module__parameterized4' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
 	Parameter P_CLK_DIV bound to: 10000 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'clk_div_module__parameterized4' (4#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/clk_div_module.v:21]
-INFO: [Synth 8-6157] synthesizing module 'fifo_bit_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_bit_cov_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fifo_bit_cov' (5#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_bit_cov_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_bit_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_bit_cov_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_bit_cov' (5#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_bit_cov_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'mclk_rst_module' (6#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/mclk_rst_module.v:22]
 INFO: [Synth 8-6157] synthesizing module 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/Unix_Epoch_module.v:22]
-INFO: [Synth 8-6157] synthesizing module 'fifo_bits_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_bits_cov_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fifo_bits_cov' (7#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_bits_cov_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_bits_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_bits_cov_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_bits_cov' (7#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_bits_cov_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'Unix_Epoch_module' (8#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/Unix_Epoch_module.v:22]
-WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:222]
-WARNING: [Synth 8-7071] port 'or_ws2812b_valid' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:217]
-WARNING: [Synth 8-7071] port 'or_ws2812b_GRB' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:217]
-WARNING: [Synth 8-7071] port 'iw_ws2812b_rdy' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:217]
-WARNING: [Synth 8-7023] instance 'Unix_Epoch_module' of module 'Unix_Epoch_module' has 10 connections declared, but only 7 given [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:217]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:231]
+WARNING: [Synth 8-7071] port 'or_ws2812b_valid' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:226]
+WARNING: [Synth 8-7071] port 'or_ws2812b_GRB' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:226]
+WARNING: [Synth 8-7071] port 'iw_ws2812b_rdy' of module 'Unix_Epoch_module' is unconnected for instance 'Unix_Epoch_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:226]
+WARNING: [Synth 8-7023] instance 'Unix_Epoch_module' of module 'Unix_Epoch_module' has 10 connections declared, but only 7 given [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:226]
 INFO: [Synth 8-6157] synthesizing module 'dna_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v:22]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v:150]
-INFO: [Synth 8-6157] synthesizing module 'vio_dna' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/vio_dna_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'vio_dna' (9#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/vio_dna_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'vio_dna' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/vio_dna_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'vio_dna' (9#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/vio_dna_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'DNA_PORT' [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:11984]
 	Parameter SIM_DNA_VALUE bound to: 57'b100100011010001010110011110001001101010111100110111101111 
 INFO: [Synth 8-6155] done synthesizing module 'DNA_PORT' (10#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:11984]
@@ -83,11 +84,11 @@ INFO: [Synth 8-6157] synthesizing module 'key' [D:/Desktop/200T_workspace/KX7A20
 INFO: [Synth 8-226] default block is never used [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key.v:62]
 INFO: [Synth 8-6155] done synthesizing module 'key' (12#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key.v:21]
 INFO: [Synth 8-6155] done synthesizing module 'key_module' (13#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key_module.v:23]
-WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_cap_n' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:244]
-WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_en' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:245]
-WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_up' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:246]
-WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_down' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:247]
-WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_once' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:248]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_cap_n' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:253]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_en' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:254]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_up' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:255]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_down' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:256]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_KEY_once' does not match port width (4) of module 'key_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:257]
 INFO: [Synth 8-6157] synthesizing module 'led_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_module.v:22]
 	Parameter CLK_FRE bound to: 100000000 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'led_pwm_drive' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_pwm_drive.v:22]
@@ -109,7 +110,7 @@ INFO: [Synth 8-6157] synthesizing module 'led_run_drive' [D:/Desktop/200T_worksp
 	Parameter RUN_RATE bound to: 9999999 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'led_run_drive' (17#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_run_drive.v:22]
 INFO: [Synth 8-6155] done synthesizing module 'led_module' (18#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/led_module.v:22]
-WARNING: [Synth 8-689] width (1) of port connection 'ow_LED_PIN' does not match port width (4) of module 'led_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:260]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_LED_PIN' does not match port width (4) of module 'led_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:269]
 INFO: [Synth 8-6157] synthesizing module 'ws2812b_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/ws2812b_module.v:22]
 	Parameter CLK_FRE bound to: 10000000 - type: integer 
 	Parameter WS2812B_NUM bound to: 2 - type: integer 
@@ -124,7 +125,7 @@ INFO: [Synth 8-6157] synthesizing module 'ws2812b_module' [D:/Desktop/200T_works
 	Parameter s_RST bound to: 2 - type: integer 
 WARNING: [Synth 8-689] width (512) of port connection 'din' does not match port width (64) of module 'fifo_bits_cov' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/ws2812b_module.v:182]
 INFO: [Synth 8-6155] done synthesizing module 'ws2812b_module' (19#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/ws2812b_module.v:22]
-WARNING: [Synth 8-689] width (1) of port connection 'ow_ws2812b' does not match port width (2) of module 'ws2812b_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:280]
+WARNING: [Synth 8-689] width (1) of port connection 'ow_ws2812b' does not match port width (2) of module 'ws2812b_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:289]
 INFO: [Synth 8-6157] synthesizing module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/smg_rtl/smg_module.v:22]
 	Parameter s_IDLE bound to: 8'b00000000 
 	Parameter s_SMG_0 bound to: 8'b00000001 
@@ -137,17 +138,17 @@ INFO: [Synth 8-6157] synthesizing module 'smg_module' [D:/Desktop/200T_workspace
 	Parameter s_SMG_7 bound to: 8'b10000000 
 INFO: [Synth 8-155] case statement is not full and has no default [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/smg_rtl/smg_module.v:191]
 INFO: [Synth 8-6155] done synthesizing module 'smg_module' (20#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/smg_rtl/smg_module.v:22]
-WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:288]
-WARNING: [Synth 8-689] width (2) of port connection 'ow_SMG_SEL' does not match port width (8) of module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:299]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:297]
+WARNING: [Synth 8-689] width (2) of port connection 'ow_SMG_SEL' does not match port width (8) of module 'smg_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:308]
 INFO: [Synth 8-6157] synthesizing module 'uart_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_module.v:22]
 	Parameter CLK_FRE bound to: 100000000 - type: integer 
 	Parameter BAUD_RATE bound to: 921600 - type: integer 
-	Parameter UART_RX_NUM bound to: 7 - type: integer 
+	Parameter UART_RX_NUM bound to: 63 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'uart_rx' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_rx.v:22]
 	Parameter CLK_FRE bound to: 100000000 - type: integer 
 	Parameter BAUD_RATE bound to: 921600 - type: integer 
-	Parameter UART_RX_NUM bound to: 7 - type: integer 
-	Parameter BAUD_DIV_coe bound to: 2140 - type: integer 
+	Parameter UART_RX_NUM bound to: 63 - type: integer 
+	Parameter BAUD_DIV_coe bound to: 21400 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'rx' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/rx.v:21]
 	Parameter CLK_FRE bound to: 100000000 - type: integer 
 	Parameter BAUD_RATE bound to: 921600 - type: integer 
@@ -189,8 +190,6 @@ INFO: [Synth 8-6157] synthesizing module 'tx' [D:/Desktop/200T_workspace/KX7A200
 INFO: [Synth 8-6155] done synthesizing module 'tx' (23#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/tx.v:21]
 INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (24#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_tx.v:21]
 INFO: [Synth 8-6155] done synthesizing module 'uart_module' (25#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_module.v:22]
-INFO: [Synth 8-6157] synthesizing module 'uart_data_loopback_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_data_loopback_module.v:10]
-INFO: [Synth 8-6155] done synthesizing module 'uart_data_loopback_module' (26#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_data_loopback_module.v:10]
 INFO: [Synth 8-6157] synthesizing module 'uart_fft_bridge_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_bridge_module.v:11]
 	Parameter FFT_POINTS bound to: 13'b1000000000000 
 	Parameter FFT_CONFIG_TDATA bound to: 16'b0001010101010101 
@@ -200,17 +199,25 @@ INFO: [Synth 8-6157] synthesizing module 'uart_fft_bridge_module' [D:/Desktop/20
 	Parameter ST_SEND bound to: 3'b011 
 	Parameter ST_RECEIVE bound to: 3'b100 
 	Parameter ST_DONE bound to: 3'b101 
-INFO: [Synth 8-6155] done synthesizing module 'uart_fft_bridge_module' (27#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_bridge_module.v:11]
-INFO: [Synth 8-6157] synthesizing module 'xfft_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/xfft_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'xfft_0' (28#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/xfft_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fft_bridge_module' (26#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_bridge_module.v:11]
+INFO: [Synth 8-6157] synthesizing module 'fft_uart_tx_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/fft_uart_tx_module.v:17]
+	Parameter ST_IDLE bound to: 6'b000001 
+	Parameter ST_READ_WAIT bound to: 6'b000010 
+	Parameter ST_PACK bound to: 6'b000100 
+	Parameter ST_TX_REQ bound to: 6'b001000 
+	Parameter ST_TX_WAIT bound to: 6'b010000 
+	Parameter ST_DONE bound to: 6'b100000 
+INFO: [Synth 8-6155] done synthesizing module 'fft_uart_tx_module' (27#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/fft_uart_tx_module.v:17]
+INFO: [Synth 8-6157] synthesizing module 'xfft_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/xfft_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'xfft_0' (28#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/xfft_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'udp_drive' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:3]
 	Parameter WAIT_UDP_DATA bound to: 2'b00 
 	Parameter WAIT_ACK bound to: 2'b01 
 	Parameter SEND_UDP_DATA bound to: 2'b10 
 	Parameter DELAY bound to: 2'b11 
 INFO: [Synth 8-6157] synthesizing module 'udp_64x4096_fifo' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_64x4096_fifo.v:22]
-INFO: [Synth 8-6157] synthesizing module 'fifo_72x512' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_72x512_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fifo_72x512' (29#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_72x512_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_72x512' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_72x512_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_72x512' (29#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_72x512_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'udp_64x4096_fifo' (30#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_64x4096_fifo.v:22]
 INFO: [Synth 8-226] default block is never used [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:141]
 INFO: [Synth 8-6157] synthesizing module 'master_wrapper' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/master_wrapper.v:3]
@@ -236,18 +243,18 @@ INFO: [Synth 8-6157] synthesizing module 'FDPE' [D:/Xilinx/Vivado/2020.2/scripts
 INFO: [Synth 8-6155] done synthesizing module 'FDPE' (33#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:13664]
 INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0_reset_sync' (34#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_reset_sync.v:66]
 INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0_example_design_resets' (35#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_example_design_resets.v:3]
-INFO: [Synth 8-6157] synthesizing module 'uiudp_stack' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/uiudp_stack_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'uiudp_stack' (36#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/uiudp_stack_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'axis_data_fifo_1' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_data_fifo_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'axis_data_fifo_1' (37#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_data_fifo_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'axis_data_fifo_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_data_fifo_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'axis_data_fifo_0' (38#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_data_fifo_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_dwidth_converter_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_0' (39#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_dwidth_converter_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_1' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_dwidth_converter_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_1' (40#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/axis_dwidth_converter_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/tri_mode_ethernet_mac_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0' (41#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/tri_mode_ethernet_mac_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'uiudp_stack' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/uiudp_stack_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'uiudp_stack' (36#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/uiudp_stack_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'axis_data_fifo_1' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_data_fifo_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_data_fifo_1' (37#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_data_fifo_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'axis_data_fifo_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_data_fifo_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_data_fifo_0' (38#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_data_fifo_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_dwidth_converter_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_0' (39#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_dwidth_converter_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_1' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_dwidth_converter_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_1' (40#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/axis_dwidth_converter_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/tri_mode_ethernet_mac_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'tri_mode_ethernet_mac_0' (41#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/tri_mode_ethernet_mac_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'tri_mode_ethernet_mac_0_axi_lite_sm' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_axi_lite_sm.v:64]
 	Parameter STARTUP bound to: 0 - type: integer 
 	Parameter UPDATE_SPEED bound to: 1 - type: integer 
@@ -284,17 +291,17 @@ WARNING: [Synth 8-7023] instance 'master_wrapper_inst' of module 'master_wrapper
 INFO: [Synth 8-226] default block is never used [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:278]
 INFO: [Synth 8-6155] done synthesizing module 'udp_drive' (44#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:3]
 INFO: [Synth 8-6157] synthesizing module 'cmd_cov_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/Crossclock_rtl/cmd_cov_module.v:22]
-INFO: [Synth 8-6157] synthesizing module 'uart_fifo' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/uart_fifo_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'uart_fifo' (45#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/uart_fifo_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'uart_fifo' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/uart_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fifo' (45#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/uart_fifo_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'cmd_cov_module' (46#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/Crossclock_rtl/cmd_cov_module.v:22]
 INFO: [Synth 8-6157] synthesizing module 'ddr3_cache_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v:4]
-INFO: [Synth 8-6157] synthesizing module 'fifo_ddr3_wr' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_ddr3_wr_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fifo_ddr3_wr' (47#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_ddr3_wr_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'fifo_ddr3_rd' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_ddr3_rd_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fifo_ddr3_rd' (48#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/fifo_ddr3_rd_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_ddr3_wr' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_ddr3_wr_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_ddr3_wr' (47#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_ddr3_wr_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_ddr3_rd' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_ddr3_rd_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_ddr3_rd' (48#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/fifo_ddr3_rd_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'ddr3_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:3]
-INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/mig_7series_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (49#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (49#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/mig_7series_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'device_temp' of module 'mig_7series_0' is unconnected for instance 'mig_7series_0_inst' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:118]
 WARNING: [Synth 8-7023] instance 'mig_7series_0_inst' of module 'mig_7series_0' has 39 connections declared, but only 38 given [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:118]
 INFO: [Synth 8-6155] done synthesizing module 'ddr3_module' (50#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v:3]
@@ -335,43 +342,46 @@ INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (52#1) [D:/Xilinx/Vivado/2
 INFO: [Synth 8-6155] done synthesizing module 'iic_module' (53#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/iic_module.v:22]
 WARNING: [Synth 8-689] width (1) of port connection 'ow_iic_sdi_data' does not match port width (512) of module 'iic_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/eeprom_module.v:142]
 INFO: [Synth 8-6155] done synthesizing module 'eeprom_module' (54#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/eeprom_module.v:22]
-WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'eeprom_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:490]
-WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'eeprom_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:509]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'eeprom_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:526]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'eeprom_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:545]
 INFO: [Synth 8-6157] synthesizing module 'test_data_generator_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/test_data_generator_module.v:22]
 	Parameter s_test_data_IDLE bound to: 2'b00 
 	Parameter s_test_data_WRITE bound to: 2'b01 
 	Parameter s_test_data_WAIT bound to: 2'b10 
 	Parameter s_test_data_READ bound to: 2'b11 
 INFO: [Synth 8-6155] done synthesizing module 'test_data_generator_module' (55#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/test_data_generator_module.v:22]
-WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'test_data_generator_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:525]
+WARNING: [Synth 8-689] width (512) of port connection 'iw_user_cmd_data' does not match port width (64) of module 'test_data_generator_module' [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:561]
 INFO: [Synth 8-6157] synthesizing module 'IOBUF__parameterized0' [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
 	Parameter DRIVE bound to: 12 - type: integer 
 	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
 	Parameter IOSTANDARD bound to: DEFAULT - type: string 
 	Parameter SLEW bound to: SLOW - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'IOBUF__parameterized0' (55#1) [D:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
-INFO: [Synth 8-6157] synthesizing module 'vio_FMC' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/vio_FMC_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'vio_FMC' (56#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-20612-LXY/realtime/vio_FMC_stub.v:6]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_FMC_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:577]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_PRSNT'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:542]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_PG_M2C'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:549]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_PG_C2M'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:556]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_RES1'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:570]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'IOBUF_inst_FMC_RES0'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:563]
-INFO: [Synth 8-6155] done synthesizing module 'top' (57#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:22]
+INFO: [Synth 8-6157] synthesizing module 'vio_fft_debug' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/vio_fft_debug_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'vio_fft_debug' (56#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/vio_fft_debug_stub.v:6]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:666]
+INFO: [Synth 8-6157] synthesizing module 'ila_fft_debug' [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/ila_fft_debug_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_fft_debug' (57#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/.Xil/Vivado-3112-LXY/realtime/ila_fft_debug_stub.v:6]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_fft_debug_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:651]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'uart_module_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:315]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila_fft_debug_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:666]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'uart_fft_bridge_module_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:348]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'xfft_0_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:399]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'fft_uart_tx_module_inst'. This will prevent further optimization [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:377]
+INFO: [Synth 8-6155] done synthesizing module 'top' (58#1) [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v:22]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1049.762 ; gain = 40.375
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1262.285 ; gain = 255.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1049.762 ; gain = 40.375
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1262.285 ; gain = 255.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1049.762 ; gain = 40.375
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1262.285 ; gain = 255.598
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.368 . Memory (MB): peak = 1049.762 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1262.285 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 7 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -388,8 +398,6 @@ Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axi
 Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0/axis_data_fifo_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_packet_fifo0'
 Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0/axis_data_fifo_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_packet_fifo0'
 Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0/axis_data_fifo_0_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_packet_fifo0'
-Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_FMC/vio_FMC/vio_FMC_in_context.xdc] for cell 'vio_FMC_inst'
-Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_FMC/vio_FMC/vio_FMC_in_context.xdc] for cell 'vio_FMC_inst'
 Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1/axis_data_fifo_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_async_fifo0'
 Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1/axis_data_fifo_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/tx_async_fifo0'
 Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1/axis_data_fifo_1_in_context.xdc] for cell 'udp_drive_inst/master_wrapper_inst/rx_async_fifo0'
@@ -462,18 +470,22 @@ Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fif
 Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr/fifo_ddr3_wr_in_context.xdc] for cell 'ddr3_cache_module_inst/fifo_ddr3_wr_inst'
 Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/xfft_0/xfft_0_in_context.xdc] for cell 'xfft_0_inst'
 Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/xfft_0/xfft_0_in_context.xdc] for cell 'xfft_0_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_fft_debug/ila_fft_debug_in_context.xdc] for cell 'ila_fft_debug_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_fft_debug/ila_fft_debug_in_context.xdc] for cell 'ila_fft_debug_inst'
+Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_fft_debug/vio_fft_debug/vio_fft_debug_in_context.xdc] for cell 'vio_fft_debug_inst'
+Finished Parsing XDC File [d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_fft_debug/vio_fft_debug/vio_fft_debug_in_context.xdc] for cell 'vio_fft_debug_inst'
 Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc]
 Finished Parsing XDC File [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1265.117 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2091.137 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 7 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 7 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.098 . Memory (MB): peak = 1265.117 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.093 . Memory (MB): peak = 2091.137 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'ddr3_cache_module_inst/iw_ddr3_rst_cov_200M' at clock pin 'rd_clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'mclk_rst_module_inst/mclk_rst_cov_125M_rst' at clock pin 'rd_clk' is different from the actual clock period '8.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'mclk_rst_module_inst/mclk_rst_cov_200M_rst' at clock pin 'rd_clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
@@ -483,14 +495,14 @@ WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context s
 WARNING: [Timing 38-316] Clock period '100.000' specified during out-of-context synthesis of instance 'udp_drive_inst/master_wrapper_inst/tx_axis_dwidth_converter0' at clock pin 'aclk' is different from the actual clock period '8.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'udp_drive_inst/master_wrapper_inst/tx_packet_fifo0' at clock pin 's_axis_aclk' is different from the actual clock period '8.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg484-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -765,7 +777,6 @@ Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/ddr3_modul
 Applied set_property KEEP_HIERARCHY = SOFT for dna_module_inst/vio_dna_inst. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/rx_packet_fifo0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/tx_packet_fifo0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for vio_FMC_inst. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/rx_async_fifo0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/master_wrapper_inst/tx_async_fifo0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for udp_drive_inst/ETH_rx_data_cov_sys_clk. (constraint file  auto generated constraint).
@@ -802,14 +813,17 @@ Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/w_ddr3_fif
 Applied set_property KEEP_HIERARCHY = SOFT for cmd_cov_module_inst/uart_fifo_rst. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for ddr3_cache_module_inst/fifo_ddr3_wr_inst. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for xfft_0_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ila_fft_debug_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for vio_fft_debug_inst. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'r_state_key_reg' in module 'key'
 INFO: [Synth 8-802] inferred FSM for state register 's_smg_reg' in module 'smg_module'
 INFO: [Synth 8-802] inferred FSM for state register 'rx_state_reg' in module 'rx'
 INFO: [Synth 8-802] inferred FSM for state register 'or_tx_state_reg' in module 'tx'
 INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'uart_fft_bridge_module'
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'fft_uart_tx_module'
 INFO: [Synth 8-802] inferred FSM for state register 'axi_state_reg' in module 'tri_mode_ethernet_mac_0_axi_lite_sm'
 INFO: [Synth 8-802] inferred FSM for state register 's_state_reg' in module 'iic_module'
 INFO: [Synth 8-802] inferred FSM for state register 's_test_data_reg' in module 'test_data_generator_module'
@@ -863,6 +877,18 @@ INFO: [Synth 8-3354] encoded FSM with state register 'or_tx_state_reg' using enc
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
+*
+                 ST_IDLE |                           000001 |                           000001
+            ST_READ_WAIT |                           000010 |                           000010
+                 ST_PACK |                           000100 |                           000100
+               ST_TX_REQ |                           001000 |                           001000
+              ST_TX_WAIT |                           010000 |                           010000
+                 ST_DONE |                           100000 |                           100000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'r_state_reg' in module 'fft_uart_tx_module'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
                  STARTUP |                             0000 |                            00000
             UPDATE_SPEED |                             0001 |                            00001
             RESET_MAC_RX |                             0010 |                            10001
@@ -893,7 +919,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 's_state_reg' using encodin
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 's_test_data_reg' using encoding 'sequential' in module 'test_data_generator_module'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:35 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -905,22 +931,21 @@ Detailed RTL Component Info :
 	   2 Input   56 Bit       Adders := 1     
 	   2 Input   16 Bit       Adders := 21    
 	   2 Input   13 Bit       Adders := 1     
-	   2 Input   12 Bit       Adders := 2     
+	   2 Input   12 Bit       Adders := 3     
 	   2 Input   11 Bit       Adders := 4     
 	   2 Input   10 Bit       Adders := 3     
 	   2 Input    9 Bit       Adders := 4     
 	   3 Input    9 Bit       Adders := 4     
 	   2 Input    8 Bit       Adders := 2     
-	   2 Input    7 Bit       Adders := 2     
-	   3 Input    7 Bit       Adders := 2     
-	   2 Input    6 Bit       Adders := 4     
+	   2 Input    7 Bit       Adders := 3     
+	   2 Input    6 Bit       Adders := 6     
 	   2 Input    4 Bit       Adders := 1     
 	   2 Input    3 Bit       Adders := 4     
 +---XORs : 
 	   2 Input      1 Bit         XORs := 4     
 +---Registers : 
 	             4096 Bit    Registers := 1     
-	              512 Bit    Registers := 11    
+	              512 Bit    Registers := 10    
 	              128 Bit    Registers := 1     
 	               64 Bit    Registers := 4     
 	               56 Bit    Registers := 2     
@@ -928,23 +953,24 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 6     
 	               21 Bit    Registers := 1     
 	               17 Bit    Registers := 5     
-	               16 Bit    Registers := 21    
+	               16 Bit    Registers := 23    
 	               13 Bit    Registers := 1     
-	               12 Bit    Registers := 4     
+	               12 Bit    Registers := 5     
 	               11 Bit    Registers := 5     
 	               10 Bit    Registers := 4     
 	                9 Bit    Registers := 10    
 	                8 Bit    Registers := 14    
-	                7 Bit    Registers := 10    
-	                6 Bit    Registers := 4     
+	                7 Bit    Registers := 9     
+	                6 Bit    Registers := 6     
 	                4 Bit    Registers := 11    
 	                3 Bit    Registers := 4     
 	                2 Bit    Registers := 4     
-	                1 Bit    Registers := 118   
+	                1 Bit    Registers := 117   
 +---RAMs : 
-	              64K Bit	(4096 X 16 bit)          RAMs := 1     
+	              64K Bit	(4096 X 16 bit)          RAMs := 3     
 +---Muxes : 
-	   3 Input 4096 Bit        Muxes := 1     
+	   2 Input 4096 Bit        Muxes := 1     
+	   7 Input 4096 Bit        Muxes := 2     
 	  13 Input  512 Bit        Muxes := 2     
 	   2 Input  512 Bit        Muxes := 5     
 	   2 Input  128 Bit        Muxes := 3     
@@ -960,25 +986,30 @@ Detailed RTL Component Info :
 	   2 Input   16 Bit        Muxes := 10    
 	   3 Input   16 Bit        Muxes := 4     
 	   2 Input   13 Bit        Muxes := 2     
+	   7 Input   12 Bit        Muxes := 2     
 	   2 Input   12 Bit        Muxes := 2     
 	   2 Input   10 Bit        Muxes := 4     
-	   3 Input   10 Bit        Muxes := 3     
+	   3 Input   10 Bit        Muxes := 2     
 	   2 Input    9 Bit        Muxes := 5     
 	   2 Input    8 Bit        Muxes := 9     
 	   3 Input    8 Bit        Muxes := 7     
 	  10 Input    8 Bit        Muxes := 2     
+	  64 Input    8 Bit        Muxes := 2     
 	   4 Input    8 Bit        Muxes := 1     
+	   7 Input    7 Bit        Muxes := 1     
 	   4 Input    7 Bit        Muxes := 2     
 	   2 Input    7 Bit        Muxes := 4     
 	   3 Input    7 Bit        Muxes := 2     
-	   2 Input    6 Bit        Muxes := 4     
+	   7 Input    6 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 5     
 	   4 Input    6 Bit        Muxes := 2     
+	 512 Input    6 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 3     
 	  14 Input    4 Bit        Muxes := 4     
 	   5 Input    4 Bit        Muxes := 4     
 	   4 Input    4 Bit        Muxes := 1     
 	  65 Input    4 Bit        Muxes := 2     
 	  66 Input    4 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 2     
 	   9 Input    4 Bit        Muxes := 2     
 	  10 Input    4 Bit        Muxes := 1     
 	   5 Input    3 Bit        Muxes := 2     
@@ -986,12 +1017,13 @@ Detailed RTL Component Info :
 	   3 Input    3 Bit        Muxes := 1     
 	   7 Input    3 Bit        Muxes := 1     
 	   4 Input    2 Bit        Muxes := 6     
-	   3 Input    2 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 14    
 	   5 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 2     
 	   6 Input    2 Bit        Muxes := 1     
+	   7 Input    1 Bit        Muxes := 6     
+	   2 Input    1 Bit        Muxes := 120   
 	  13 Input    1 Bit        Muxes := 14    
-	   2 Input    1 Bit        Muxes := 121   
 	   5 Input    1 Bit        Muxes := 12    
 	   3 Input    1 Bit        Muxes := 17    
 	   4 Input    1 Bit        Muxes := 22    
@@ -1015,11 +1047,21 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:18 ; elapsed = 00:01:27 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping	Report (see note below)
++--------------------------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                     | RTL Object         | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------------------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|i_0/uart_fft_bridge_module_inst | r_fft_real_mem_reg | 4 K x 16(READ_FIRST)   | W |   | 4 K x 16(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 
+|i_0/uart_fft_bridge_module_inst | r_fft_imag_mem_reg | 4 K x 16(READ_FIRST)   | W |   | 4 K x 16(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 
++--------------------------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
 
 Distributed RAM: Preliminary Mapping	Report (see note below)
 +--------------------------------+---------------------+-----------+----------------------+-----------------------------+
@@ -1035,26 +1077,35 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst0/iw_sys_clk' to 'i_1/clk_125M'
-INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst1/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
-INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst2/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
-INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst3/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
-INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst4/iw_sys_clk' to 'i_62/dna_module_inst/r_cnt_reg[0]/C'
-INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst5/iw_sys_clk' to 'i_1/clk_10M'
-INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst6/iw_sys_clk' to 'i_1/clk_10M'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst0/iw_sys_clk' to 'mclk_rst_module_inst/clk_div_module_inst0/r_clk_1_cnt_reg[15]/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst1/iw_sys_clk' to 'mclk_rst_module_inst/edge_module_mclk_rst/r1_reg/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst2/iw_sys_clk' to 'mclk_rst_module_inst/edge_module_mclk_rst/r1_reg/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst3/iw_sys_clk' to 'mclk_rst_module_inst/edge_module_mclk_rst/r1_reg/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst4/iw_sys_clk' to 'mclk_rst_module_inst/edge_module_mclk_rst/r1_reg/C'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst5/iw_sys_clk' to 'ws2812b_module_inst/user_cmd_cov_ws2812b_clk_inst/rd_clk'
+INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'mclk_rst_module_inst/clk_div_module_inst6/iw_sys_clk' to 'ws2812b_module_inst/user_cmd_cov_ws2812b_clk_inst/rd_clk'
 INFO: [Synth 8-5819] Moved 7 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:23 ; elapsed = 00:01:31 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Timing Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:35 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++--------------------------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                     | RTL Object         | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------------------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|i_0/uart_fft_bridge_module_inst | r_fft_real_mem_reg | 4 K x 16(READ_FIRST)   | W |   | 4 K x 16(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 
+|i_0/uart_fft_bridge_module_inst | r_fft_imag_mem_reg | 4 K x 16(READ_FIRST)   | W |   | 4 K x 16(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 
++--------------------------------+--------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
 
 Distributed RAM: Final Mapping	Report
 +--------------------------------+---------------------+-----------+----------------------+-----------------------------+
@@ -1069,8 +1120,12 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance uart_fft_bridge_module_inst/r_fft_real_mem_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance uart_fft_bridge_module_inst/r_fft_real_mem_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance uart_fft_bridge_module_inst/r_fft_imag_mem_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance uart_fft_bridge_module_inst/r_fft_imag_mem_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:00:49 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Technology Mapping : Time (s): cpu = 00:01:32 ; elapsed = 00:01:41 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1088,37 +1143,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:00:53 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished IO Insertion : Time (s): cpu = 00:01:35 ; elapsed = 00:01:44 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:00:53 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:35 ; elapsed = 00:01:44 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:47 ; elapsed = 00:00:53 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:36 ; elapsed = 00:01:45 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:47 ; elapsed = 00:00:53 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:36 ; elapsed = 00:01:45 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:47 ; elapsed = 00:00:53 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:36 ; elapsed = 00:01:45 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:47 ; elapsed = 00:00:53 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:36 ; elapsed = 00:01:45 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1142,23 +1197,24 @@ Report BlackBoxes:
 +------+------------------------+----------+
 |      |BlackBox name           |Instances |
 +------+------------------------+----------+
-|1     |xfft_0                  |         1|
-|2     |vio_FMC                 |         1|
-|3     |fifo_bits_cov           |        10|
-|4     |uart_fifo               |         1|
-|5     |fifo_bit_cov            |        15|
-|6     |fifo_ddr3_wr            |         1|
-|7     |fifo_ddr3_rd            |         1|
-|8     |mig_7series_0           |         1|
-|9     |vio_dna                 |         1|
-|10    |clk_wiz_mclk            |         1|
-|11    |uiudp_stack             |         1|
-|12    |axis_data_fifo_1        |         2|
-|13    |axis_data_fifo_0        |         2|
-|14    |axis_dwidth_converter_0 |         1|
-|15    |axis_dwidth_converter_1 |         1|
-|16    |tri_mode_ethernet_mac_0 |         1|
-|17    |fifo_72x512             |         1|
+|1     |fifo_bits_cov           |        10|
+|2     |xfft_0                  |         1|
+|3     |ila_fft_debug           |         1|
+|4     |vio_fft_debug           |         1|
+|5     |uart_fifo               |         1|
+|6     |fifo_bit_cov            |        15|
+|7     |fifo_ddr3_wr            |         1|
+|8     |fifo_ddr3_rd            |         1|
+|9     |mig_7series_0           |         1|
+|10    |vio_dna                 |         1|
+|11    |clk_wiz_mclk            |         1|
+|12    |uiudp_stack             |         1|
+|13    |axis_data_fifo_1        |         2|
+|14    |axis_data_fifo_0        |         2|
+|15    |axis_dwidth_converter_0 |         1|
+|16    |axis_dwidth_converter_1 |         1|
+|17    |tri_mode_ethernet_mac_0 |         1|
+|18    |fifo_72x512             |         1|
 +------+------------------------+----------+
 
 Report Cell Usage: 
@@ -1178,49 +1234,51 @@ Report Cell Usage:
 |25    |fifo_bits_cov_        |     9|
 |34    |fifo_ddr3_rd          |     1|
 |35    |fifo_ddr3_wr          |     1|
-|36    |mig_7series           |     1|
-|37    |tri_mode_ethernet_mac |     1|
-|38    |uart_fifo             |     1|
-|39    |uiudp_stack           |     1|
-|40    |vio_FMC               |     1|
+|36    |ila_fft_debug         |     1|
+|37    |mig_7series           |     1|
+|38    |tri_mode_ethernet_mac |     1|
+|39    |uart_fifo             |     1|
+|40    |uiudp_stack           |     1|
 |41    |vio_dna               |     1|
-|42    |xfft                  |     1|
-|43    |BUFG                  |     1|
-|44    |CARRY4                |   231|
-|45    |DNA_PORT              |     1|
-|46    |LUT1                  |    60|
-|47    |LUT2                  |   453|
-|48    |LUT3                  |   370|
-|49    |LUT4                  |   226|
-|50    |LUT5                  |   319|
-|51    |LUT6                  |  1278|
-|52    |MUXF7                 |   209|
-|53    |MUXF8                 |    56|
-|54    |RAM64M                |   320|
-|55    |RAM64X1D              |    64|
-|56    |SRLC32E               |     1|
-|57    |FDCE                  |     2|
-|58    |FDPE                  |    25|
-|59    |FDRE                  |  4199|
-|60    |FDSE                  |    10|
-|61    |IBUF                  |     2|
-|62    |IOBUF                 |     7|
-|63    |OBUF                  |    26|
-|64    |OBUFT                 |    96|
+|42    |vio_fft_debug         |     1|
+|43    |xfft                  |     1|
+|44    |BUFG                  |     1|
+|45    |CARRY4                |   236|
+|46    |DNA_PORT              |     1|
+|47    |LUT1                  |    85|
+|48    |LUT2                  |   524|
+|49    |LUT3                  |   449|
+|50    |LUT4                  |   364|
+|51    |LUT5                  |   290|
+|52    |LUT6                  |  2290|
+|53    |MUXF7                 |   769|
+|54    |MUXF8                 |   336|
+|55    |RAM64M                |   320|
+|56    |RAM64X1D              |    64|
+|57    |RAMB36E1              |     4|
+|58    |SRLC32E               |     1|
+|59    |FDCE                  |     2|
+|60    |FDPE                  |    25|
+|61    |FDRE                  | 11277|
+|62    |FDSE                  |     9|
+|63    |IBUF                  |     2|
+|64    |IOBUF                 |     7|
+|65    |OBUF                  |    26|
+|66    |OBUFT                 |    96|
 +------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:47 ; elapsed = 00:00:53 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:36 ; elapsed = 00:01:45 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:00:48 . Memory (MB): peak = 1273.348 ; gain = 40.375
-Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:00:54 . Memory (MB): peak = 1273.348 ; gain = 263.961
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:16 ; elapsed = 00:01:29 . Memory (MB): peak = 2096.082 ; gain = 255.598
+Synthesis Optimization Complete : Time (s): cpu = 00:01:36 ; elapsed = 00:01:46 . Memory (MB): peak = 2096.082 ; gain = 1089.395
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.144 . Memory (MB): peak = 1273.348 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 887 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.242 . Memory (MB): peak = 2096.082 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1736 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1273.348 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2096.082 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 391 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 7 instances
@@ -1228,9 +1286,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   RAM64X1D => RAM64X1D (RAMD64E(x2)): 64 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-185 Infos, 35 Warnings, 0 Critical Warnings and 0 Errors encountered.
+193 Infos, 37 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:01:08 . Memory (MB): peak = 1273.348 ; gain = 263.961
+synth_design: Time (s): cpu = 00:01:42 ; elapsed = 00:01:54 . Memory (MB): peak = 2096.082 ; gain = 1089.395
+INFO: [Common 17-600] The following parameters have non-default value.
+tcl.collectionResultDisplayLimit
 INFO: [Common 17-1381] The checkpoint 'D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Sep 18 15:45:21 2026...
+INFO: [Common 17-206] Exiting Vivado at Sun Sep 20 18:58:05 2026...

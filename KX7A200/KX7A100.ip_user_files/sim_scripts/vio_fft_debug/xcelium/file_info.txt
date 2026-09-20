@@ -1,0 +1,6 @@
+xpm_cdc.sv,systemverilog,xpm,../../../../../Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv,incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl/verilog"incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl"
+xpm_fifo.sv,systemverilog,xpm,../../../../../Xilinx/Vivado/2020.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv,incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl/verilog"incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl"
+xpm_memory.sv,systemverilog,xpm,../../../../../Xilinx/Vivado/2020.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv,incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl/verilog"incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl"
+xpm_VCOMP.vhd,vhdl,xpm,../../../../../Xilinx/Vivado/2020.2/data/ip/xpm/xpm_VCOMP.vhd,incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl/verilog"incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl"
+vio_fft_debug.v,verilog,xil_defaultlib,../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/sim/vio_fft_debug.v,incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl/verilog"incdir="../../../../KX7A100.gen/sources_1/ip/vio_fft_debug/hdl"
+glbl.v,Verilog,xil_defaultlib,glbl.v

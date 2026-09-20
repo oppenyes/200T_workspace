@@ -1,0 +1,2 @@
+ila_fft_debug.v,verilog,xil_defaultlib,../../../../KX7A100.gen/sources_1/ip/ila_fft_debug/sim/ila_fft_debug.v,incdir="../../../../KX7A100.gen/sources_1/ip/ila_fft_debug/hdl/verilog"
+glbl.v,Verilog,xil_defaultlib,glbl.v

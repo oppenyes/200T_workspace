@@ -35,7 +35,7 @@ module uart_rx#(
 );
 
 //波特率时钟分频系数，coe = 时钟频率 / 目标波特率 - 1  
-localparam BAUD_DIV_coe = (CLK_FRE / BAUD_RATE - 1) * 20 ;
+localparam BAUD_DIV_coe = (CLK_FRE / BAUD_RATE - 1) * 200 ;
 
 reg r_UART_RX_RXOVR = 1'b0 ;
 reg r_UART_RX_TOUT  = 1'b0 ;

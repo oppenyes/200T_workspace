@@ -2,16 +2,129 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Sep 17 23:31:49 2026
-# Process ID: 3412
+# Start of session at: Sun Sep 20 13:54:28 2026
+# Process ID: 23532
 # Current directory: D:/Desktop/200T_workspace/KX7A200
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6000 D:\Desktop\200T_workspace\KX7A200\KX7A100.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6888 D:\Desktop\200T_workspace\KX7A200\KX7A100.xpr
 # Log file: D:/Desktop/200T_workspace/KX7A200/vivado.log
 # Journal file: D:/Desktop/200T_workspace/KX7A200\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project D:/Desktop/200T_workspace/KX7A200/KX7A100.xpr
 update_compile_order -fileset sources_1
-reset_run impl_1
+launch_simulation
+update_compile_order -fileset sources_1
+reset_run synth_1
 launch_runs impl_1 -jobs 16
 wait_on_run impl_1
+add_files -norecurse D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/fft_uart_tx_module.v
+reset_run synth_1
+update_compile_order -fileset sources_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+create_ip -name ila -vendor xilinx.com -library ip -version 6.2 -module_name ila_fft_debug
+set_property -dict [list CONFIG.C_PROBE12_WIDTH {12} CONFIG.C_PROBE11_WIDTH {6} CONFIG.C_PROBE10_WIDTH {32} CONFIG.C_PROBE7_WIDTH {12} CONFIG.C_PROBE3_WIDTH {12} CONFIG.C_PROBE2_WIDTH {13} CONFIG.C_PROBE1_WIDTH {7} CONFIG.C_DATA_DEPTH {8192} CONFIG.C_NUM_OF_PROBES {14} CONFIG.Component_Name {ila_fft_debug}] [get_ips ila_fft_debug]
+generate_target {instantiation_template} [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci]
+generate_target all [get_files  d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci]
+catch { config_ip_cache -export [get_ips -all ila_fft_debug] }
+export_ip_user_files -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci]
+launch_runs ila_fft_debug_synth_1 -jobs 16
+wait_on_run ila_fft_debug_synth_1
+export_simulation -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci] -directory D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/sim_scripts -ip_user_files_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files -ipstatic_source_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/Xilinx/compile_simlib/modelsim} {questa=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/questa} {riviera=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/riviera} {activehdl=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+create_ip -name vio -vendor xilinx.com -library ip -version 3.0 -module_name vio_fft_debug
+set_property -dict [list CONFIG.C_NUM_PROBE_OUT {3} CONFIG.C_EN_PROBE_IN_ACTIVITY {0} CONFIG.C_NUM_PROBE_IN {0} CONFIG.Component_Name {vio_fft_debug}] [get_ips vio_fft_debug]
+generate_target {instantiation_template} [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci]
+generate_target all [get_files  d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci]
+catch { config_ip_cache -export [get_ips -all vio_fft_debug] }
+export_ip_user_files -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci]
+launch_runs vio_fft_debug_synth_1 -jobs 16
+wait_on_run vio_fft_debug_synth_1
+export_simulation -of_objects [get_files d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci] -directory D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/sim_scripts -ip_user_files_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files -ipstatic_source_dir D:/Desktop/200T_workspace/KX7A200/KX7A100.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/Xilinx/compile_simlib/modelsim} {questa=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/questa} {riviera=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/riviera} {activehdl=D:/Desktop/200T_workspace/KX7A200/KX7A100.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.bit} [get_hw_devices xc7a200t_0]
+set_property PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property FULL_PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+current_hw_device [get_hw_devices xc7a200t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a200t_0] 0]
+set_property PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property FULL_PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property PROGRAM.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.bit} [get_hw_devices xc7a200t_0]
+program_hw_devices [get_hw_devices xc7a200t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a200t_0] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+set_property -dict [list CONFIG.C_PROBE13_WIDTH {12} CONFIG.C_PROBE12_WIDTH {6} CONFIG.C_PROBE11_WIDTH {32} CONFIG.C_PROBE10_WIDTH {1} CONFIG.C_PROBE8_WIDTH {12} CONFIG.C_PROBE7_WIDTH {32} CONFIG.C_NUM_OF_PROBES {15}] [get_ips ila_fft_debug]
+reset_run ila_fft_debug_synth_1
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+set_property PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property FULL_PROBES.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.ltx} [get_hw_devices xc7a200t_0]
+set_property PROGRAM.FILE {D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/impl_1/top.bit} [get_hw_devices xc7a200t_0]
+program_hw_devices [get_hw_devices xc7a200t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a200t_0] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes ow_fft_data_tvalid -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"ila_fft_debug_inst"}]]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {ow_fft_data_tdata} }
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 1 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup
+startgroup
+set_property OUTPUT_VALUE 0 [get_hw_probes w_vio_tx_start -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+commit_hw_vio [get_hw_probes {w_vio_tx_start} -of_objects [get_hw_vios -of_objects [get_hw_devices xc7a200t_0] -filter {CELL_NAME=~"vio_fft_debug_inst"}]]
+endgroup

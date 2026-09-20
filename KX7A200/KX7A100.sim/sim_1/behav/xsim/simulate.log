@@ -1,0 +1,25 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+--------------------------------
+FFT/IFFT Simulation Summary
+--------------------------------
+FFT config/IFFT config = 1/1
+FFT input points  = 4096
+FFT output points = 4096
+IFFT input points = 4096
+IFFT output points= 4096
+FFT TLAST in/out  = 1/1
+IFFT TLAST in/out = 1/1
+FFT overflow      = 0
+IFFT overflow     = 0
+TLAST events FFT unexpected/missing=0/0 IFFT unexpected/missing=0/0
+Halt events FFT in/out=0/0 IFFT in/out=0/0
+FFT bin 32   = -1 0d j -5001
+FFT bin 4064 = 0 0d j  5000
+IFFT sample 0   = -7
+IFFT sample 32  = 9995
+IFFT sample 64  = 7
+IFFT sample 96  = -9995
+IFFT sample 128 = -7
+PASS
+$finish called at time : 290780 ns : File "D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sim_1/new/uart_fft_ifft_bridge_tb.v" Line 191

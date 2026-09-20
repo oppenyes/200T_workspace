@@ -11,12 +11,71 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# do {uart_fft_bridge_tb_simulate.do}
-# vsim -voptargs=""+acc"" -L xil_defaultlib -L xbip_utils_v3_0_10 -L axi_utils_v2_0_6 -L c_reg_fd_v12_0_6 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_pipe_v3_0_6 -L xbip_dsp48_addsub_v3_0_6 -L xbip_addsub_v3_0_6 -L c_addsub_v12_0_14 -L c_mux_bit_v12_0_6 -L c_shift_ram_v12_0_14 -L xbip_bram18k_v3_0_6 -L mult_gen_v12_0_16 -L cmpy_v6_0_19 -L floating_point_v7_0_18 -L xfft_v9_1_5 -L unisims_ver -L unimacro_ver -L secureip -L xpm -lib xil_defaultlib xil_defaultlib.uart_fft_bridge_tb xil_defaultlib.glbl 
-# Start time: 15:50:48 on Sep 18,2026
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.uart_fft_bridge_tb(fast)
-# Loading work.uart_fft_bridge_module(fast)
+# do {uart_fft_ifft_bridge_tb_simulate.do}
+# vsim -voptargs=""+acc"" -L xil_defaultlib -L xbip_utils_v3_0_10 -L axi_utils_v2_0_6 -L c_reg_fd_v12_0_6 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_pipe_v3_0_6 -L xbip_dsp48_addsub_v3_0_6 -L xbip_addsub_v3_0_6 -L c_addsub_v12_0_14 -L c_mux_bit_v12_0_6 -L c_shift_ram_v12_0_14 -L xbip_bram18k_v3_0_6 -L mult_gen_v12_0_16 -L cmpy_v6_0_19 -L floating_point_v7_0_18 -L xfft_v9_1_5 -L unisims_ver -L unimacro_ver -L secureip -L xpm -lib xil_defaultlib xil_defaultlib.uart_fft_ifft_bridge_tb xil_defaultlib.glbl 
+# Start time: 13:56:11 on Sep 20,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "uart_fft_ifft_bridge_module(fast)".
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 3 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 3 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 1 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 2 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Warning: D:\Xilinx\Vivado\2020.2\data\ip\xilinx\mult_gen_v12_0\hdl\mult_gen_v12_0_vh_rfs.vhd(82): (vopt-1152) Index value 3 is out of index range -1 to 0 of mult_gen_v12_0_16.dsp(xilinx).ZD_ARRAY.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=57.
+# Loading work.uart_fft_ifft_bridge_tb(fast)
+# Loading work.uart_fft_ifft_bridge_module(fast)
 # Loading work.glbl(fast)
 # Loading std.standard
 # Loading std.textio(body)
@@ -58,132 +117,262 @@
 # Loading unisim.ramb18(ramb18_v)#2
 # Loading unisim.ramb18e1(ramb18e1_v)#2
 # Loading unisim.rb18_internal_vhdl(rb18_internal_vhdl_v)#2
-# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(11 downto 10), and its initial value is not used.
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(11 downto 10), and its initial value is not used.
 # Therefore, simulation behavior may occur that is not in compliance with
-# the VHDL standard as the initial values come from the base signal /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(0)(11 downto 10).
-# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(9 downto 8), and its initial value is not used.
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(0)(11 downto 10).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(9 downto 8), and its initial value is not used.
 # Therefore, simulation behavior may occur that is not in compliance with
-# the VHDL standard as the initial values come from the base signal /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(1)(9 downto 8).
-# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(7 downto 6), and its initial value is not used.
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(1)(9 downto 8).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(7 downto 6), and its initial value is not used.
 # Therefore, simulation behavior may occur that is not in compliance with
-# the VHDL standard as the initial values come from the base signal /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(2)(7 downto 6).
-# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(5 downto 4), and its initial value is not used.
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(2)(7 downto 6).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(5 downto 4), and its initial value is not used.
 # Therefore, simulation behavior may occur that is not in compliance with
-# the VHDL standard as the initial values come from the base signal /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(3)(5 downto 4).
-# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(3 downto 2), and its initial value is not used.
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(3)(5 downto 4).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(3 downto 2), and its initial value is not used.
 # Therefore, simulation behavior may occur that is not in compliance with
-# the VHDL standard as the initial values come from the base signal /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(4)(3 downto 2).
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(4)(3 downto 2).
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
 # This port will contribute value (16'hXXXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
 # This port will contribute value (5'hXX) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
-# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected> has no driver.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_fft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(11 downto 10), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(0)(11 downto 10).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(9 downto 8), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(1)(9 downto 8).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(7 downto 6), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(2)(7 downto 6).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(5 downto 4), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(3)(5 downto 4).
+# ** Warning: (vsim-8684) No drivers exist on out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(3 downto 2), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>(4)(3 downto 2).
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(15 downto 0) has no driver.
+# This port will contribute value (16'hXXXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected>(4 downto 0) has no driver.
+# This port will contribute value (5'hXX) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /uart_fft_ifft_bridge_tb/dut/u_ifft/U0/<protected>/<protected>/<protected> has no driver.
 # This port will contribute value (U) to the signal network.
 # 1
 # 1
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: l2280  Hostname: LXY  ProcessID: 29584
-#           Attempting to use alternate WLF file "./wlftz22g6m".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftz22g6m
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# Input vector check:
-# sample[0]   = 0
-# sample[32]  = 10000
-# sample[64]  = 0
-# sample[96]  = -10000
-# sample[128] = 0
-# ** Fatal: (SIGSEGV) Bad handle or reference.
-#    Time: 100 ps  Iteration: 1  Protected: /uart_fft_bridge_tb/xfft_0_inst/U0/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected>/<protected> File: D:/Xilinx/Vivado/2020.2/data/ip/xilinx/cmpy_v6_0/hdl/cmpy_v6_0_vh_rfs.vhd
+# ** Warning: (vsim-7) Failed to open readmem file "fft_input.hex" in read mode.
+# No such file or directory. (errno = ENOENT)    : ../../../../KX7A100.srcs/sim_1/new/uart_fft_ifft_bridge_tb.v(212)
+#    Time: 0 ps  Iteration: 0  Instance: /uart_fft_ifft_bridge_tb
+run -all
+# --------------------------------
+# FFT/IFFT Simulation Summary
+# --------------------------------
+# FFT config/IFFT config = 1/1
+# FFT input points  = 4096
+# FFT output points = 4096
+# IFFT input points = 4096
+# IFFT output points= 4096
+# FFT TLAST in/out  = 1/1
+# IFFT TLAST in/out = 1/1
+# FFT overflow      = 1
+# IFFT overflow     = 1
+# TLAST events FFT unexpected/missing=0/0 IFFT unexpected/missing=0/0
+# Halt events FFT in/out=0/0 IFFT in/out=0/0
+# FFT bin 32   = x - jx
+# FFT bin 4064 = x - jx
+# IFFT sample 0   = x
+# IFFT sample 32  = x
+# IFFT sample 64  = x
+# IFFT sample 96  = x
+# IFFT sample 128 = x
+# FAIL: 1 checks failed
+# ** Note: $finish    : ../../../../KX7A100.srcs/sim_1/new/uart_fft_ifft_bridge_tb.v(442)
+#    Time: 290780 ns  Iteration: 1  Instance: /uart_fft_ifft_bridge_tb
+# 1
+# Break in Module uart_fft_ifft_bridge_tb at ../../../../KX7A100.srcs/sim_1/new/uart_fft_ifft_bridge_tb.v line 442
+# End time: 13:59:20 on Sep 20,2026, Elapsed time: 0:03:09
+# Errors: 0, Warnings: 164

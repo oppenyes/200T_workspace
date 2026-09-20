@@ -2,3 +2,6 @@ Running: xsim.dir/uart_fft_ifft_bridge_tb_behav/xsimk.exe -simmode gui -wdb uart
 Design successfully loaded
 Design Loading Memory Usage: 60412 KB (Peak: 60412 KB)
 Design Loading CPU Usage: 61 ms
+Simulation completed
+Simulation Memory Usage: 68196 KB (Peak: 68196 KB)
+Simulation CPU Usage: 58406 ms

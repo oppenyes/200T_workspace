@@ -70,6 +70,9 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param tcl.collectionResultDisplayLimit 0
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a200tfbg484-2
 
@@ -97,6 +100,7 @@ read_verilog -library xil_defaultlib {
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/edge_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/eeprom_module.v
+  D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/fft_uart_tx_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/iic_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key_module.v
@@ -116,7 +120,6 @@ read_verilog -library xil_defaultlib {
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_reset_sync.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_sync_block.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/tx.v
-  D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_data_loopback_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_bridge_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_rx.v
@@ -136,10 +139,6 @@ set_property used_in_implementation false [get_files -all d:/Desktop/200T_worksp
 
 read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0.xci
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_0/axis_data_fifo_0_ooc.xdc]
-
-read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_FMC/vio_FMC.xci
-set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_FMC/vio_FMC.xdc]
-set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_FMC/vio_FMC_ooc.xdc]
 
 read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1.xci
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/axis_data_fifo_1/axis_data_fifo_1_ooc.xdc]
@@ -192,6 +191,16 @@ set_property used_in_implementation false [get_files -all d:/Desktop/200T_worksp
 
 read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/xfft_0/xfft_0.xci
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc]
+
+read_ip -quiet d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci
+set_property used_in_synthesis false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_fft_debug_ooc.xdc]
+
+read_ip -quiet d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_fft_debug/vio_fft_debug.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_fft_debug/vio_fft_debug_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

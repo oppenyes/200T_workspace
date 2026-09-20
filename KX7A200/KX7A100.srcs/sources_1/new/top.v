@@ -78,11 +78,20 @@ module top(
 // -------------------------------- localparam ------------------------------ //
 localparam CLK_FRE       = 100_000_000 ;
 localparam BAUD_RATE     = 921_600     ;
-localparam UART_RX_NUM   = 7           ;
+localparam UART_RX_NUM   = 63           ;
 localparam eeprom_memory = 4           ;
 localparam [63:0] tx = 64'hc0_ee_d4_c2_d6_f1_0d_0a ;
 
 // -------------------------------- wire ------------------------------ //
+wire [5:0] w_debug_tx_frame_index;
+wire [12:0] w_debug_fft_input_count;
+wire [11:0] w_debug_fft_input_index;
+wire [11:0] w_debug_fft_output_index;
+wire [11:0] w_fft_rd_addr;
+wire [15:0] w_fft_rd_real;
+wire [15:0] w_fft_rd_imag;
+
+wire        w_fft_uart_tx_done;
 wire [1:0] iw_FMC_RES   ;
 wire [1:0] ow_FMC_RES   ;
 wire [1:0] ow_FMC_RES_T ;
@@ -321,22 +330,28 @@ uart_module#(
     .ow_tx               (ow_UART_TX          )
 );
 
-uart_data_loopback_module uart_data_loopback_module_inst(
-    .iw_sys_clk       (clk_100M            ) ,
-    .iw_sys_rst       (ow_100M_rst         ) ,
+// uart_data_loopback_module uart_data_loopback_module_inst(
+//     .iw_sys_clk       (clk_100M            ) ,
+//     .iw_sys_rst       (ow_100M_rst         ) ,
 
-    .iw_uart_rx_valid (ow_uart_rx_data_rdy ) ,//定义实在是不准确
-    .iw_uart_rx_data  (ow_uart_rx_data     ) ,
-    .iw_uart_rx_num   (ow_uart_rx_num      ) ,
+//     .iw_uart_rx_valid (ow_uart_rx_data_rdy ) ,//定义实在是不准确
+//     .iw_uart_rx_data  (ow_uart_rx_data     ) ,
+//     .iw_uart_rx_num   (ow_uart_rx_num      ) ,
 
-    .iw_uart_tx_rdy   (ow_uart_tx_rdy      ) ,
-    .iw_uart_tx_done  (ow_uart_tx_done     ) ,
-    .or_uart_tx_en    (iw_uart_tx_en       ) ,
-    .or_uart_tx_num   (iw_uart_tx_num      ) ,
-    .or_uart_tx_data  (iw_uart_tx_data     )
-);
+//     .iw_uart_tx_rdy   (ow_uart_tx_rdy      ) ,
+//     .iw_uart_tx_done  (ow_uart_tx_done     ) ,
+//     .or_uart_tx_en    (iw_uart_tx_en       ) ,
+//     .or_uart_tx_num   (iw_uart_tx_num      ) ,
+//     .or_uart_tx_data  (iw_uart_tx_data     )
+// );
 
 uart_fft_bridge_module uart_fft_bridge_module_inst(
+    .iw_fft_rd_addr                     (w_fft_rd_addr             ),
+    .or_fft_rd_real                     (w_fft_rd_real             ),
+    .or_fft_rd_imag                     (w_fft_rd_imag             ),
+    .ow_debug_fft_input_count           (w_debug_fft_input_count   ),
+    .ow_debug_fft_input_index           (w_debug_fft_input_index   ),
+    .ow_debug_fft_output_index          (w_debug_fft_output_index  ),
     .iw_sys_clk              (clk_100M                      ) ,
     .iw_sys_rst              (ow_100M_rst                   ) ,
     .iw_uart_rx_valid        (ow_uart_rx_data_rdy           ) ,
@@ -359,7 +374,28 @@ uart_fft_bridge_module uart_fft_bridge_module_inst(
     .ow_fft_input_count      (ow_fft_input_count            ) ,
     .ow_fft_output_count     (ow_fft_output_count           )
 );
+fft_uart_tx_module fft_uart_tx_module_inst(
 
+    .ow_debug_tx_frame_index       (w_debug_tx_frame_index),
+    .iw_sys_clk       (clk_100M),
+    .iw_sys_rst       (ow_100M_rst),
+
+    .iw_fft_frame_done(w_vio_tx_start_pulse),//w_vio_tx_start_pulse
+    // .iw_fft_frame_done(ow_fft_frame_done),//w_vio_tx_start_pulse
+
+    .or_fft_rd_addr   (w_fft_rd_addr),
+    .iw_fft_rd_real   (w_fft_rd_real),
+    .iw_fft_rd_imag   (w_fft_rd_imag),
+
+    .iw_uart_tx_rdy   (ow_uart_tx_rdy),
+    .iw_uart_tx_done  (ow_uart_tx_done),
+
+    .or_uart_tx_num   (iw_uart_tx_num),
+    .or_uart_tx_en    (iw_uart_tx_en),
+    .or_uart_tx_data  (iw_uart_tx_data),
+
+    .ow_tx_all_done   (w_fft_uart_tx_done)
+);
 xfft_0 xfft_0_inst(
     .aclk                        (clk_100M                       ) ,
     .s_axis_config_tdata         (ow_fft_config_tdata            ) ,
@@ -574,21 +610,85 @@ IOBUF IOBUF_inst_FMC_RES1(
     .T  (ow_FMC_RES_T[1])   // 1-bit input: 3-state enable input
 );
 
-vio_FMC vio_FMC_inst (
-    .clk        (clk_100M       ) , // input wire clk
-    .probe_in0  (iw_FMC_PRSNT   ) , // input wire [0 : 0] probe_in0
-    .probe_in1  (iw_FMC_PG_M2C  ) , // input wire [0 : 0] probe_in1
-    .probe_in2  (iw_FMC_PG_C2M  ) , // input wire [0 : 0] probe_in2
-    .probe_in3  (iw_FMC_RES     ) , // input wire [1 : 0] probe_in3
+// vio_FMC vio_FMC_inst (
+//     .clk        (clk_100M       ) , // input wire clk
+//     .probe_in0  (iw_FMC_PRSNT   ) , // input wire [0 : 0] probe_in0
+//     .probe_in1  (iw_FMC_PG_M2C  ) , // input wire [0 : 0] probe_in1
+//     .probe_in2  (iw_FMC_PG_C2M  ) , // input wire [0 : 0] probe_in2
+//     .probe_in3  (iw_FMC_RES     ) , // input wire [1 : 0] probe_in3
     
-    .probe_out0 (ow_FMC_PRSNT_T  ) , // output wire [0 : 0] probe_out0
-    .probe_out1 (ow_FMC_PRSNT    ) , // output wire [0 : 0] probe_out1
-    .probe_out2 (ow_FMC_PG_M2C_T ) , // output wire [0 : 0] probe_out2
-    .probe_out3 (ow_FMC_PG_M2C   ) , // output wire [0 : 0] probe_out3
-    .probe_out4 (ow_FMC_PG_C2M_T ) , // output wire [0 : 0] probe_out4
-    .probe_out5 (ow_FMC_PG_C2M   ) , // output wire [0 : 0] probe_out5
-    .probe_out6 (ow_FMC_RES_T    ) , // output wire [1 : 0] probe_out6
-    .probe_out7 (ow_FMC_RES      )   // output wire [1 : 0] probe_out7
-);
+//     .probe_out0 (ow_FMC_PRSNT_T  ) , // output wire [0 : 0] probe_out0
+//     .probe_out1 (ow_FMC_PRSNT    ) , // output wire [0 : 0] probe_out1
+//     .probe_out2 (ow_FMC_PG_M2C_T ) , // output wire [0 : 0] probe_out2
+//     .probe_out3 (ow_FMC_PG_M2C   ) , // output wire [0 : 0] probe_out3
+//     .probe_out4 (ow_FMC_PG_C2M_T ) , // output wire [0 : 0] probe_out4
+//     .probe_out5 (ow_FMC_PG_C2M   ) , // output wire [0 : 0] probe_out5
+//     .probe_out6 (ow_FMC_RES_T    ) , // output wire [1 : 0] probe_out6
+//     .probe_out7 (ow_FMC_RES      )   // output wire [1 : 0] probe_out7
+// );
+// ============================================================
+// FFT Debug VIO
+// ============================================================
 
+wire w_vio_fft_start;
+wire w_vio_tx_start;
+wire w_vio_clear;
+reg r_vio_tx_start_d;
+
+always @(posedge clk_100M) begin
+    if (ow_100M_rst) begin
+        r_vio_tx_start_d <= 1'b0;
+    end
+    else begin
+        r_vio_tx_start_d <= w_vio_tx_start;
+    end
+end
+
+wire w_vio_tx_start_pulse;
+
+assign w_vio_tx_start_pulse =
+    w_vio_tx_start & ~r_vio_tx_start_d;
+vio_fft_debug vio_fft_debug_inst (
+    .clk        (clk_100M),
+
+    .probe_out0 (w_vio_fft_start),
+    .probe_out1 (w_vio_tx_start),
+    .probe_out2 (w_vio_clear)
+);
+// ============================================================
+// FFT / UART Debug ILA
+// ============================================================
+// ============================================================
+// FFT / UART Debug ILA
+// 用于检查：UART接收 → FFT输入 → FFT输出 → UART发送
+// ============================================================
+
+ila_fft_debug ila_fft_debug_inst (
+    .clk    (clk_100M),
+
+    // ---------------- UART RX ----------------
+    .probe0 (ow_uart_rx_data_rdy),         // [0:0]  RX一帧完成
+    .probe1 (ow_uart_rx_num),              // [6:0]  RX帧字节数，应为64
+
+    // ---------------- FFT Input ----------------
+    .probe2 (w_debug_fft_input_count),     // [12:0] 已接收总采样点数
+    .probe3 (w_debug_fft_input_index),     // [11:0] FFT输入点Index
+
+    .probe4 (ow_fft_data_tvalid),          // [0:0]  FFT输入Valid
+    .probe5 (iw_fft_data_tready),          // [0:0]  FFT输入Ready
+    .probe6 (ow_fft_data_tlast),           // [0:0]  第4096点拉高
+
+    .probe7 (ow_fft_data_tdata),           // [31:0] ★ FFT实际输入数据
+
+    // ---------------- FFT Output ----------------
+    .probe8 (w_debug_fft_output_index),    // [11:0] FFT输出Index
+    .probe9 (iw_fft_data_tvalid),          // [0:0]  FFT输出Valid
+    .probe10(iw_fft_data_tlast),           // [0:0]  FFT输出Last
+    .probe11(iw_fft_data_tdata),           // [31:0] FFT输出Real/Imag
+
+    // ---------------- UART TX ----------------
+    .probe12(w_debug_tx_frame_index),      // [5:0]  TX帧Index 0~31
+    .probe13(w_fft_rd_addr),               // [11:0] FFT结果RAM读取地址
+    .probe14(ow_uart_tx_done)              // [0:0]  UART发送完成
+);
 endmodule

@@ -9,8 +9,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module uart_fft_bridge_module(
-    input             iw_sys_clk,
-    input             iw_sys_rst,
+    input                [  11: 0]             iw_fft_rd_addr                ,
+    output reg           [  15: 0]             or_fft_rd_real                ,
+    output reg           [  15: 0]             or_fft_rd_imag                ,
+    input                                      iw_sys_clk                    ,
+    input                                      iw_sys_rst                    ,
+
+    output [12:0] ow_debug_fft_input_count,
+output [11:0] ow_debug_fft_input_index,
+output [11:0] ow_debug_fft_output_index,
 
     input             iw_uart_rx_valid,
     input  [511:0]    iw_uart_rx_data,
@@ -240,5 +247,12 @@ always @(posedge iw_sys_clk) begin
         end
     end
 end
+always @(posedge iw_sys_clk) begin
+    or_fft_rd_real <= r_fft_real_mem[iw_fft_rd_addr];
+    or_fft_rd_imag <= r_fft_imag_mem[iw_fft_rd_addr];
+end
 
+assign ow_debug_fft_input_count  = r_fft_input_count;
+assign ow_debug_fft_input_index  = r_fft_input_index;
+assign ow_debug_fft_output_index = r_fft_output_index;
 endmodule
