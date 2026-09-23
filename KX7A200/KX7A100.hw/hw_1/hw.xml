@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.        -->
 
 <hwsession version="1" minor="2">
-  <device name="xc7a200t_0" gui_info="dashboard1=hw_vios[xc7a200t_0/hw_vio_1=VIO_PROBES_1;xc7a200t_0/hw_vio_2=VIO_PROBES_2;]"/>
+  <device name="xc7a200t_0" gui_info="dashboard1=hw_vios[xc7a200t_0/hw_vio_1=VIO_PROBES_1;xc7a200t_0/hw_vio_2=VIO_PROBES_2;],dashboard2=hw_ila_1[xc7a200t_0/hw_ila_1/Status=ILA_STATUS_1;xc7a200t_0/hw_ila_1/Trigger Setup=ILA_TRIGGER_1;xc7a200t_0/hw_ila_1/Settings=ILA_SETTINGS_1;xc7a200t_0/hw_ila_1/Capture Setup=ILA_CAPTURE_1;xc7a200t_0/hw_ila_1/Waveform=ILA_WAVE_1;],dashboard3=hw_ila_2[xc7a200t_0/hw_ila_2/Status=ILA_STATUS_1;xc7a200t_0/hw_ila_2/Capture Setup=ILA_CAPTURE_1;xc7a200t_0/hw_ila_2/Settings=ILA_SETTINGS_1;xc7a200t_0/hw_ila_2/Trigger Setup=ILA_TRIGGER_1;xc7a200t_0/hw_ila_2/Waveform=ILA_WAVE_1;],dashboard4=hw_ila_3[xc7a200t_0/hw_ila_3/Waveform=ILA_WAVE_1;xc7a200t_0/hw_ila_3/Status=ILA_STATUS_1;xc7a200t_0/hw_ila_3/Capture Setup=ILA_CAPTURE_1;xc7a200t_0/hw_ila_3/Settings=ILA_SETTINGS_1;xc7a200t_0/hw_ila_3/Trigger Setup=ILA_TRIGGER_1;],dashboard5=hw_ila_4[xc7a200t_0/hw_ila_4/Settings=ILA_SETTINGS_1;xc7a200t_0/hw_ila_4/Waveform=ILA_WAVE_1;xc7a200t_0/hw_ila_4/Capture Setup=ILA_CAPTURE_1;xc7a200t_0/hw_ila_4/Status=ILA_STATUS_1;xc7a200t_0/hw_ila_4/Trigger Setup=ILA_TRIGGER_1;]"/>
   <ObjectList object_type="hw_device" gui_info="">
     <Object name="xc7a200t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/top.ltx"/>
@@ -14,19 +14,2992 @@
     </Object>
   </ObjectList>
   <ObjectList object_type="hw_ila" gui_info="">
+    <Object name="ila_eth_debug_inst" gui_info="">
+      <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
+    </Object>
+    <Object name="ila_eth_rx_inst" gui_info="">
+      <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
+    </Object>
+    <Object name="ila_eth_system_inst" gui_info="">
+      <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
+    </Object>
     <Object name="ila_fft_debug_inst" gui_info="">
       <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
       <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
     </Object>
+    <Object name="u_ila_0" gui_info="">
+      <Properties Property="CONTROL.DATA_DEPTH" value="64"/>
+      <Properties Property="CONTROL.TRIGGER_CONDITION" value="OR"/>
+      <Properties Property="CONTROL.TRIGGER_POSITION" value="32"/>
+      <Properties Property="CONTROL.WINDOW_COUNT" value="16"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
+    </Object>
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
+    <Object name="dbg_ddr_rd_valid_r" gui_info=""/>
+    <Object name="dbg_ddr_wr_ready_r" gui_info=""/>
+    <Object name="dbg_ddr_wr_valid_r" gui_info="Trigger Setup=0"/>
+    <Object name="dbg_eth_tx_valid_r" gui_info="Trigger Setup=0"/>
+    <Object name="dbg_rgmii_rx_ctl_r" gui_info="Trigger Setup=0"/>
+    <Object name="dbg_test_rdata_pre_en" gui_info=""/>
+    <Object name="dbg_udp_valid_r" gui_info=""/>
+    <Object name="dbg_user_cmd_valid_r" gui_info=""/>
     <Object name="dna_module_inst/ow_dna[56:0]" gui_info="hw_vios/hw_vio_1=0"/>
-    <Object name="ow_fft_data_tvalid" gui_info="Trigger Setup=0"/>
+    <Object name="ow_fft_data_tvalid" gui_info=""/>
+    <Object name="ow_uart_rx_data_rdy" gui_info="Trigger Setup=0"/>
     <Object name="w_vio_clear" gui_info="hw_vios/hw_vio_1=1"/>
     <Object name="w_vio_fft_start" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="w_vio_tx_start" gui_info="hw_vios/hw_vio_1=3"/>
   </ObjectList>
   <probeset name="hw project" active="false">
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe7[511:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_ddr_rd_data_r[511]"/>
+        <net name="dbg_ddr_rd_data_r[510]"/>
+        <net name="dbg_ddr_rd_data_r[509]"/>
+        <net name="dbg_ddr_rd_data_r[508]"/>
+        <net name="dbg_ddr_rd_data_r[507]"/>
+        <net name="dbg_ddr_rd_data_r[506]"/>
+        <net name="dbg_ddr_rd_data_r[505]"/>
+        <net name="dbg_ddr_rd_data_r[504]"/>
+        <net name="dbg_ddr_rd_data_r[503]"/>
+        <net name="dbg_ddr_rd_data_r[502]"/>
+        <net name="dbg_ddr_rd_data_r[501]"/>
+        <net name="dbg_ddr_rd_data_r[500]"/>
+        <net name="dbg_ddr_rd_data_r[499]"/>
+        <net name="dbg_ddr_rd_data_r[498]"/>
+        <net name="dbg_ddr_rd_data_r[497]"/>
+        <net name="dbg_ddr_rd_data_r[496]"/>
+        <net name="dbg_ddr_rd_data_r[495]"/>
+        <net name="dbg_ddr_rd_data_r[494]"/>
+        <net name="dbg_ddr_rd_data_r[493]"/>
+        <net name="dbg_ddr_rd_data_r[492]"/>
+        <net name="dbg_ddr_rd_data_r[491]"/>
+        <net name="dbg_ddr_rd_data_r[490]"/>
+        <net name="dbg_ddr_rd_data_r[489]"/>
+        <net name="dbg_ddr_rd_data_r[488]"/>
+        <net name="dbg_ddr_rd_data_r[487]"/>
+        <net name="dbg_ddr_rd_data_r[486]"/>
+        <net name="dbg_ddr_rd_data_r[485]"/>
+        <net name="dbg_ddr_rd_data_r[484]"/>
+        <net name="dbg_ddr_rd_data_r[483]"/>
+        <net name="dbg_ddr_rd_data_r[482]"/>
+        <net name="dbg_ddr_rd_data_r[481]"/>
+        <net name="dbg_ddr_rd_data_r[480]"/>
+        <net name="dbg_ddr_rd_data_r[479]"/>
+        <net name="dbg_ddr_rd_data_r[478]"/>
+        <net name="dbg_ddr_rd_data_r[477]"/>
+        <net name="dbg_ddr_rd_data_r[476]"/>
+        <net name="dbg_ddr_rd_data_r[475]"/>
+        <net name="dbg_ddr_rd_data_r[474]"/>
+        <net name="dbg_ddr_rd_data_r[473]"/>
+        <net name="dbg_ddr_rd_data_r[472]"/>
+        <net name="dbg_ddr_rd_data_r[471]"/>
+        <net name="dbg_ddr_rd_data_r[470]"/>
+        <net name="dbg_ddr_rd_data_r[469]"/>
+        <net name="dbg_ddr_rd_data_r[468]"/>
+        <net name="dbg_ddr_rd_data_r[467]"/>
+        <net name="dbg_ddr_rd_data_r[466]"/>
+        <net name="dbg_ddr_rd_data_r[465]"/>
+        <net name="dbg_ddr_rd_data_r[464]"/>
+        <net name="dbg_ddr_rd_data_r[463]"/>
+        <net name="dbg_ddr_rd_data_r[462]"/>
+        <net name="dbg_ddr_rd_data_r[461]"/>
+        <net name="dbg_ddr_rd_data_r[460]"/>
+        <net name="dbg_ddr_rd_data_r[459]"/>
+        <net name="dbg_ddr_rd_data_r[458]"/>
+        <net name="dbg_ddr_rd_data_r[457]"/>
+        <net name="dbg_ddr_rd_data_r[456]"/>
+        <net name="dbg_ddr_rd_data_r[455]"/>
+        <net name="dbg_ddr_rd_data_r[454]"/>
+        <net name="dbg_ddr_rd_data_r[453]"/>
+        <net name="dbg_ddr_rd_data_r[452]"/>
+        <net name="dbg_ddr_rd_data_r[451]"/>
+        <net name="dbg_ddr_rd_data_r[450]"/>
+        <net name="dbg_ddr_rd_data_r[449]"/>
+        <net name="dbg_ddr_rd_data_r[448]"/>
+        <net name="dbg_ddr_rd_data_r[447]"/>
+        <net name="dbg_ddr_rd_data_r[446]"/>
+        <net name="dbg_ddr_rd_data_r[445]"/>
+        <net name="dbg_ddr_rd_data_r[444]"/>
+        <net name="dbg_ddr_rd_data_r[443]"/>
+        <net name="dbg_ddr_rd_data_r[442]"/>
+        <net name="dbg_ddr_rd_data_r[441]"/>
+        <net name="dbg_ddr_rd_data_r[440]"/>
+        <net name="dbg_ddr_rd_data_r[439]"/>
+        <net name="dbg_ddr_rd_data_r[438]"/>
+        <net name="dbg_ddr_rd_data_r[437]"/>
+        <net name="dbg_ddr_rd_data_r[436]"/>
+        <net name="dbg_ddr_rd_data_r[435]"/>
+        <net name="dbg_ddr_rd_data_r[434]"/>
+        <net name="dbg_ddr_rd_data_r[433]"/>
+        <net name="dbg_ddr_rd_data_r[432]"/>
+        <net name="dbg_ddr_rd_data_r[431]"/>
+        <net name="dbg_ddr_rd_data_r[430]"/>
+        <net name="dbg_ddr_rd_data_r[429]"/>
+        <net name="dbg_ddr_rd_data_r[428]"/>
+        <net name="dbg_ddr_rd_data_r[427]"/>
+        <net name="dbg_ddr_rd_data_r[426]"/>
+        <net name="dbg_ddr_rd_data_r[425]"/>
+        <net name="dbg_ddr_rd_data_r[424]"/>
+        <net name="dbg_ddr_rd_data_r[423]"/>
+        <net name="dbg_ddr_rd_data_r[422]"/>
+        <net name="dbg_ddr_rd_data_r[421]"/>
+        <net name="dbg_ddr_rd_data_r[420]"/>
+        <net name="dbg_ddr_rd_data_r[419]"/>
+        <net name="dbg_ddr_rd_data_r[418]"/>
+        <net name="dbg_ddr_rd_data_r[417]"/>
+        <net name="dbg_ddr_rd_data_r[416]"/>
+        <net name="dbg_ddr_rd_data_r[415]"/>
+        <net name="dbg_ddr_rd_data_r[414]"/>
+        <net name="dbg_ddr_rd_data_r[413]"/>
+        <net name="dbg_ddr_rd_data_r[412]"/>
+        <net name="dbg_ddr_rd_data_r[411]"/>
+        <net name="dbg_ddr_rd_data_r[410]"/>
+        <net name="dbg_ddr_rd_data_r[409]"/>
+        <net name="dbg_ddr_rd_data_r[408]"/>
+        <net name="dbg_ddr_rd_data_r[407]"/>
+        <net name="dbg_ddr_rd_data_r[406]"/>
+        <net name="dbg_ddr_rd_data_r[405]"/>
+        <net name="dbg_ddr_rd_data_r[404]"/>
+        <net name="dbg_ddr_rd_data_r[403]"/>
+        <net name="dbg_ddr_rd_data_r[402]"/>
+        <net name="dbg_ddr_rd_data_r[401]"/>
+        <net name="dbg_ddr_rd_data_r[400]"/>
+        <net name="dbg_ddr_rd_data_r[399]"/>
+        <net name="dbg_ddr_rd_data_r[398]"/>
+        <net name="dbg_ddr_rd_data_r[397]"/>
+        <net name="dbg_ddr_rd_data_r[396]"/>
+        <net name="dbg_ddr_rd_data_r[395]"/>
+        <net name="dbg_ddr_rd_data_r[394]"/>
+        <net name="dbg_ddr_rd_data_r[393]"/>
+        <net name="dbg_ddr_rd_data_r[392]"/>
+        <net name="dbg_ddr_rd_data_r[391]"/>
+        <net name="dbg_ddr_rd_data_r[390]"/>
+        <net name="dbg_ddr_rd_data_r[389]"/>
+        <net name="dbg_ddr_rd_data_r[388]"/>
+        <net name="dbg_ddr_rd_data_r[387]"/>
+        <net name="dbg_ddr_rd_data_r[386]"/>
+        <net name="dbg_ddr_rd_data_r[385]"/>
+        <net name="dbg_ddr_rd_data_r[384]"/>
+        <net name="dbg_ddr_rd_data_r[383]"/>
+        <net name="dbg_ddr_rd_data_r[382]"/>
+        <net name="dbg_ddr_rd_data_r[381]"/>
+        <net name="dbg_ddr_rd_data_r[380]"/>
+        <net name="dbg_ddr_rd_data_r[379]"/>
+        <net name="dbg_ddr_rd_data_r[378]"/>
+        <net name="dbg_ddr_rd_data_r[377]"/>
+        <net name="dbg_ddr_rd_data_r[376]"/>
+        <net name="dbg_ddr_rd_data_r[375]"/>
+        <net name="dbg_ddr_rd_data_r[374]"/>
+        <net name="dbg_ddr_rd_data_r[373]"/>
+        <net name="dbg_ddr_rd_data_r[372]"/>
+        <net name="dbg_ddr_rd_data_r[371]"/>
+        <net name="dbg_ddr_rd_data_r[370]"/>
+        <net name="dbg_ddr_rd_data_r[369]"/>
+        <net name="dbg_ddr_rd_data_r[368]"/>
+        <net name="dbg_ddr_rd_data_r[367]"/>
+        <net name="dbg_ddr_rd_data_r[366]"/>
+        <net name="dbg_ddr_rd_data_r[365]"/>
+        <net name="dbg_ddr_rd_data_r[364]"/>
+        <net name="dbg_ddr_rd_data_r[363]"/>
+        <net name="dbg_ddr_rd_data_r[362]"/>
+        <net name="dbg_ddr_rd_data_r[361]"/>
+        <net name="dbg_ddr_rd_data_r[360]"/>
+        <net name="dbg_ddr_rd_data_r[359]"/>
+        <net name="dbg_ddr_rd_data_r[358]"/>
+        <net name="dbg_ddr_rd_data_r[357]"/>
+        <net name="dbg_ddr_rd_data_r[356]"/>
+        <net name="dbg_ddr_rd_data_r[355]"/>
+        <net name="dbg_ddr_rd_data_r[354]"/>
+        <net name="dbg_ddr_rd_data_r[353]"/>
+        <net name="dbg_ddr_rd_data_r[352]"/>
+        <net name="dbg_ddr_rd_data_r[351]"/>
+        <net name="dbg_ddr_rd_data_r[350]"/>
+        <net name="dbg_ddr_rd_data_r[349]"/>
+        <net name="dbg_ddr_rd_data_r[348]"/>
+        <net name="dbg_ddr_rd_data_r[347]"/>
+        <net name="dbg_ddr_rd_data_r[346]"/>
+        <net name="dbg_ddr_rd_data_r[345]"/>
+        <net name="dbg_ddr_rd_data_r[344]"/>
+        <net name="dbg_ddr_rd_data_r[343]"/>
+        <net name="dbg_ddr_rd_data_r[342]"/>
+        <net name="dbg_ddr_rd_data_r[341]"/>
+        <net name="dbg_ddr_rd_data_r[340]"/>
+        <net name="dbg_ddr_rd_data_r[339]"/>
+        <net name="dbg_ddr_rd_data_r[338]"/>
+        <net name="dbg_ddr_rd_data_r[337]"/>
+        <net name="dbg_ddr_rd_data_r[336]"/>
+        <net name="dbg_ddr_rd_data_r[335]"/>
+        <net name="dbg_ddr_rd_data_r[334]"/>
+        <net name="dbg_ddr_rd_data_r[333]"/>
+        <net name="dbg_ddr_rd_data_r[332]"/>
+        <net name="dbg_ddr_rd_data_r[331]"/>
+        <net name="dbg_ddr_rd_data_r[330]"/>
+        <net name="dbg_ddr_rd_data_r[329]"/>
+        <net name="dbg_ddr_rd_data_r[328]"/>
+        <net name="dbg_ddr_rd_data_r[327]"/>
+        <net name="dbg_ddr_rd_data_r[326]"/>
+        <net name="dbg_ddr_rd_data_r[325]"/>
+        <net name="dbg_ddr_rd_data_r[324]"/>
+        <net name="dbg_ddr_rd_data_r[323]"/>
+        <net name="dbg_ddr_rd_data_r[322]"/>
+        <net name="dbg_ddr_rd_data_r[321]"/>
+        <net name="dbg_ddr_rd_data_r[320]"/>
+        <net name="dbg_ddr_rd_data_r[319]"/>
+        <net name="dbg_ddr_rd_data_r[318]"/>
+        <net name="dbg_ddr_rd_data_r[317]"/>
+        <net name="dbg_ddr_rd_data_r[316]"/>
+        <net name="dbg_ddr_rd_data_r[315]"/>
+        <net name="dbg_ddr_rd_data_r[314]"/>
+        <net name="dbg_ddr_rd_data_r[313]"/>
+        <net name="dbg_ddr_rd_data_r[312]"/>
+        <net name="dbg_ddr_rd_data_r[311]"/>
+        <net name="dbg_ddr_rd_data_r[310]"/>
+        <net name="dbg_ddr_rd_data_r[309]"/>
+        <net name="dbg_ddr_rd_data_r[308]"/>
+        <net name="dbg_ddr_rd_data_r[307]"/>
+        <net name="dbg_ddr_rd_data_r[306]"/>
+        <net name="dbg_ddr_rd_data_r[305]"/>
+        <net name="dbg_ddr_rd_data_r[304]"/>
+        <net name="dbg_ddr_rd_data_r[303]"/>
+        <net name="dbg_ddr_rd_data_r[302]"/>
+        <net name="dbg_ddr_rd_data_r[301]"/>
+        <net name="dbg_ddr_rd_data_r[300]"/>
+        <net name="dbg_ddr_rd_data_r[299]"/>
+        <net name="dbg_ddr_rd_data_r[298]"/>
+        <net name="dbg_ddr_rd_data_r[297]"/>
+        <net name="dbg_ddr_rd_data_r[296]"/>
+        <net name="dbg_ddr_rd_data_r[295]"/>
+        <net name="dbg_ddr_rd_data_r[294]"/>
+        <net name="dbg_ddr_rd_data_r[293]"/>
+        <net name="dbg_ddr_rd_data_r[292]"/>
+        <net name="dbg_ddr_rd_data_r[291]"/>
+        <net name="dbg_ddr_rd_data_r[290]"/>
+        <net name="dbg_ddr_rd_data_r[289]"/>
+        <net name="dbg_ddr_rd_data_r[288]"/>
+        <net name="dbg_ddr_rd_data_r[287]"/>
+        <net name="dbg_ddr_rd_data_r[286]"/>
+        <net name="dbg_ddr_rd_data_r[285]"/>
+        <net name="dbg_ddr_rd_data_r[284]"/>
+        <net name="dbg_ddr_rd_data_r[283]"/>
+        <net name="dbg_ddr_rd_data_r[282]"/>
+        <net name="dbg_ddr_rd_data_r[281]"/>
+        <net name="dbg_ddr_rd_data_r[280]"/>
+        <net name="dbg_ddr_rd_data_r[279]"/>
+        <net name="dbg_ddr_rd_data_r[278]"/>
+        <net name="dbg_ddr_rd_data_r[277]"/>
+        <net name="dbg_ddr_rd_data_r[276]"/>
+        <net name="dbg_ddr_rd_data_r[275]"/>
+        <net name="dbg_ddr_rd_data_r[274]"/>
+        <net name="dbg_ddr_rd_data_r[273]"/>
+        <net name="dbg_ddr_rd_data_r[272]"/>
+        <net name="dbg_ddr_rd_data_r[271]"/>
+        <net name="dbg_ddr_rd_data_r[270]"/>
+        <net name="dbg_ddr_rd_data_r[269]"/>
+        <net name="dbg_ddr_rd_data_r[268]"/>
+        <net name="dbg_ddr_rd_data_r[267]"/>
+        <net name="dbg_ddr_rd_data_r[266]"/>
+        <net name="dbg_ddr_rd_data_r[265]"/>
+        <net name="dbg_ddr_rd_data_r[264]"/>
+        <net name="dbg_ddr_rd_data_r[263]"/>
+        <net name="dbg_ddr_rd_data_r[262]"/>
+        <net name="dbg_ddr_rd_data_r[261]"/>
+        <net name="dbg_ddr_rd_data_r[260]"/>
+        <net name="dbg_ddr_rd_data_r[259]"/>
+        <net name="dbg_ddr_rd_data_r[258]"/>
+        <net name="dbg_ddr_rd_data_r[257]"/>
+        <net name="dbg_ddr_rd_data_r[256]"/>
+        <net name="dbg_ddr_rd_data_r[255]"/>
+        <net name="dbg_ddr_rd_data_r[254]"/>
+        <net name="dbg_ddr_rd_data_r[253]"/>
+        <net name="dbg_ddr_rd_data_r[252]"/>
+        <net name="dbg_ddr_rd_data_r[251]"/>
+        <net name="dbg_ddr_rd_data_r[250]"/>
+        <net name="dbg_ddr_rd_data_r[249]"/>
+        <net name="dbg_ddr_rd_data_r[248]"/>
+        <net name="dbg_ddr_rd_data_r[247]"/>
+        <net name="dbg_ddr_rd_data_r[246]"/>
+        <net name="dbg_ddr_rd_data_r[245]"/>
+        <net name="dbg_ddr_rd_data_r[244]"/>
+        <net name="dbg_ddr_rd_data_r[243]"/>
+        <net name="dbg_ddr_rd_data_r[242]"/>
+        <net name="dbg_ddr_rd_data_r[241]"/>
+        <net name="dbg_ddr_rd_data_r[240]"/>
+        <net name="dbg_ddr_rd_data_r[239]"/>
+        <net name="dbg_ddr_rd_data_r[238]"/>
+        <net name="dbg_ddr_rd_data_r[237]"/>
+        <net name="dbg_ddr_rd_data_r[236]"/>
+        <net name="dbg_ddr_rd_data_r[235]"/>
+        <net name="dbg_ddr_rd_data_r[234]"/>
+        <net name="dbg_ddr_rd_data_r[233]"/>
+        <net name="dbg_ddr_rd_data_r[232]"/>
+        <net name="dbg_ddr_rd_data_r[231]"/>
+        <net name="dbg_ddr_rd_data_r[230]"/>
+        <net name="dbg_ddr_rd_data_r[229]"/>
+        <net name="dbg_ddr_rd_data_r[228]"/>
+        <net name="dbg_ddr_rd_data_r[227]"/>
+        <net name="dbg_ddr_rd_data_r[226]"/>
+        <net name="dbg_ddr_rd_data_r[225]"/>
+        <net name="dbg_ddr_rd_data_r[224]"/>
+        <net name="dbg_ddr_rd_data_r[223]"/>
+        <net name="dbg_ddr_rd_data_r[222]"/>
+        <net name="dbg_ddr_rd_data_r[221]"/>
+        <net name="dbg_ddr_rd_data_r[220]"/>
+        <net name="dbg_ddr_rd_data_r[219]"/>
+        <net name="dbg_ddr_rd_data_r[218]"/>
+        <net name="dbg_ddr_rd_data_r[217]"/>
+        <net name="dbg_ddr_rd_data_r[216]"/>
+        <net name="dbg_ddr_rd_data_r[215]"/>
+        <net name="dbg_ddr_rd_data_r[214]"/>
+        <net name="dbg_ddr_rd_data_r[213]"/>
+        <net name="dbg_ddr_rd_data_r[212]"/>
+        <net name="dbg_ddr_rd_data_r[211]"/>
+        <net name="dbg_ddr_rd_data_r[210]"/>
+        <net name="dbg_ddr_rd_data_r[209]"/>
+        <net name="dbg_ddr_rd_data_r[208]"/>
+        <net name="dbg_ddr_rd_data_r[207]"/>
+        <net name="dbg_ddr_rd_data_r[206]"/>
+        <net name="dbg_ddr_rd_data_r[205]"/>
+        <net name="dbg_ddr_rd_data_r[204]"/>
+        <net name="dbg_ddr_rd_data_r[203]"/>
+        <net name="dbg_ddr_rd_data_r[202]"/>
+        <net name="dbg_ddr_rd_data_r[201]"/>
+        <net name="dbg_ddr_rd_data_r[200]"/>
+        <net name="dbg_ddr_rd_data_r[199]"/>
+        <net name="dbg_ddr_rd_data_r[198]"/>
+        <net name="dbg_ddr_rd_data_r[197]"/>
+        <net name="dbg_ddr_rd_data_r[196]"/>
+        <net name="dbg_ddr_rd_data_r[195]"/>
+        <net name="dbg_ddr_rd_data_r[194]"/>
+        <net name="dbg_ddr_rd_data_r[193]"/>
+        <net name="dbg_ddr_rd_data_r[192]"/>
+        <net name="dbg_ddr_rd_data_r[191]"/>
+        <net name="dbg_ddr_rd_data_r[190]"/>
+        <net name="dbg_ddr_rd_data_r[189]"/>
+        <net name="dbg_ddr_rd_data_r[188]"/>
+        <net name="dbg_ddr_rd_data_r[187]"/>
+        <net name="dbg_ddr_rd_data_r[186]"/>
+        <net name="dbg_ddr_rd_data_r[185]"/>
+        <net name="dbg_ddr_rd_data_r[184]"/>
+        <net name="dbg_ddr_rd_data_r[183]"/>
+        <net name="dbg_ddr_rd_data_r[182]"/>
+        <net name="dbg_ddr_rd_data_r[181]"/>
+        <net name="dbg_ddr_rd_data_r[180]"/>
+        <net name="dbg_ddr_rd_data_r[179]"/>
+        <net name="dbg_ddr_rd_data_r[178]"/>
+        <net name="dbg_ddr_rd_data_r[177]"/>
+        <net name="dbg_ddr_rd_data_r[176]"/>
+        <net name="dbg_ddr_rd_data_r[175]"/>
+        <net name="dbg_ddr_rd_data_r[174]"/>
+        <net name="dbg_ddr_rd_data_r[173]"/>
+        <net name="dbg_ddr_rd_data_r[172]"/>
+        <net name="dbg_ddr_rd_data_r[171]"/>
+        <net name="dbg_ddr_rd_data_r[170]"/>
+        <net name="dbg_ddr_rd_data_r[169]"/>
+        <net name="dbg_ddr_rd_data_r[168]"/>
+        <net name="dbg_ddr_rd_data_r[167]"/>
+        <net name="dbg_ddr_rd_data_r[166]"/>
+        <net name="dbg_ddr_rd_data_r[165]"/>
+        <net name="dbg_ddr_rd_data_r[164]"/>
+        <net name="dbg_ddr_rd_data_r[163]"/>
+        <net name="dbg_ddr_rd_data_r[162]"/>
+        <net name="dbg_ddr_rd_data_r[161]"/>
+        <net name="dbg_ddr_rd_data_r[160]"/>
+        <net name="dbg_ddr_rd_data_r[159]"/>
+        <net name="dbg_ddr_rd_data_r[158]"/>
+        <net name="dbg_ddr_rd_data_r[157]"/>
+        <net name="dbg_ddr_rd_data_r[156]"/>
+        <net name="dbg_ddr_rd_data_r[155]"/>
+        <net name="dbg_ddr_rd_data_r[154]"/>
+        <net name="dbg_ddr_rd_data_r[153]"/>
+        <net name="dbg_ddr_rd_data_r[152]"/>
+        <net name="dbg_ddr_rd_data_r[151]"/>
+        <net name="dbg_ddr_rd_data_r[150]"/>
+        <net name="dbg_ddr_rd_data_r[149]"/>
+        <net name="dbg_ddr_rd_data_r[148]"/>
+        <net name="dbg_ddr_rd_data_r[147]"/>
+        <net name="dbg_ddr_rd_data_r[146]"/>
+        <net name="dbg_ddr_rd_data_r[145]"/>
+        <net name="dbg_ddr_rd_data_r[144]"/>
+        <net name="dbg_ddr_rd_data_r[143]"/>
+        <net name="dbg_ddr_rd_data_r[142]"/>
+        <net name="dbg_ddr_rd_data_r[141]"/>
+        <net name="dbg_ddr_rd_data_r[140]"/>
+        <net name="dbg_ddr_rd_data_r[139]"/>
+        <net name="dbg_ddr_rd_data_r[138]"/>
+        <net name="dbg_ddr_rd_data_r[137]"/>
+        <net name="dbg_ddr_rd_data_r[136]"/>
+        <net name="dbg_ddr_rd_data_r[135]"/>
+        <net name="dbg_ddr_rd_data_r[134]"/>
+        <net name="dbg_ddr_rd_data_r[133]"/>
+        <net name="dbg_ddr_rd_data_r[132]"/>
+        <net name="dbg_ddr_rd_data_r[131]"/>
+        <net name="dbg_ddr_rd_data_r[130]"/>
+        <net name="dbg_ddr_rd_data_r[129]"/>
+        <net name="dbg_ddr_rd_data_r[128]"/>
+        <net name="dbg_ddr_rd_data_r[127]"/>
+        <net name="dbg_ddr_rd_data_r[126]"/>
+        <net name="dbg_ddr_rd_data_r[125]"/>
+        <net name="dbg_ddr_rd_data_r[124]"/>
+        <net name="dbg_ddr_rd_data_r[123]"/>
+        <net name="dbg_ddr_rd_data_r[122]"/>
+        <net name="dbg_ddr_rd_data_r[121]"/>
+        <net name="dbg_ddr_rd_data_r[120]"/>
+        <net name="dbg_ddr_rd_data_r[119]"/>
+        <net name="dbg_ddr_rd_data_r[118]"/>
+        <net name="dbg_ddr_rd_data_r[117]"/>
+        <net name="dbg_ddr_rd_data_r[116]"/>
+        <net name="dbg_ddr_rd_data_r[115]"/>
+        <net name="dbg_ddr_rd_data_r[114]"/>
+        <net name="dbg_ddr_rd_data_r[113]"/>
+        <net name="dbg_ddr_rd_data_r[112]"/>
+        <net name="dbg_ddr_rd_data_r[111]"/>
+        <net name="dbg_ddr_rd_data_r[110]"/>
+        <net name="dbg_ddr_rd_data_r[109]"/>
+        <net name="dbg_ddr_rd_data_r[108]"/>
+        <net name="dbg_ddr_rd_data_r[107]"/>
+        <net name="dbg_ddr_rd_data_r[106]"/>
+        <net name="dbg_ddr_rd_data_r[105]"/>
+        <net name="dbg_ddr_rd_data_r[104]"/>
+        <net name="dbg_ddr_rd_data_r[103]"/>
+        <net name="dbg_ddr_rd_data_r[102]"/>
+        <net name="dbg_ddr_rd_data_r[101]"/>
+        <net name="dbg_ddr_rd_data_r[100]"/>
+        <net name="dbg_ddr_rd_data_r[99]"/>
+        <net name="dbg_ddr_rd_data_r[98]"/>
+        <net name="dbg_ddr_rd_data_r[97]"/>
+        <net name="dbg_ddr_rd_data_r[96]"/>
+        <net name="dbg_ddr_rd_data_r[95]"/>
+        <net name="dbg_ddr_rd_data_r[94]"/>
+        <net name="dbg_ddr_rd_data_r[93]"/>
+        <net name="dbg_ddr_rd_data_r[92]"/>
+        <net name="dbg_ddr_rd_data_r[91]"/>
+        <net name="dbg_ddr_rd_data_r[90]"/>
+        <net name="dbg_ddr_rd_data_r[89]"/>
+        <net name="dbg_ddr_rd_data_r[88]"/>
+        <net name="dbg_ddr_rd_data_r[87]"/>
+        <net name="dbg_ddr_rd_data_r[86]"/>
+        <net name="dbg_ddr_rd_data_r[85]"/>
+        <net name="dbg_ddr_rd_data_r[84]"/>
+        <net name="dbg_ddr_rd_data_r[83]"/>
+        <net name="dbg_ddr_rd_data_r[82]"/>
+        <net name="dbg_ddr_rd_data_r[81]"/>
+        <net name="dbg_ddr_rd_data_r[80]"/>
+        <net name="dbg_ddr_rd_data_r[79]"/>
+        <net name="dbg_ddr_rd_data_r[78]"/>
+        <net name="dbg_ddr_rd_data_r[77]"/>
+        <net name="dbg_ddr_rd_data_r[76]"/>
+        <net name="dbg_ddr_rd_data_r[75]"/>
+        <net name="dbg_ddr_rd_data_r[74]"/>
+        <net name="dbg_ddr_rd_data_r[73]"/>
+        <net name="dbg_ddr_rd_data_r[72]"/>
+        <net name="dbg_ddr_rd_data_r[71]"/>
+        <net name="dbg_ddr_rd_data_r[70]"/>
+        <net name="dbg_ddr_rd_data_r[69]"/>
+        <net name="dbg_ddr_rd_data_r[68]"/>
+        <net name="dbg_ddr_rd_data_r[67]"/>
+        <net name="dbg_ddr_rd_data_r[66]"/>
+        <net name="dbg_ddr_rd_data_r[65]"/>
+        <net name="dbg_ddr_rd_data_r[64]"/>
+        <net name="dbg_ddr_rd_data_r[63]"/>
+        <net name="dbg_ddr_rd_data_r[62]"/>
+        <net name="dbg_ddr_rd_data_r[61]"/>
+        <net name="dbg_ddr_rd_data_r[60]"/>
+        <net name="dbg_ddr_rd_data_r[59]"/>
+        <net name="dbg_ddr_rd_data_r[58]"/>
+        <net name="dbg_ddr_rd_data_r[57]"/>
+        <net name="dbg_ddr_rd_data_r[56]"/>
+        <net name="dbg_ddr_rd_data_r[55]"/>
+        <net name="dbg_ddr_rd_data_r[54]"/>
+        <net name="dbg_ddr_rd_data_r[53]"/>
+        <net name="dbg_ddr_rd_data_r[52]"/>
+        <net name="dbg_ddr_rd_data_r[51]"/>
+        <net name="dbg_ddr_rd_data_r[50]"/>
+        <net name="dbg_ddr_rd_data_r[49]"/>
+        <net name="dbg_ddr_rd_data_r[48]"/>
+        <net name="dbg_ddr_rd_data_r[47]"/>
+        <net name="dbg_ddr_rd_data_r[46]"/>
+        <net name="dbg_ddr_rd_data_r[45]"/>
+        <net name="dbg_ddr_rd_data_r[44]"/>
+        <net name="dbg_ddr_rd_data_r[43]"/>
+        <net name="dbg_ddr_rd_data_r[42]"/>
+        <net name="dbg_ddr_rd_data_r[41]"/>
+        <net name="dbg_ddr_rd_data_r[40]"/>
+        <net name="dbg_ddr_rd_data_r[39]"/>
+        <net name="dbg_ddr_rd_data_r[38]"/>
+        <net name="dbg_ddr_rd_data_r[37]"/>
+        <net name="dbg_ddr_rd_data_r[36]"/>
+        <net name="dbg_ddr_rd_data_r[35]"/>
+        <net name="dbg_ddr_rd_data_r[34]"/>
+        <net name="dbg_ddr_rd_data_r[33]"/>
+        <net name="dbg_ddr_rd_data_r[32]"/>
+        <net name="dbg_ddr_rd_data_r[31]"/>
+        <net name="dbg_ddr_rd_data_r[30]"/>
+        <net name="dbg_ddr_rd_data_r[29]"/>
+        <net name="dbg_ddr_rd_data_r[28]"/>
+        <net name="dbg_ddr_rd_data_r[27]"/>
+        <net name="dbg_ddr_rd_data_r[26]"/>
+        <net name="dbg_ddr_rd_data_r[25]"/>
+        <net name="dbg_ddr_rd_data_r[24]"/>
+        <net name="dbg_ddr_rd_data_r[23]"/>
+        <net name="dbg_ddr_rd_data_r[22]"/>
+        <net name="dbg_ddr_rd_data_r[21]"/>
+        <net name="dbg_ddr_rd_data_r[20]"/>
+        <net name="dbg_ddr_rd_data_r[19]"/>
+        <net name="dbg_ddr_rd_data_r[18]"/>
+        <net name="dbg_ddr_rd_data_r[17]"/>
+        <net name="dbg_ddr_rd_data_r[16]"/>
+        <net name="dbg_ddr_rd_data_r[15]"/>
+        <net name="dbg_ddr_rd_data_r[14]"/>
+        <net name="dbg_ddr_rd_data_r[13]"/>
+        <net name="dbg_ddr_rd_data_r[12]"/>
+        <net name="dbg_ddr_rd_data_r[11]"/>
+        <net name="dbg_ddr_rd_data_r[10]"/>
+        <net name="dbg_ddr_rd_data_r[9]"/>
+        <net name="dbg_ddr_rd_data_r[8]"/>
+        <net name="dbg_ddr_rd_data_r[7]"/>
+        <net name="dbg_ddr_rd_data_r[6]"/>
+        <net name="dbg_ddr_rd_data_r[5]"/>
+        <net name="dbg_ddr_rd_data_r[4]"/>
+        <net name="dbg_ddr_rd_data_r[3]"/>
+        <net name="dbg_ddr_rd_data_r[2]"/>
+        <net name="dbg_ddr_rd_data_r[1]"/>
+        <net name="dbg_ddr_rd_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe10[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_ddr_rd_ready_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe11[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_ddr_rd_valid_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe0[511:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_ddr_wr_data_r[511]"/>
+        <net name="dbg_ddr_wr_data_r[510]"/>
+        <net name="dbg_ddr_wr_data_r[509]"/>
+        <net name="dbg_ddr_wr_data_r[508]"/>
+        <net name="dbg_ddr_wr_data_r[507]"/>
+        <net name="dbg_ddr_wr_data_r[506]"/>
+        <net name="dbg_ddr_wr_data_r[505]"/>
+        <net name="dbg_ddr_wr_data_r[504]"/>
+        <net name="dbg_ddr_wr_data_r[503]"/>
+        <net name="dbg_ddr_wr_data_r[502]"/>
+        <net name="dbg_ddr_wr_data_r[501]"/>
+        <net name="dbg_ddr_wr_data_r[500]"/>
+        <net name="dbg_ddr_wr_data_r[499]"/>
+        <net name="dbg_ddr_wr_data_r[498]"/>
+        <net name="dbg_ddr_wr_data_r[497]"/>
+        <net name="dbg_ddr_wr_data_r[496]"/>
+        <net name="dbg_ddr_wr_data_r[495]"/>
+        <net name="dbg_ddr_wr_data_r[494]"/>
+        <net name="dbg_ddr_wr_data_r[493]"/>
+        <net name="dbg_ddr_wr_data_r[492]"/>
+        <net name="dbg_ddr_wr_data_r[491]"/>
+        <net name="dbg_ddr_wr_data_r[490]"/>
+        <net name="dbg_ddr_wr_data_r[489]"/>
+        <net name="dbg_ddr_wr_data_r[488]"/>
+        <net name="dbg_ddr_wr_data_r[487]"/>
+        <net name="dbg_ddr_wr_data_r[486]"/>
+        <net name="dbg_ddr_wr_data_r[485]"/>
+        <net name="dbg_ddr_wr_data_r[484]"/>
+        <net name="dbg_ddr_wr_data_r[483]"/>
+        <net name="dbg_ddr_wr_data_r[482]"/>
+        <net name="dbg_ddr_wr_data_r[481]"/>
+        <net name="dbg_ddr_wr_data_r[480]"/>
+        <net name="dbg_ddr_wr_data_r[479]"/>
+        <net name="dbg_ddr_wr_data_r[478]"/>
+        <net name="dbg_ddr_wr_data_r[477]"/>
+        <net name="dbg_ddr_wr_data_r[476]"/>
+        <net name="dbg_ddr_wr_data_r[475]"/>
+        <net name="dbg_ddr_wr_data_r[474]"/>
+        <net name="dbg_ddr_wr_data_r[473]"/>
+        <net name="dbg_ddr_wr_data_r[472]"/>
+        <net name="dbg_ddr_wr_data_r[471]"/>
+        <net name="dbg_ddr_wr_data_r[470]"/>
+        <net name="dbg_ddr_wr_data_r[469]"/>
+        <net name="dbg_ddr_wr_data_r[468]"/>
+        <net name="dbg_ddr_wr_data_r[467]"/>
+        <net name="dbg_ddr_wr_data_r[466]"/>
+        <net name="dbg_ddr_wr_data_r[465]"/>
+        <net name="dbg_ddr_wr_data_r[464]"/>
+        <net name="dbg_ddr_wr_data_r[463]"/>
+        <net name="dbg_ddr_wr_data_r[462]"/>
+        <net name="dbg_ddr_wr_data_r[461]"/>
+        <net name="dbg_ddr_wr_data_r[460]"/>
+        <net name="dbg_ddr_wr_data_r[459]"/>
+        <net name="dbg_ddr_wr_data_r[458]"/>
+        <net name="dbg_ddr_wr_data_r[457]"/>
+        <net name="dbg_ddr_wr_data_r[456]"/>
+        <net name="dbg_ddr_wr_data_r[455]"/>
+        <net name="dbg_ddr_wr_data_r[454]"/>
+        <net name="dbg_ddr_wr_data_r[453]"/>
+        <net name="dbg_ddr_wr_data_r[452]"/>
+        <net name="dbg_ddr_wr_data_r[451]"/>
+        <net name="dbg_ddr_wr_data_r[450]"/>
+        <net name="dbg_ddr_wr_data_r[449]"/>
+        <net name="dbg_ddr_wr_data_r[448]"/>
+        <net name="dbg_ddr_wr_data_r[447]"/>
+        <net name="dbg_ddr_wr_data_r[446]"/>
+        <net name="dbg_ddr_wr_data_r[445]"/>
+        <net name="dbg_ddr_wr_data_r[444]"/>
+        <net name="dbg_ddr_wr_data_r[443]"/>
+        <net name="dbg_ddr_wr_data_r[442]"/>
+        <net name="dbg_ddr_wr_data_r[441]"/>
+        <net name="dbg_ddr_wr_data_r[440]"/>
+        <net name="dbg_ddr_wr_data_r[439]"/>
+        <net name="dbg_ddr_wr_data_r[438]"/>
+        <net name="dbg_ddr_wr_data_r[437]"/>
+        <net name="dbg_ddr_wr_data_r[436]"/>
+        <net name="dbg_ddr_wr_data_r[435]"/>
+        <net name="dbg_ddr_wr_data_r[434]"/>
+        <net name="dbg_ddr_wr_data_r[433]"/>
+        <net name="dbg_ddr_wr_data_r[432]"/>
+        <net name="dbg_ddr_wr_data_r[431]"/>
+        <net name="dbg_ddr_wr_data_r[430]"/>
+        <net name="dbg_ddr_wr_data_r[429]"/>
+        <net name="dbg_ddr_wr_data_r[428]"/>
+        <net name="dbg_ddr_wr_data_r[427]"/>
+        <net name="dbg_ddr_wr_data_r[426]"/>
+        <net name="dbg_ddr_wr_data_r[425]"/>
+        <net name="dbg_ddr_wr_data_r[424]"/>
+        <net name="dbg_ddr_wr_data_r[423]"/>
+        <net name="dbg_ddr_wr_data_r[422]"/>
+        <net name="dbg_ddr_wr_data_r[421]"/>
+        <net name="dbg_ddr_wr_data_r[420]"/>
+        <net name="dbg_ddr_wr_data_r[419]"/>
+        <net name="dbg_ddr_wr_data_r[418]"/>
+        <net name="dbg_ddr_wr_data_r[417]"/>
+        <net name="dbg_ddr_wr_data_r[416]"/>
+        <net name="dbg_ddr_wr_data_r[415]"/>
+        <net name="dbg_ddr_wr_data_r[414]"/>
+        <net name="dbg_ddr_wr_data_r[413]"/>
+        <net name="dbg_ddr_wr_data_r[412]"/>
+        <net name="dbg_ddr_wr_data_r[411]"/>
+        <net name="dbg_ddr_wr_data_r[410]"/>
+        <net name="dbg_ddr_wr_data_r[409]"/>
+        <net name="dbg_ddr_wr_data_r[408]"/>
+        <net name="dbg_ddr_wr_data_r[407]"/>
+        <net name="dbg_ddr_wr_data_r[406]"/>
+        <net name="dbg_ddr_wr_data_r[405]"/>
+        <net name="dbg_ddr_wr_data_r[404]"/>
+        <net name="dbg_ddr_wr_data_r[403]"/>
+        <net name="dbg_ddr_wr_data_r[402]"/>
+        <net name="dbg_ddr_wr_data_r[401]"/>
+        <net name="dbg_ddr_wr_data_r[400]"/>
+        <net name="dbg_ddr_wr_data_r[399]"/>
+        <net name="dbg_ddr_wr_data_r[398]"/>
+        <net name="dbg_ddr_wr_data_r[397]"/>
+        <net name="dbg_ddr_wr_data_r[396]"/>
+        <net name="dbg_ddr_wr_data_r[395]"/>
+        <net name="dbg_ddr_wr_data_r[394]"/>
+        <net name="dbg_ddr_wr_data_r[393]"/>
+        <net name="dbg_ddr_wr_data_r[392]"/>
+        <net name="dbg_ddr_wr_data_r[391]"/>
+        <net name="dbg_ddr_wr_data_r[390]"/>
+        <net name="dbg_ddr_wr_data_r[389]"/>
+        <net name="dbg_ddr_wr_data_r[388]"/>
+        <net name="dbg_ddr_wr_data_r[387]"/>
+        <net name="dbg_ddr_wr_data_r[386]"/>
+        <net name="dbg_ddr_wr_data_r[385]"/>
+        <net name="dbg_ddr_wr_data_r[384]"/>
+        <net name="dbg_ddr_wr_data_r[383]"/>
+        <net name="dbg_ddr_wr_data_r[382]"/>
+        <net name="dbg_ddr_wr_data_r[381]"/>
+        <net name="dbg_ddr_wr_data_r[380]"/>
+        <net name="dbg_ddr_wr_data_r[379]"/>
+        <net name="dbg_ddr_wr_data_r[378]"/>
+        <net name="dbg_ddr_wr_data_r[377]"/>
+        <net name="dbg_ddr_wr_data_r[376]"/>
+        <net name="dbg_ddr_wr_data_r[375]"/>
+        <net name="dbg_ddr_wr_data_r[374]"/>
+        <net name="dbg_ddr_wr_data_r[373]"/>
+        <net name="dbg_ddr_wr_data_r[372]"/>
+        <net name="dbg_ddr_wr_data_r[371]"/>
+        <net name="dbg_ddr_wr_data_r[370]"/>
+        <net name="dbg_ddr_wr_data_r[369]"/>
+        <net name="dbg_ddr_wr_data_r[368]"/>
+        <net name="dbg_ddr_wr_data_r[367]"/>
+        <net name="dbg_ddr_wr_data_r[366]"/>
+        <net name="dbg_ddr_wr_data_r[365]"/>
+        <net name="dbg_ddr_wr_data_r[364]"/>
+        <net name="dbg_ddr_wr_data_r[363]"/>
+        <net name="dbg_ddr_wr_data_r[362]"/>
+        <net name="dbg_ddr_wr_data_r[361]"/>
+        <net name="dbg_ddr_wr_data_r[360]"/>
+        <net name="dbg_ddr_wr_data_r[359]"/>
+        <net name="dbg_ddr_wr_data_r[358]"/>
+        <net name="dbg_ddr_wr_data_r[357]"/>
+        <net name="dbg_ddr_wr_data_r[356]"/>
+        <net name="dbg_ddr_wr_data_r[355]"/>
+        <net name="dbg_ddr_wr_data_r[354]"/>
+        <net name="dbg_ddr_wr_data_r[353]"/>
+        <net name="dbg_ddr_wr_data_r[352]"/>
+        <net name="dbg_ddr_wr_data_r[351]"/>
+        <net name="dbg_ddr_wr_data_r[350]"/>
+        <net name="dbg_ddr_wr_data_r[349]"/>
+        <net name="dbg_ddr_wr_data_r[348]"/>
+        <net name="dbg_ddr_wr_data_r[347]"/>
+        <net name="dbg_ddr_wr_data_r[346]"/>
+        <net name="dbg_ddr_wr_data_r[345]"/>
+        <net name="dbg_ddr_wr_data_r[344]"/>
+        <net name="dbg_ddr_wr_data_r[343]"/>
+        <net name="dbg_ddr_wr_data_r[342]"/>
+        <net name="dbg_ddr_wr_data_r[341]"/>
+        <net name="dbg_ddr_wr_data_r[340]"/>
+        <net name="dbg_ddr_wr_data_r[339]"/>
+        <net name="dbg_ddr_wr_data_r[338]"/>
+        <net name="dbg_ddr_wr_data_r[337]"/>
+        <net name="dbg_ddr_wr_data_r[336]"/>
+        <net name="dbg_ddr_wr_data_r[335]"/>
+        <net name="dbg_ddr_wr_data_r[334]"/>
+        <net name="dbg_ddr_wr_data_r[333]"/>
+        <net name="dbg_ddr_wr_data_r[332]"/>
+        <net name="dbg_ddr_wr_data_r[331]"/>
+        <net name="dbg_ddr_wr_data_r[330]"/>
+        <net name="dbg_ddr_wr_data_r[329]"/>
+        <net name="dbg_ddr_wr_data_r[328]"/>
+        <net name="dbg_ddr_wr_data_r[327]"/>
+        <net name="dbg_ddr_wr_data_r[326]"/>
+        <net name="dbg_ddr_wr_data_r[325]"/>
+        <net name="dbg_ddr_wr_data_r[324]"/>
+        <net name="dbg_ddr_wr_data_r[323]"/>
+        <net name="dbg_ddr_wr_data_r[322]"/>
+        <net name="dbg_ddr_wr_data_r[321]"/>
+        <net name="dbg_ddr_wr_data_r[320]"/>
+        <net name="dbg_ddr_wr_data_r[319]"/>
+        <net name="dbg_ddr_wr_data_r[318]"/>
+        <net name="dbg_ddr_wr_data_r[317]"/>
+        <net name="dbg_ddr_wr_data_r[316]"/>
+        <net name="dbg_ddr_wr_data_r[315]"/>
+        <net name="dbg_ddr_wr_data_r[314]"/>
+        <net name="dbg_ddr_wr_data_r[313]"/>
+        <net name="dbg_ddr_wr_data_r[312]"/>
+        <net name="dbg_ddr_wr_data_r[311]"/>
+        <net name="dbg_ddr_wr_data_r[310]"/>
+        <net name="dbg_ddr_wr_data_r[309]"/>
+        <net name="dbg_ddr_wr_data_r[308]"/>
+        <net name="dbg_ddr_wr_data_r[307]"/>
+        <net name="dbg_ddr_wr_data_r[306]"/>
+        <net name="dbg_ddr_wr_data_r[305]"/>
+        <net name="dbg_ddr_wr_data_r[304]"/>
+        <net name="dbg_ddr_wr_data_r[303]"/>
+        <net name="dbg_ddr_wr_data_r[302]"/>
+        <net name="dbg_ddr_wr_data_r[301]"/>
+        <net name="dbg_ddr_wr_data_r[300]"/>
+        <net name="dbg_ddr_wr_data_r[299]"/>
+        <net name="dbg_ddr_wr_data_r[298]"/>
+        <net name="dbg_ddr_wr_data_r[297]"/>
+        <net name="dbg_ddr_wr_data_r[296]"/>
+        <net name="dbg_ddr_wr_data_r[295]"/>
+        <net name="dbg_ddr_wr_data_r[294]"/>
+        <net name="dbg_ddr_wr_data_r[293]"/>
+        <net name="dbg_ddr_wr_data_r[292]"/>
+        <net name="dbg_ddr_wr_data_r[291]"/>
+        <net name="dbg_ddr_wr_data_r[290]"/>
+        <net name="dbg_ddr_wr_data_r[289]"/>
+        <net name="dbg_ddr_wr_data_r[288]"/>
+        <net name="dbg_ddr_wr_data_r[287]"/>
+        <net name="dbg_ddr_wr_data_r[286]"/>
+        <net name="dbg_ddr_wr_data_r[285]"/>
+        <net name="dbg_ddr_wr_data_r[284]"/>
+        <net name="dbg_ddr_wr_data_r[283]"/>
+        <net name="dbg_ddr_wr_data_r[282]"/>
+        <net name="dbg_ddr_wr_data_r[281]"/>
+        <net name="dbg_ddr_wr_data_r[280]"/>
+        <net name="dbg_ddr_wr_data_r[279]"/>
+        <net name="dbg_ddr_wr_data_r[278]"/>
+        <net name="dbg_ddr_wr_data_r[277]"/>
+        <net name="dbg_ddr_wr_data_r[276]"/>
+        <net name="dbg_ddr_wr_data_r[275]"/>
+        <net name="dbg_ddr_wr_data_r[274]"/>
+        <net name="dbg_ddr_wr_data_r[273]"/>
+        <net name="dbg_ddr_wr_data_r[272]"/>
+        <net name="dbg_ddr_wr_data_r[271]"/>
+        <net name="dbg_ddr_wr_data_r[270]"/>
+        <net name="dbg_ddr_wr_data_r[269]"/>
+        <net name="dbg_ddr_wr_data_r[268]"/>
+        <net name="dbg_ddr_wr_data_r[267]"/>
+        <net name="dbg_ddr_wr_data_r[266]"/>
+        <net name="dbg_ddr_wr_data_r[265]"/>
+        <net name="dbg_ddr_wr_data_r[264]"/>
+        <net name="dbg_ddr_wr_data_r[263]"/>
+        <net name="dbg_ddr_wr_data_r[262]"/>
+        <net name="dbg_ddr_wr_data_r[261]"/>
+        <net name="dbg_ddr_wr_data_r[260]"/>
+        <net name="dbg_ddr_wr_data_r[259]"/>
+        <net name="dbg_ddr_wr_data_r[258]"/>
+        <net name="dbg_ddr_wr_data_r[257]"/>
+        <net name="dbg_ddr_wr_data_r[256]"/>
+        <net name="dbg_ddr_wr_data_r[255]"/>
+        <net name="dbg_ddr_wr_data_r[254]"/>
+        <net name="dbg_ddr_wr_data_r[253]"/>
+        <net name="dbg_ddr_wr_data_r[252]"/>
+        <net name="dbg_ddr_wr_data_r[251]"/>
+        <net name="dbg_ddr_wr_data_r[250]"/>
+        <net name="dbg_ddr_wr_data_r[249]"/>
+        <net name="dbg_ddr_wr_data_r[248]"/>
+        <net name="dbg_ddr_wr_data_r[247]"/>
+        <net name="dbg_ddr_wr_data_r[246]"/>
+        <net name="dbg_ddr_wr_data_r[245]"/>
+        <net name="dbg_ddr_wr_data_r[244]"/>
+        <net name="dbg_ddr_wr_data_r[243]"/>
+        <net name="dbg_ddr_wr_data_r[242]"/>
+        <net name="dbg_ddr_wr_data_r[241]"/>
+        <net name="dbg_ddr_wr_data_r[240]"/>
+        <net name="dbg_ddr_wr_data_r[239]"/>
+        <net name="dbg_ddr_wr_data_r[238]"/>
+        <net name="dbg_ddr_wr_data_r[237]"/>
+        <net name="dbg_ddr_wr_data_r[236]"/>
+        <net name="dbg_ddr_wr_data_r[235]"/>
+        <net name="dbg_ddr_wr_data_r[234]"/>
+        <net name="dbg_ddr_wr_data_r[233]"/>
+        <net name="dbg_ddr_wr_data_r[232]"/>
+        <net name="dbg_ddr_wr_data_r[231]"/>
+        <net name="dbg_ddr_wr_data_r[230]"/>
+        <net name="dbg_ddr_wr_data_r[229]"/>
+        <net name="dbg_ddr_wr_data_r[228]"/>
+        <net name="dbg_ddr_wr_data_r[227]"/>
+        <net name="dbg_ddr_wr_data_r[226]"/>
+        <net name="dbg_ddr_wr_data_r[225]"/>
+        <net name="dbg_ddr_wr_data_r[224]"/>
+        <net name="dbg_ddr_wr_data_r[223]"/>
+        <net name="dbg_ddr_wr_data_r[222]"/>
+        <net name="dbg_ddr_wr_data_r[221]"/>
+        <net name="dbg_ddr_wr_data_r[220]"/>
+        <net name="dbg_ddr_wr_data_r[219]"/>
+        <net name="dbg_ddr_wr_data_r[218]"/>
+        <net name="dbg_ddr_wr_data_r[217]"/>
+        <net name="dbg_ddr_wr_data_r[216]"/>
+        <net name="dbg_ddr_wr_data_r[215]"/>
+        <net name="dbg_ddr_wr_data_r[214]"/>
+        <net name="dbg_ddr_wr_data_r[213]"/>
+        <net name="dbg_ddr_wr_data_r[212]"/>
+        <net name="dbg_ddr_wr_data_r[211]"/>
+        <net name="dbg_ddr_wr_data_r[210]"/>
+        <net name="dbg_ddr_wr_data_r[209]"/>
+        <net name="dbg_ddr_wr_data_r[208]"/>
+        <net name="dbg_ddr_wr_data_r[207]"/>
+        <net name="dbg_ddr_wr_data_r[206]"/>
+        <net name="dbg_ddr_wr_data_r[205]"/>
+        <net name="dbg_ddr_wr_data_r[204]"/>
+        <net name="dbg_ddr_wr_data_r[203]"/>
+        <net name="dbg_ddr_wr_data_r[202]"/>
+        <net name="dbg_ddr_wr_data_r[201]"/>
+        <net name="dbg_ddr_wr_data_r[200]"/>
+        <net name="dbg_ddr_wr_data_r[199]"/>
+        <net name="dbg_ddr_wr_data_r[198]"/>
+        <net name="dbg_ddr_wr_data_r[197]"/>
+        <net name="dbg_ddr_wr_data_r[196]"/>
+        <net name="dbg_ddr_wr_data_r[195]"/>
+        <net name="dbg_ddr_wr_data_r[194]"/>
+        <net name="dbg_ddr_wr_data_r[193]"/>
+        <net name="dbg_ddr_wr_data_r[192]"/>
+        <net name="dbg_ddr_wr_data_r[191]"/>
+        <net name="dbg_ddr_wr_data_r[190]"/>
+        <net name="dbg_ddr_wr_data_r[189]"/>
+        <net name="dbg_ddr_wr_data_r[188]"/>
+        <net name="dbg_ddr_wr_data_r[187]"/>
+        <net name="dbg_ddr_wr_data_r[186]"/>
+        <net name="dbg_ddr_wr_data_r[185]"/>
+        <net name="dbg_ddr_wr_data_r[184]"/>
+        <net name="dbg_ddr_wr_data_r[183]"/>
+        <net name="dbg_ddr_wr_data_r[182]"/>
+        <net name="dbg_ddr_wr_data_r[181]"/>
+        <net name="dbg_ddr_wr_data_r[180]"/>
+        <net name="dbg_ddr_wr_data_r[179]"/>
+        <net name="dbg_ddr_wr_data_r[178]"/>
+        <net name="dbg_ddr_wr_data_r[177]"/>
+        <net name="dbg_ddr_wr_data_r[176]"/>
+        <net name="dbg_ddr_wr_data_r[175]"/>
+        <net name="dbg_ddr_wr_data_r[174]"/>
+        <net name="dbg_ddr_wr_data_r[173]"/>
+        <net name="dbg_ddr_wr_data_r[172]"/>
+        <net name="dbg_ddr_wr_data_r[171]"/>
+        <net name="dbg_ddr_wr_data_r[170]"/>
+        <net name="dbg_ddr_wr_data_r[169]"/>
+        <net name="dbg_ddr_wr_data_r[168]"/>
+        <net name="dbg_ddr_wr_data_r[167]"/>
+        <net name="dbg_ddr_wr_data_r[166]"/>
+        <net name="dbg_ddr_wr_data_r[165]"/>
+        <net name="dbg_ddr_wr_data_r[164]"/>
+        <net name="dbg_ddr_wr_data_r[163]"/>
+        <net name="dbg_ddr_wr_data_r[162]"/>
+        <net name="dbg_ddr_wr_data_r[161]"/>
+        <net name="dbg_ddr_wr_data_r[160]"/>
+        <net name="dbg_ddr_wr_data_r[159]"/>
+        <net name="dbg_ddr_wr_data_r[158]"/>
+        <net name="dbg_ddr_wr_data_r[157]"/>
+        <net name="dbg_ddr_wr_data_r[156]"/>
+        <net name="dbg_ddr_wr_data_r[155]"/>
+        <net name="dbg_ddr_wr_data_r[154]"/>
+        <net name="dbg_ddr_wr_data_r[153]"/>
+        <net name="dbg_ddr_wr_data_r[152]"/>
+        <net name="dbg_ddr_wr_data_r[151]"/>
+        <net name="dbg_ddr_wr_data_r[150]"/>
+        <net name="dbg_ddr_wr_data_r[149]"/>
+        <net name="dbg_ddr_wr_data_r[148]"/>
+        <net name="dbg_ddr_wr_data_r[147]"/>
+        <net name="dbg_ddr_wr_data_r[146]"/>
+        <net name="dbg_ddr_wr_data_r[145]"/>
+        <net name="dbg_ddr_wr_data_r[144]"/>
+        <net name="dbg_ddr_wr_data_r[143]"/>
+        <net name="dbg_ddr_wr_data_r[142]"/>
+        <net name="dbg_ddr_wr_data_r[141]"/>
+        <net name="dbg_ddr_wr_data_r[140]"/>
+        <net name="dbg_ddr_wr_data_r[139]"/>
+        <net name="dbg_ddr_wr_data_r[138]"/>
+        <net name="dbg_ddr_wr_data_r[137]"/>
+        <net name="dbg_ddr_wr_data_r[136]"/>
+        <net name="dbg_ddr_wr_data_r[135]"/>
+        <net name="dbg_ddr_wr_data_r[134]"/>
+        <net name="dbg_ddr_wr_data_r[133]"/>
+        <net name="dbg_ddr_wr_data_r[132]"/>
+        <net name="dbg_ddr_wr_data_r[131]"/>
+        <net name="dbg_ddr_wr_data_r[130]"/>
+        <net name="dbg_ddr_wr_data_r[129]"/>
+        <net name="dbg_ddr_wr_data_r[128]"/>
+        <net name="dbg_ddr_wr_data_r[127]"/>
+        <net name="dbg_ddr_wr_data_r[126]"/>
+        <net name="dbg_ddr_wr_data_r[125]"/>
+        <net name="dbg_ddr_wr_data_r[124]"/>
+        <net name="dbg_ddr_wr_data_r[123]"/>
+        <net name="dbg_ddr_wr_data_r[122]"/>
+        <net name="dbg_ddr_wr_data_r[121]"/>
+        <net name="dbg_ddr_wr_data_r[120]"/>
+        <net name="dbg_ddr_wr_data_r[119]"/>
+        <net name="dbg_ddr_wr_data_r[118]"/>
+        <net name="dbg_ddr_wr_data_r[117]"/>
+        <net name="dbg_ddr_wr_data_r[116]"/>
+        <net name="dbg_ddr_wr_data_r[115]"/>
+        <net name="dbg_ddr_wr_data_r[114]"/>
+        <net name="dbg_ddr_wr_data_r[113]"/>
+        <net name="dbg_ddr_wr_data_r[112]"/>
+        <net name="dbg_ddr_wr_data_r[111]"/>
+        <net name="dbg_ddr_wr_data_r[110]"/>
+        <net name="dbg_ddr_wr_data_r[109]"/>
+        <net name="dbg_ddr_wr_data_r[108]"/>
+        <net name="dbg_ddr_wr_data_r[107]"/>
+        <net name="dbg_ddr_wr_data_r[106]"/>
+        <net name="dbg_ddr_wr_data_r[105]"/>
+        <net name="dbg_ddr_wr_data_r[104]"/>
+        <net name="dbg_ddr_wr_data_r[103]"/>
+        <net name="dbg_ddr_wr_data_r[102]"/>
+        <net name="dbg_ddr_wr_data_r[101]"/>
+        <net name="dbg_ddr_wr_data_r[100]"/>
+        <net name="dbg_ddr_wr_data_r[99]"/>
+        <net name="dbg_ddr_wr_data_r[98]"/>
+        <net name="dbg_ddr_wr_data_r[97]"/>
+        <net name="dbg_ddr_wr_data_r[96]"/>
+        <net name="dbg_ddr_wr_data_r[95]"/>
+        <net name="dbg_ddr_wr_data_r[94]"/>
+        <net name="dbg_ddr_wr_data_r[93]"/>
+        <net name="dbg_ddr_wr_data_r[92]"/>
+        <net name="dbg_ddr_wr_data_r[91]"/>
+        <net name="dbg_ddr_wr_data_r[90]"/>
+        <net name="dbg_ddr_wr_data_r[89]"/>
+        <net name="dbg_ddr_wr_data_r[88]"/>
+        <net name="dbg_ddr_wr_data_r[87]"/>
+        <net name="dbg_ddr_wr_data_r[86]"/>
+        <net name="dbg_ddr_wr_data_r[85]"/>
+        <net name="dbg_ddr_wr_data_r[84]"/>
+        <net name="dbg_ddr_wr_data_r[83]"/>
+        <net name="dbg_ddr_wr_data_r[82]"/>
+        <net name="dbg_ddr_wr_data_r[81]"/>
+        <net name="dbg_ddr_wr_data_r[80]"/>
+        <net name="dbg_ddr_wr_data_r[79]"/>
+        <net name="dbg_ddr_wr_data_r[78]"/>
+        <net name="dbg_ddr_wr_data_r[77]"/>
+        <net name="dbg_ddr_wr_data_r[76]"/>
+        <net name="dbg_ddr_wr_data_r[75]"/>
+        <net name="dbg_ddr_wr_data_r[74]"/>
+        <net name="dbg_ddr_wr_data_r[73]"/>
+        <net name="dbg_ddr_wr_data_r[72]"/>
+        <net name="dbg_ddr_wr_data_r[71]"/>
+        <net name="dbg_ddr_wr_data_r[70]"/>
+        <net name="dbg_ddr_wr_data_r[69]"/>
+        <net name="dbg_ddr_wr_data_r[68]"/>
+        <net name="dbg_ddr_wr_data_r[67]"/>
+        <net name="dbg_ddr_wr_data_r[66]"/>
+        <net name="dbg_ddr_wr_data_r[65]"/>
+        <net name="dbg_ddr_wr_data_r[64]"/>
+        <net name="dbg_ddr_wr_data_r[63]"/>
+        <net name="dbg_ddr_wr_data_r[62]"/>
+        <net name="dbg_ddr_wr_data_r[61]"/>
+        <net name="dbg_ddr_wr_data_r[60]"/>
+        <net name="dbg_ddr_wr_data_r[59]"/>
+        <net name="dbg_ddr_wr_data_r[58]"/>
+        <net name="dbg_ddr_wr_data_r[57]"/>
+        <net name="dbg_ddr_wr_data_r[56]"/>
+        <net name="dbg_ddr_wr_data_r[55]"/>
+        <net name="dbg_ddr_wr_data_r[54]"/>
+        <net name="dbg_ddr_wr_data_r[53]"/>
+        <net name="dbg_ddr_wr_data_r[52]"/>
+        <net name="dbg_ddr_wr_data_r[51]"/>
+        <net name="dbg_ddr_wr_data_r[50]"/>
+        <net name="dbg_ddr_wr_data_r[49]"/>
+        <net name="dbg_ddr_wr_data_r[48]"/>
+        <net name="dbg_ddr_wr_data_r[47]"/>
+        <net name="dbg_ddr_wr_data_r[46]"/>
+        <net name="dbg_ddr_wr_data_r[45]"/>
+        <net name="dbg_ddr_wr_data_r[44]"/>
+        <net name="dbg_ddr_wr_data_r[43]"/>
+        <net name="dbg_ddr_wr_data_r[42]"/>
+        <net name="dbg_ddr_wr_data_r[41]"/>
+        <net name="dbg_ddr_wr_data_r[40]"/>
+        <net name="dbg_ddr_wr_data_r[39]"/>
+        <net name="dbg_ddr_wr_data_r[38]"/>
+        <net name="dbg_ddr_wr_data_r[37]"/>
+        <net name="dbg_ddr_wr_data_r[36]"/>
+        <net name="dbg_ddr_wr_data_r[35]"/>
+        <net name="dbg_ddr_wr_data_r[34]"/>
+        <net name="dbg_ddr_wr_data_r[33]"/>
+        <net name="dbg_ddr_wr_data_r[32]"/>
+        <net name="dbg_ddr_wr_data_r[31]"/>
+        <net name="dbg_ddr_wr_data_r[30]"/>
+        <net name="dbg_ddr_wr_data_r[29]"/>
+        <net name="dbg_ddr_wr_data_r[28]"/>
+        <net name="dbg_ddr_wr_data_r[27]"/>
+        <net name="dbg_ddr_wr_data_r[26]"/>
+        <net name="dbg_ddr_wr_data_r[25]"/>
+        <net name="dbg_ddr_wr_data_r[24]"/>
+        <net name="dbg_ddr_wr_data_r[23]"/>
+        <net name="dbg_ddr_wr_data_r[22]"/>
+        <net name="dbg_ddr_wr_data_r[21]"/>
+        <net name="dbg_ddr_wr_data_r[20]"/>
+        <net name="dbg_ddr_wr_data_r[19]"/>
+        <net name="dbg_ddr_wr_data_r[18]"/>
+        <net name="dbg_ddr_wr_data_r[17]"/>
+        <net name="dbg_ddr_wr_data_r[16]"/>
+        <net name="dbg_ddr_wr_data_r[15]"/>
+        <net name="dbg_ddr_wr_data_r[14]"/>
+        <net name="dbg_ddr_wr_data_r[13]"/>
+        <net name="dbg_ddr_wr_data_r[12]"/>
+        <net name="dbg_ddr_wr_data_r[11]"/>
+        <net name="dbg_ddr_wr_data_r[10]"/>
+        <net name="dbg_ddr_wr_data_r[9]"/>
+        <net name="dbg_ddr_wr_data_r[8]"/>
+        <net name="dbg_ddr_wr_data_r[7]"/>
+        <net name="dbg_ddr_wr_data_r[6]"/>
+        <net name="dbg_ddr_wr_data_r[5]"/>
+        <net name="dbg_ddr_wr_data_r[4]"/>
+        <net name="dbg_ddr_wr_data_r[3]"/>
+        <net name="dbg_ddr_wr_data_r[2]"/>
+        <net name="dbg_ddr_wr_data_r[1]"/>
+        <net name="dbg_ddr_wr_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe12[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_ddr_wr_ready_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;b1"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe13[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;b1"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_ddr_wr_valid_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[63:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_eth_rx_data_r[63]"/>
+        <net name="dbg_eth_rx_data_r[62]"/>
+        <net name="dbg_eth_rx_data_r[61]"/>
+        <net name="dbg_eth_rx_data_r[60]"/>
+        <net name="dbg_eth_rx_data_r[59]"/>
+        <net name="dbg_eth_rx_data_r[58]"/>
+        <net name="dbg_eth_rx_data_r[57]"/>
+        <net name="dbg_eth_rx_data_r[56]"/>
+        <net name="dbg_eth_rx_data_r[55]"/>
+        <net name="dbg_eth_rx_data_r[54]"/>
+        <net name="dbg_eth_rx_data_r[53]"/>
+        <net name="dbg_eth_rx_data_r[52]"/>
+        <net name="dbg_eth_rx_data_r[51]"/>
+        <net name="dbg_eth_rx_data_r[50]"/>
+        <net name="dbg_eth_rx_data_r[49]"/>
+        <net name="dbg_eth_rx_data_r[48]"/>
+        <net name="dbg_eth_rx_data_r[47]"/>
+        <net name="dbg_eth_rx_data_r[46]"/>
+        <net name="dbg_eth_rx_data_r[45]"/>
+        <net name="dbg_eth_rx_data_r[44]"/>
+        <net name="dbg_eth_rx_data_r[43]"/>
+        <net name="dbg_eth_rx_data_r[42]"/>
+        <net name="dbg_eth_rx_data_r[41]"/>
+        <net name="dbg_eth_rx_data_r[40]"/>
+        <net name="dbg_eth_rx_data_r[39]"/>
+        <net name="dbg_eth_rx_data_r[38]"/>
+        <net name="dbg_eth_rx_data_r[37]"/>
+        <net name="dbg_eth_rx_data_r[36]"/>
+        <net name="dbg_eth_rx_data_r[35]"/>
+        <net name="dbg_eth_rx_data_r[34]"/>
+        <net name="dbg_eth_rx_data_r[33]"/>
+        <net name="dbg_eth_rx_data_r[32]"/>
+        <net name="dbg_eth_rx_data_r[31]"/>
+        <net name="dbg_eth_rx_data_r[30]"/>
+        <net name="dbg_eth_rx_data_r[29]"/>
+        <net name="dbg_eth_rx_data_r[28]"/>
+        <net name="dbg_eth_rx_data_r[27]"/>
+        <net name="dbg_eth_rx_data_r[26]"/>
+        <net name="dbg_eth_rx_data_r[25]"/>
+        <net name="dbg_eth_rx_data_r[24]"/>
+        <net name="dbg_eth_rx_data_r[23]"/>
+        <net name="dbg_eth_rx_data_r[22]"/>
+        <net name="dbg_eth_rx_data_r[21]"/>
+        <net name="dbg_eth_rx_data_r[20]"/>
+        <net name="dbg_eth_rx_data_r[19]"/>
+        <net name="dbg_eth_rx_data_r[18]"/>
+        <net name="dbg_eth_rx_data_r[17]"/>
+        <net name="dbg_eth_rx_data_r[16]"/>
+        <net name="dbg_eth_rx_data_r[15]"/>
+        <net name="dbg_eth_rx_data_r[14]"/>
+        <net name="dbg_eth_rx_data_r[13]"/>
+        <net name="dbg_eth_rx_data_r[12]"/>
+        <net name="dbg_eth_rx_data_r[11]"/>
+        <net name="dbg_eth_rx_data_r[10]"/>
+        <net name="dbg_eth_rx_data_r[9]"/>
+        <net name="dbg_eth_rx_data_r[8]"/>
+        <net name="dbg_eth_rx_data_r[7]"/>
+        <net name="dbg_eth_rx_data_r[6]"/>
+        <net name="dbg_eth_rx_data_r[5]"/>
+        <net name="dbg_eth_rx_data_r[4]"/>
+        <net name="dbg_eth_rx_data_r[3]"/>
+        <net name="dbg_eth_rx_data_r[2]"/>
+        <net name="dbg_eth_rx_data_r[1]"/>
+        <net name="dbg_eth_rx_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_eth_rx_valid_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe6[63:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_eth_tx_data_r[63]"/>
+        <net name="dbg_eth_tx_data_r[62]"/>
+        <net name="dbg_eth_tx_data_r[61]"/>
+        <net name="dbg_eth_tx_data_r[60]"/>
+        <net name="dbg_eth_tx_data_r[59]"/>
+        <net name="dbg_eth_tx_data_r[58]"/>
+        <net name="dbg_eth_tx_data_r[57]"/>
+        <net name="dbg_eth_tx_data_r[56]"/>
+        <net name="dbg_eth_tx_data_r[55]"/>
+        <net name="dbg_eth_tx_data_r[54]"/>
+        <net name="dbg_eth_tx_data_r[53]"/>
+        <net name="dbg_eth_tx_data_r[52]"/>
+        <net name="dbg_eth_tx_data_r[51]"/>
+        <net name="dbg_eth_tx_data_r[50]"/>
+        <net name="dbg_eth_tx_data_r[49]"/>
+        <net name="dbg_eth_tx_data_r[48]"/>
+        <net name="dbg_eth_tx_data_r[47]"/>
+        <net name="dbg_eth_tx_data_r[46]"/>
+        <net name="dbg_eth_tx_data_r[45]"/>
+        <net name="dbg_eth_tx_data_r[44]"/>
+        <net name="dbg_eth_tx_data_r[43]"/>
+        <net name="dbg_eth_tx_data_r[42]"/>
+        <net name="dbg_eth_tx_data_r[41]"/>
+        <net name="dbg_eth_tx_data_r[40]"/>
+        <net name="dbg_eth_tx_data_r[39]"/>
+        <net name="dbg_eth_tx_data_r[38]"/>
+        <net name="dbg_eth_tx_data_r[37]"/>
+        <net name="dbg_eth_tx_data_r[36]"/>
+        <net name="dbg_eth_tx_data_r[35]"/>
+        <net name="dbg_eth_tx_data_r[34]"/>
+        <net name="dbg_eth_tx_data_r[33]"/>
+        <net name="dbg_eth_tx_data_r[32]"/>
+        <net name="dbg_eth_tx_data_r[31]"/>
+        <net name="dbg_eth_tx_data_r[30]"/>
+        <net name="dbg_eth_tx_data_r[29]"/>
+        <net name="dbg_eth_tx_data_r[28]"/>
+        <net name="dbg_eth_tx_data_r[27]"/>
+        <net name="dbg_eth_tx_data_r[26]"/>
+        <net name="dbg_eth_tx_data_r[25]"/>
+        <net name="dbg_eth_tx_data_r[24]"/>
+        <net name="dbg_eth_tx_data_r[23]"/>
+        <net name="dbg_eth_tx_data_r[22]"/>
+        <net name="dbg_eth_tx_data_r[21]"/>
+        <net name="dbg_eth_tx_data_r[20]"/>
+        <net name="dbg_eth_tx_data_r[19]"/>
+        <net name="dbg_eth_tx_data_r[18]"/>
+        <net name="dbg_eth_tx_data_r[17]"/>
+        <net name="dbg_eth_tx_data_r[16]"/>
+        <net name="dbg_eth_tx_data_r[15]"/>
+        <net name="dbg_eth_tx_data_r[14]"/>
+        <net name="dbg_eth_tx_data_r[13]"/>
+        <net name="dbg_eth_tx_data_r[12]"/>
+        <net name="dbg_eth_tx_data_r[11]"/>
+        <net name="dbg_eth_tx_data_r[10]"/>
+        <net name="dbg_eth_tx_data_r[9]"/>
+        <net name="dbg_eth_tx_data_r[8]"/>
+        <net name="dbg_eth_tx_data_r[7]"/>
+        <net name="dbg_eth_tx_data_r[6]"/>
+        <net name="dbg_eth_tx_data_r[5]"/>
+        <net name="dbg_eth_tx_data_r[4]"/>
+        <net name="dbg_eth_tx_data_r[3]"/>
+        <net name="dbg_eth_tx_data_r[2]"/>
+        <net name="dbg_eth_tx_data_r[1]"/>
+        <net name="dbg_eth_tx_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_eth_tx_ready_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;b1"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe5[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;b1"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_eth_tx_valid_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_locked_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq3&apos;hX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq3&apos;hX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe8[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq3&apos;hX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_pack_count_r[2]"/>
+        <net name="dbg_pack_count_r[1]"/>
+        <net name="dbg_pack_count_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_2"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe0[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_phy_rst_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;b1"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe0[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;b1"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_rgmii_rx_ctl_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq4&apos;hX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq4&apos;hX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[3:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq4&apos;hX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_rgmii_rxd_r[3]"/>
+        <net name="dbg_rgmii_rxd_r[2]"/>
+        <net name="dbg_rgmii_rxd_r[1]"/>
+        <net name="dbg_rgmii_rxd_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe14[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_test_rdata_pre_en"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe3[511:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_uart_rx_data_r[511]"/>
+        <net name="dbg_uart_rx_data_r[510]"/>
+        <net name="dbg_uart_rx_data_r[509]"/>
+        <net name="dbg_uart_rx_data_r[508]"/>
+        <net name="dbg_uart_rx_data_r[507]"/>
+        <net name="dbg_uart_rx_data_r[506]"/>
+        <net name="dbg_uart_rx_data_r[505]"/>
+        <net name="dbg_uart_rx_data_r[504]"/>
+        <net name="dbg_uart_rx_data_r[503]"/>
+        <net name="dbg_uart_rx_data_r[502]"/>
+        <net name="dbg_uart_rx_data_r[501]"/>
+        <net name="dbg_uart_rx_data_r[500]"/>
+        <net name="dbg_uart_rx_data_r[499]"/>
+        <net name="dbg_uart_rx_data_r[498]"/>
+        <net name="dbg_uart_rx_data_r[497]"/>
+        <net name="dbg_uart_rx_data_r[496]"/>
+        <net name="dbg_uart_rx_data_r[495]"/>
+        <net name="dbg_uart_rx_data_r[494]"/>
+        <net name="dbg_uart_rx_data_r[493]"/>
+        <net name="dbg_uart_rx_data_r[492]"/>
+        <net name="dbg_uart_rx_data_r[491]"/>
+        <net name="dbg_uart_rx_data_r[490]"/>
+        <net name="dbg_uart_rx_data_r[489]"/>
+        <net name="dbg_uart_rx_data_r[488]"/>
+        <net name="dbg_uart_rx_data_r[487]"/>
+        <net name="dbg_uart_rx_data_r[486]"/>
+        <net name="dbg_uart_rx_data_r[485]"/>
+        <net name="dbg_uart_rx_data_r[484]"/>
+        <net name="dbg_uart_rx_data_r[483]"/>
+        <net name="dbg_uart_rx_data_r[482]"/>
+        <net name="dbg_uart_rx_data_r[481]"/>
+        <net name="dbg_uart_rx_data_r[480]"/>
+        <net name="dbg_uart_rx_data_r[479]"/>
+        <net name="dbg_uart_rx_data_r[478]"/>
+        <net name="dbg_uart_rx_data_r[477]"/>
+        <net name="dbg_uart_rx_data_r[476]"/>
+        <net name="dbg_uart_rx_data_r[475]"/>
+        <net name="dbg_uart_rx_data_r[474]"/>
+        <net name="dbg_uart_rx_data_r[473]"/>
+        <net name="dbg_uart_rx_data_r[472]"/>
+        <net name="dbg_uart_rx_data_r[471]"/>
+        <net name="dbg_uart_rx_data_r[470]"/>
+        <net name="dbg_uart_rx_data_r[469]"/>
+        <net name="dbg_uart_rx_data_r[468]"/>
+        <net name="dbg_uart_rx_data_r[467]"/>
+        <net name="dbg_uart_rx_data_r[466]"/>
+        <net name="dbg_uart_rx_data_r[465]"/>
+        <net name="dbg_uart_rx_data_r[464]"/>
+        <net name="dbg_uart_rx_data_r[463]"/>
+        <net name="dbg_uart_rx_data_r[462]"/>
+        <net name="dbg_uart_rx_data_r[461]"/>
+        <net name="dbg_uart_rx_data_r[460]"/>
+        <net name="dbg_uart_rx_data_r[459]"/>
+        <net name="dbg_uart_rx_data_r[458]"/>
+        <net name="dbg_uart_rx_data_r[457]"/>
+        <net name="dbg_uart_rx_data_r[456]"/>
+        <net name="dbg_uart_rx_data_r[455]"/>
+        <net name="dbg_uart_rx_data_r[454]"/>
+        <net name="dbg_uart_rx_data_r[453]"/>
+        <net name="dbg_uart_rx_data_r[452]"/>
+        <net name="dbg_uart_rx_data_r[451]"/>
+        <net name="dbg_uart_rx_data_r[450]"/>
+        <net name="dbg_uart_rx_data_r[449]"/>
+        <net name="dbg_uart_rx_data_r[448]"/>
+        <net name="dbg_uart_rx_data_r[447]"/>
+        <net name="dbg_uart_rx_data_r[446]"/>
+        <net name="dbg_uart_rx_data_r[445]"/>
+        <net name="dbg_uart_rx_data_r[444]"/>
+        <net name="dbg_uart_rx_data_r[443]"/>
+        <net name="dbg_uart_rx_data_r[442]"/>
+        <net name="dbg_uart_rx_data_r[441]"/>
+        <net name="dbg_uart_rx_data_r[440]"/>
+        <net name="dbg_uart_rx_data_r[439]"/>
+        <net name="dbg_uart_rx_data_r[438]"/>
+        <net name="dbg_uart_rx_data_r[437]"/>
+        <net name="dbg_uart_rx_data_r[436]"/>
+        <net name="dbg_uart_rx_data_r[435]"/>
+        <net name="dbg_uart_rx_data_r[434]"/>
+        <net name="dbg_uart_rx_data_r[433]"/>
+        <net name="dbg_uart_rx_data_r[432]"/>
+        <net name="dbg_uart_rx_data_r[431]"/>
+        <net name="dbg_uart_rx_data_r[430]"/>
+        <net name="dbg_uart_rx_data_r[429]"/>
+        <net name="dbg_uart_rx_data_r[428]"/>
+        <net name="dbg_uart_rx_data_r[427]"/>
+        <net name="dbg_uart_rx_data_r[426]"/>
+        <net name="dbg_uart_rx_data_r[425]"/>
+        <net name="dbg_uart_rx_data_r[424]"/>
+        <net name="dbg_uart_rx_data_r[423]"/>
+        <net name="dbg_uart_rx_data_r[422]"/>
+        <net name="dbg_uart_rx_data_r[421]"/>
+        <net name="dbg_uart_rx_data_r[420]"/>
+        <net name="dbg_uart_rx_data_r[419]"/>
+        <net name="dbg_uart_rx_data_r[418]"/>
+        <net name="dbg_uart_rx_data_r[417]"/>
+        <net name="dbg_uart_rx_data_r[416]"/>
+        <net name="dbg_uart_rx_data_r[415]"/>
+        <net name="dbg_uart_rx_data_r[414]"/>
+        <net name="dbg_uart_rx_data_r[413]"/>
+        <net name="dbg_uart_rx_data_r[412]"/>
+        <net name="dbg_uart_rx_data_r[411]"/>
+        <net name="dbg_uart_rx_data_r[410]"/>
+        <net name="dbg_uart_rx_data_r[409]"/>
+        <net name="dbg_uart_rx_data_r[408]"/>
+        <net name="dbg_uart_rx_data_r[407]"/>
+        <net name="dbg_uart_rx_data_r[406]"/>
+        <net name="dbg_uart_rx_data_r[405]"/>
+        <net name="dbg_uart_rx_data_r[404]"/>
+        <net name="dbg_uart_rx_data_r[403]"/>
+        <net name="dbg_uart_rx_data_r[402]"/>
+        <net name="dbg_uart_rx_data_r[401]"/>
+        <net name="dbg_uart_rx_data_r[400]"/>
+        <net name="dbg_uart_rx_data_r[399]"/>
+        <net name="dbg_uart_rx_data_r[398]"/>
+        <net name="dbg_uart_rx_data_r[397]"/>
+        <net name="dbg_uart_rx_data_r[396]"/>
+        <net name="dbg_uart_rx_data_r[395]"/>
+        <net name="dbg_uart_rx_data_r[394]"/>
+        <net name="dbg_uart_rx_data_r[393]"/>
+        <net name="dbg_uart_rx_data_r[392]"/>
+        <net name="dbg_uart_rx_data_r[391]"/>
+        <net name="dbg_uart_rx_data_r[390]"/>
+        <net name="dbg_uart_rx_data_r[389]"/>
+        <net name="dbg_uart_rx_data_r[388]"/>
+        <net name="dbg_uart_rx_data_r[387]"/>
+        <net name="dbg_uart_rx_data_r[386]"/>
+        <net name="dbg_uart_rx_data_r[385]"/>
+        <net name="dbg_uart_rx_data_r[384]"/>
+        <net name="dbg_uart_rx_data_r[383]"/>
+        <net name="dbg_uart_rx_data_r[382]"/>
+        <net name="dbg_uart_rx_data_r[381]"/>
+        <net name="dbg_uart_rx_data_r[380]"/>
+        <net name="dbg_uart_rx_data_r[379]"/>
+        <net name="dbg_uart_rx_data_r[378]"/>
+        <net name="dbg_uart_rx_data_r[377]"/>
+        <net name="dbg_uart_rx_data_r[376]"/>
+        <net name="dbg_uart_rx_data_r[375]"/>
+        <net name="dbg_uart_rx_data_r[374]"/>
+        <net name="dbg_uart_rx_data_r[373]"/>
+        <net name="dbg_uart_rx_data_r[372]"/>
+        <net name="dbg_uart_rx_data_r[371]"/>
+        <net name="dbg_uart_rx_data_r[370]"/>
+        <net name="dbg_uart_rx_data_r[369]"/>
+        <net name="dbg_uart_rx_data_r[368]"/>
+        <net name="dbg_uart_rx_data_r[367]"/>
+        <net name="dbg_uart_rx_data_r[366]"/>
+        <net name="dbg_uart_rx_data_r[365]"/>
+        <net name="dbg_uart_rx_data_r[364]"/>
+        <net name="dbg_uart_rx_data_r[363]"/>
+        <net name="dbg_uart_rx_data_r[362]"/>
+        <net name="dbg_uart_rx_data_r[361]"/>
+        <net name="dbg_uart_rx_data_r[360]"/>
+        <net name="dbg_uart_rx_data_r[359]"/>
+        <net name="dbg_uart_rx_data_r[358]"/>
+        <net name="dbg_uart_rx_data_r[357]"/>
+        <net name="dbg_uart_rx_data_r[356]"/>
+        <net name="dbg_uart_rx_data_r[355]"/>
+        <net name="dbg_uart_rx_data_r[354]"/>
+        <net name="dbg_uart_rx_data_r[353]"/>
+        <net name="dbg_uart_rx_data_r[352]"/>
+        <net name="dbg_uart_rx_data_r[351]"/>
+        <net name="dbg_uart_rx_data_r[350]"/>
+        <net name="dbg_uart_rx_data_r[349]"/>
+        <net name="dbg_uart_rx_data_r[348]"/>
+        <net name="dbg_uart_rx_data_r[347]"/>
+        <net name="dbg_uart_rx_data_r[346]"/>
+        <net name="dbg_uart_rx_data_r[345]"/>
+        <net name="dbg_uart_rx_data_r[344]"/>
+        <net name="dbg_uart_rx_data_r[343]"/>
+        <net name="dbg_uart_rx_data_r[342]"/>
+        <net name="dbg_uart_rx_data_r[341]"/>
+        <net name="dbg_uart_rx_data_r[340]"/>
+        <net name="dbg_uart_rx_data_r[339]"/>
+        <net name="dbg_uart_rx_data_r[338]"/>
+        <net name="dbg_uart_rx_data_r[337]"/>
+        <net name="dbg_uart_rx_data_r[336]"/>
+        <net name="dbg_uart_rx_data_r[335]"/>
+        <net name="dbg_uart_rx_data_r[334]"/>
+        <net name="dbg_uart_rx_data_r[333]"/>
+        <net name="dbg_uart_rx_data_r[332]"/>
+        <net name="dbg_uart_rx_data_r[331]"/>
+        <net name="dbg_uart_rx_data_r[330]"/>
+        <net name="dbg_uart_rx_data_r[329]"/>
+        <net name="dbg_uart_rx_data_r[328]"/>
+        <net name="dbg_uart_rx_data_r[327]"/>
+        <net name="dbg_uart_rx_data_r[326]"/>
+        <net name="dbg_uart_rx_data_r[325]"/>
+        <net name="dbg_uart_rx_data_r[324]"/>
+        <net name="dbg_uart_rx_data_r[323]"/>
+        <net name="dbg_uart_rx_data_r[322]"/>
+        <net name="dbg_uart_rx_data_r[321]"/>
+        <net name="dbg_uart_rx_data_r[320]"/>
+        <net name="dbg_uart_rx_data_r[319]"/>
+        <net name="dbg_uart_rx_data_r[318]"/>
+        <net name="dbg_uart_rx_data_r[317]"/>
+        <net name="dbg_uart_rx_data_r[316]"/>
+        <net name="dbg_uart_rx_data_r[315]"/>
+        <net name="dbg_uart_rx_data_r[314]"/>
+        <net name="dbg_uart_rx_data_r[313]"/>
+        <net name="dbg_uart_rx_data_r[312]"/>
+        <net name="dbg_uart_rx_data_r[311]"/>
+        <net name="dbg_uart_rx_data_r[310]"/>
+        <net name="dbg_uart_rx_data_r[309]"/>
+        <net name="dbg_uart_rx_data_r[308]"/>
+        <net name="dbg_uart_rx_data_r[307]"/>
+        <net name="dbg_uart_rx_data_r[306]"/>
+        <net name="dbg_uart_rx_data_r[305]"/>
+        <net name="dbg_uart_rx_data_r[304]"/>
+        <net name="dbg_uart_rx_data_r[303]"/>
+        <net name="dbg_uart_rx_data_r[302]"/>
+        <net name="dbg_uart_rx_data_r[301]"/>
+        <net name="dbg_uart_rx_data_r[300]"/>
+        <net name="dbg_uart_rx_data_r[299]"/>
+        <net name="dbg_uart_rx_data_r[298]"/>
+        <net name="dbg_uart_rx_data_r[297]"/>
+        <net name="dbg_uart_rx_data_r[296]"/>
+        <net name="dbg_uart_rx_data_r[295]"/>
+        <net name="dbg_uart_rx_data_r[294]"/>
+        <net name="dbg_uart_rx_data_r[293]"/>
+        <net name="dbg_uart_rx_data_r[292]"/>
+        <net name="dbg_uart_rx_data_r[291]"/>
+        <net name="dbg_uart_rx_data_r[290]"/>
+        <net name="dbg_uart_rx_data_r[289]"/>
+        <net name="dbg_uart_rx_data_r[288]"/>
+        <net name="dbg_uart_rx_data_r[287]"/>
+        <net name="dbg_uart_rx_data_r[286]"/>
+        <net name="dbg_uart_rx_data_r[285]"/>
+        <net name="dbg_uart_rx_data_r[284]"/>
+        <net name="dbg_uart_rx_data_r[283]"/>
+        <net name="dbg_uart_rx_data_r[282]"/>
+        <net name="dbg_uart_rx_data_r[281]"/>
+        <net name="dbg_uart_rx_data_r[280]"/>
+        <net name="dbg_uart_rx_data_r[279]"/>
+        <net name="dbg_uart_rx_data_r[278]"/>
+        <net name="dbg_uart_rx_data_r[277]"/>
+        <net name="dbg_uart_rx_data_r[276]"/>
+        <net name="dbg_uart_rx_data_r[275]"/>
+        <net name="dbg_uart_rx_data_r[274]"/>
+        <net name="dbg_uart_rx_data_r[273]"/>
+        <net name="dbg_uart_rx_data_r[272]"/>
+        <net name="dbg_uart_rx_data_r[271]"/>
+        <net name="dbg_uart_rx_data_r[270]"/>
+        <net name="dbg_uart_rx_data_r[269]"/>
+        <net name="dbg_uart_rx_data_r[268]"/>
+        <net name="dbg_uart_rx_data_r[267]"/>
+        <net name="dbg_uart_rx_data_r[266]"/>
+        <net name="dbg_uart_rx_data_r[265]"/>
+        <net name="dbg_uart_rx_data_r[264]"/>
+        <net name="dbg_uart_rx_data_r[263]"/>
+        <net name="dbg_uart_rx_data_r[262]"/>
+        <net name="dbg_uart_rx_data_r[261]"/>
+        <net name="dbg_uart_rx_data_r[260]"/>
+        <net name="dbg_uart_rx_data_r[259]"/>
+        <net name="dbg_uart_rx_data_r[258]"/>
+        <net name="dbg_uart_rx_data_r[257]"/>
+        <net name="dbg_uart_rx_data_r[256]"/>
+        <net name="dbg_uart_rx_data_r[255]"/>
+        <net name="dbg_uart_rx_data_r[254]"/>
+        <net name="dbg_uart_rx_data_r[253]"/>
+        <net name="dbg_uart_rx_data_r[252]"/>
+        <net name="dbg_uart_rx_data_r[251]"/>
+        <net name="dbg_uart_rx_data_r[250]"/>
+        <net name="dbg_uart_rx_data_r[249]"/>
+        <net name="dbg_uart_rx_data_r[248]"/>
+        <net name="dbg_uart_rx_data_r[247]"/>
+        <net name="dbg_uart_rx_data_r[246]"/>
+        <net name="dbg_uart_rx_data_r[245]"/>
+        <net name="dbg_uart_rx_data_r[244]"/>
+        <net name="dbg_uart_rx_data_r[243]"/>
+        <net name="dbg_uart_rx_data_r[242]"/>
+        <net name="dbg_uart_rx_data_r[241]"/>
+        <net name="dbg_uart_rx_data_r[240]"/>
+        <net name="dbg_uart_rx_data_r[239]"/>
+        <net name="dbg_uart_rx_data_r[238]"/>
+        <net name="dbg_uart_rx_data_r[237]"/>
+        <net name="dbg_uart_rx_data_r[236]"/>
+        <net name="dbg_uart_rx_data_r[235]"/>
+        <net name="dbg_uart_rx_data_r[234]"/>
+        <net name="dbg_uart_rx_data_r[233]"/>
+        <net name="dbg_uart_rx_data_r[232]"/>
+        <net name="dbg_uart_rx_data_r[231]"/>
+        <net name="dbg_uart_rx_data_r[230]"/>
+        <net name="dbg_uart_rx_data_r[229]"/>
+        <net name="dbg_uart_rx_data_r[228]"/>
+        <net name="dbg_uart_rx_data_r[227]"/>
+        <net name="dbg_uart_rx_data_r[226]"/>
+        <net name="dbg_uart_rx_data_r[225]"/>
+        <net name="dbg_uart_rx_data_r[224]"/>
+        <net name="dbg_uart_rx_data_r[223]"/>
+        <net name="dbg_uart_rx_data_r[222]"/>
+        <net name="dbg_uart_rx_data_r[221]"/>
+        <net name="dbg_uart_rx_data_r[220]"/>
+        <net name="dbg_uart_rx_data_r[219]"/>
+        <net name="dbg_uart_rx_data_r[218]"/>
+        <net name="dbg_uart_rx_data_r[217]"/>
+        <net name="dbg_uart_rx_data_r[216]"/>
+        <net name="dbg_uart_rx_data_r[215]"/>
+        <net name="dbg_uart_rx_data_r[214]"/>
+        <net name="dbg_uart_rx_data_r[213]"/>
+        <net name="dbg_uart_rx_data_r[212]"/>
+        <net name="dbg_uart_rx_data_r[211]"/>
+        <net name="dbg_uart_rx_data_r[210]"/>
+        <net name="dbg_uart_rx_data_r[209]"/>
+        <net name="dbg_uart_rx_data_r[208]"/>
+        <net name="dbg_uart_rx_data_r[207]"/>
+        <net name="dbg_uart_rx_data_r[206]"/>
+        <net name="dbg_uart_rx_data_r[205]"/>
+        <net name="dbg_uart_rx_data_r[204]"/>
+        <net name="dbg_uart_rx_data_r[203]"/>
+        <net name="dbg_uart_rx_data_r[202]"/>
+        <net name="dbg_uart_rx_data_r[201]"/>
+        <net name="dbg_uart_rx_data_r[200]"/>
+        <net name="dbg_uart_rx_data_r[199]"/>
+        <net name="dbg_uart_rx_data_r[198]"/>
+        <net name="dbg_uart_rx_data_r[197]"/>
+        <net name="dbg_uart_rx_data_r[196]"/>
+        <net name="dbg_uart_rx_data_r[195]"/>
+        <net name="dbg_uart_rx_data_r[194]"/>
+        <net name="dbg_uart_rx_data_r[193]"/>
+        <net name="dbg_uart_rx_data_r[192]"/>
+        <net name="dbg_uart_rx_data_r[191]"/>
+        <net name="dbg_uart_rx_data_r[190]"/>
+        <net name="dbg_uart_rx_data_r[189]"/>
+        <net name="dbg_uart_rx_data_r[188]"/>
+        <net name="dbg_uart_rx_data_r[187]"/>
+        <net name="dbg_uart_rx_data_r[186]"/>
+        <net name="dbg_uart_rx_data_r[185]"/>
+        <net name="dbg_uart_rx_data_r[184]"/>
+        <net name="dbg_uart_rx_data_r[183]"/>
+        <net name="dbg_uart_rx_data_r[182]"/>
+        <net name="dbg_uart_rx_data_r[181]"/>
+        <net name="dbg_uart_rx_data_r[180]"/>
+        <net name="dbg_uart_rx_data_r[179]"/>
+        <net name="dbg_uart_rx_data_r[178]"/>
+        <net name="dbg_uart_rx_data_r[177]"/>
+        <net name="dbg_uart_rx_data_r[176]"/>
+        <net name="dbg_uart_rx_data_r[175]"/>
+        <net name="dbg_uart_rx_data_r[174]"/>
+        <net name="dbg_uart_rx_data_r[173]"/>
+        <net name="dbg_uart_rx_data_r[172]"/>
+        <net name="dbg_uart_rx_data_r[171]"/>
+        <net name="dbg_uart_rx_data_r[170]"/>
+        <net name="dbg_uart_rx_data_r[169]"/>
+        <net name="dbg_uart_rx_data_r[168]"/>
+        <net name="dbg_uart_rx_data_r[167]"/>
+        <net name="dbg_uart_rx_data_r[166]"/>
+        <net name="dbg_uart_rx_data_r[165]"/>
+        <net name="dbg_uart_rx_data_r[164]"/>
+        <net name="dbg_uart_rx_data_r[163]"/>
+        <net name="dbg_uart_rx_data_r[162]"/>
+        <net name="dbg_uart_rx_data_r[161]"/>
+        <net name="dbg_uart_rx_data_r[160]"/>
+        <net name="dbg_uart_rx_data_r[159]"/>
+        <net name="dbg_uart_rx_data_r[158]"/>
+        <net name="dbg_uart_rx_data_r[157]"/>
+        <net name="dbg_uart_rx_data_r[156]"/>
+        <net name="dbg_uart_rx_data_r[155]"/>
+        <net name="dbg_uart_rx_data_r[154]"/>
+        <net name="dbg_uart_rx_data_r[153]"/>
+        <net name="dbg_uart_rx_data_r[152]"/>
+        <net name="dbg_uart_rx_data_r[151]"/>
+        <net name="dbg_uart_rx_data_r[150]"/>
+        <net name="dbg_uart_rx_data_r[149]"/>
+        <net name="dbg_uart_rx_data_r[148]"/>
+        <net name="dbg_uart_rx_data_r[147]"/>
+        <net name="dbg_uart_rx_data_r[146]"/>
+        <net name="dbg_uart_rx_data_r[145]"/>
+        <net name="dbg_uart_rx_data_r[144]"/>
+        <net name="dbg_uart_rx_data_r[143]"/>
+        <net name="dbg_uart_rx_data_r[142]"/>
+        <net name="dbg_uart_rx_data_r[141]"/>
+        <net name="dbg_uart_rx_data_r[140]"/>
+        <net name="dbg_uart_rx_data_r[139]"/>
+        <net name="dbg_uart_rx_data_r[138]"/>
+        <net name="dbg_uart_rx_data_r[137]"/>
+        <net name="dbg_uart_rx_data_r[136]"/>
+        <net name="dbg_uart_rx_data_r[135]"/>
+        <net name="dbg_uart_rx_data_r[134]"/>
+        <net name="dbg_uart_rx_data_r[133]"/>
+        <net name="dbg_uart_rx_data_r[132]"/>
+        <net name="dbg_uart_rx_data_r[131]"/>
+        <net name="dbg_uart_rx_data_r[130]"/>
+        <net name="dbg_uart_rx_data_r[129]"/>
+        <net name="dbg_uart_rx_data_r[128]"/>
+        <net name="dbg_uart_rx_data_r[127]"/>
+        <net name="dbg_uart_rx_data_r[126]"/>
+        <net name="dbg_uart_rx_data_r[125]"/>
+        <net name="dbg_uart_rx_data_r[124]"/>
+        <net name="dbg_uart_rx_data_r[123]"/>
+        <net name="dbg_uart_rx_data_r[122]"/>
+        <net name="dbg_uart_rx_data_r[121]"/>
+        <net name="dbg_uart_rx_data_r[120]"/>
+        <net name="dbg_uart_rx_data_r[119]"/>
+        <net name="dbg_uart_rx_data_r[118]"/>
+        <net name="dbg_uart_rx_data_r[117]"/>
+        <net name="dbg_uart_rx_data_r[116]"/>
+        <net name="dbg_uart_rx_data_r[115]"/>
+        <net name="dbg_uart_rx_data_r[114]"/>
+        <net name="dbg_uart_rx_data_r[113]"/>
+        <net name="dbg_uart_rx_data_r[112]"/>
+        <net name="dbg_uart_rx_data_r[111]"/>
+        <net name="dbg_uart_rx_data_r[110]"/>
+        <net name="dbg_uart_rx_data_r[109]"/>
+        <net name="dbg_uart_rx_data_r[108]"/>
+        <net name="dbg_uart_rx_data_r[107]"/>
+        <net name="dbg_uart_rx_data_r[106]"/>
+        <net name="dbg_uart_rx_data_r[105]"/>
+        <net name="dbg_uart_rx_data_r[104]"/>
+        <net name="dbg_uart_rx_data_r[103]"/>
+        <net name="dbg_uart_rx_data_r[102]"/>
+        <net name="dbg_uart_rx_data_r[101]"/>
+        <net name="dbg_uart_rx_data_r[100]"/>
+        <net name="dbg_uart_rx_data_r[99]"/>
+        <net name="dbg_uart_rx_data_r[98]"/>
+        <net name="dbg_uart_rx_data_r[97]"/>
+        <net name="dbg_uart_rx_data_r[96]"/>
+        <net name="dbg_uart_rx_data_r[95]"/>
+        <net name="dbg_uart_rx_data_r[94]"/>
+        <net name="dbg_uart_rx_data_r[93]"/>
+        <net name="dbg_uart_rx_data_r[92]"/>
+        <net name="dbg_uart_rx_data_r[91]"/>
+        <net name="dbg_uart_rx_data_r[90]"/>
+        <net name="dbg_uart_rx_data_r[89]"/>
+        <net name="dbg_uart_rx_data_r[88]"/>
+        <net name="dbg_uart_rx_data_r[87]"/>
+        <net name="dbg_uart_rx_data_r[86]"/>
+        <net name="dbg_uart_rx_data_r[85]"/>
+        <net name="dbg_uart_rx_data_r[84]"/>
+        <net name="dbg_uart_rx_data_r[83]"/>
+        <net name="dbg_uart_rx_data_r[82]"/>
+        <net name="dbg_uart_rx_data_r[81]"/>
+        <net name="dbg_uart_rx_data_r[80]"/>
+        <net name="dbg_uart_rx_data_r[79]"/>
+        <net name="dbg_uart_rx_data_r[78]"/>
+        <net name="dbg_uart_rx_data_r[77]"/>
+        <net name="dbg_uart_rx_data_r[76]"/>
+        <net name="dbg_uart_rx_data_r[75]"/>
+        <net name="dbg_uart_rx_data_r[74]"/>
+        <net name="dbg_uart_rx_data_r[73]"/>
+        <net name="dbg_uart_rx_data_r[72]"/>
+        <net name="dbg_uart_rx_data_r[71]"/>
+        <net name="dbg_uart_rx_data_r[70]"/>
+        <net name="dbg_uart_rx_data_r[69]"/>
+        <net name="dbg_uart_rx_data_r[68]"/>
+        <net name="dbg_uart_rx_data_r[67]"/>
+        <net name="dbg_uart_rx_data_r[66]"/>
+        <net name="dbg_uart_rx_data_r[65]"/>
+        <net name="dbg_uart_rx_data_r[64]"/>
+        <net name="dbg_uart_rx_data_r[63]"/>
+        <net name="dbg_uart_rx_data_r[62]"/>
+        <net name="dbg_uart_rx_data_r[61]"/>
+        <net name="dbg_uart_rx_data_r[60]"/>
+        <net name="dbg_uart_rx_data_r[59]"/>
+        <net name="dbg_uart_rx_data_r[58]"/>
+        <net name="dbg_uart_rx_data_r[57]"/>
+        <net name="dbg_uart_rx_data_r[56]"/>
+        <net name="dbg_uart_rx_data_r[55]"/>
+        <net name="dbg_uart_rx_data_r[54]"/>
+        <net name="dbg_uart_rx_data_r[53]"/>
+        <net name="dbg_uart_rx_data_r[52]"/>
+        <net name="dbg_uart_rx_data_r[51]"/>
+        <net name="dbg_uart_rx_data_r[50]"/>
+        <net name="dbg_uart_rx_data_r[49]"/>
+        <net name="dbg_uart_rx_data_r[48]"/>
+        <net name="dbg_uart_rx_data_r[47]"/>
+        <net name="dbg_uart_rx_data_r[46]"/>
+        <net name="dbg_uart_rx_data_r[45]"/>
+        <net name="dbg_uart_rx_data_r[44]"/>
+        <net name="dbg_uart_rx_data_r[43]"/>
+        <net name="dbg_uart_rx_data_r[42]"/>
+        <net name="dbg_uart_rx_data_r[41]"/>
+        <net name="dbg_uart_rx_data_r[40]"/>
+        <net name="dbg_uart_rx_data_r[39]"/>
+        <net name="dbg_uart_rx_data_r[38]"/>
+        <net name="dbg_uart_rx_data_r[37]"/>
+        <net name="dbg_uart_rx_data_r[36]"/>
+        <net name="dbg_uart_rx_data_r[35]"/>
+        <net name="dbg_uart_rx_data_r[34]"/>
+        <net name="dbg_uart_rx_data_r[33]"/>
+        <net name="dbg_uart_rx_data_r[32]"/>
+        <net name="dbg_uart_rx_data_r[31]"/>
+        <net name="dbg_uart_rx_data_r[30]"/>
+        <net name="dbg_uart_rx_data_r[29]"/>
+        <net name="dbg_uart_rx_data_r[28]"/>
+        <net name="dbg_uart_rx_data_r[27]"/>
+        <net name="dbg_uart_rx_data_r[26]"/>
+        <net name="dbg_uart_rx_data_r[25]"/>
+        <net name="dbg_uart_rx_data_r[24]"/>
+        <net name="dbg_uart_rx_data_r[23]"/>
+        <net name="dbg_uart_rx_data_r[22]"/>
+        <net name="dbg_uart_rx_data_r[21]"/>
+        <net name="dbg_uart_rx_data_r[20]"/>
+        <net name="dbg_uart_rx_data_r[19]"/>
+        <net name="dbg_uart_rx_data_r[18]"/>
+        <net name="dbg_uart_rx_data_r[17]"/>
+        <net name="dbg_uart_rx_data_r[16]"/>
+        <net name="dbg_uart_rx_data_r[15]"/>
+        <net name="dbg_uart_rx_data_r[14]"/>
+        <net name="dbg_uart_rx_data_r[13]"/>
+        <net name="dbg_uart_rx_data_r[12]"/>
+        <net name="dbg_uart_rx_data_r[11]"/>
+        <net name="dbg_uart_rx_data_r[10]"/>
+        <net name="dbg_uart_rx_data_r[9]"/>
+        <net name="dbg_uart_rx_data_r[8]"/>
+        <net name="dbg_uart_rx_data_r[7]"/>
+        <net name="dbg_uart_rx_data_r[6]"/>
+        <net name="dbg_uart_rx_data_r[5]"/>
+        <net name="dbg_uart_rx_data_r[4]"/>
+        <net name="dbg_uart_rx_data_r[3]"/>
+        <net name="dbg_uart_rx_data_r[2]"/>
+        <net name="dbg_uart_rx_data_r[1]"/>
+        <net name="dbg_uart_rx_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe15[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_uart_rx_data_rdy_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq7&apos;hXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq7&apos;hXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe4[6:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq7&apos;hXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_uart_rx_num_r[6]"/>
+        <net name="dbg_uart_rx_num_r[5]"/>
+        <net name="dbg_uart_rx_num_r[4]"/>
+        <net name="dbg_uart_rx_num_r[3]"/>
+        <net name="dbg_uart_rx_num_r[2]"/>
+        <net name="dbg_uart_rx_num_r[1]"/>
+        <net name="dbg_uart_rx_num_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe6[63:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_udp_data_r[63]"/>
+        <net name="dbg_udp_data_r[62]"/>
+        <net name="dbg_udp_data_r[61]"/>
+        <net name="dbg_udp_data_r[60]"/>
+        <net name="dbg_udp_data_r[59]"/>
+        <net name="dbg_udp_data_r[58]"/>
+        <net name="dbg_udp_data_r[57]"/>
+        <net name="dbg_udp_data_r[56]"/>
+        <net name="dbg_udp_data_r[55]"/>
+        <net name="dbg_udp_data_r[54]"/>
+        <net name="dbg_udp_data_r[53]"/>
+        <net name="dbg_udp_data_r[52]"/>
+        <net name="dbg_udp_data_r[51]"/>
+        <net name="dbg_udp_data_r[50]"/>
+        <net name="dbg_udp_data_r[49]"/>
+        <net name="dbg_udp_data_r[48]"/>
+        <net name="dbg_udp_data_r[47]"/>
+        <net name="dbg_udp_data_r[46]"/>
+        <net name="dbg_udp_data_r[45]"/>
+        <net name="dbg_udp_data_r[44]"/>
+        <net name="dbg_udp_data_r[43]"/>
+        <net name="dbg_udp_data_r[42]"/>
+        <net name="dbg_udp_data_r[41]"/>
+        <net name="dbg_udp_data_r[40]"/>
+        <net name="dbg_udp_data_r[39]"/>
+        <net name="dbg_udp_data_r[38]"/>
+        <net name="dbg_udp_data_r[37]"/>
+        <net name="dbg_udp_data_r[36]"/>
+        <net name="dbg_udp_data_r[35]"/>
+        <net name="dbg_udp_data_r[34]"/>
+        <net name="dbg_udp_data_r[33]"/>
+        <net name="dbg_udp_data_r[32]"/>
+        <net name="dbg_udp_data_r[31]"/>
+        <net name="dbg_udp_data_r[30]"/>
+        <net name="dbg_udp_data_r[29]"/>
+        <net name="dbg_udp_data_r[28]"/>
+        <net name="dbg_udp_data_r[27]"/>
+        <net name="dbg_udp_data_r[26]"/>
+        <net name="dbg_udp_data_r[25]"/>
+        <net name="dbg_udp_data_r[24]"/>
+        <net name="dbg_udp_data_r[23]"/>
+        <net name="dbg_udp_data_r[22]"/>
+        <net name="dbg_udp_data_r[21]"/>
+        <net name="dbg_udp_data_r[20]"/>
+        <net name="dbg_udp_data_r[19]"/>
+        <net name="dbg_udp_data_r[18]"/>
+        <net name="dbg_udp_data_r[17]"/>
+        <net name="dbg_udp_data_r[16]"/>
+        <net name="dbg_udp_data_r[15]"/>
+        <net name="dbg_udp_data_r[14]"/>
+        <net name="dbg_udp_data_r[13]"/>
+        <net name="dbg_udp_data_r[12]"/>
+        <net name="dbg_udp_data_r[11]"/>
+        <net name="dbg_udp_data_r[10]"/>
+        <net name="dbg_udp_data_r[9]"/>
+        <net name="dbg_udp_data_r[8]"/>
+        <net name="dbg_udp_data_r[7]"/>
+        <net name="dbg_udp_data_r[6]"/>
+        <net name="dbg_udp_data_r[5]"/>
+        <net name="dbg_udp_data_r[4]"/>
+        <net name="dbg_udp_data_r[3]"/>
+        <net name="dbg_udp_data_r[2]"/>
+        <net name="dbg_udp_data_r[1]"/>
+        <net name="dbg_udp_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe16[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_udp_overflow_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe17[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_udp_ready_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe5[63:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq64&apos;hXXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_udp_tx_data_r[63]"/>
+        <net name="dbg_udp_tx_data_r[62]"/>
+        <net name="dbg_udp_tx_data_r[61]"/>
+        <net name="dbg_udp_tx_data_r[60]"/>
+        <net name="dbg_udp_tx_data_r[59]"/>
+        <net name="dbg_udp_tx_data_r[58]"/>
+        <net name="dbg_udp_tx_data_r[57]"/>
+        <net name="dbg_udp_tx_data_r[56]"/>
+        <net name="dbg_udp_tx_data_r[55]"/>
+        <net name="dbg_udp_tx_data_r[54]"/>
+        <net name="dbg_udp_tx_data_r[53]"/>
+        <net name="dbg_udp_tx_data_r[52]"/>
+        <net name="dbg_udp_tx_data_r[51]"/>
+        <net name="dbg_udp_tx_data_r[50]"/>
+        <net name="dbg_udp_tx_data_r[49]"/>
+        <net name="dbg_udp_tx_data_r[48]"/>
+        <net name="dbg_udp_tx_data_r[47]"/>
+        <net name="dbg_udp_tx_data_r[46]"/>
+        <net name="dbg_udp_tx_data_r[45]"/>
+        <net name="dbg_udp_tx_data_r[44]"/>
+        <net name="dbg_udp_tx_data_r[43]"/>
+        <net name="dbg_udp_tx_data_r[42]"/>
+        <net name="dbg_udp_tx_data_r[41]"/>
+        <net name="dbg_udp_tx_data_r[40]"/>
+        <net name="dbg_udp_tx_data_r[39]"/>
+        <net name="dbg_udp_tx_data_r[38]"/>
+        <net name="dbg_udp_tx_data_r[37]"/>
+        <net name="dbg_udp_tx_data_r[36]"/>
+        <net name="dbg_udp_tx_data_r[35]"/>
+        <net name="dbg_udp_tx_data_r[34]"/>
+        <net name="dbg_udp_tx_data_r[33]"/>
+        <net name="dbg_udp_tx_data_r[32]"/>
+        <net name="dbg_udp_tx_data_r[31]"/>
+        <net name="dbg_udp_tx_data_r[30]"/>
+        <net name="dbg_udp_tx_data_r[29]"/>
+        <net name="dbg_udp_tx_data_r[28]"/>
+        <net name="dbg_udp_tx_data_r[27]"/>
+        <net name="dbg_udp_tx_data_r[26]"/>
+        <net name="dbg_udp_tx_data_r[25]"/>
+        <net name="dbg_udp_tx_data_r[24]"/>
+        <net name="dbg_udp_tx_data_r[23]"/>
+        <net name="dbg_udp_tx_data_r[22]"/>
+        <net name="dbg_udp_tx_data_r[21]"/>
+        <net name="dbg_udp_tx_data_r[20]"/>
+        <net name="dbg_udp_tx_data_r[19]"/>
+        <net name="dbg_udp_tx_data_r[18]"/>
+        <net name="dbg_udp_tx_data_r[17]"/>
+        <net name="dbg_udp_tx_data_r[16]"/>
+        <net name="dbg_udp_tx_data_r[15]"/>
+        <net name="dbg_udp_tx_data_r[14]"/>
+        <net name="dbg_udp_tx_data_r[13]"/>
+        <net name="dbg_udp_tx_data_r[12]"/>
+        <net name="dbg_udp_tx_data_r[11]"/>
+        <net name="dbg_udp_tx_data_r[10]"/>
+        <net name="dbg_udp_tx_data_r[9]"/>
+        <net name="dbg_udp_tx_data_r[8]"/>
+        <net name="dbg_udp_tx_data_r[7]"/>
+        <net name="dbg_udp_tx_data_r[6]"/>
+        <net name="dbg_udp_tx_data_r[5]"/>
+        <net name="dbg_udp_tx_data_r[4]"/>
+        <net name="dbg_udp_tx_data_r[3]"/>
+        <net name="dbg_udp_tx_data_r[2]"/>
+        <net name="dbg_udp_tx_data_r[1]"/>
+        <net name="dbg_udp_tx_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe18[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_udp_tx_valid_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe19[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_udp_valid_r"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq3&apos;hX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq3&apos;hX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq3&apos;hX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_unpack_count_r[2]"/>
+        <net name="dbg_unpack_count_r[1]"/>
+        <net name="dbg_unpack_count_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[511:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq512&apos;hXXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_user_cmd_data_r[511]"/>
+        <net name="dbg_user_cmd_data_r[510]"/>
+        <net name="dbg_user_cmd_data_r[509]"/>
+        <net name="dbg_user_cmd_data_r[508]"/>
+        <net name="dbg_user_cmd_data_r[507]"/>
+        <net name="dbg_user_cmd_data_r[506]"/>
+        <net name="dbg_user_cmd_data_r[505]"/>
+        <net name="dbg_user_cmd_data_r[504]"/>
+        <net name="dbg_user_cmd_data_r[503]"/>
+        <net name="dbg_user_cmd_data_r[502]"/>
+        <net name="dbg_user_cmd_data_r[501]"/>
+        <net name="dbg_user_cmd_data_r[500]"/>
+        <net name="dbg_user_cmd_data_r[499]"/>
+        <net name="dbg_user_cmd_data_r[498]"/>
+        <net name="dbg_user_cmd_data_r[497]"/>
+        <net name="dbg_user_cmd_data_r[496]"/>
+        <net name="dbg_user_cmd_data_r[495]"/>
+        <net name="dbg_user_cmd_data_r[494]"/>
+        <net name="dbg_user_cmd_data_r[493]"/>
+        <net name="dbg_user_cmd_data_r[492]"/>
+        <net name="dbg_user_cmd_data_r[491]"/>
+        <net name="dbg_user_cmd_data_r[490]"/>
+        <net name="dbg_user_cmd_data_r[489]"/>
+        <net name="dbg_user_cmd_data_r[488]"/>
+        <net name="dbg_user_cmd_data_r[487]"/>
+        <net name="dbg_user_cmd_data_r[486]"/>
+        <net name="dbg_user_cmd_data_r[485]"/>
+        <net name="dbg_user_cmd_data_r[484]"/>
+        <net name="dbg_user_cmd_data_r[483]"/>
+        <net name="dbg_user_cmd_data_r[482]"/>
+        <net name="dbg_user_cmd_data_r[481]"/>
+        <net name="dbg_user_cmd_data_r[480]"/>
+        <net name="dbg_user_cmd_data_r[479]"/>
+        <net name="dbg_user_cmd_data_r[478]"/>
+        <net name="dbg_user_cmd_data_r[477]"/>
+        <net name="dbg_user_cmd_data_r[476]"/>
+        <net name="dbg_user_cmd_data_r[475]"/>
+        <net name="dbg_user_cmd_data_r[474]"/>
+        <net name="dbg_user_cmd_data_r[473]"/>
+        <net name="dbg_user_cmd_data_r[472]"/>
+        <net name="dbg_user_cmd_data_r[471]"/>
+        <net name="dbg_user_cmd_data_r[470]"/>
+        <net name="dbg_user_cmd_data_r[469]"/>
+        <net name="dbg_user_cmd_data_r[468]"/>
+        <net name="dbg_user_cmd_data_r[467]"/>
+        <net name="dbg_user_cmd_data_r[466]"/>
+        <net name="dbg_user_cmd_data_r[465]"/>
+        <net name="dbg_user_cmd_data_r[464]"/>
+        <net name="dbg_user_cmd_data_r[463]"/>
+        <net name="dbg_user_cmd_data_r[462]"/>
+        <net name="dbg_user_cmd_data_r[461]"/>
+        <net name="dbg_user_cmd_data_r[460]"/>
+        <net name="dbg_user_cmd_data_r[459]"/>
+        <net name="dbg_user_cmd_data_r[458]"/>
+        <net name="dbg_user_cmd_data_r[457]"/>
+        <net name="dbg_user_cmd_data_r[456]"/>
+        <net name="dbg_user_cmd_data_r[455]"/>
+        <net name="dbg_user_cmd_data_r[454]"/>
+        <net name="dbg_user_cmd_data_r[453]"/>
+        <net name="dbg_user_cmd_data_r[452]"/>
+        <net name="dbg_user_cmd_data_r[451]"/>
+        <net name="dbg_user_cmd_data_r[450]"/>
+        <net name="dbg_user_cmd_data_r[449]"/>
+        <net name="dbg_user_cmd_data_r[448]"/>
+        <net name="dbg_user_cmd_data_r[447]"/>
+        <net name="dbg_user_cmd_data_r[446]"/>
+        <net name="dbg_user_cmd_data_r[445]"/>
+        <net name="dbg_user_cmd_data_r[444]"/>
+        <net name="dbg_user_cmd_data_r[443]"/>
+        <net name="dbg_user_cmd_data_r[442]"/>
+        <net name="dbg_user_cmd_data_r[441]"/>
+        <net name="dbg_user_cmd_data_r[440]"/>
+        <net name="dbg_user_cmd_data_r[439]"/>
+        <net name="dbg_user_cmd_data_r[438]"/>
+        <net name="dbg_user_cmd_data_r[437]"/>
+        <net name="dbg_user_cmd_data_r[436]"/>
+        <net name="dbg_user_cmd_data_r[435]"/>
+        <net name="dbg_user_cmd_data_r[434]"/>
+        <net name="dbg_user_cmd_data_r[433]"/>
+        <net name="dbg_user_cmd_data_r[432]"/>
+        <net name="dbg_user_cmd_data_r[431]"/>
+        <net name="dbg_user_cmd_data_r[430]"/>
+        <net name="dbg_user_cmd_data_r[429]"/>
+        <net name="dbg_user_cmd_data_r[428]"/>
+        <net name="dbg_user_cmd_data_r[427]"/>
+        <net name="dbg_user_cmd_data_r[426]"/>
+        <net name="dbg_user_cmd_data_r[425]"/>
+        <net name="dbg_user_cmd_data_r[424]"/>
+        <net name="dbg_user_cmd_data_r[423]"/>
+        <net name="dbg_user_cmd_data_r[422]"/>
+        <net name="dbg_user_cmd_data_r[421]"/>
+        <net name="dbg_user_cmd_data_r[420]"/>
+        <net name="dbg_user_cmd_data_r[419]"/>
+        <net name="dbg_user_cmd_data_r[418]"/>
+        <net name="dbg_user_cmd_data_r[417]"/>
+        <net name="dbg_user_cmd_data_r[416]"/>
+        <net name="dbg_user_cmd_data_r[415]"/>
+        <net name="dbg_user_cmd_data_r[414]"/>
+        <net name="dbg_user_cmd_data_r[413]"/>
+        <net name="dbg_user_cmd_data_r[412]"/>
+        <net name="dbg_user_cmd_data_r[411]"/>
+        <net name="dbg_user_cmd_data_r[410]"/>
+        <net name="dbg_user_cmd_data_r[409]"/>
+        <net name="dbg_user_cmd_data_r[408]"/>
+        <net name="dbg_user_cmd_data_r[407]"/>
+        <net name="dbg_user_cmd_data_r[406]"/>
+        <net name="dbg_user_cmd_data_r[405]"/>
+        <net name="dbg_user_cmd_data_r[404]"/>
+        <net name="dbg_user_cmd_data_r[403]"/>
+        <net name="dbg_user_cmd_data_r[402]"/>
+        <net name="dbg_user_cmd_data_r[401]"/>
+        <net name="dbg_user_cmd_data_r[400]"/>
+        <net name="dbg_user_cmd_data_r[399]"/>
+        <net name="dbg_user_cmd_data_r[398]"/>
+        <net name="dbg_user_cmd_data_r[397]"/>
+        <net name="dbg_user_cmd_data_r[396]"/>
+        <net name="dbg_user_cmd_data_r[395]"/>
+        <net name="dbg_user_cmd_data_r[394]"/>
+        <net name="dbg_user_cmd_data_r[393]"/>
+        <net name="dbg_user_cmd_data_r[392]"/>
+        <net name="dbg_user_cmd_data_r[391]"/>
+        <net name="dbg_user_cmd_data_r[390]"/>
+        <net name="dbg_user_cmd_data_r[389]"/>
+        <net name="dbg_user_cmd_data_r[388]"/>
+        <net name="dbg_user_cmd_data_r[387]"/>
+        <net name="dbg_user_cmd_data_r[386]"/>
+        <net name="dbg_user_cmd_data_r[385]"/>
+        <net name="dbg_user_cmd_data_r[384]"/>
+        <net name="dbg_user_cmd_data_r[383]"/>
+        <net name="dbg_user_cmd_data_r[382]"/>
+        <net name="dbg_user_cmd_data_r[381]"/>
+        <net name="dbg_user_cmd_data_r[380]"/>
+        <net name="dbg_user_cmd_data_r[379]"/>
+        <net name="dbg_user_cmd_data_r[378]"/>
+        <net name="dbg_user_cmd_data_r[377]"/>
+        <net name="dbg_user_cmd_data_r[376]"/>
+        <net name="dbg_user_cmd_data_r[375]"/>
+        <net name="dbg_user_cmd_data_r[374]"/>
+        <net name="dbg_user_cmd_data_r[373]"/>
+        <net name="dbg_user_cmd_data_r[372]"/>
+        <net name="dbg_user_cmd_data_r[371]"/>
+        <net name="dbg_user_cmd_data_r[370]"/>
+        <net name="dbg_user_cmd_data_r[369]"/>
+        <net name="dbg_user_cmd_data_r[368]"/>
+        <net name="dbg_user_cmd_data_r[367]"/>
+        <net name="dbg_user_cmd_data_r[366]"/>
+        <net name="dbg_user_cmd_data_r[365]"/>
+        <net name="dbg_user_cmd_data_r[364]"/>
+        <net name="dbg_user_cmd_data_r[363]"/>
+        <net name="dbg_user_cmd_data_r[362]"/>
+        <net name="dbg_user_cmd_data_r[361]"/>
+        <net name="dbg_user_cmd_data_r[360]"/>
+        <net name="dbg_user_cmd_data_r[359]"/>
+        <net name="dbg_user_cmd_data_r[358]"/>
+        <net name="dbg_user_cmd_data_r[357]"/>
+        <net name="dbg_user_cmd_data_r[356]"/>
+        <net name="dbg_user_cmd_data_r[355]"/>
+        <net name="dbg_user_cmd_data_r[354]"/>
+        <net name="dbg_user_cmd_data_r[353]"/>
+        <net name="dbg_user_cmd_data_r[352]"/>
+        <net name="dbg_user_cmd_data_r[351]"/>
+        <net name="dbg_user_cmd_data_r[350]"/>
+        <net name="dbg_user_cmd_data_r[349]"/>
+        <net name="dbg_user_cmd_data_r[348]"/>
+        <net name="dbg_user_cmd_data_r[347]"/>
+        <net name="dbg_user_cmd_data_r[346]"/>
+        <net name="dbg_user_cmd_data_r[345]"/>
+        <net name="dbg_user_cmd_data_r[344]"/>
+        <net name="dbg_user_cmd_data_r[343]"/>
+        <net name="dbg_user_cmd_data_r[342]"/>
+        <net name="dbg_user_cmd_data_r[341]"/>
+        <net name="dbg_user_cmd_data_r[340]"/>
+        <net name="dbg_user_cmd_data_r[339]"/>
+        <net name="dbg_user_cmd_data_r[338]"/>
+        <net name="dbg_user_cmd_data_r[337]"/>
+        <net name="dbg_user_cmd_data_r[336]"/>
+        <net name="dbg_user_cmd_data_r[335]"/>
+        <net name="dbg_user_cmd_data_r[334]"/>
+        <net name="dbg_user_cmd_data_r[333]"/>
+        <net name="dbg_user_cmd_data_r[332]"/>
+        <net name="dbg_user_cmd_data_r[331]"/>
+        <net name="dbg_user_cmd_data_r[330]"/>
+        <net name="dbg_user_cmd_data_r[329]"/>
+        <net name="dbg_user_cmd_data_r[328]"/>
+        <net name="dbg_user_cmd_data_r[327]"/>
+        <net name="dbg_user_cmd_data_r[326]"/>
+        <net name="dbg_user_cmd_data_r[325]"/>
+        <net name="dbg_user_cmd_data_r[324]"/>
+        <net name="dbg_user_cmd_data_r[323]"/>
+        <net name="dbg_user_cmd_data_r[322]"/>
+        <net name="dbg_user_cmd_data_r[321]"/>
+        <net name="dbg_user_cmd_data_r[320]"/>
+        <net name="dbg_user_cmd_data_r[319]"/>
+        <net name="dbg_user_cmd_data_r[318]"/>
+        <net name="dbg_user_cmd_data_r[317]"/>
+        <net name="dbg_user_cmd_data_r[316]"/>
+        <net name="dbg_user_cmd_data_r[315]"/>
+        <net name="dbg_user_cmd_data_r[314]"/>
+        <net name="dbg_user_cmd_data_r[313]"/>
+        <net name="dbg_user_cmd_data_r[312]"/>
+        <net name="dbg_user_cmd_data_r[311]"/>
+        <net name="dbg_user_cmd_data_r[310]"/>
+        <net name="dbg_user_cmd_data_r[309]"/>
+        <net name="dbg_user_cmd_data_r[308]"/>
+        <net name="dbg_user_cmd_data_r[307]"/>
+        <net name="dbg_user_cmd_data_r[306]"/>
+        <net name="dbg_user_cmd_data_r[305]"/>
+        <net name="dbg_user_cmd_data_r[304]"/>
+        <net name="dbg_user_cmd_data_r[303]"/>
+        <net name="dbg_user_cmd_data_r[302]"/>
+        <net name="dbg_user_cmd_data_r[301]"/>
+        <net name="dbg_user_cmd_data_r[300]"/>
+        <net name="dbg_user_cmd_data_r[299]"/>
+        <net name="dbg_user_cmd_data_r[298]"/>
+        <net name="dbg_user_cmd_data_r[297]"/>
+        <net name="dbg_user_cmd_data_r[296]"/>
+        <net name="dbg_user_cmd_data_r[295]"/>
+        <net name="dbg_user_cmd_data_r[294]"/>
+        <net name="dbg_user_cmd_data_r[293]"/>
+        <net name="dbg_user_cmd_data_r[292]"/>
+        <net name="dbg_user_cmd_data_r[291]"/>
+        <net name="dbg_user_cmd_data_r[290]"/>
+        <net name="dbg_user_cmd_data_r[289]"/>
+        <net name="dbg_user_cmd_data_r[288]"/>
+        <net name="dbg_user_cmd_data_r[287]"/>
+        <net name="dbg_user_cmd_data_r[286]"/>
+        <net name="dbg_user_cmd_data_r[285]"/>
+        <net name="dbg_user_cmd_data_r[284]"/>
+        <net name="dbg_user_cmd_data_r[283]"/>
+        <net name="dbg_user_cmd_data_r[282]"/>
+        <net name="dbg_user_cmd_data_r[281]"/>
+        <net name="dbg_user_cmd_data_r[280]"/>
+        <net name="dbg_user_cmd_data_r[279]"/>
+        <net name="dbg_user_cmd_data_r[278]"/>
+        <net name="dbg_user_cmd_data_r[277]"/>
+        <net name="dbg_user_cmd_data_r[276]"/>
+        <net name="dbg_user_cmd_data_r[275]"/>
+        <net name="dbg_user_cmd_data_r[274]"/>
+        <net name="dbg_user_cmd_data_r[273]"/>
+        <net name="dbg_user_cmd_data_r[272]"/>
+        <net name="dbg_user_cmd_data_r[271]"/>
+        <net name="dbg_user_cmd_data_r[270]"/>
+        <net name="dbg_user_cmd_data_r[269]"/>
+        <net name="dbg_user_cmd_data_r[268]"/>
+        <net name="dbg_user_cmd_data_r[267]"/>
+        <net name="dbg_user_cmd_data_r[266]"/>
+        <net name="dbg_user_cmd_data_r[265]"/>
+        <net name="dbg_user_cmd_data_r[264]"/>
+        <net name="dbg_user_cmd_data_r[263]"/>
+        <net name="dbg_user_cmd_data_r[262]"/>
+        <net name="dbg_user_cmd_data_r[261]"/>
+        <net name="dbg_user_cmd_data_r[260]"/>
+        <net name="dbg_user_cmd_data_r[259]"/>
+        <net name="dbg_user_cmd_data_r[258]"/>
+        <net name="dbg_user_cmd_data_r[257]"/>
+        <net name="dbg_user_cmd_data_r[256]"/>
+        <net name="dbg_user_cmd_data_r[255]"/>
+        <net name="dbg_user_cmd_data_r[254]"/>
+        <net name="dbg_user_cmd_data_r[253]"/>
+        <net name="dbg_user_cmd_data_r[252]"/>
+        <net name="dbg_user_cmd_data_r[251]"/>
+        <net name="dbg_user_cmd_data_r[250]"/>
+        <net name="dbg_user_cmd_data_r[249]"/>
+        <net name="dbg_user_cmd_data_r[248]"/>
+        <net name="dbg_user_cmd_data_r[247]"/>
+        <net name="dbg_user_cmd_data_r[246]"/>
+        <net name="dbg_user_cmd_data_r[245]"/>
+        <net name="dbg_user_cmd_data_r[244]"/>
+        <net name="dbg_user_cmd_data_r[243]"/>
+        <net name="dbg_user_cmd_data_r[242]"/>
+        <net name="dbg_user_cmd_data_r[241]"/>
+        <net name="dbg_user_cmd_data_r[240]"/>
+        <net name="dbg_user_cmd_data_r[239]"/>
+        <net name="dbg_user_cmd_data_r[238]"/>
+        <net name="dbg_user_cmd_data_r[237]"/>
+        <net name="dbg_user_cmd_data_r[236]"/>
+        <net name="dbg_user_cmd_data_r[235]"/>
+        <net name="dbg_user_cmd_data_r[234]"/>
+        <net name="dbg_user_cmd_data_r[233]"/>
+        <net name="dbg_user_cmd_data_r[232]"/>
+        <net name="dbg_user_cmd_data_r[231]"/>
+        <net name="dbg_user_cmd_data_r[230]"/>
+        <net name="dbg_user_cmd_data_r[229]"/>
+        <net name="dbg_user_cmd_data_r[228]"/>
+        <net name="dbg_user_cmd_data_r[227]"/>
+        <net name="dbg_user_cmd_data_r[226]"/>
+        <net name="dbg_user_cmd_data_r[225]"/>
+        <net name="dbg_user_cmd_data_r[224]"/>
+        <net name="dbg_user_cmd_data_r[223]"/>
+        <net name="dbg_user_cmd_data_r[222]"/>
+        <net name="dbg_user_cmd_data_r[221]"/>
+        <net name="dbg_user_cmd_data_r[220]"/>
+        <net name="dbg_user_cmd_data_r[219]"/>
+        <net name="dbg_user_cmd_data_r[218]"/>
+        <net name="dbg_user_cmd_data_r[217]"/>
+        <net name="dbg_user_cmd_data_r[216]"/>
+        <net name="dbg_user_cmd_data_r[215]"/>
+        <net name="dbg_user_cmd_data_r[214]"/>
+        <net name="dbg_user_cmd_data_r[213]"/>
+        <net name="dbg_user_cmd_data_r[212]"/>
+        <net name="dbg_user_cmd_data_r[211]"/>
+        <net name="dbg_user_cmd_data_r[210]"/>
+        <net name="dbg_user_cmd_data_r[209]"/>
+        <net name="dbg_user_cmd_data_r[208]"/>
+        <net name="dbg_user_cmd_data_r[207]"/>
+        <net name="dbg_user_cmd_data_r[206]"/>
+        <net name="dbg_user_cmd_data_r[205]"/>
+        <net name="dbg_user_cmd_data_r[204]"/>
+        <net name="dbg_user_cmd_data_r[203]"/>
+        <net name="dbg_user_cmd_data_r[202]"/>
+        <net name="dbg_user_cmd_data_r[201]"/>
+        <net name="dbg_user_cmd_data_r[200]"/>
+        <net name="dbg_user_cmd_data_r[199]"/>
+        <net name="dbg_user_cmd_data_r[198]"/>
+        <net name="dbg_user_cmd_data_r[197]"/>
+        <net name="dbg_user_cmd_data_r[196]"/>
+        <net name="dbg_user_cmd_data_r[195]"/>
+        <net name="dbg_user_cmd_data_r[194]"/>
+        <net name="dbg_user_cmd_data_r[193]"/>
+        <net name="dbg_user_cmd_data_r[192]"/>
+        <net name="dbg_user_cmd_data_r[191]"/>
+        <net name="dbg_user_cmd_data_r[190]"/>
+        <net name="dbg_user_cmd_data_r[189]"/>
+        <net name="dbg_user_cmd_data_r[188]"/>
+        <net name="dbg_user_cmd_data_r[187]"/>
+        <net name="dbg_user_cmd_data_r[186]"/>
+        <net name="dbg_user_cmd_data_r[185]"/>
+        <net name="dbg_user_cmd_data_r[184]"/>
+        <net name="dbg_user_cmd_data_r[183]"/>
+        <net name="dbg_user_cmd_data_r[182]"/>
+        <net name="dbg_user_cmd_data_r[181]"/>
+        <net name="dbg_user_cmd_data_r[180]"/>
+        <net name="dbg_user_cmd_data_r[179]"/>
+        <net name="dbg_user_cmd_data_r[178]"/>
+        <net name="dbg_user_cmd_data_r[177]"/>
+        <net name="dbg_user_cmd_data_r[176]"/>
+        <net name="dbg_user_cmd_data_r[175]"/>
+        <net name="dbg_user_cmd_data_r[174]"/>
+        <net name="dbg_user_cmd_data_r[173]"/>
+        <net name="dbg_user_cmd_data_r[172]"/>
+        <net name="dbg_user_cmd_data_r[171]"/>
+        <net name="dbg_user_cmd_data_r[170]"/>
+        <net name="dbg_user_cmd_data_r[169]"/>
+        <net name="dbg_user_cmd_data_r[168]"/>
+        <net name="dbg_user_cmd_data_r[167]"/>
+        <net name="dbg_user_cmd_data_r[166]"/>
+        <net name="dbg_user_cmd_data_r[165]"/>
+        <net name="dbg_user_cmd_data_r[164]"/>
+        <net name="dbg_user_cmd_data_r[163]"/>
+        <net name="dbg_user_cmd_data_r[162]"/>
+        <net name="dbg_user_cmd_data_r[161]"/>
+        <net name="dbg_user_cmd_data_r[160]"/>
+        <net name="dbg_user_cmd_data_r[159]"/>
+        <net name="dbg_user_cmd_data_r[158]"/>
+        <net name="dbg_user_cmd_data_r[157]"/>
+        <net name="dbg_user_cmd_data_r[156]"/>
+        <net name="dbg_user_cmd_data_r[155]"/>
+        <net name="dbg_user_cmd_data_r[154]"/>
+        <net name="dbg_user_cmd_data_r[153]"/>
+        <net name="dbg_user_cmd_data_r[152]"/>
+        <net name="dbg_user_cmd_data_r[151]"/>
+        <net name="dbg_user_cmd_data_r[150]"/>
+        <net name="dbg_user_cmd_data_r[149]"/>
+        <net name="dbg_user_cmd_data_r[148]"/>
+        <net name="dbg_user_cmd_data_r[147]"/>
+        <net name="dbg_user_cmd_data_r[146]"/>
+        <net name="dbg_user_cmd_data_r[145]"/>
+        <net name="dbg_user_cmd_data_r[144]"/>
+        <net name="dbg_user_cmd_data_r[143]"/>
+        <net name="dbg_user_cmd_data_r[142]"/>
+        <net name="dbg_user_cmd_data_r[141]"/>
+        <net name="dbg_user_cmd_data_r[140]"/>
+        <net name="dbg_user_cmd_data_r[139]"/>
+        <net name="dbg_user_cmd_data_r[138]"/>
+        <net name="dbg_user_cmd_data_r[137]"/>
+        <net name="dbg_user_cmd_data_r[136]"/>
+        <net name="dbg_user_cmd_data_r[135]"/>
+        <net name="dbg_user_cmd_data_r[134]"/>
+        <net name="dbg_user_cmd_data_r[133]"/>
+        <net name="dbg_user_cmd_data_r[132]"/>
+        <net name="dbg_user_cmd_data_r[131]"/>
+        <net name="dbg_user_cmd_data_r[130]"/>
+        <net name="dbg_user_cmd_data_r[129]"/>
+        <net name="dbg_user_cmd_data_r[128]"/>
+        <net name="dbg_user_cmd_data_r[127]"/>
+        <net name="dbg_user_cmd_data_r[126]"/>
+        <net name="dbg_user_cmd_data_r[125]"/>
+        <net name="dbg_user_cmd_data_r[124]"/>
+        <net name="dbg_user_cmd_data_r[123]"/>
+        <net name="dbg_user_cmd_data_r[122]"/>
+        <net name="dbg_user_cmd_data_r[121]"/>
+        <net name="dbg_user_cmd_data_r[120]"/>
+        <net name="dbg_user_cmd_data_r[119]"/>
+        <net name="dbg_user_cmd_data_r[118]"/>
+        <net name="dbg_user_cmd_data_r[117]"/>
+        <net name="dbg_user_cmd_data_r[116]"/>
+        <net name="dbg_user_cmd_data_r[115]"/>
+        <net name="dbg_user_cmd_data_r[114]"/>
+        <net name="dbg_user_cmd_data_r[113]"/>
+        <net name="dbg_user_cmd_data_r[112]"/>
+        <net name="dbg_user_cmd_data_r[111]"/>
+        <net name="dbg_user_cmd_data_r[110]"/>
+        <net name="dbg_user_cmd_data_r[109]"/>
+        <net name="dbg_user_cmd_data_r[108]"/>
+        <net name="dbg_user_cmd_data_r[107]"/>
+        <net name="dbg_user_cmd_data_r[106]"/>
+        <net name="dbg_user_cmd_data_r[105]"/>
+        <net name="dbg_user_cmd_data_r[104]"/>
+        <net name="dbg_user_cmd_data_r[103]"/>
+        <net name="dbg_user_cmd_data_r[102]"/>
+        <net name="dbg_user_cmd_data_r[101]"/>
+        <net name="dbg_user_cmd_data_r[100]"/>
+        <net name="dbg_user_cmd_data_r[99]"/>
+        <net name="dbg_user_cmd_data_r[98]"/>
+        <net name="dbg_user_cmd_data_r[97]"/>
+        <net name="dbg_user_cmd_data_r[96]"/>
+        <net name="dbg_user_cmd_data_r[95]"/>
+        <net name="dbg_user_cmd_data_r[94]"/>
+        <net name="dbg_user_cmd_data_r[93]"/>
+        <net name="dbg_user_cmd_data_r[92]"/>
+        <net name="dbg_user_cmd_data_r[91]"/>
+        <net name="dbg_user_cmd_data_r[90]"/>
+        <net name="dbg_user_cmd_data_r[89]"/>
+        <net name="dbg_user_cmd_data_r[88]"/>
+        <net name="dbg_user_cmd_data_r[87]"/>
+        <net name="dbg_user_cmd_data_r[86]"/>
+        <net name="dbg_user_cmd_data_r[85]"/>
+        <net name="dbg_user_cmd_data_r[84]"/>
+        <net name="dbg_user_cmd_data_r[83]"/>
+        <net name="dbg_user_cmd_data_r[82]"/>
+        <net name="dbg_user_cmd_data_r[81]"/>
+        <net name="dbg_user_cmd_data_r[80]"/>
+        <net name="dbg_user_cmd_data_r[79]"/>
+        <net name="dbg_user_cmd_data_r[78]"/>
+        <net name="dbg_user_cmd_data_r[77]"/>
+        <net name="dbg_user_cmd_data_r[76]"/>
+        <net name="dbg_user_cmd_data_r[75]"/>
+        <net name="dbg_user_cmd_data_r[74]"/>
+        <net name="dbg_user_cmd_data_r[73]"/>
+        <net name="dbg_user_cmd_data_r[72]"/>
+        <net name="dbg_user_cmd_data_r[71]"/>
+        <net name="dbg_user_cmd_data_r[70]"/>
+        <net name="dbg_user_cmd_data_r[69]"/>
+        <net name="dbg_user_cmd_data_r[68]"/>
+        <net name="dbg_user_cmd_data_r[67]"/>
+        <net name="dbg_user_cmd_data_r[66]"/>
+        <net name="dbg_user_cmd_data_r[65]"/>
+        <net name="dbg_user_cmd_data_r[64]"/>
+        <net name="dbg_user_cmd_data_r[63]"/>
+        <net name="dbg_user_cmd_data_r[62]"/>
+        <net name="dbg_user_cmd_data_r[61]"/>
+        <net name="dbg_user_cmd_data_r[60]"/>
+        <net name="dbg_user_cmd_data_r[59]"/>
+        <net name="dbg_user_cmd_data_r[58]"/>
+        <net name="dbg_user_cmd_data_r[57]"/>
+        <net name="dbg_user_cmd_data_r[56]"/>
+        <net name="dbg_user_cmd_data_r[55]"/>
+        <net name="dbg_user_cmd_data_r[54]"/>
+        <net name="dbg_user_cmd_data_r[53]"/>
+        <net name="dbg_user_cmd_data_r[52]"/>
+        <net name="dbg_user_cmd_data_r[51]"/>
+        <net name="dbg_user_cmd_data_r[50]"/>
+        <net name="dbg_user_cmd_data_r[49]"/>
+        <net name="dbg_user_cmd_data_r[48]"/>
+        <net name="dbg_user_cmd_data_r[47]"/>
+        <net name="dbg_user_cmd_data_r[46]"/>
+        <net name="dbg_user_cmd_data_r[45]"/>
+        <net name="dbg_user_cmd_data_r[44]"/>
+        <net name="dbg_user_cmd_data_r[43]"/>
+        <net name="dbg_user_cmd_data_r[42]"/>
+        <net name="dbg_user_cmd_data_r[41]"/>
+        <net name="dbg_user_cmd_data_r[40]"/>
+        <net name="dbg_user_cmd_data_r[39]"/>
+        <net name="dbg_user_cmd_data_r[38]"/>
+        <net name="dbg_user_cmd_data_r[37]"/>
+        <net name="dbg_user_cmd_data_r[36]"/>
+        <net name="dbg_user_cmd_data_r[35]"/>
+        <net name="dbg_user_cmd_data_r[34]"/>
+        <net name="dbg_user_cmd_data_r[33]"/>
+        <net name="dbg_user_cmd_data_r[32]"/>
+        <net name="dbg_user_cmd_data_r[31]"/>
+        <net name="dbg_user_cmd_data_r[30]"/>
+        <net name="dbg_user_cmd_data_r[29]"/>
+        <net name="dbg_user_cmd_data_r[28]"/>
+        <net name="dbg_user_cmd_data_r[27]"/>
+        <net name="dbg_user_cmd_data_r[26]"/>
+        <net name="dbg_user_cmd_data_r[25]"/>
+        <net name="dbg_user_cmd_data_r[24]"/>
+        <net name="dbg_user_cmd_data_r[23]"/>
+        <net name="dbg_user_cmd_data_r[22]"/>
+        <net name="dbg_user_cmd_data_r[21]"/>
+        <net name="dbg_user_cmd_data_r[20]"/>
+        <net name="dbg_user_cmd_data_r[19]"/>
+        <net name="dbg_user_cmd_data_r[18]"/>
+        <net name="dbg_user_cmd_data_r[17]"/>
+        <net name="dbg_user_cmd_data_r[16]"/>
+        <net name="dbg_user_cmd_data_r[15]"/>
+        <net name="dbg_user_cmd_data_r[14]"/>
+        <net name="dbg_user_cmd_data_r[13]"/>
+        <net name="dbg_user_cmd_data_r[12]"/>
+        <net name="dbg_user_cmd_data_r[11]"/>
+        <net name="dbg_user_cmd_data_r[10]"/>
+        <net name="dbg_user_cmd_data_r[9]"/>
+        <net name="dbg_user_cmd_data_r[8]"/>
+        <net name="dbg_user_cmd_data_r[7]"/>
+        <net name="dbg_user_cmd_data_r[6]"/>
+        <net name="dbg_user_cmd_data_r[5]"/>
+        <net name="dbg_user_cmd_data_r[4]"/>
+        <net name="dbg_user_cmd_data_r[3]"/>
+        <net name="dbg_user_cmd_data_r[2]"/>
+        <net name="dbg_user_cmd_data_r[1]"/>
+        <net name="dbg_user_cmd_data_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq7&apos;hXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq7&apos;hXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe9[6:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq7&apos;hXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_user_cmd_num_r[6]"/>
+        <net name="dbg_user_cmd_num_r[5]"/>
+        <net name="dbg_user_cmd_num_r[4]"/>
+        <net name="dbg_user_cmd_num_r[3]"/>
+        <net name="dbg_user_cmd_num_r[2]"/>
+        <net name="dbg_user_cmd_num_r[1]"/>
+        <net name="dbg_user_cmd_num_r[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_4"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe20[0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="dbg_user_cmd_valid_r"/>
+      </nets>
+    </probe>
     <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq32&apos;hXXXX_XXXX"/>
@@ -35,7 +3008,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe11[31:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -87,7 +3060,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe10[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -108,7 +3081,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe5[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -129,7 +3102,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe9[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -150,7 +3123,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe7[31:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -202,7 +3175,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe6[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -218,18 +3191,18 @@
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
-        <Option Id="COMPARE_VALUE.0" value="eq1&apos;b1"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe4[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
-        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;b1"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
@@ -239,18 +3212,18 @@
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
-        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;b1"/>
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe0[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
-        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bX"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;b1"/>
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
@@ -265,7 +3238,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="UNSIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe1[6:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -292,7 +3265,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe14[0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -313,7 +3286,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="UNSIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe2[12:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -346,7 +3319,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe3[11:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -378,7 +3351,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe8[11:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -410,7 +3383,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe12[5:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -436,7 +3409,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
-        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="HW_ILA" value="hw_ila_3"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
         <Option Id="MAP" value="probe13[11:0]"/>
         <Option Id="NAME.CUSTOM" value=""/>
@@ -576,7 +3549,7 @@
         <net name="iw_FMC_PRSNT"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -682,7 +3655,7 @@
         <net name="ow_FMC_PRSNT_T"/>
       </nets>
     </probe>
-    <probe type="vio_output" busType="net" source="netlist" spec="VIO_OUTPUT_V2_RT">
+    <probe type="vio_output" busType="bus" source="netlist" spec="VIO_OUTPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
@@ -698,7 +3671,7 @@
         <net name="ow_FMC_RES[0]"/>
       </nets>
     </probe>
-    <probe type="vio_output" busType="net" source="netlist" spec="VIO_OUTPUT_V2_RT">
+    <probe type="vio_output" busType="bus" source="netlist" spec="VIO_OUTPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
@@ -746,7 +3719,7 @@
     </probe>
     <probe type="vio_output" busType="net" source="netlist" spec="VIO_OUTPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
-        <Option Id="DISPLAY_HINT" value="OutputDisplay:Active_High;"/>
+        <Option Id="DISPLAY_HINT" value="OutputDisplay:OutputText;"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_2"/>
         <Option Id="NAME.CUSTOM" value=""/>

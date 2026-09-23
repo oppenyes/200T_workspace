@@ -48,28 +48,44 @@ wire [ 31:0] ow_ddr3_rd_addr_cnt ;
 
 wire [511:0] ow_ddr3_wr_cache ; // 高位为数据有效位
 wire [511:0] w_ddr3_fifo_rd_cache      ;
+assign w_ddr3_rd_LSB = iw_ddr3_rd_valid && ow_ddr3_rd_rdy && ow_ddr3_rd_addr_cnt == r_ddr3_wr_addr_num ;
 
 // 总共写入的数据个数
-reg  [31:0] r_ddr3_wr_addr_num = 1'b0 ;
-// ddr3 读取使能时 ，ddr3 读取地址等于 上次写入的地址时 ， w_ddr3_rd_LSB 拉高
-assign w_ddr3_rd_LSB = iw_ddr3_rd_valid && ow_ddr3_rd_rdy && ow_ddr3_rd_addr_cnt == r_ddr3_wr_addr_num ;
-always@(posedge ow_ddr3_clk)begin
-    if(ow_ddr3_clk_sync_rst)begin
-        r_ddr3_wr_addr_num <= 1'b0 ;
+// reg  [31:0] r_ddr3_wr_addr_num = 1'b0 ;
+// // ddr3 读取使能时 ，ddr3 读取地址等于 上次写入的地址时 ， w_ddr3_rd_LSB 拉高
+// always@(posedge ow_ddr3_clk)begin
+//     if(ow_ddr3_clk_sync_rst)begin
+//         r_ddr3_wr_addr_num <= 1'b0 ;
+//     end
+//     else if(iw_ddr3_wr_valid && ow_ddr3_wr_rdy)begin
+//         r_ddr3_wr_addr_num <= ow_ddr3_wr_addr_cnt ;
+//     end
+// end
+reg [31:0] r_ddr3_wr_addr_num = 32'd0;
+reg        r_ddr3_has_data    = 1'b0;
+
+always @(posedge ow_ddr3_clk) begin
+    if (ow_ddr3_clk_sync_rst) begin
+        r_ddr3_wr_addr_num <= 32'd0;
+        r_ddr3_has_data    <= 1'b0;
     end
-    else if(iw_ddr3_wr_valid && ow_ddr3_wr_rdy)begin
-        r_ddr3_wr_addr_num <= ow_ddr3_wr_addr_cnt ;
+    else if (iw_ddr3_wr_valid && ow_ddr3_wr_rdy) begin
+        r_ddr3_wr_addr_num <= ow_ddr3_wr_addr_cnt;
+        r_ddr3_has_data    <= 1'b1;
     end
 end
-
 // ****************************************** ddr3 读写使能和中断 *********************************************** //
 // iw_ddr3_fifo_rd_pre_en 信号跨时钟域转换 (慢转快)
+// fifo_bit_cov iw_ddr3_fifo_rd_pre_en_cov_ddr3_clk (
+//     .wr_clk        (iw_ddr3_fifo_rd_clk                  ) , // input wire wr_clk
+//     .din           (iw_ddr3_fifo_rd_pre_en               ) , // input wire [0 : 0] din   
+//     .wr_en         (r_ddr3_wr_addr_num != 1'b0           ) , // input wire wr_en
 fifo_bit_cov iw_ddr3_fifo_rd_pre_en_cov_ddr3_clk (
-    .wr_clk        (iw_ddr3_fifo_rd_clk                  ) , // input wire wr_clk
-    .din           (iw_ddr3_fifo_rd_pre_en               ) , // input wire [0 : 0] din   
-    .wr_en         (r_ddr3_wr_addr_num != 1'b0           ) , // input wire wr_en
+    .wr_clk (iw_ddr3_fifo_rd_clk),
+    .din    (iw_ddr3_fifo_rd_pre_en),
+    .wr_en  (r_ddr3_has_data),
     .full          (ow_ddr3_fifo_rd_en_cov_ddr3_clk_full ) , // output wire full
-
+// 
     .rd_clk        (ow_ddr3_clk                           ) , // input wire rd_clk
     .dout          (w_ddr3_fifo_rd_en_ddr3_clk_cache      ) , // output wire [0 : 0] dout
     .rd_en         (1'b1                                  ) , // input wire rd_en

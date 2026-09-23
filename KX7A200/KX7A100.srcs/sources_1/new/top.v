@@ -78,7 +78,7 @@ module top(
 // -------------------------------- localparam ------------------------------ //
 localparam CLK_FRE       = 100_000_000 ;
 localparam BAUD_RATE     = 921_600     ;
-localparam UART_RX_NUM   = 63           ;
+localparam UART_RX_NUM   = 7           ;
 localparam eeprom_memory = 4           ;
 localparam [63:0] tx = 64'hc0_ee_d4_c2_d6_f1_0d_0a ;
 
@@ -154,14 +154,14 @@ wire [  63:0] iw_time_data        ;
 // -------------------------------- assign ------------------------------ //
 // UART RX/TX is intentionally isolated from cmd_cov_module in this phase.
 // The completed UART frame is returned unchanged by uart_data_loopback_module.
+wire ow_ddr3_fifo_wr_rdy;
+// assign iw_ETH_udp_fifo_wr_valid   = ow_ddr3_fifo_rd_data_rdy ;
+// assign iw_ETH_udp_fifo_wr_data    = ow_ddr3_fifo_rd_data     ;
+// assign iw_ddr3_fifo_rd_data_valid = ow_ETH_udp_fifo_wr_rdy   ;
 
-assign iw_ETH_udp_fifo_wr_valid   = ow_ddr3_fifo_rd_data_rdy ;
-assign iw_ETH_udp_fifo_wr_data    = ow_ddr3_fifo_rd_data     ;
-assign iw_ddr3_fifo_rd_data_valid = ow_ETH_udp_fifo_wr_rdy   ;
-
-assign iw_test_wdata_rdy     = ow_ddr3_fifo_wr_rdy ;
-assign iw_ddr3_fifo_wr_valid = ow_test_wdata_valid ;
-assign iw_ddr3_fifo_wr_data  = ow_test_wdata       ;
+// assign iw_test_wdata_rdy     = ow_ddr3_fifo_wr_rdy ;
+// assign iw_ddr3_fifo_wr_valid = ow_test_wdata_valid ;
+// assign iw_ddr3_fifo_wr_data  = ow_test_wdata       ;
 
 assign iw_ddr3_fifo_rd_pre_en     = ow_test_rdata_pre_en ;
 
@@ -169,20 +169,20 @@ assign iw_ddr3_fifo_rd_pre_en     = ow_test_rdata_pre_en ;
 assign iw_test_rdata              = ow_ddr3_fifo_rd_data     ;
 assign iw_test_rdata_rdy          = iw_ETH_udp_fifo_wr_valid && ow_ETH_udp_fifo_wr_rdy ;
 
-assign ow_TEST_PIN[ 0] = iw_UART_RX ;
-assign ow_TEST_PIN[ 1] = ow_UART_TX ;
+// assign ow_TEST_PIN[ 0] = iw_UART_RX ;
+// assign ow_TEST_PIN[ 1] = ow_UART_TX ;
 
-assign ow_TEST_PIN[ 3] = ow_ddr3_fifo_wr_rdy    ;
-assign ow_TEST_PIN[ 4] = iw_ddr3_fifo_wr_valid  ;
+// assign ow_TEST_PIN[ 3] = ow_ddr3_fifo_wr_rdy    ;
+// assign ow_TEST_PIN[ 4] = iw_ddr3_fifo_wr_valid  ;
 
-assign ow_TEST_PIN[ 5] = iw_ddr3_fifo_rd_pre_en      ; 
-assign ow_TEST_PIN[ 6] = iw_ddr3_fifo_rd_data_valid  ; 
-assign ow_TEST_PIN[ 7] = ow_ddr3_fifo_rd_data_rdy    ; 
+// assign ow_TEST_PIN[ 5] = iw_ddr3_fifo_rd_pre_en      ; 
+// assign ow_TEST_PIN[ 6] = iw_ddr3_fifo_rd_data_valid  ; 
+// assign ow_TEST_PIN[ 7] = ow_ddr3_fifo_rd_data_rdy    ; 
 
-assign ow_TEST_PIN[ 8] = ow_ddr3_clk_sync_rst   ;
-assign ow_TEST_PIN[ 9] = ow_init_calib_complete ;
+// assign ow_TEST_PIN[ 8] = ow_ddr3_clk_sync_rst   ;
+// assign ow_TEST_PIN[ 9] = ow_init_calib_complete ;
 
-assign ow_TEST_PIN[10] = ow_test_rdata_error ;
+// assign ow_TEST_PIN[10] = ow_test_rdata_error ;
 
 //assign io_CLK       = {clk_500M , clk_10M} ;
 //assign io_FMC_clk_p = {2{clk_100M}} ;
@@ -345,128 +345,101 @@ uart_module#(
 //     .or_uart_tx_data  (iw_uart_tx_data     )
 // );
 
-uart_fft_bridge_module uart_fft_bridge_module_inst(
-    .iw_fft_rd_addr                     (w_fft_rd_addr             ),
-    .or_fft_rd_real                     (w_fft_rd_real             ),
-    .or_fft_rd_imag                     (w_fft_rd_imag             ),
-    .ow_debug_fft_input_count           (w_debug_fft_input_count   ),
-    .ow_debug_fft_input_index           (w_debug_fft_input_index   ),
-    .ow_debug_fft_output_index          (w_debug_fft_output_index  ),
-    .iw_sys_clk              (clk_100M                      ) ,
-    .iw_sys_rst              (ow_100M_rst                   ) ,
-    .iw_uart_rx_valid        (ow_uart_rx_data_rdy           ) ,
-    .iw_uart_rx_data         (ow_uart_rx_data               ) ,
-    .iw_uart_rx_num          (ow_uart_rx_num                ) ,
-    .ow_uart_frame_ready     (ow_uart_fft_frame_ready       ) ,
-    .os_axis_config_tdata    (ow_fft_config_tdata           ) ,
-    .os_axis_config_tvalid   (ow_fft_config_tvalid          ) ,
-    .iw_s_axis_config_tready (iw_fft_config_tready          ) ,
-    .os_axis_data_tdata      (ow_fft_data_tdata             ) ,
-    .os_axis_data_tvalid     (ow_fft_data_tvalid            ) ,
-    .iw_s_axis_data_tready   (iw_fft_data_tready            ) ,
-    .os_axis_data_tlast      (ow_fft_data_tlast             ) ,
-    .iw_m_axis_data_tdata    (iw_fft_data_tdata             ) ,
-    .iw_m_axis_data_tuser    (iw_fft_data_tuser             ) ,
-    .iw_m_axis_data_tvalid   (iw_fft_data_tvalid            ) ,
-    .os_m_axis_data_tready   (ow_fft_data_tready            ) ,
-    .iw_m_axis_data_tlast    (iw_fft_data_tlast             ) ,
-    .ow_fft_frame_done       (ow_fft_frame_done             ) ,
-    .ow_fft_input_count      (ow_fft_input_count            ) ,
-    .ow_fft_output_count     (ow_fft_output_count           )
-);
-fft_uart_tx_module fft_uart_tx_module_inst(
+// uart_fft_bridge_module uart_fft_bridge_module_inst(
+//     .iw_fft_rd_addr                     (w_fft_rd_addr             ),
+//     .or_fft_rd_real                     (w_fft_rd_real             ),
+//     .or_fft_rd_imag                     (w_fft_rd_imag             ),
+//     .ow_debug_fft_input_count           (w_debug_fft_input_count   ),
+//     .ow_debug_fft_input_index           (w_debug_fft_input_index   ),
+//     .ow_debug_fft_output_index          (w_debug_fft_output_index  ),
+//     .iw_sys_clk              (clk_100M                      ) ,
+//     .iw_sys_rst              (ow_100M_rst                   ) ,
+//     .iw_uart_rx_valid        (ow_uart_rx_data_rdy           ) ,
+//     .iw_uart_rx_data         (ow_uart_rx_data               ) ,
+//     .iw_uart_rx_num          (ow_uart_rx_num                ) ,
+//     .ow_uart_frame_ready     (ow_uart_fft_frame_ready       ) ,
+//     .os_axis_config_tdata    (ow_fft_config_tdata           ) ,
+//     .os_axis_config_tvalid   (ow_fft_config_tvalid          ) ,
+//     .iw_s_axis_config_tready (iw_fft_config_tready          ) ,
+//     .os_axis_data_tdata      (ow_fft_data_tdata             ) ,
+//     .os_axis_data_tvalid     (ow_fft_data_tvalid            ) ,
+//     .iw_s_axis_data_tready   (iw_fft_data_tready            ) ,
+//     .os_axis_data_tlast      (ow_fft_data_tlast             ) ,
+//     .iw_m_axis_data_tdata    (iw_fft_data_tdata             ) ,
+//     .iw_m_axis_data_tuser    (iw_fft_data_tuser             ) ,
+//     .iw_m_axis_data_tvalid   (iw_fft_data_tvalid            ) ,
+//     .os_m_axis_data_tready   (ow_fft_data_tready            ) ,
+//     .iw_m_axis_data_tlast    (iw_fft_data_tlast             ) ,
+//     .ow_fft_frame_done       (ow_fft_frame_done             ) ,
+//     .ow_fft_input_count      (ow_fft_input_count            ) ,
+//     .ow_fft_output_count     (ow_fft_output_count           )
+// );
+// fft_uart_tx_module fft_uart_tx_module_inst(
 
-    .ow_debug_tx_frame_index       (w_debug_tx_frame_index),
-    .iw_sys_clk       (clk_100M),
-    .iw_sys_rst       (ow_100M_rst),
+//     .ow_debug_tx_frame_index       (w_debug_tx_frame_index),
+//     .iw_sys_clk       (clk_100M),
+//     .iw_sys_rst       (ow_100M_rst),
 
-    .iw_fft_frame_done(w_vio_tx_start_pulse),//w_vio_tx_start_pulse
-    // .iw_fft_frame_done(ow_fft_frame_done),//w_vio_tx_start_pulse
+//     .iw_fft_frame_done(w_vio_tx_start_pulse),//w_vio_tx_start_pulse
+//     // .iw_fft_frame_done(ow_fft_frame_done),//w_vio_tx_start_pulse
 
-    .or_fft_rd_addr   (w_fft_rd_addr),
-    .iw_fft_rd_real   (w_fft_rd_real),
-    .iw_fft_rd_imag   (w_fft_rd_imag),
+//     .or_fft_rd_addr   (w_fft_rd_addr),
+//     .iw_fft_rd_real   (w_fft_rd_real),
+//     .iw_fft_rd_imag   (w_fft_rd_imag),
 
-    .iw_uart_tx_rdy   (ow_uart_tx_rdy),
-    .iw_uart_tx_done  (ow_uart_tx_done),
+//     .iw_uart_tx_rdy   (ow_uart_tx_rdy),
+//     .iw_uart_tx_done  (ow_uart_tx_done),
 
-    .or_uart_tx_num   (iw_uart_tx_num),
-    .or_uart_tx_en    (iw_uart_tx_en),
-    .or_uart_tx_data  (iw_uart_tx_data),
+//     .or_uart_tx_num   (iw_uart_tx_num),
+//     .or_uart_tx_en    (iw_uart_tx_en),
+//     .or_uart_tx_data  (iw_uart_tx_data),
 
-    .ow_tx_all_done   (w_fft_uart_tx_done)
-);
-xfft_0 xfft_0_inst(
-    .aclk                        (clk_100M                       ) ,
-    .s_axis_config_tdata         (ow_fft_config_tdata            ) ,
-    .s_axis_config_tvalid        (ow_fft_config_tvalid           ) ,
-    .s_axis_config_tready        (iw_fft_config_tready           ) ,
-    .s_axis_data_tdata           (ow_fft_data_tdata              ) ,
-    .s_axis_data_tvalid          (ow_fft_data_tvalid             ) ,
-    .s_axis_data_tready          (iw_fft_data_tready             ) ,
-    .s_axis_data_tlast           (ow_fft_data_tlast              ) ,
-    .m_axis_data_tdata           (iw_fft_data_tdata              ) ,
-    .m_axis_data_tuser           (iw_fft_data_tuser              ) ,
-    .m_axis_data_tvalid          (iw_fft_data_tvalid             ) ,
-    .m_axis_data_tready          (ow_fft_data_tready             ) ,
-    .m_axis_data_tlast           (iw_fft_data_tlast              ) ,
-    .m_axis_status_tdata         (iw_fft_status_tdata            ) ,
-    .m_axis_status_tvalid        (iw_fft_status_tvalid           ) ,
-    .m_axis_status_tready        (1'b1                           ) ,
-    .event_frame_started         (ow_fft_event_frame_started     ) ,
-    .event_tlast_unexpected      (ow_fft_event_tlast_unexpected  ) ,
-    .event_tlast_missing         (ow_fft_event_tlast_missing     ) ,
-    .event_fft_overflow          (ow_fft_event_overflow          ) ,
-    .event_status_channel_halt   (ow_fft_event_status_halt       ) ,
-    .event_data_in_channel_halt  (ow_fft_event_data_in_halt      ) ,
-    .event_data_out_channel_halt (ow_fft_event_data_out_halt     )
-);
+//     .ow_tx_all_done   (w_fft_uart_tx_done)
+// );
+// xfft_0 xfft_0_inst(
+//     .aclk                        (clk_100M                       ) ,
+//     .s_axis_config_tdata         (ow_fft_config_tdata            ) ,
+//     .s_axis_config_tvalid        (ow_fft_config_tvalid           ) ,
+//     .s_axis_config_tready        (iw_fft_config_tready           ) ,
+//     .s_axis_data_tdata           (ow_fft_data_tdata              ) ,
+//     .s_axis_data_tvalid          (ow_fft_data_tvalid             ) ,
+//     .s_axis_data_tready          (iw_fft_data_tready             ) ,
+//     .s_axis_data_tlast           (ow_fft_data_tlast              ) ,
+//     .m_axis_data_tdata           (iw_fft_data_tdata              ) ,
+//     .m_axis_data_tuser           (iw_fft_data_tuser              ) ,
+//     .m_axis_data_tvalid          (iw_fft_data_tvalid             ) ,
+//     .m_axis_data_tready          (ow_fft_data_tready             ) ,
+//     .m_axis_data_tlast           (iw_fft_data_tlast              ) ,
+//     .m_axis_status_tdata         (iw_fft_status_tdata            ) ,
+//     .m_axis_status_tvalid        (iw_fft_status_tvalid           ) ,
+//     .m_axis_status_tready        (1'b1                           ) ,
+//     .event_frame_started         (ow_fft_event_frame_started     ) ,
+//     .event_tlast_unexpected      (ow_fft_event_tlast_unexpected  ) ,
+//     .event_tlast_missing         (ow_fft_event_tlast_missing     ) ,
+//     .event_fft_overflow          (ow_fft_event_overflow          ) ,
+//     .event_status_channel_halt   (ow_fft_event_status_halt       ) ,
+//     .event_data_in_channel_halt  (ow_fft_event_data_in_halt      ) ,
+//     .event_data_out_channel_halt (ow_fft_event_data_out_halt     )
+// );
 
-udp_drive udp_drive_inst(
-    .iw_sys_clk   (clk_100M      ) ,
-    .iw_sys_rst   (ow_100M_rst   ) ,
-
-    .phy_rst_o    (phy_rst_o     ) ,
-    .rgmii_rxd    (PHYA_rgmii_rxd    ) ,
-    .rgmii_rx_ctl (PHYA_rgmii_rx_ctl ) ,
-    .rgmii_rxc    (PHYA_rgmii_rxc    ) ,
-    .rgmii_txd    (PHYA_rgmii_txd    ) ,
-    .rgmii_tx_ctl (PHYA_rgmii_tx_ctl ) ,
-    .rgmii_txc    (PHYA_rgmii_txc    ) ,
-
-    .clk_15M625   (clk_15M625        ) ,
-    .clk_25M      (clk_25M           ) ,
-    .clk_125M     (clk_125M          ) ,
-    .clk_200M     (clk_200M          ) ,
-    .iw_locked    (ow_locked         ) ,
-    .iw_15M625_rst(iw_15M625_rst     ) ,
-    .iw_25M_rst   (iw_25M_rst        ) ,
-
-    .ow_ETH_rx_data_rdy (ow_ETH_rx_data_rdy ) ,
-    .ow_ETH_rx_data     (ow_ETH_rx_data     ) ,
-
-    .ow_ETH_udp_fifo_wr_rdy   (ow_ETH_udp_fifo_wr_rdy   ) ,
-    .iw_ETH_udp_fifo_wr_valid (iw_ETH_udp_fifo_wr_valid ) ,
-    .iw_ETH_udp_fifo_wr_data  (iw_ETH_udp_fifo_wr_data  )
-);
 
 cmd_cov_module cmd_cov_module_inst(
     .iw_sys_clk                (clk_100M                  ) ,
     .iw_sys_rst                (ow_100M_rst               ) ,
 
     // UART is bypassed for the loopback phase; Ethernet command routing stays.
-    .iw_uart_rx_cmd_data_valid (1'b0                       ) ,
-    .iw_uart_rx_cmd_data       (512'd0                     ) ,
-    .iw_uart_rx_cmd_num        (7'd0                       ) ,
+    .iw_uart_rx_cmd_data_valid (ow_uart_rx_data_rdy                     ) ,
+    .iw_uart_rx_cmd_data       (ow_uart_rx_data                         ) ,
+    .iw_uart_rx_cmd_num        (ow_uart_rx_num                          ) ,
     
-    .iw_ETH_rx_cmd_data        (ow_ETH_rx_data            ) ,
-    .iw_ETH_rx_cmd_data_valid  (ow_ETH_rx_data_rdy        ) ,
+    .iw_ETH_rx_cmd_data        (udp_data_i            ) ,
+    .iw_ETH_rx_cmd_data_valid  (udp_valid_i        ) ,
 
     .ow_user_cmd_valid         (ow_user_cmd_valid         ) ,
     .ow_user_cmd_data          (ow_user_cmd_data          ) ,
     .ow_user_cmd_num           (ow_user_cmd_num           ) ,
 
-    .iw_uart_tx_rdy            (1'b0                       ) ,
+    .iw_uart_tx_rdy            (ow_uart_tx_rdy                     ) ,
     .ow_uart_tx_cmd_data_valid (ow_uart_tx_cmd_data_valid ) ,
     .ow_uart_tx_cmd_data       (ow_uart_tx_cmd_data       ) ,
     .ow_uart_tx_cmd_num        (ow_uart_tx_cmd_num        ) ,
@@ -476,44 +449,112 @@ cmd_cov_module cmd_cov_module_inst(
     .ow_ETH_tx_cmd_data        (ow_ETH_tx_cmd_data        ) 
 );
 
+    wire                                       sys_clk                    ;
+    wire                                       rst_n                      ;
+    wire                                       udp_valid_i                ;
+    wire                 [  63: 0]             udp_data_i                 ;
+    wire                                       ddr_ready_i                ;
+    wire                                       ddr_valid_o                ;
+    wire                 [ 511: 0]             ddr_data_o                 ;
+    wire                                       overflow_o                 ;
+
+    wire                 [   2: 0]             pack_count_o               ;
+    wire                                       w_ddr_udp_valid            ;
+    wire                 [  63: 0]             w_ddr_udp_data             ;
+    wire                                       w_ddr_udp_ready            ;
+    wire                 [   2: 0]             w_ddr_unpack_count         ;
+
+udp_drive udp_drive_inst(
+    .iw_sys_clk                         (clk_100M                  ),
+    .iw_sys_rst                         (ow_100M_rst               ),
+
+    .phy_rst_o                          (phy_rst_o                 ),
+    .rgmii_rxd                          (PHYA_rgmii_rxd            ),
+    .rgmii_rx_ctl                       (PHYA_rgmii_rx_ctl         ),
+    .rgmii_rxc                          (PHYA_rgmii_rxc            ),
+    .rgmii_txd                          (PHYA_rgmii_txd            ),
+    .rgmii_tx_ctl                       (PHYA_rgmii_tx_ctl         ),
+    .rgmii_txc                          (PHYA_rgmii_txc            ),
+
+    .clk_15M625                         (clk_15M625                ),
+    .clk_25M                            (clk_25M                   ),
+    .clk_125M                           (clk_125M                  ),
+    .clk_200M                           (clk_200M                  ),
+    .iw_locked                          (ow_locked                 ),
+    .iw_15M625_rst                      (iw_15M625_rst             ),
+    .iw_25M_rst                         (iw_25M_rst                ),
+
+    .ow_ETH_rx_data_rdy                 (udp_valid_i               ),
+    .ow_ETH_rx_data                     (udp_data_i                ),
+
+    .ow_ETH_udp_fifo_wr_rdy             (ow_ETH_udp_fifo_wr_rdy    ),
+    .iw_ETH_udp_fifo_wr_valid           (iw_ETH_udp_fifo_wr_valid  ),
+    .iw_ETH_udp_fifo_wr_data            (iw_ETH_udp_fifo_wr_data   ) 
+);
+udp_ddr3_write_bridge u_udp_ddr3_write_bridge(
+    .sys_clk                            (clk_100M                      ), // (input)// 系统时钟
+    .rst_n                              (~ow_100M_rst                   ), // (input)// 同步低有效复位
+    .udp_valid_i                        (udp_valid_i               ), // (input)// UDP 64bit 数据有效
+    .udp_data_i                         (udp_data_i                ),// (input)// UDP 64bit 数据
+    .ddr_ready_i                        (ddr_ready_i               ),// (input)// DDR3 写FIFO可接收
+    .ddr_valid_o                        (ddr_valid_o               ),// (output)// DDR3 512bit写数据有效
+    .ddr_data_o                         (ddr_data_o                ),// (output)// DDR3 512bit写数据
+    .overflow_o                         (overflow_o                ),// (output)// 数据溢出标志
+    .pack_count_o                       (pack_count_o              ) // (output)// 当前64bit数据计数
+);
+ddr3_udp_read_bridge ddr3_udp_read_bridge_inst(
+    .sys_clk                            (clk_100M                  ),
+    .rst_n                              (~ow_100M_rst              ),
+
+    .ddr_valid_i                        (ow_ddr3_fifo_rd_data_rdy  ),
+    .ddr_data_i                         (ow_ddr3_fifo_rd_data      ),
+    .ddr_ready_o                        (iw_ddr3_fifo_rd_data_valid),
+
+    .udp_ready_i                        (ow_ETH_udp_fifo_wr_rdy    ),
+    .udp_valid_o                        (iw_ETH_udp_fifo_wr_valid  ),
+    .udp_data_o                         (iw_ETH_udp_fifo_wr_data   ),
+
+    .unpack_count_o                     (w_ddr_unpack_count        ) 
+);
 // ddr3_cache_module - uart/ETH
 ddr3_cache_module ddr3_cache_module_inst(
-    .iw_ddr3_fifo_wr_clk        (clk_100M              ) ,
-    .iw_ddr3_fifo_wr_rst        (ow_100M_rst           ) ,
-    .ow_ddr3_fifo_wr_rdy        (ow_ddr3_fifo_wr_rdy   ) ,
-    .iw_ddr3_fifo_wr_valid      (iw_ddr3_fifo_wr_valid ) ,
-    .iw_ddr3_fifo_wr_data       (iw_ddr3_fifo_wr_data  ) , // ddr3 预读取
+    .iw_ddr3_fifo_wr_clk                (clk_100M                  ),
+    .iw_ddr3_fifo_wr_rst                (ow_100M_rst               ),
+// rx
+    .ow_ddr3_fifo_wr_rdy                (ddr_ready_i               ),
+    .iw_ddr3_fifo_wr_valid              (ddr_valid_o               ),
+    .iw_ddr3_fifo_wr_data               (ddr_data_o                ),// ddr3 预读取
 // tx
-    .iw_ddr3_fifo_rd_clk        (clk_100M                   ) ,
-    .iw_ddr3_fifo_rd_rst        (ow_100M_rst                ) ,
-    .iw_ddr3_fifo_rd_pre_en     (iw_ddr3_fifo_rd_pre_en     ) ,
-    .iw_ddr3_fifo_rd_data_valid (iw_ddr3_fifo_rd_data_valid ) ,
-    .ow_ddr3_fifo_rd_data       (ow_ddr3_fifo_rd_data       ) , // [63:0]
-    .ow_ddr3_fifo_rd_data_rdy   (ow_ddr3_fifo_rd_data_rdy   ) ,
+    .iw_ddr3_fifo_rd_clk                (clk_100M                  ),
+    .iw_ddr3_fifo_rd_rst                (ow_100M_rst               ),
+    .iw_ddr3_fifo_rd_pre_en             (iw_ddr3_fifo_rd_pre_en | w_vio_tx_start   ),
+    .iw_ddr3_fifo_rd_data_valid         (iw_ddr3_fifo_rd_data_valid),
+    .ow_ddr3_fifo_rd_data               (ow_ddr3_fifo_rd_data      ),// [63:0]
+    .ow_ddr3_fifo_rd_data_rdy           (ow_ddr3_fifo_rd_data_rdy  ),
 //********** DDR MIG APP interface***********//
-    .iw_clk_200M                (clk_200M    ) , // ddr3 输入时钟 Artix7 为 200MHz
-    .iw_200M_rst                (ow_200M_rst ) , // 时钟复位
-    .iw_ddr3_rst                (r_ddr3_rst  ) , // ddr3 输入复位 设置高有效
+    .iw_clk_200M                        (clk_200M                  ),// ddr3 输入时钟 Artix7 为 200MHz
+    .iw_200M_rst                        (ow_200M_rst               ),// 时钟复位
+    .iw_ddr3_rst                        (r_ddr3_rst                ),// ddr3 输入复位 设置高有效
 
-    .ow_ddr3_clk                (ow_ddr3_clk ) ,           // ddr3 模块返回用户时钟  
-    .ow_ddr3_clk_sync_rst       (ow_ddr3_clk_sync_rst  ) ,  // ddr3 模块返回复位    
-    .ow_init_calib_complete     (ow_init_calib_complete) , // ddr3 模块初始化校准完成
+    .ow_ddr3_clk                        (ow_ddr3_clk               ),// ddr3 模块返回用户时钟  
+    .ow_ddr3_clk_sync_rst               (ow_ddr3_clk_sync_rst      ),// ddr3 模块返回复位    
+    .ow_init_calib_complete             (ow_init_calib_complete    ),// ddr3 模块初始化校准完成
 //***************** DDR *********************//
-    .ddr3_dq      (ddr3_dq      ) , // DDR3 数据
-    .ddr3_dqs_n   (ddr3_dqs_n   ) , // DDR3 dqs负
-    .ddr3_dqs_p   (ddr3_dqs_p   ) , // DDR3 dqs正  
-    .ddr3_addr    (ddr3_addr    ) , // DDR3 地址   
-    .ddr3_ba      (ddr3_ba      ) , // DDR3 banck 选择
-    .ddr3_ras_n   (ddr3_ras_n   ) , // DDR3 行选择
-    .ddr3_cas_n   (ddr3_cas_n   ) , // DDR3 列选择
-    .ddr3_we_n    (ddr3_we_n    ) , // DDR3 读写选择
-    .ddr3_reset_n (ddr3_reset_n ) , // DDR3 复位
-    .ddr3_ck_p    (ddr3_ck_p    ) , // DDR3 时钟正
-    .ddr3_ck_n    (ddr3_ck_n    ) , // DDR3 时钟负
-    .ddr3_cke     (ddr3_cke     ) , // DDR3 时钟使能
-    .ddr3_cs_n    (ddr3_cs_n    ) , // DDR3 片选
-    .ddr3_dm      (ddr3_dm      ) , // DDR3_dm
-    .ddr3_odt     (ddr3_odt     )   // DDR3_odt
+    .ddr3_dq                            (ddr3_dq                   ),// DDR3 数据
+    .ddr3_dqs_n                         (ddr3_dqs_n                ),// DDR3 dqs负
+    .ddr3_dqs_p                         (ddr3_dqs_p                ),// DDR3 dqs正  
+    .ddr3_addr                          (ddr3_addr                 ),// DDR3 地址   
+    .ddr3_ba                            (ddr3_ba                   ),// DDR3 banck 选择
+    .ddr3_ras_n                         (ddr3_ras_n                ),// DDR3 行选择
+    .ddr3_cas_n                         (ddr3_cas_n                ),// DDR3 列选择
+    .ddr3_we_n                          (ddr3_we_n                 ),// DDR3 读写选择
+    .ddr3_reset_n                       (ddr3_reset_n              ),// DDR3 复位
+    .ddr3_ck_p                          (ddr3_ck_p                 ),// DDR3 时钟正
+    .ddr3_ck_n                          (ddr3_ck_n                 ),// DDR3 时钟负
+    .ddr3_cke                           (ddr3_cke                  ),// DDR3 时钟使能
+    .ddr3_cs_n                          (ddr3_cs_n                 ),// DDR3 片选
+    .ddr3_dm                            (ddr3_dm                   ),// DDR3_dm
+    .ddr3_odt                           (ddr3_odt                  ) // DDR3_odt
 );
 
 eeprom_module#(
@@ -691,4 +732,142 @@ ila_fft_debug ila_fft_debug_inst (
     .probe13(w_fft_rd_addr),               // [11:0] FFT结果RAM读取地址
     .probe14(ow_uart_tx_done)              // [0:0]  UART发送完成
 );
+
+// ---------------- UDP DDR3 Write Bridge Debug ----------------
+(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [63:0]  dbg_udp_data_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_wr_ready_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_wr_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_ddr_wr_data_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_overflow_r;
+(* MARK_DEBUG = "TRUE" *) reg [2:0]   dbg_pack_count_r;
+
+// ---------------- DDR3 UDP Read Bridge Debug ----------------
+(* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_rd_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_ddr_rd_data_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_rd_ready_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_ready_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_tx_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [63:0]  dbg_udp_tx_data_r;
+(* MARK_DEBUG = "TRUE" *) reg [2:0]   dbg_unpack_count_r;
+
+always @(posedge clk_100M) begin
+    if (ow_100M_rst) begin
+        dbg_udp_valid_r      <= 1'b0;
+        dbg_udp_data_r       <= 64'd0;
+        dbg_ddr_wr_ready_r   <= 1'b0;
+        dbg_ddr_wr_valid_r   <= 1'b0;
+        dbg_ddr_wr_data_r    <= 512'd0;
+        dbg_udp_overflow_r   <= 1'b0;
+        dbg_pack_count_r     <= 3'd0;
+
+        dbg_ddr_rd_valid_r   <= 1'b0;
+        dbg_ddr_rd_data_r    <= 512'd0;
+        dbg_ddr_rd_ready_r   <= 1'b0;
+        dbg_udp_ready_r      <= 1'b0;
+        dbg_udp_tx_valid_r   <= 1'b0;
+        dbg_udp_tx_data_r    <= 64'd0;
+        dbg_unpack_count_r   <= 3'd0;
+    end
+    else begin
+        dbg_udp_valid_r      <= udp_valid_i;
+        dbg_udp_data_r       <= udp_data_i;
+        dbg_ddr_wr_ready_r   <= ddr_ready_i;
+        dbg_ddr_wr_valid_r   <= ddr_valid_o;
+        dbg_ddr_wr_data_r    <= ddr_data_o;
+        dbg_udp_overflow_r   <= overflow_o;
+        dbg_pack_count_r     <= pack_count_o;
+
+        dbg_ddr_rd_valid_r   <= ow_ddr3_fifo_rd_data_rdy;
+        dbg_ddr_rd_data_r    <= ow_ddr3_fifo_rd_data;
+        dbg_ddr_rd_ready_r   <= iw_ddr3_fifo_rd_data_valid;
+        dbg_udp_ready_r      <= ow_ETH_udp_fifo_wr_rdy;
+        dbg_udp_tx_valid_r   <= iw_ETH_udp_fifo_wr_valid;
+        dbg_udp_tx_data_r    <= iw_ETH_udp_fifo_wr_data;
+        dbg_unpack_count_r   <= w_ddr_unpack_count;
+    end
+end
+// ---------------- RGMII RX Debug ----------------
+(* MARK_DEBUG = "TRUE" *) reg [3:0] dbg_rgmii_rxd_r;
+(* MARK_DEBUG = "TRUE" *) reg       dbg_rgmii_rx_ctl_r;
+
+always @(posedge PHYA_rgmii_rxc) begin
+    dbg_rgmii_rxd_r    <= PHYA_rgmii_rxd;
+    dbg_rgmii_rx_ctl_r <= PHYA_rgmii_rx_ctl;
+end
+
+ila_eth_rx ila_eth_rx_inst(
+    .clk    (PHYA_rgmii_rxc     ),
+    .probe0 (dbg_rgmii_rx_ctl_r ),
+    .probe1 (dbg_rgmii_rxd_r    )
+);
+// // ---------------- RGMII TX Debug ----------------
+// (* MARK_DEBUG = "TRUE" *) reg [3:0] dbg_rgmii_txd_r;
+// (* MARK_DEBUG = "TRUE" *) reg       dbg_rgmii_tx_ctl_r;
+
+// always @(posedge PHYA_rgmii_txc) begin
+//     dbg_rgmii_txd_r    <= PHYA_rgmii_txd;
+//     dbg_rgmii_tx_ctl_r <= PHYA_rgmii_tx_ctl;
+// end
+
+// ila_eth_tx ila_eth_tx_inst(
+//     .clk    (PHYA_rgmii_txc     ),
+//     .probe0 (dbg_rgmii_tx_ctl_r ),
+//     .probe1 (dbg_rgmii_txd_r    )
+// );
+// ---------------- Ethernet System Debug ----------------
+(* MARK_DEBUG = "TRUE" *) reg        dbg_phy_rst_r;
+(* MARK_DEBUG = "TRUE" *) reg        dbg_locked_r;
+
+(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_rx_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_rx_data_r;
+
+(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_ready_r;
+(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_tx_data_r;
+
+always @(posedge clk_100M) begin
+    dbg_phy_rst_r      <= phy_rst_o;
+    dbg_locked_r       <= ow_locked;
+
+    dbg_eth_rx_valid_r <= udp_valid_i;
+    dbg_eth_rx_data_r  <= udp_data_i;
+
+    dbg_eth_tx_ready_r <= ow_ETH_udp_fifo_wr_rdy;
+    dbg_eth_tx_valid_r <= iw_ETH_udp_fifo_wr_valid;
+    dbg_eth_tx_data_r  <= iw_ETH_udp_fifo_wr_data;
+end
+
+ila_eth_system ila_eth_system_inst(
+    .clk    (clk_100M           ),
+    .probe0 (dbg_phy_rst_r       ),
+    .probe1 (dbg_locked_r        ),
+    .probe2 (dbg_eth_rx_valid_r  ),
+    .probe3 (dbg_eth_rx_data_r   ),
+    .probe4 (dbg_eth_tx_ready_r  ),
+    .probe5 (dbg_eth_tx_valid_r  ),
+    .probe6 (dbg_eth_tx_data_r   )
+);
+(* MARK_DEBUG = "TRUE" *) reg         dbg_user_cmd_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_user_cmd_data_r;
+(* MARK_DEBUG = "TRUE" *) reg [6:0]   dbg_user_cmd_num_r;
+
+(* MARK_DEBUG = "TRUE" *) reg         dbg_uart_rx_data_rdy_r;
+(* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_uart_rx_data_r;
+(* MARK_DEBUG = "TRUE" *) reg [6:0]   dbg_uart_rx_num_r;
+
+(* MARK_DEBUG = "TRUE" *) reg         dbg_test_rdata_pre_en;
+
+always @(posedge clk_100M) begin
+    dbg_user_cmd_valid_r    <= ow_user_cmd_valid;
+    dbg_user_cmd_data_r     <= ow_user_cmd_data;
+    dbg_user_cmd_num_r      <= ow_user_cmd_num;
+
+    dbg_uart_rx_data_rdy_r  <= ow_uart_rx_data_rdy;
+    dbg_uart_rx_data_r      <= ow_uart_rx_data;
+    dbg_uart_rx_num_r       <= ow_uart_rx_num;
+
+    dbg_test_rdata_pre_en       <= ow_test_rdata_pre_en;
+
+end
 endmodule

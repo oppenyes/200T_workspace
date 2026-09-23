@@ -67,9 +67,9 @@ wire            core_reset;
 reg  [15:0]     delay_cnt;
 reg  [2 :0]     dst_ip_count;
   
-reg  [10:0] PACKET_LENGTH = 10'h3ff;   // 0-1472 ×Ö½Ú      50Mbit - 906Mbit
+reg  [10:0] PACKET_LENGTH = 10'h3ff;   // 0-1472 å­—èŠ‚      50Mbit - 906Mbit
 wire [ 7:0] ow_udp_fifo_rd_data_num ; 
-wire [15:0] PACKET_INTERVAL = 16'd0; // 0-65535 ÑÓ³Ù  
+wire [15:0] PACKET_INTERVAL = 16'd0; // 0-65535 å»¶è¿Ÿ  
 always@(posedge clk_15M625)begin
     if(iw_15M625_rst)begin
         PACKET_LENGTH <= 1'b0 ;
@@ -152,9 +152,9 @@ always@(posedge clk_15M625)begin
 					end
 				WAIT_ACK:
 					begin
-					   if(app_tx_ack) begin//µÈ´ýapp_tx_request·´À¡ÐÅºÅ£¬¸ßµçÆ½ÓÐÐ§¡£±íÊ¾´ËÊ±Íâ²¿Ä£¿é¿ÉÍ¨¹ýÓÃ»§½Ó¿ÚÏò±¾Ä£¿éÊäÈëÊý¾Ý¡£
-						   app_tx_data_request <= 1'b0; // app_tx_ackÎª1£¬µÈ´ýÓ¦´ðÍê±Ï£¬¿ÉÏòÓÃ»§Ä£¿é·¢ËÍÊý¾Ý¡£
-							app_tx_data_valid <= 1'b1;  // ·¢ËÍÆÚ¼äºãÎª1
+					   if(app_tx_ack) begin//ç­‰å¾…app_tx_requeståé¦ˆä¿¡å·ï¼Œé«˜ç”µå¹³æœ‰æ•ˆã€‚è¡¨ç¤ºæ­¤æ—¶å¤–éƒ¨æ¨¡å—å¯é€šè¿‡ç”¨æˆ·æŽ¥å£å‘æœ¬æ¨¡å—è¾“å…¥æ•°æ®ã€‚
+						   app_tx_data_request <= 1'b0; // app_tx_ackä¸º1ï¼Œç­‰å¾…åº”ç­”å®Œæ¯•ï¼Œå¯å‘ç”¨æˆ·æ¨¡å—å‘é€æ•°æ®ã€‚
+							app_tx_data_valid <= 1'b1;  // å‘é€æœŸé—´æ’ä¸º1
 							if(PACKET_LENGTH <= 8) begin
 								app_tx_data_last <= 1'b1;
 								app_tx_data_keep <= (8'hff >> (8 - PACKET_LENGTH));
@@ -177,10 +177,10 @@ always@(posedge clk_15M625)begin
 				SEND_UDP_DATA:
 					begin
 						test_data <= test_data + 1'b1;  // ???
-						app_tx_data_valid <= 1'b1;  // ¿ÉÒÔÈ¥µô£¿
+						app_tx_data_valid <= 1'b1;  // å¯ä»¥åŽ»æŽ‰ï¼Ÿ
 						if(  ( (test_data << 3) + 8) >= (PACKET_LENGTH - 8)  ) begin	
-							app_tx_data_last <= 1'b1;   // ·¢ËÍ×îºóÒ»Î»±êÖ¾Î»
-							app_tx_data_keep <= (  8'hff >> ( (test_data << 3) + 8 - (PACKET_LENGTH - 8) )  );// ·¢ËÍ×îºóÒ»Î»±êÖ¾Î»
+							app_tx_data_last <= 1'b1;   // å‘é€æœ€åŽä¸€ä½æ ‡å¿—ä½
+							app_tx_data_keep <= (  8'hff >> ( (test_data << 3) + 8 - (PACKET_LENGTH - 8) )  );// å‘é€æœ€åŽä¸€ä½æ ‡å¿—ä½
 							STATE <= DELAY;
 						end
 						else begin
@@ -208,18 +208,18 @@ always@(posedge clk_15M625)begin
 	end   
 	
 master_wrapper master_wrapper_inst(
-    .LOCAL_PORT_NUM      (16'd6902),              // ±¾µØUDP¶Ë¿ÚºÅ
-    .LOCAL_IP_ADDRESS    (32'hc0_a8_89_02),       // ±¾µØIPµØÖ·192.168.137.2
-    .LOCAL_MAC_ADDRESS   (48'h000a35000102),      // ±¾µØMACµØÖ·
-    .DST_PORT_NUM        (16'd6901),              // Ö÷»úUDP¶Ë¿ÚºÅ192.168.137.1
-    .DST_IP_ADDRESS      (32'hc0_a8_89_01),       // Ö÷»úIPµØÖ·  
-    .ICMP_EN             (1'b1),                  // Ê¹ÄÜICMP¹¦ÄÜ£¬1Ê¹ÄÜ£¬0¹Ø±Õ   
-    .ARP_REPLY_EN        (1'b1),                  // Ê¹ÄÜARPÓ¦´ð£¬1Ê¹ÄÜ£¬0¹Ø±Õ    
-    .ARP_REQUEST_EN      (1'b1),                  // Ê¹ÄÜARPÇëÇó£¬1Ê¹ÄÜ£¬0¹Ø±Õ    
-    .ARP_TIMEOUT_VALUE   (30'd20_000_000),        // ARP³¬Ê±¼ì²â³¬Ê±Öµ
-    .ARP_RETRY_NUM       (4'd2),                  // ARP³¬Ê±ÖØ´«´ÎÊý
+    .LOCAL_PORT_NUM      (16'd6902),              // æœ¬åœ°UDPç«¯å£å·
+    .LOCAL_IP_ADDRESS    (32'hc0_a8_89_02),       // æœ¬åœ°IPåœ°å€192.168.137.2
+    .LOCAL_MAC_ADDRESS   (48'h000a35000102),      // æœ¬åœ°MACåœ°å€
+    .DST_PORT_NUM        (16'd6901),              // ä¸»æœºUDPç«¯å£å·192.168.137.1
+    .DST_IP_ADDRESS      (32'hc0_a8_89_01),       // ä¸»æœºIPåœ°å€  
+    .ICMP_EN             (1'b1),                  // ä½¿èƒ½ICMPåŠŸèƒ½ï¼Œ1ä½¿èƒ½ï¼Œ0å…³é—­   
+    .ARP_REPLY_EN        (1'b1),                  // ä½¿èƒ½ARPåº”ç­”ï¼Œ1ä½¿èƒ½ï¼Œ0å…³é—­    
+    .ARP_REQUEST_EN      (1'b1),                  // ä½¿èƒ½ARPè¯·æ±‚ï¼Œ1ä½¿èƒ½ï¼Œ0å…³é—­    
+    .ARP_TIMEOUT_VALUE   (30'd20_000_000),        // ARPè¶…æ—¶æ£€æµ‹è¶…æ—¶å€¼
+    .ARP_RETRY_NUM       (4'd2),                  // ARPè¶…æ—¶é‡ä¼ æ¬¡æ•°
     
-    .reset               (1'b0),                 // ¸´Î»ÐÅºÅ£¬¸ßµçÆ½ÓÐÐ§
+    .reset               (1'b0),                 // å¤ä½ä¿¡å·ï¼Œé«˜ç”µå¹³æœ‰æ•ˆ
     .dcm_locked          (iw_locked),            // 
     .refclk              (clk_200M),
     .udp_core_clk        (clk_15M625),
@@ -228,27 +228,27 @@ master_wrapper master_wrapper_inst(
     .gtx_clk_out         (),
     .gtx_clk90_out       (),
     
-    .udp_tx_ready        (udp_tx_ready), // ¿É½ÓÊÕÍâ²¿ÓÃ»§Êý¾ÝÊäÈë±êÖ¾ÐÅºÅ£¬¸ßµçÆ½ÓÐÐ§
-    .app_tx_ack          (app_tx_ack),   // app_tx_request·´À¡ÐÅºÅ£¬¸ßµçÆ½ÓÐÐ§¡£±íÊ¾´ËÊ±Íâ²¿Ä£¿é¿ÉÍ¨¹ýÓÃ»§½Ó¿ÚÏò±¾Ä£¿éÊäÈëÊý¾Ý¡£
+    .udp_tx_ready        (udp_tx_ready), // å¯æŽ¥æ”¶å¤–éƒ¨ç”¨æˆ·æ•°æ®è¾“å…¥æ ‡å¿—ä¿¡å·ï¼Œé«˜ç”µå¹³æœ‰æ•ˆ
+    .app_tx_ack          (app_tx_ack),   // app_tx_requeståé¦ˆä¿¡å·ï¼Œé«˜ç”µå¹³æœ‰æ•ˆã€‚è¡¨ç¤ºæ­¤æ—¶å¤–éƒ¨æ¨¡å—å¯é€šè¿‡ç”¨æˆ·æŽ¥å£å‘æœ¬æ¨¡å—è¾“å…¥æ•°æ®ã€‚
             
-    .app_tx_request      (app_tx_data_request),// ÓÃ»§½Ó¿ÚÊý¾Ý·¢ËÍÇëÇó£¬¸ßµçÆ½ÓÐÐ§
+    .app_tx_request      (app_tx_data_request),// ç”¨æˆ·æŽ¥å£æ•°æ®å‘é€è¯·æ±‚ï¼Œé«˜ç”µå¹³æœ‰æ•ˆ
     
-    .app_tx_data_valid   (app_tx_data_valid),  // ÓÃ»§·¢ËÍAXI-Stream½Ó¿Ú
-    .app_tx_data         (app_tx_data),        // ÓÃ»§·¢ËÍAXI-Stream½Ó¿Ú [63:0]
-    .app_tx_data_keep    (app_tx_data_keep),   // ÓÃ»§·¢ËÍAXI-Stream½Ó¿Ú [7:0]
-    .app_tx_data_last    (app_tx_data_last),   // ÓÃ»§·¢ËÍAXI-Stream½Ó¿Ú
-    .app_tx_data_length  (PACKET_LENGTH),	   // ÓÃ»§½Ó¿ÚÒ»´Î·¢ËÍµÄÊý¾Ý°ü³¤¶È£¬µ¥Î»×Ö½Ú
+    .app_tx_data_valid   (app_tx_data_valid),  // ç”¨æˆ·å‘é€AXI-StreamæŽ¥å£
+    .app_tx_data         (app_tx_data),        // ç”¨æˆ·å‘é€AXI-StreamæŽ¥å£ [63:0]
+    .app_tx_data_keep    (app_tx_data_keep),   // ç”¨æˆ·å‘é€AXI-StreamæŽ¥å£ [7:0]
+    .app_tx_data_last    (app_tx_data_last),   // ç”¨æˆ·å‘é€AXI-StreamæŽ¥å£
+    .app_tx_data_length  (PACKET_LENGTH),	   // ç”¨æˆ·æŽ¥å£ä¸€æ¬¡å‘é€çš„æ•°æ®åŒ…é•¿åº¦ï¼Œå•ä½å­—èŠ‚
     
-    .dst_ip_unreachable  (dst_ip_unreachable), // µ±Ç°ÇëÇó·¢ËÍµÄÄ¿µÄIP²»¿É´ïÖ¸Ê¾ÐÅºÅ£¬¸ßµçÆ½ÓÐÐ§	
+    .dst_ip_unreachable  (dst_ip_unreachable), // å½“å‰è¯·æ±‚å‘é€çš„ç›®çš„IPä¸å¯è¾¾æŒ‡ç¤ºä¿¡å·ï¼Œé«˜ç”µå¹³æœ‰æ•ˆ	
     
-    .app_rx_data_valid   (app_rx_data_valid),  // ÓÃ»§½ÓÊÕAXI-Stream½Ó¿Ú
-    .app_rx_data         (app_rx_data),        // ÓÃ»§½ÓÊÕAXI-Stream½Ó¿Ú [63:0]
-    .app_rx_data_keep    (app_rx_data_keep),   // ÓÃ»§½ÓÊÕAXI-Stream½Ó¿Ú [7:0]
-    .app_rx_data_last    (app_rx_data_last),   // ÓÃ»§½ÓÊÕAXI-Stream½Ó¿Ú
+    .app_rx_data_valid   (app_rx_data_valid),  // ç”¨æˆ·æŽ¥æ”¶AXI-StreamæŽ¥å£
+    .app_rx_data         (app_rx_data),        // ç”¨æˆ·æŽ¥æ”¶AXI-StreamæŽ¥å£ [63:0]
+    .app_rx_data_keep    (app_rx_data_keep),   // ç”¨æˆ·æŽ¥æ”¶AXI-StreamæŽ¥å£ [7:0]
+    .app_rx_data_last    (app_rx_data_last),   // ç”¨æˆ·æŽ¥æ”¶AXI-StreamæŽ¥å£
     
-    .app_rx_data_length  (app_rx_data_length), // ´ÓÍâ²¿½ÓÊÕµÄµ±Ç°Êý¾Ý°üµÄ³¤¶È£¬µ¥Î»×Ö½Ú
-    .app_rx_port_num     (app_rx_port_num),    // ´ÓÍâ²¿½ÓÊÜµÄÊý¾Ý°üµÄÔ´¶Ë¿ÚºÅ
-    .udp_rx_error        (udp_rx_error),       // ½ÓÊÕÊý¾Ý°üUDP¼ì²â´íÎóÖ¸Ê¾ÐÅºÅ£¬¸ßµçÆ½ÓÐÐ§£¬½öÔÚapp_rx_data_lastÀ­¸ßÊ±ÓÐÐ§
+    .app_rx_data_length  (app_rx_data_length), // ä»Žå¤–éƒ¨æŽ¥æ”¶çš„å½“å‰æ•°æ®åŒ…çš„é•¿åº¦ï¼Œå•ä½å­—èŠ‚
+    .app_rx_port_num     (app_rx_port_num),    // ä»Žå¤–éƒ¨æŽ¥å—çš„æ•°æ®åŒ…çš„æºç«¯å£å·
+    .udp_rx_error        (udp_rx_error),       // æŽ¥æ”¶æ•°æ®åŒ…UDPæ£€æµ‹é”™è¯¯æŒ‡ç¤ºä¿¡å·ï¼Œé«˜ç”µå¹³æœ‰æ•ˆï¼Œä»…åœ¨app_rx_data_lastæ‹‰é«˜æ—¶æœ‰æ•ˆ
     
     .rgmii_rxd           (rgmii_rxd),
     .rgmii_rx_ctl        (rgmii_rx_ctl),
@@ -312,7 +312,7 @@ always @(posedge clk_25M) begin
    end
 end
 
-// r_fifo_rd_en_wr_clk - r_fifo_rd_en_rd_clk ÐÅºÅ¿çÊ±ÖÓÓò×ª»» (Âý×ª¿ì)
+// r_fifo_rd_en_wr_clk - r_fifo_rd_en_rd_clk ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢ (æ…¢è½¬å¿«)
 fifo_bits_cov ETH_rx_data_cov_sys_clk(
     .wr_clk        (clk_15M625        ) , // input wire wr_clk
     .din           (r_ETH_rx_data     ) , // input wire [0 : 0] din   

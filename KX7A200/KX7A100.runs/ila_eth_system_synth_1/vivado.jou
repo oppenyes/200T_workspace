@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Sep 21 13:44:43 2026
+# Process ID: 36704
+# Current directory: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/ila_eth_system_synth_1
+# Command line: vivado.exe -log ila_eth_system.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ila_eth_system.tcl
+# Log file: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/ila_eth_system_synth_1/ila_eth_system.vds
+# Journal file: D:/Desktop/200T_workspace/KX7A200/KX7A100.runs/ila_eth_system_synth_1\vivado.jou
+#-----------------------------------------------------------
+source ila_eth_system.tcl -notrace

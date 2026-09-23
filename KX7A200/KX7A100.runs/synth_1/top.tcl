@@ -97,10 +97,10 @@ read_verilog -library xil_defaultlib {
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/Crossclock_rtl/cmd_cov_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_cache_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/ddr3_app_rtl/ddr3_module.v
+  D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/ddr3_udp_read_bridge.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/dna_rtl/dna_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/mclk_rtl/edge_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/eeprom_module.v
-  D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/fft_uart_tx_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/IIC_rtl/iic_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/key_rtl/key_module.v
@@ -120,15 +120,21 @@ read_verilog -library xil_defaultlib {
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_reset_sync.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/tri_mode_ethernet_mac_0_sync_block.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/tx.v
-  D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_fft_bridge_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_rx.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/uart_rtl/uart_tx.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_64x4096_fifo.v
+  D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_ddr3_write_bridge.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/led_rtl/ws2812b_module.v
   D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/top.v
 }
+read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_eth_rx/ila_eth_rx.xci
+set_property used_in_synthesis false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_rx/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_rx/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_rx/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_rx/ila_eth_rx_ooc.xdc]
+
 read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/mig_7series_0/mig_7series_0.xci
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0_ooc.xdc]
@@ -189,18 +195,21 @@ set_property used_in_implementation false [get_files -all d:/Desktop/200T_worksp
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr_clocks.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/fifo_ddr3_wr/fifo_ddr3_wr_ooc.xdc]
 
-read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/xfft_0/xfft_0.xci
-set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc]
-
-read_ip -quiet d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci
+read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_fft_debug/ila_fft_debug.xci
 set_property used_in_synthesis false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_v6_2/constraints/ila.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_fft_debug/ila_fft_debug_ooc.xdc]
 
-read_ip -quiet d:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci
+read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/vio_fft_debug/vio_fft_debug.xci
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_fft_debug/vio_fft_debug.xdc]
 set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/vio_fft_debug/vio_fft_debug_ooc.xdc]
+
+read_ip -quiet D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/sources_1/ip/ila_eth_system/ila_eth_system.xci
+set_property used_in_synthesis false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_system/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_system/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_system/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/ila_eth_system/ila_eth_system_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -214,6 +223,11 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc
 set_property used_in_implementation false [get_files D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/KX7A100_PIN.xdc]
 
+read_xdc D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/ila.xdc
+set_property used_in_implementation false [get_files D:/Desktop/200T_workspace/KX7A200/KX7A100.srcs/constrs_1/new/ila.xdc]
+
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

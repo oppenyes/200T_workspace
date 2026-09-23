@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Sun Sep 20 19:05:22 2026
+| Date         : Wed Sep 23 23:29:24 2026
 | Host         : LXY running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,17 +23,20 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 128
+             Violations found: 322
 +-----------+------------------+-------------------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                                       | Violations |
 +-----------+------------------+-------------------------------------------------------------------+------------+
 | TIMING-6  | Critical Warning | No common primary clock between related clocks                    | 2          |
 | TIMING-7  | Critical Warning | No common node between related clocks                             | 2          |
-| TIMING-54 | Critical Warning | Scoped false path or clock group constraint between clocks        | 8          |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                                       | 189        |
+| TIMING-27 | Critical Warning | Invalid primary clock on hierarchical pin                         | 1          |
+| TIMING-54 | Critical Warning | Scoped false path or clock group constraint between clocks        | 4          |
+| CKLD-2    | Warning          | Clock Net has IO Driver, not a Clock Buf, and/or non-Clock loads  | 1          |
 | LUTAR-1   | Warning          | LUT drives async reset alert                                      | 9          |
-| PDRC-190  | Warning          | Suboptimally placed synchronized register chain                   | 32         |
-| SYNTH-6   | Warning          | Timing of a RAM block might be sub-optimal                        | 1          |
+| PDRC-190  | Warning          | Suboptimally placed synchronized register chain                   | 35         |
 | TIMING-9  | Warning          | Unknown CDC Logic                                                 | 1          |
+| TIMING-18 | Warning          | Missing input or output delay                                     | 5          |
 | TIMING-47 | Warning          | False path or asynchronous clock group between synchronous clocks | 8          |
 | XDCB-5    | Warning          | Runtime inefficient way to find pin objects                       | 1          |
 | REQP-1959 | Advisory         | connects_SERDES_RST_driver_not_FF                                 | 64         |
@@ -43,62 +46,1000 @@ Table of Contents
 -----------------
 TIMING-6#1 Critical Warning
 No common primary clock between related clocks  
-The clocks PHYA_rgmii_rxc and clk_out5_clk_wiz_mclk are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks PHYA_rgmii_rxc] -to [get_clocks clk_out5_clk_wiz_mclk]
+The clocks clk_out5_clk_wiz_mclk and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out5_clk_wiz_mclk] -to [get_clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc]
 Related violations: <none>
 
 TIMING-6#2 Critical Warning
 No common primary clock between related clocks  
-The clocks clk_out5_clk_wiz_mclk and PHYA_rgmii_rxc are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out5_clk_wiz_mclk] -to [get_clocks PHYA_rgmii_rxc]
+The clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc and clk_out5_clk_wiz_mclk are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc] -to [get_clocks clk_out5_clk_wiz_mclk]
 Related violations: <none>
 
 TIMING-7#1 Critical Warning
 No common node between related clocks  
-The clocks PHYA_rgmii_rxc and clk_out5_clk_wiz_mclk are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks PHYA_rgmii_rxc] -to [get_clocks clk_out5_clk_wiz_mclk]
+The clocks clk_out5_clk_wiz_mclk and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out5_clk_wiz_mclk] -to [get_clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc]
 Related violations: <none>
 
 TIMING-7#2 Critical Warning
 No common node between related clocks  
-The clocks clk_out5_clk_wiz_mclk and PHYA_rgmii_rxc are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out5_clk_wiz_mclk] -to [get_clocks PHYA_rgmii_rxc]
+The clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc and clk_out5_clk_wiz_mclk are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc] -to [get_clocks clk_out5_clk_wiz_mclk]
+Related violations: <none>
+
+TIMING-17#1 Critical Warning
+Non-clocked sequential cell  
+The clock pin dbg_rgmii_rx_ctl_r_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#2 Critical Warning
+Non-clocked sequential cell  
+The clock pin dbg_rgmii_rxd_r_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#3 Critical Warning
+Non-clocked sequential cell  
+The clock pin dbg_rgmii_rxd_r_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#4 Critical Warning
+Non-clocked sequential cell  
+The clock pin dbg_rgmii_rxd_r_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#5 Critical Warning
+Non-clocked sequential cell  
+The clock pin dbg_rgmii_rxd_r_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#6 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ack_reg1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#7 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ack_reg2_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#8 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/basic_trigger_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#9 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/capture_qual_ctrl_2_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#10 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/capture_qual_ctrl_2_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#11 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/capture_qual_ctrl_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#12 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/capture_qual_ctrl_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#13 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#14 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync1_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#15 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync1_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#16 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync1_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#17 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync1_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#18 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync2_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#19 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync2_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#20 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync2_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#21 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync2_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#22 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/debug_data_in_sync2_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#23 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/en_adv_trigger_2_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#24 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/en_adv_trigger_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#25 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/ila_trace_memory_inst/SUBCORE_RAM_BLK_MEM_1.trace_block_memory/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram/CLKARDCLK is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#26 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[7][0]_srl8/CLK is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#27 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[7][1]_srl8/CLK is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#28 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[7][2]_srl8/CLK is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#29 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[7][3]_srl8/CLK is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#30 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[7][4]_srl8/CLK is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#31 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[8][0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#32 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[8][1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#33 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[8][2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#34 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[8][3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#35 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/shifted_data_in_reg[8][4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#36 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/CAP_DONE_O_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#37 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/CAP_TRIGGER_O_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#38 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/U_CDONE/I_YESLUT6.I_YES_OREG.O_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#39 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/U_NS0/I_YESLUT6.I_YES_OREG.O_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#40 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/U_NS1/I_YESLUT6.I_YES_OREG.O_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#41 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/itrigger_out_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#42 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/CAP_WR_EN_O_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#43 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#44 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#45 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#46 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#47 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#48 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#49 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#50 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#51 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#52 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/captured_samples_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#53 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[10]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#54 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#55 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#56 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#57 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#58 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#59 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#60 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#61 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#62 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync1_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#63 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[10]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#64 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#65 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#66 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#67 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#68 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#69 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#70 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#71 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#72 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/cfg_data_vec_sync2_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#73 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#74 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#75 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#76 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#77 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#78 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#79 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#80 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#81 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#82 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.CAP_ADDR_O_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#83 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#84 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#85 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#86 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#87 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#88 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#89 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#90 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#91 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#92 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/i_intcap.icap_addr_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#93 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/icap_wr_en_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#94 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#95 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#96 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#97 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#98 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#99 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#100 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#101 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#102 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#103 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/iscnt_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#104 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#105 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#106 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#107 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#108 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#109 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#110 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#111 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#112 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#113 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#114 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/u_scnt_cmp_q/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#115 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#116 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#117 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#118 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#119 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#120 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#121 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#122 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#123 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#124 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/iwcnt_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#125 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_hcmp_q/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#126 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#127 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#128 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#129 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#130 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#131 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#132 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#133 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#134 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#135 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#136 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_window_counter/u_wcnt_lcmp_q/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#137 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_regs/ila_clk_flag_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#138 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_regs/next_state_ila_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#139 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_regs/s_dclk_flag_sync1_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#140 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_regs/s_dclk_flag_sync2_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#141 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/arm_detection_inst/dout_pulse_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#142 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/arm_detection_inst/dout_pulse_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#143 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/arm_detection_inst/last_din_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#144 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.arm_in_transfer_inst/dout_reg0_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#145 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.arm_in_transfer_inst/dout_reg1_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#146 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.arm_out_transfer_inst/din_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#147 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.arm_out_transfer_inst/temp_reg0_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#148 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.arm_out_transfer_inst/temp_reg1_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#149 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.halt_in_transfer_inst/dout_reg0_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#150 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.halt_in_transfer_inst/dout_reg1_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#151 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.halt_out_transfer_inst/din_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#152 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.halt_out_transfer_inst/temp_reg0_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#153 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/asyncrounous_transfer.halt_out_transfer_inst/temp_reg1_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#154 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/halt_detection_inst/dout_pulse_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#155 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/halt_detection_inst/dout_pulse_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#156 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/halt_detection_inst/last_din_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#157 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/halt_out_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#158 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/prev_cap_done_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#159 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/reset_out_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#160 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/reset_out_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#161 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/reset_out_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#162 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/reset_out_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#163 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/reset_out_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#164 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_ila_reset_ctrl/reset_out_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#165 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[0].U_TC/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/DUT/I_WHOLE_SLICE.G_SLICE_IDX[0].U_ALL_SRL_SLICE/I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#166 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[0].U_TC/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#167 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[0].U_TC/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#168 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[0].U_TC/yes_output_reg.dout_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#169 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/TRIGGER_EQ_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#170 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/DUT/I_WHOLE_SLICE.G_SLICE_IDX[0].U_ALL_SRL_SLICE/I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#171 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/i_use_input_reg_eq1.probeDelay2_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#172 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#173 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M/yes_output_reg.dout_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#174 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/DUT/I_WHOLE_SLICE.G_SLICE_IDX[0].U_ALL_SRL_SLICE/I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#175 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/i_use_input_reg_eq1.probeDelay2_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#176 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/i_use_input_reg_eq1.probeDelay2_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#177 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/i_use_input_reg_eq1.probeDelay2_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#178 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/i_use_input_reg_eq1.probeDelay2_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#179 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#180 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#181 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#182 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#183 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/yes_output_reg.dout_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#184 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/use_probe_debug_circuit_2_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#185 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/ila_core_inst/use_probe_debug_circuit_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#186 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/sync_reg1_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#187 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/sync_reg2_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#188 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/trig_in_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#189 Critical Warning
+Non-clocked sequential cell  
+The clock pin ila_eth_rx_inst/inst/trig_out_ack_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-27#1 Critical Warning
+Invalid primary clock on hierarchical pin  
+A primary clock udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc is created on an inappropriate internal pin udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc. It is not recommended to create a primary clock on a hierarchical pin when its driver pin has a fanout connected to multiple clock pins
 Related violations: <none>
 
 TIMING-54#1 Critical Warning
 Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 105 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
+A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 216 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
 Related violations: <none>
 
 TIMING-54#2 Critical Warning
 Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 106 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
+A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 217 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
 Related violations: <none>
 
 TIMING-54#3 Critical Warning
 Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 107 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
+A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 218 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
 Related violations: <none>
 
 TIMING-54#4 Critical Warning
 Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 108 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
+A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 219 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
 Related violations: <none>
 
-TIMING-54#5 Critical Warning
-Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 112 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
-Related violations: <none>
-
-TIMING-54#6 Critical Warning
-Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 113 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
-Related violations: <none>
-
-TIMING-54#7 Critical Warning
-Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 114 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
-Related violations: <none>
-
-TIMING-54#8 Critical Warning
-Scoped false path or clock group constraint between clocks  
-A scoped False Path timing constraint is set between clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk and clkout0 (see constraint position 115 in the Timing Constraint window in Vivado IDE). It is not recommended to define such scoped constraints between clocks as the constraint impacts timing paths outside of the scope. 
+CKLD-2#1 Warning
+Clock Net has IO Driver, not a Clock Buf, and/or non-Clock loads  
+Clock net PHYA_rgmii_rxc_IBUF is directly driven by an IO rather than a Clock Buffer or may be an IO driving a mix of Clock Buffer and non-Clock loads. This connectivity should be reviewed and corrected as appropriate. Driver(s): PHYA_rgmii_rxc_IBUF_inst/O, dbg_rgmii_rx_ctl_r_reg/C,
+dbg_rgmii_rxd_r_reg[0]/C, dbg_rgmii_rxd_r_reg[1]/C,
+dbg_rgmii_rxd_r_reg[2]/C, dbg_rgmii_rxd_r_reg[3]/C, ila_eth_rx_inst/clk
+udp_drive_inst/PHYA_rgmii_rxc
 Related violations: <none>
 
 LUTAR-1#1 Warning
@@ -196,167 +1137,177 @@ Related violations: <none>
 
 PDRC-190#1 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[0] in site SLICE_X40Y79 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[0] in site SLICE_X90Y196 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#2 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[1] in site SLICE_X38Y79 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[1] in site SLICE_X91Y198 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#3 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[2] in site SLICE_X39Y79 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[2] in site SLICE_X92Y197 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#4 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[3] in site SLICE_X40Y77 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[3] in site SLICE_X89Y197 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#5 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[0] in site SLICE_X37Y80 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[0] in site SLICE_X90Y193 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#6 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[1] in site SLICE_X36Y79 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[1] in site SLICE_X91Y192 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#7 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[2] in site SLICE_X35Y78 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[2] in site SLICE_X92Y195 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#8 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[3] in site SLICE_X35Y80 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[3] in site SLICE_X93Y195 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#9 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[4] in site SLICE_X34Y79 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[4] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[4] in site SLICE_X92Y193 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[4] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#10 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[0] in site SLICE_X41Y80 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[5] in site SLICE_X94Y193 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[5] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#11 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[1] in site SLICE_X42Y80 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[6] in site SLICE_X93Y191 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[6] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#12 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[2] in site SLICE_X41Y82 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[7] in site SLICE_X93Y193 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[7] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#13 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[0] in site SLICE_X47Y170 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[0] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[0] in site SLICE_X88Y197 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#14 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[10] in site SLICE_X45Y173 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[10] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[1] in site SLICE_X86Y196 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#15 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[11] in site SLICE_X43Y172 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[11] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[2] in site SLICE_X87Y197 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#16 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[1] in site SLICE_X44Y170 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[1] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[0] in site SLICE_X53Y167 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[0] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#17 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[2] in site SLICE_X43Y170 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[2] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[10] in site SLICE_X55Y169 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[10] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#18 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[3] in site SLICE_X47Y172 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[3] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[11] in site SLICE_X59Y167 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[11] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#19 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[4] in site SLICE_X46Y172 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[4] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[1] in site SLICE_X56Y167 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[1] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#20 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[5] in site SLICE_X42Y170 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[5] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[2] in site SLICE_X54Y166 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[2] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#21 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[6] in site SLICE_X45Y171 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[6] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[3] in site SLICE_X58Y167 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[3] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#22 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[7] in site SLICE_X45Y168 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[7] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[4] in site SLICE_X56Y164 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[4] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#23 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[8] in site SLICE_X46Y170 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[8] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[5] in site SLICE_X57Y168 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[5] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#24 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[9] in site SLICE_X44Y172 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[9] is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[6] in site SLICE_X55Y166 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[6] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#25 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_bus2ip_reset_bus2ip_clk/sync_rst0_reg in site SLICE_X121Y134 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_bus2ip_reset_bus2ip_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[7] in site SLICE_X58Y165 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[7] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#26 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_glbl_rstn_bus2ip_clk/sync_rst0_reg in site SLICE_X120Y132 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_glbl_rstn_bus2ip_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[8] in site SLICE_X55Y164 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[8] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#27 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_axi_rx_rstn_rx_clk/sync_rst0_reg in site SLICE_X112Y131 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_axi_rx_rstn_rx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_sync_r5_reg[9] in site SLICE_X57Y165 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell ddr3_cache_module_inst/ddr3_module_inst/mig_7series_0_inst/u_mig_7series_0_mig/temp_mon_enabled.u_tempmon/device_temp_r_reg[9] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#28 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_rx_clk/sync_rst0_reg in site SLICE_X111Y129 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_rx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_bus2ip_reset_bus2ip_clk/sync_rst0_reg in site SLICE_X141Y134 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_bus2ip_reset_bus2ip_clk/sync_rst1_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#29 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_tx_clk/sync_rst0_reg in site SLICE_X115Y132 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_tx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_glbl_rstn_bus2ip_clk/sync_rst0_reg in site SLICE_X128Y132 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/man_reset.sync_glbl_rstn_bus2ip_clk/sync_rst1_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#30 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_rx_rst_mgmt_rx_clk/sync_rst0_reg in site SLICE_X114Y130 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_rx_rst_mgmt_rx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_axi_rx_rstn_rx_clk/sync_rst0_reg in site SLICE_X129Y135 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_axi_rx_rstn_rx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#31 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_tx_rst_mgmt_tx_clk/sync_rst0_reg in site SLICE_X114Y134 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_tx_rst_mgmt_tx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_rx_clk/sync_rst0_reg in site SLICE_X129Y132 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_rx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#32 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_tx_axi_rstn_tx_clk/sync_rst0_reg in site SLICE_X113Y132 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_tx_axi_rstn_tx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_tx_clk/sync_rst0_reg in site SLICE_X123Y129 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_glbl_rstn_tx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
-SYNTH-6#1 Warning
-Timing of a RAM block might be sub-optimal  
-The timing for the instance uart_fft_bridge_module_inst/r_fft_real_mem_reg_0, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+PDRC-190#33 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_rx_rst_mgmt_rx_clk/sync_rst0_reg in site SLICE_X131Y135 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_rx_rst_mgmt_rx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#34 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_tx_rst_mgmt_tx_clk/sync_rst0_reg in site SLICE_X133Y133 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_int_tx_rst_mgmt_tx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#35 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_tx_axi_rstn_tx_clk/sync_rst0_reg in site SLICE_X122Y129 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/tri_mode_ethernet_mac_i/tri_mode_ethernet_mac_0_core/sync_tx_axi_rstn_tx_clk/sync_rst1_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 TIMING-9#1 Warning
@@ -364,49 +1315,74 @@ Unknown CDC Logic
 One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
 Related violations: <none>
 
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on PHYA_rgmii_rx_ctl relative to clock(s) udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on PHYA_rgmii_rxd[0] relative to clock(s) udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on PHYA_rgmii_rxd[1] relative to clock(s) udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on PHYA_rgmii_rxd[2] relative to clock(s) udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on PHYA_rgmii_rxd[3] relative to clock(s) udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc
+Related violations: <none>
+
 TIMING-47#1 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 112 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 216 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 TIMING-47#2 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 113 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 217 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 TIMING-47#3 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 114 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 218 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 TIMING-47#4 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 115 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks clkout0 and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_tx_clk (see constraint position 219 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 TIMING-47#5 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 105 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc (see constraint position 209 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 TIMING-47#6 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 106 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc (see constraint position 210 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 TIMING-47#7 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 107 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc (see constraint position 211 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 TIMING-47#8 Warning
 False path or asynchronous clock group between synchronous clocks  
-A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and PHYA_rgmii_rxc (see constraint position 108 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
+A False Path timing constraint is set between synchronous clocks udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst_rgmii_rx_clk and udp_drive_inst/master_wrapper_inst/tri_mode_ethernet_mac_i/inst/rgmii_rxc (see constraint position 212 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via set_false_path or set_clock_groups may result in failure in hardware.
 Related violations: <none>
 
 XDCB-5#1 Warning
 Runtime inefficient way to find pin objects  
-The option '-to : [get_pins -hier -include_replicated_objects -filter {NAME =~ *temp_mon_enabled.u_tempmon/device_temp_sync_r1_reg[*]/D}]' of constraint 'set_max_delay' uses inefficient query to find pin objects (see constraint position '6' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+The option '-to : [get_pins -hier -include_replicated_objects -filter {NAME =~ *temp_mon_enabled.u_tempmon/device_temp_sync_r1_reg[*]/D}]' of constraint 'set_max_delay' uses inefficient query to find pin objects (see constraint position '60' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
 Current XDC: d:/Desktop/200T_workspace/KX7A200/KX7A100.gen/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc (Line: 815)
 Related violations: <none>
 
