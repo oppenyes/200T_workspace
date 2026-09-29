@@ -83,6 +83,7 @@ localparam eeprom_memory = 4           ;
 localparam [63:0] tx = 64'hc0_ee_d4_c2_d6_f1_0d_0a ;
 
 // -------------------------------- wire ------------------------------ //
+// FFT 历史调试信号：保留声明，不恢复已注释的 FFT 功能。
 wire [5:0] w_debug_tx_frame_index;
 wire [12:0] w_debug_fft_input_count;
 wire [11:0] w_debug_fft_input_index;
@@ -92,21 +93,25 @@ wire [15:0] w_fft_rd_real;
 wire [15:0] w_fft_rd_imag;
 
 wire        w_fft_uart_tx_done;
+
+// FMC/peripheral
 wire [1:0] iw_FMC_RES   ;
 wire [1:0] ow_FMC_RES   ;
 wire [1:0] ow_FMC_RES_T ;
+// command/peripheral
 // Unix_Epoch 微秒计数器
 wire [  55:0] ow_Unix_Epoch_data ;
 // 解析接收到的用户命令
 wire [   6:0] ow_user_cmd_num  ;
 
-// 串口/网口 发送和接收数据
+// UART
 wire [   9:0] iw_uart_tx_num      ;
 wire [4095:0] iw_uart_tx_data     ;
 wire [   6:0] ow_uart_rx_num      ;
 wire         iw_uart_tx_en         ;
 wire         ow_uart_tx_rdy        ;
 wire         ow_uart_tx_done       ;
+// FFT 历史接口信号：仅供保留的调试/注释代码使用。
 wire         ow_uart_fft_frame_ready;
 wire [15:0]  ow_fft_config_tdata;
 wire         ow_fft_config_tvalid;
@@ -132,12 +137,16 @@ wire         ow_fft_event_overflow;
 wire         ow_fft_event_status_halt;
 wire         ow_fft_event_data_in_halt;
 wire         ow_fft_event_data_out_halt;
+// UDP/command 历史接口
 wire [  63:0] ow_ETH_rx_data       ;
-// 串口/网口 发送解析接收到的用户命令
+// 串口/网口发送的命令响应接口
 wire [ 511:0] ow_uart_tx_cmd_data ;
 wire [   6:0] ow_uart_tx_cmd_num  ;
+wire         ow_uart_tx_cmd_data_valid;
 wire [  63:0] ow_ETH_tx_cmd_data  ;
+wire         ow_ETH_tx_cmd_data_valid;
 
+// DDR3/test 历史接口
 wire [ 511:0] iw_ddr3_fifo_wr_data ;
 
 wire [  63:0] ow_test_wdata       ;
@@ -145,7 +154,6 @@ wire [  63:0] iw_test_rdata       ;
 
 wire [  63:0] iw_smg_cmd_data     ;
 wire [  23:0] iw_ws2812b_GRB      ;
-wire [  63:0] iw_time_data        ; // TODO: 当前未使用，待回归验证后清理
 
 // 时钟、复位及板级控制：以下网络原先依赖 Verilog 隐式声明。
 wire clk_100M, clk_15M625, clk_200M, clk_500M, clk_125M, clk_50M;
@@ -192,45 +200,22 @@ wire         uart_rx_valid_w;
 wire [511:0] uart_rx_data_w;
 wire         user_cmd_valid_w;
 wire [511:0] user_cmd_data_w;
+// Debug VIO 控制信号：w_vio_tx_start 保持直接参与 DDR3 读触发。
+wire         w_vio_fft_start;
+wire         w_vio_tx_start;
+wire         w_vio_clear;
 // -------------------------------- assign ------------------------------ //
-// UART RX/TX is intentionally isolated from cmd_cov_module in this phase.
-// The completed UART frame is returned unchanged by uart_data_loopback_module.
-wire ow_ddr3_fifo_wr_rdy; // TODO: 当前未使用，待回归验证后清理
-// assign iw_ETH_udp_fifo_wr_valid   = ow_ddr3_fifo_rd_data_rdy ;
-// assign iw_ETH_udp_fifo_wr_data    = ow_ddr3_fifo_rd_data     ;
-// assign iw_ddr3_fifo_rd_data_valid = ow_ETH_udp_fifo_wr_rdy   ;
-
-// assign iw_test_wdata_rdy     = ow_ddr3_fifo_wr_rdy ;
-// assign iw_ddr3_fifo_wr_valid = ow_test_wdata_valid ;
-// assign iw_ddr3_fifo_wr_data  = ow_test_wdata       ;
-
 // test_data_generator_module 当前仅用于 DDR3 读触发和读数据校验；旧 DDR3 写路径保持断开。
 assign ddr_rd_trigger_w            = ow_test_rdata_pre_en ;
 
-//assign iw_ddr3_fifo_rd_data_valid = ow_test_rdata_valid      ;
 assign iw_test_rdata              = ddr_rd_data_w     ;
 assign iw_test_rdata_rdy          = udp_tx_valid_w && udp_tx_ready_w ;
 
-// assign ow_TEST_PIN[ 0] = iw_UART_RX ;
-// assign ow_TEST_PIN[ 1] = ow_UART_TX ;
 
-// assign ow_TEST_PIN[ 3] = ow_ddr3_fifo_wr_rdy    ;
-// assign ow_TEST_PIN[ 4] = iw_ddr3_fifo_wr_valid  ;
 
-// assign ow_TEST_PIN[ 5] = iw_ddr3_fifo_rd_pre_en      ; 
-// assign ow_TEST_PIN[ 6] = iw_ddr3_fifo_rd_data_valid  ; 
-// assign ow_TEST_PIN[ 7] = ow_ddr3_fifo_rd_data_rdy    ; 
 
-// assign ow_TEST_PIN[ 8] = ow_ddr3_clk_sync_rst   ;
-// assign ow_TEST_PIN[ 9] = ow_init_calib_complete ;
 
-// assign ow_TEST_PIN[10] = ow_test_rdata_error ;
 
-//assign io_CLK       = {clk_500M , clk_10M} ;
-//assign io_FMC_clk_p = {2{clk_100M}} ;
-//assign io_FMC_clk_n = {2{clk_100M}} ;
-//assign io_FMC_LA_p  = {32{clk_100M}} ;
-//assign io_FMC_LA_n  = {32{clk_100M}} ;
 // -------------------------------- module ------------------------------ //
 mclk_rst_module mclk_rst_module_inst(
     .iw_sys_clk    (iw_SYS_CLK   ) ,
@@ -469,7 +454,7 @@ cmd_cov_module cmd_cov_module_inst(
     .iw_sys_clk                (clk_100M                  ) ,
     .iw_sys_rst                (ow_100M_rst               ) ,
 
-    // UART is bypassed for the loopback phase; Ethernet command routing stays.
+    // UART 与 Ethernet 接收数据均进入命令解析模块。
     .iw_uart_rx_cmd_data_valid (uart_rx_valid_w                         ) ,
     .iw_uart_rx_cmd_data       (uart_rx_data_w                          ) ,
     .iw_uart_rx_cmd_num        (ow_uart_rx_num                          ) ,
@@ -490,12 +475,6 @@ cmd_cov_module cmd_cov_module_inst(
     .ow_ETH_tx_cmd_data_valid  (ow_ETH_tx_cmd_data_valid  ) ,
     .ow_ETH_tx_cmd_data        (ow_ETH_tx_cmd_data        ) 
 );
-
-    wire                                       sys_clk                    ;
-    wire                                       rst_n                      ;
-wire                                       w_ddr_udp_valid            ; // TODO: 当前未使用，待回归验证后清理
-wire                 [  63: 0]             w_ddr_udp_data             ; // TODO: 当前未使用，待回归验证后清理
-wire                                       w_ddr_udp_ready            ; // TODO: 当前未使用，待回归验证后清理
 
 udp_drive udp_drive_inst(
     .iw_sys_clk                         (clk_100M                  ),
@@ -551,7 +530,7 @@ ddr3_udp_read_bridge ddr3_udp_read_bridge_inst(
 
     .unpack_count_o                     (ddr_to_udp_unpack_count_w )
 );
-// ddr3_cache_module - uart/ETH
+// DDR3 缓存：写入来自 UDP 打包器，读取送往 UDP 拆包器。
 ddr3_cache_module ddr3_cache_module_inst(
     .iw_ddr3_fifo_wr_clk                (clk_100M                  ),
     .iw_ddr3_fifo_wr_rst                (ow_100M_rst               ),
@@ -707,24 +686,6 @@ IOBUF IOBUF_inst_FMC_RES1(
 // FFT Debug VIO
 // ============================================================
 
-wire w_vio_fft_start;
-wire w_vio_tx_start;
-wire w_vio_clear;
-reg r_vio_tx_start_d;
-
-always @(posedge clk_100M) begin
-    if (ow_100M_rst) begin
-        r_vio_tx_start_d <= 1'b0;
-    end
-    else begin
-        r_vio_tx_start_d <= w_vio_tx_start;
-    end
-end
-
-wire w_vio_tx_start_pulse; // TODO: 当前未使用，待回归验证后清理
-
-assign w_vio_tx_start_pulse =
-    w_vio_tx_start & ~r_vio_tx_start_d;
 vio_fft_debug vio_fft_debug_inst (
     .clk        (clk_100M),
 
@@ -732,9 +693,6 @@ vio_fft_debug vio_fft_debug_inst (
     .probe_out1 (w_vio_tx_start),
     .probe_out2 (w_vio_clear)
 );
-// ============================================================
-// FFT / UART Debug ILA
-// ============================================================
 // ============================================================
 // FFT / UART Debug ILA
 // 用于检查：UART接收 → FFT输入 → FFT输出 → UART发送
