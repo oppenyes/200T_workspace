@@ -190,6 +190,7 @@ wire         ddr_rd_valid_w;
 wire [511:0] ddr_rd_data_w;
 wire         ddr_rd_ready_w;
 wire         ddr_rd_trigger_w;
+wire         ddr_rd_pre_en_w;
 wire         ddr_udp_ready_w;
 wire         ddr_fft_ready_w;
 // UDP TX：DDR3 512-bit 数据按高位至低位拆成 8 个 64-bit 字。
@@ -202,11 +203,16 @@ wire         uart_rx_valid_w;
 wire [511:0] uart_rx_data_w;
 wire         user_cmd_valid_w;
 wire [511:0] user_cmd_data_w;
-// Debug VIO 控制信号：w_vio_tx_start 保持直接参与 DDR3 读触发。
+// Debug VIO 控制信号：fft_start 用于单帧 FFT 触发，tx_start 保持原 DDR3 读触发用途。
 wire         w_vio_fft_start;
 wire         w_vio_tx_start;
 wire         w_vio_clear;
 wire         fft_mode_en_w;
+reg          fft_start_d_r;
+(* MARK_DEBUG = "TRUE" *) wire fft_start_pulse_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_start_accept_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_busy_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_done_w;
 
 // DDR3 → FFT：配置接口仅在复位后完成一次握手。
 wire [15:0]  fft_config_tdata_w;
@@ -239,9 +245,20 @@ assign ddr_rd_trigger_w            = ow_test_rdata_pre_en ;
 assign iw_test_rdata              = ddr_rd_data_w     ;
 assign iw_test_rdata_rdy          = udp_tx_valid_w && udp_tx_ready_w ;
 
-// VIO probe_out0 选择 DDR 读数据的唯一消费者；一次读操作期间必须保持该模式不变。
-assign fft_mode_en_w = w_vio_fft_start;
+// 当前默认选择 DDR→FFT；保留 DDR→UDP 模块及 ready 分支，便于后续恢复回环调试。
+assign fft_mode_en_w = 1'b1;
 assign ddr_rd_ready_w = fft_mode_en_w ? ddr_fft_ready_w : ddr_udp_ready_w;
+// 只有 FFT 桥实际接受启动请求后，才同步触发 DDR3 读取。
+assign fft_start_pulse_w = w_vio_fft_start && !fft_start_d_r;
+assign ddr_rd_pre_en_w = ddr_rd_trigger_w | w_vio_tx_start | fft_start_accept_w;
+
+// VIO 保持为高电平时仅产生一个 clk_100M 周期的启动请求。
+always @(posedge clk_100M) begin
+    if (ow_100M_rst)
+        fft_start_d_r <= 1'b0;
+    else
+        fft_start_d_r <= w_vio_fft_start;
+end
 
 
 
@@ -567,6 +584,11 @@ ddr3_fft_bridge_module ddr3_fft_bridge_module_inst(
     .clk_i                 (clk_100M               ),
     .rst_n_i               (~ow_100M_rst           ),
 
+    .start_i               (fft_start_pulse_w      ),
+    .start_accept_o        (fft_start_accept_w     ),
+    .busy_o                (fft_busy_w             ),
+    .done_o                (fft_done_w             ),
+
     .ddr_valid_i           (ddr_rd_valid_w         ),
     .ddr_data_i            (ddr_rd_data_w          ),
     .ddr_ready_o           (ddr_fft_ready_w        ),
@@ -625,7 +647,7 @@ ddr3_cache_module ddr3_cache_module_inst(
 // tx
     .iw_ddr3_fifo_rd_clk                (clk_100M                  ),
     .iw_ddr3_fifo_rd_rst                (ow_100M_rst               ),
-    .iw_ddr3_fifo_rd_pre_en             (ddr_rd_trigger_w | w_vio_tx_start   ),
+    .iw_ddr3_fifo_rd_pre_en             (ddr_rd_pre_en_w          ),
     .iw_ddr3_fifo_rd_data_valid         (ddr_rd_ready_w            ),
     .ow_ddr3_fifo_rd_data               (ddr_rd_data_w             ),// [511:0]
     .ow_ddr3_fifo_rd_data_rdy           (ddr_rd_valid_w            ),
@@ -773,13 +795,13 @@ IOBUF IOBUF_inst_FMC_RES1(
 vio_fft_debug vio_fft_debug_inst (
     .clk        (clk_100M),
 
-    .probe_out0 (w_vio_fft_start),
-    .probe_out1 (w_vio_tx_start),
-    .probe_out2 (w_vio_clear)
+    .probe_out0 (w_vio_fft_start), // 0→1 请求启动一帧 FFT
+    .probe_out1 (w_vio_tx_start),  // 保留原 DDR3 读调试触发
+    .probe_out2 (w_vio_clear)      // 本轮保留，未扩展新功能
 );
 // ============================================================
-// FFT / UART Debug ILA
-// 用于检查：UART接收 → FFT输入 → FFT输出 → UART发送
+// DDR3 / FFT Debug ILA
+// 用于检查：DDR3读取 → FFT输入 → FFT输出
 // ============================================================
 
 ila_fft_debug ila_fft_debug_inst (
@@ -865,19 +887,19 @@ always @(posedge clk_100M) begin
     end
 end
 // ---------------- RGMII RX Debug ----------------
-(* MARK_DEBUG = "TRUE" *) reg [3:0] dbg_rgmii_rxd_r;
-(* MARK_DEBUG = "TRUE" *) reg       dbg_rgmii_rx_ctl_r;
+// (* MARK_DEBUG = "TRUE" *) reg [3:0] dbg_rgmii_rxd_r;
+// (* MARK_DEBUG = "TRUE" *) reg       dbg_rgmii_rx_ctl_r;
 
-always @(posedge PHYA_rgmii_rxc) begin
-    dbg_rgmii_rxd_r    <= PHYA_rgmii_rxd;
-    dbg_rgmii_rx_ctl_r <= PHYA_rgmii_rx_ctl;
-end
+// always @(posedge PHYA_rgmii_rxc) begin
+//     dbg_rgmii_rxd_r    <= PHYA_rgmii_rxd;
+//     dbg_rgmii_rx_ctl_r <= PHYA_rgmii_rx_ctl;
+// end
 
-ila_eth_rx ila_eth_rx_inst(
-    .clk    (PHYA_rgmii_rxc     ),
-    .probe0 (dbg_rgmii_rx_ctl_r ),
-    .probe1 (dbg_rgmii_rxd_r    )
-);
+// ila_eth_rx ila_eth_rx_inst(
+//     .clk    (PHYA_rgmii_rxc     ),
+//     .probe0 (dbg_rgmii_rx_ctl_r ),
+//     .probe1 (dbg_rgmii_rxd_r    )
+// );
 // // ---------------- RGMII TX Debug ----------------
 // (* MARK_DEBUG = "TRUE" *) reg [3:0] dbg_rgmii_txd_r;
 // (* MARK_DEBUG = "TRUE" *) reg       dbg_rgmii_tx_ctl_r;
@@ -893,27 +915,27 @@ ila_eth_rx ila_eth_rx_inst(
 //     .probe1 (dbg_rgmii_txd_r    )
 // );
 // ---------------- Ethernet System Debug ----------------
-(* MARK_DEBUG = "TRUE" *) reg        dbg_phy_rst_r;
-(* MARK_DEBUG = "TRUE" *) reg        dbg_locked_r;
+// (* MARK_DEBUG = "TRUE" *) reg        dbg_phy_rst_r;
+// (* MARK_DEBUG = "TRUE" *) reg        dbg_locked_r;
 
-(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_rx_valid_r;
-(* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_rx_data_r;
+// (* MARK_DEBUG = "TRUE" *) reg        dbg_eth_rx_valid_r;
+// (* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_rx_data_r;
 
-(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_ready_r;
-(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_valid_r;
-(* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_tx_data_r;
+// (* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_ready_r;
+// (* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_valid_r;
+// (* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_tx_data_r;
 
-always @(posedge clk_100M) begin
-    dbg_phy_rst_r      <= phy_rst_o;
-    dbg_locked_r       <= ow_locked;
+// always @(posedge clk_100M) begin
+//     dbg_phy_rst_r      <= phy_rst_o;
+//     dbg_locked_r       <= ow_locked;
 
-    dbg_eth_rx_valid_r <= udp_rx_valid_w;
-    dbg_eth_rx_data_r  <= udp_rx_data_w;
+//     dbg_eth_rx_valid_r <= udp_rx_valid_w;
+//     dbg_eth_rx_data_r  <= udp_rx_data_w;
 
-    dbg_eth_tx_ready_r <= udp_tx_ready_w;
-    dbg_eth_tx_valid_r <= udp_tx_valid_w;
-    dbg_eth_tx_data_r  <= udp_tx_data_w;
-end
+//     dbg_eth_tx_ready_r <= udp_tx_ready_w;
+//     dbg_eth_tx_valid_r <= udp_tx_valid_w;
+//     dbg_eth_tx_data_r  <= udp_tx_data_w;
+// end
 
 ila_eth_system ila_eth_system_inst(
     .clk    (clk_100M           ),
