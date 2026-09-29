@@ -1,7 +1,0 @@
-Running: xsim.dir/uart_fft_bridge_tb_behav/xsimk.exe -simmode gui -wdb uart_fft_bridge_tb_behav.wdb -simrunnum 0 -socket 59962
-Design successfully loaded
-Design Loading Memory Usage: 36080 KB (Peak: 36080 KB)
-Design Loading CPU Usage: 46 ms
-Simulation completed
-Simulation Memory Usage: 44540 KB (Peak: 44540 KB)
-Simulation CPU Usage: 10702 ms

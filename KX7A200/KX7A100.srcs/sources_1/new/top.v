@@ -98,18 +98,15 @@ wire [1:0] ow_FMC_RES_T ;
 // Unix_Epoch 微秒计数器
 wire [  55:0] ow_Unix_Epoch_data ;
 // 解析接收到的用户命令
-wire [ 511:0] ow_user_cmd_data ;
 wire [   6:0] ow_user_cmd_num  ;
 
 // 串口/网口 发送和接收数据
 wire [   9:0] iw_uart_tx_num      ;
 wire [4095:0] iw_uart_tx_data     ;
-wire [ 511:0] ow_uart_rx_data     ;
 wire [   6:0] ow_uart_rx_num      ;
 wire         iw_uart_tx_en         ;
 wire         ow_uart_tx_rdy        ;
 wire         ow_uart_tx_done       ;
-wire         ow_uart_rx_data_rdy   ;
 wire         ow_uart_fft_frame_ready;
 wire [15:0]  ow_fft_config_tdata;
 wire         ow_fft_config_tvalid;
@@ -136,25 +133,69 @@ wire         ow_fft_event_status_halt;
 wire         ow_fft_event_data_in_halt;
 wire         ow_fft_event_data_out_halt;
 wire [  63:0] ow_ETH_rx_data       ;
-wire [  63:0] iw_ETH_udp_fifo_wr_data  ;
 // 串口/网口 发送解析接收到的用户命令
 wire [ 511:0] ow_uart_tx_cmd_data ;
 wire [   6:0] ow_uart_tx_cmd_num  ;
 wire [  63:0] ow_ETH_tx_cmd_data  ;
 
 wire [ 511:0] iw_ddr3_fifo_wr_data ;
-wire [ 511:0] ow_ddr3_fifo_rd_data ;
 
 wire [  63:0] ow_test_wdata       ;
 wire [  63:0] iw_test_rdata       ;
 
 wire [  63:0] iw_smg_cmd_data     ;
 wire [  23:0] iw_ws2812b_GRB      ;
-wire [  63:0] iw_time_data        ;
+wire [  63:0] iw_time_data        ; // TODO: 当前未使用，待回归验证后清理
+
+// 时钟、复位及板级控制：以下网络原先依赖 Verilog 隐式声明。
+wire clk_100M, clk_15M625, clk_200M, clk_500M, clk_125M, clk_50M;
+wire clk_25M, clk_10M, clk_31M25, clk_5M, clk_1M, clk_400k, clk_100k, clk_1k;
+wire ow_locked;
+wire ow_100M_rst, ow_15M625_rst, ow_200M_rst, ow_125M_rst, ow_50M_rst;
+wire ow_25M_rst, ow_10M_rst, ow_31M25_rst, ow_5M_rst, ow_1M_rst;
+wire ow_400k_rst, ow_100k_rst, ow_1k_rst;
+// 保持现有 udp_drive 连接；这两个历史网络当前没有顶层驱动。
+wire iw_15M625_rst, iw_25M_rst;
+
+wire ow_dna_ok, ow_KEY_cap_n, ow_KEY_en, ow_KEY_up, ow_KEY_down, ow_KEY_once;
+wire iw_ws2812b_valid, ow_ws2812b_rdy;
+wire iw_smg_cmd_valid, ow_smg_cmd_rdy, ow_user_cmd_rdy;
+wire iw_EEPROM_IIC_SDI, ow_EEPROM_IIC_SDO, iw_FMC_IIC_SDI, ow_FMC_IIC_SDO;
+wire iw_FMC_PRSNT, ow_FMC_PRSNT, ow_FMC_PRSNT_T;
+wire iw_FMC_PG_M2C, ow_FMC_PG_M2C, ow_FMC_PG_M2C_T;
+wire iw_FMC_PG_C2M, ow_FMC_PG_C2M, ow_FMC_PG_C2M_T;
+wire r_ddr3_rst, ow_ddr3_clk, ow_ddr3_clk_sync_rst, ow_init_calib_complete;
+wire iw_test_wdata_rdy, ow_test_wdata_valid, ow_test_rdata_pre_en;
+wire ow_test_rdata_valid, iw_test_rdata_rdy, ow_test_rdata_error;
+
+// UDP RX：64-bit 数据进入 UDP→DDR3 打包器。
+wire         udp_rx_valid_w;
+wire [63:0]  udp_rx_data_w;
+// DDR3 写：每 8 个 UDP 64-bit 字打包为 1 个 512-bit 字。
+wire         ddr_wr_ready_w;
+wire         ddr_wr_valid_w;
+wire [511:0] ddr_wr_data_w;
+wire         udp_to_ddr_overflow_w;
+wire [2:0]   udp_to_ddr_pack_count_w;
+// DDR3 读：注意：原 ddr3_cache_module 历史接口命名与实际 valid/ready 语义相反。
+wire         ddr_rd_valid_w;
+wire [511:0] ddr_rd_data_w;
+wire         ddr_rd_ready_w;
+wire         ddr_rd_trigger_w;
+// UDP TX：DDR3 512-bit 数据按高位至低位拆成 8 个 64-bit 字。
+wire         udp_tx_ready_w;
+wire         udp_tx_valid_w;
+wire [63:0]  udp_tx_data_w;
+wire [2:0]   ddr_to_udp_unpack_count_w;
+// UART/命令：UART 接收帧由命令模块转换为用户命令。
+wire         uart_rx_valid_w;
+wire [511:0] uart_rx_data_w;
+wire         user_cmd_valid_w;
+wire [511:0] user_cmd_data_w;
 // -------------------------------- assign ------------------------------ //
 // UART RX/TX is intentionally isolated from cmd_cov_module in this phase.
 // The completed UART frame is returned unchanged by uart_data_loopback_module.
-wire ow_ddr3_fifo_wr_rdy;
+wire ow_ddr3_fifo_wr_rdy; // TODO: 当前未使用，待回归验证后清理
 // assign iw_ETH_udp_fifo_wr_valid   = ow_ddr3_fifo_rd_data_rdy ;
 // assign iw_ETH_udp_fifo_wr_data    = ow_ddr3_fifo_rd_data     ;
 // assign iw_ddr3_fifo_rd_data_valid = ow_ETH_udp_fifo_wr_rdy   ;
@@ -163,11 +204,12 @@ wire ow_ddr3_fifo_wr_rdy;
 // assign iw_ddr3_fifo_wr_valid = ow_test_wdata_valid ;
 // assign iw_ddr3_fifo_wr_data  = ow_test_wdata       ;
 
-assign iw_ddr3_fifo_rd_pre_en     = ow_test_rdata_pre_en ;
+// test_data_generator_module 当前仅用于 DDR3 读触发和读数据校验；旧 DDR3 写路径保持断开。
+assign ddr_rd_trigger_w            = ow_test_rdata_pre_en ;
 
 //assign iw_ddr3_fifo_rd_data_valid = ow_test_rdata_valid      ;
-assign iw_test_rdata              = ow_ddr3_fifo_rd_data     ;
-assign iw_test_rdata_rdy          = iw_ETH_udp_fifo_wr_valid && ow_ETH_udp_fifo_wr_rdy ;
+assign iw_test_rdata              = ddr_rd_data_w     ;
+assign iw_test_rdata_rdy          = udp_tx_valid_w && udp_tx_ready_w ;
 
 // assign ow_TEST_PIN[ 0] = iw_UART_RX ;
 // assign ow_TEST_PIN[ 1] = ow_UART_TX ;
@@ -227,8 +269,8 @@ Unix_Epoch_module Unix_Epoch_module(
     .iw_sys_clk          (clk_100M            ) ,
     .iw_sys_rst          (ow_100M_rst         ) ,
 
-    .iw_user_cmd_valid   (ow_user_cmd_valid   ) ,
-    .iw_user_cmd_data    (ow_user_cmd_data    ) ,
+    .iw_user_cmd_valid   (user_cmd_valid_w    ) ,
+    .iw_user_cmd_data    (user_cmd_data_w     ) ,
 
     .clk_1M              (clk_1M              ) ,
     .iw_1M_rst           (ow_1M_rst           ) ,
@@ -263,8 +305,8 @@ led_module#(
     .iw_led_clk         (clk_100M          ) ,
     .iw_led_rst         (ow_100M_rst       ) ,
 
-    .iw_user_cmd_valid  (ow_user_cmd_valid ) ,
-    .iw_user_cmd_data   (ow_user_cmd_data  ) ,
+    .iw_user_cmd_valid  (user_cmd_valid_w  ) ,
+    .iw_user_cmd_data   (user_cmd_data_w   ) ,
 
     .ow_LED_PIN         (ow_LED_PIN        )
 );
@@ -276,8 +318,8 @@ ws2812b_module#(
     .iw_sys_clk        (clk_100M          ) ,
     .iw_sys_rst        (ow_100M_rst       ) ,
 
-    .iw_user_cmd_valid (ow_user_cmd_valid ) ,
-    .iw_user_cmd_data  (ow_user_cmd_data  ) ,
+    .iw_user_cmd_valid (user_cmd_valid_w  ) ,
+    .iw_user_cmd_data  (user_cmd_data_w   ) ,
 
     .iw_ws2812b_clk    (clk_10M           ) ,
     .iw_ws2812b_rst    (ow_10M_rst        ) ,
@@ -293,8 +335,8 @@ smg_module smg_module_inst(
     .iw_sys_clk        (clk_100M          ) ,
     .iw_sys_rst        (ow_100M_rst       ) ,
 
-    .iw_user_cmd_valid (ow_user_cmd_valid ) ,
-    .iw_user_cmd_data  (ow_user_cmd_data  ) ,
+    .iw_user_cmd_valid (user_cmd_valid_w  ) ,
+    .iw_user_cmd_data  (user_cmd_data_w   ) ,
     .ow_user_cmd_rdy   (ow_user_cmd_rdy   ) ,
 
     .iw_smg_cmd_data   (iw_smg_cmd_data   ) ,
@@ -322,8 +364,8 @@ uart_module#(
     .iw_uart_tx_data     (iw_uart_tx_data     ) ,
     .ow_uart_tx_done     (ow_uart_tx_done     ) ,
 
-    .ow_uart_rx_data_rdy (ow_uart_rx_data_rdy ) ,
-    .ow_uart_rx_data     (ow_uart_rx_data     ) ,
+    .ow_uart_rx_data_rdy (uart_rx_valid_w     ) ,
+    .ow_uart_rx_data     (uart_rx_data_w      ) ,
     .ow_uart_rx_num      (ow_uart_rx_num      ) ,
 
     .iw_rx               (iw_UART_RX          ) ,
@@ -428,15 +470,15 @@ cmd_cov_module cmd_cov_module_inst(
     .iw_sys_rst                (ow_100M_rst               ) ,
 
     // UART is bypassed for the loopback phase; Ethernet command routing stays.
-    .iw_uart_rx_cmd_data_valid (ow_uart_rx_data_rdy                     ) ,
-    .iw_uart_rx_cmd_data       (ow_uart_rx_data                         ) ,
+    .iw_uart_rx_cmd_data_valid (uart_rx_valid_w                         ) ,
+    .iw_uart_rx_cmd_data       (uart_rx_data_w                          ) ,
     .iw_uart_rx_cmd_num        (ow_uart_rx_num                          ) ,
     
-    .iw_ETH_rx_cmd_data        (udp_data_i            ) ,
-    .iw_ETH_rx_cmd_data_valid  (udp_valid_i        ) ,
+    .iw_ETH_rx_cmd_data        (udp_rx_data_w            ) ,
+    .iw_ETH_rx_cmd_data_valid  (udp_rx_valid_w        ) ,
 
-    .ow_user_cmd_valid         (ow_user_cmd_valid         ) ,
-    .ow_user_cmd_data          (ow_user_cmd_data          ) ,
+    .ow_user_cmd_valid         (user_cmd_valid_w          ) ,
+    .ow_user_cmd_data          (user_cmd_data_w           ) ,
     .ow_user_cmd_num           (ow_user_cmd_num           ) ,
 
     .iw_uart_tx_rdy            (ow_uart_tx_rdy                     ) ,
@@ -444,25 +486,16 @@ cmd_cov_module cmd_cov_module_inst(
     .ow_uart_tx_cmd_data       (ow_uart_tx_cmd_data       ) ,
     .ow_uart_tx_cmd_num        (ow_uart_tx_cmd_num        ) ,
     
-    .iw_ETH_udp_fifo_wr_rdy    (ow_ETH_udp_fifo_wr_rdy    ) ,
+    .iw_ETH_udp_fifo_wr_rdy    (udp_tx_ready_w            ) ,
     .ow_ETH_tx_cmd_data_valid  (ow_ETH_tx_cmd_data_valid  ) ,
     .ow_ETH_tx_cmd_data        (ow_ETH_tx_cmd_data        ) 
 );
 
     wire                                       sys_clk                    ;
     wire                                       rst_n                      ;
-    wire                                       udp_valid_i                ;
-    wire                 [  63: 0]             udp_data_i                 ;
-    wire                                       ddr_ready_i                ;
-    wire                                       ddr_valid_o                ;
-    wire                 [ 511: 0]             ddr_data_o                 ;
-    wire                                       overflow_o                 ;
-
-    wire                 [   2: 0]             pack_count_o               ;
-    wire                                       w_ddr_udp_valid            ;
-    wire                 [  63: 0]             w_ddr_udp_data             ;
-    wire                                       w_ddr_udp_ready            ;
-    wire                 [   2: 0]             w_ddr_unpack_count         ;
+wire                                       w_ddr_udp_valid            ; // TODO: 当前未使用，待回归验证后清理
+wire                 [  63: 0]             w_ddr_udp_data             ; // TODO: 当前未使用，待回归验证后清理
+wire                                       w_ddr_udp_ready            ; // TODO: 当前未使用，待回归验证后清理
 
 udp_drive udp_drive_inst(
     .iw_sys_clk                         (clk_100M                  ),
@@ -484,53 +517,55 @@ udp_drive udp_drive_inst(
     .iw_15M625_rst                      (iw_15M625_rst             ),
     .iw_25M_rst                         (iw_25M_rst                ),
 
-    .ow_ETH_rx_data_rdy                 (udp_valid_i               ),
-    .ow_ETH_rx_data                     (udp_data_i                ),
+    .ow_ETH_rx_data_rdy                 (udp_rx_valid_w            ),
+    .ow_ETH_rx_data                     (udp_rx_data_w             ),
 
-    .ow_ETH_udp_fifo_wr_rdy             (ow_ETH_udp_fifo_wr_rdy    ),
-    .iw_ETH_udp_fifo_wr_valid           (iw_ETH_udp_fifo_wr_valid  ),
-    .iw_ETH_udp_fifo_wr_data            (iw_ETH_udp_fifo_wr_data   ) 
+    .ow_ETH_udp_fifo_wr_rdy             (udp_tx_ready_w            ),
+    .iw_ETH_udp_fifo_wr_valid           (udp_tx_valid_w            ),
+    .iw_ETH_udp_fifo_wr_data            (udp_tx_data_w             )
 );
+// UDP 64-bit 输入按接收顺序打包成 DDR3 512-bit；写握手由 ddr_wr_valid_w/ddr_wr_ready_w 完成。
 udp_ddr3_write_bridge u_udp_ddr3_write_bridge(
     .sys_clk                            (clk_100M                      ), // (input)// 系统时钟
     .rst_n                              (~ow_100M_rst                   ), // (input)// 同步低有效复位
-    .udp_valid_i                        (udp_valid_i               ), // (input)// UDP 64bit 数据有效
-    .udp_data_i                         (udp_data_i                ),// (input)// UDP 64bit 数据
-    .ddr_ready_i                        (ddr_ready_i               ),// (input)// DDR3 写FIFO可接收
-    .ddr_valid_o                        (ddr_valid_o               ),// (output)// DDR3 512bit写数据有效
-    .ddr_data_o                         (ddr_data_o                ),// (output)// DDR3 512bit写数据
-    .overflow_o                         (overflow_o                ),// (output)// 数据溢出标志
-    .pack_count_o                       (pack_count_o              ) // (output)// 当前64bit数据计数
+    .udp_valid_i                        (udp_rx_valid_w            ), // (input)// UDP 64bit 数据有效
+    .udp_data_i                         (udp_rx_data_w             ),// (input)// UDP 64bit 数据
+    .ddr_ready_i                        (ddr_wr_ready_w            ),// (input)// DDR3 写FIFO可接收
+    .ddr_valid_o                        (ddr_wr_valid_w            ),// (output)// DDR3 512bit写数据有效
+    .ddr_data_o                         (ddr_wr_data_w             ),// (output)// DDR3 512bit写数据
+    .overflow_o                         (udp_to_ddr_overflow_w     ),// (output)// 数据溢出标志
+    .pack_count_o                       (udp_to_ddr_pack_count_w   ) // (output)// 当前64bit数据计数
 );
+// DDR3 512-bit 数据按高位至低位拆为 8 个 UDP 64-bit 字；ready 表示 UDP 发送 FIFO 可接收。
 ddr3_udp_read_bridge ddr3_udp_read_bridge_inst(
     .sys_clk                            (clk_100M                  ),
     .rst_n                              (~ow_100M_rst              ),
 
-    .ddr_valid_i                        (ow_ddr3_fifo_rd_data_rdy  ),
-    .ddr_data_i                         (ow_ddr3_fifo_rd_data      ),
-    .ddr_ready_o                        (iw_ddr3_fifo_rd_data_valid),
+    .ddr_valid_i                        (ddr_rd_valid_w            ),
+    .ddr_data_i                         (ddr_rd_data_w             ),
+    .ddr_ready_o                        (ddr_rd_ready_w            ),
 
-    .udp_ready_i                        (ow_ETH_udp_fifo_wr_rdy    ),
-    .udp_valid_o                        (iw_ETH_udp_fifo_wr_valid  ),
-    .udp_data_o                         (iw_ETH_udp_fifo_wr_data   ),
+    .udp_ready_i                        (udp_tx_ready_w            ),
+    .udp_valid_o                        (udp_tx_valid_w            ),
+    .udp_data_o                         (udp_tx_data_w             ),
 
-    .unpack_count_o                     (w_ddr_unpack_count        ) 
+    .unpack_count_o                     (ddr_to_udp_unpack_count_w )
 );
 // ddr3_cache_module - uart/ETH
 ddr3_cache_module ddr3_cache_module_inst(
     .iw_ddr3_fifo_wr_clk                (clk_100M                  ),
     .iw_ddr3_fifo_wr_rst                (ow_100M_rst               ),
 // rx
-    .ow_ddr3_fifo_wr_rdy                (ddr_ready_i               ),
-    .iw_ddr3_fifo_wr_valid              (ddr_valid_o               ),
-    .iw_ddr3_fifo_wr_data               (ddr_data_o                ),// ddr3 预读取
+    .ow_ddr3_fifo_wr_rdy                (ddr_wr_ready_w            ),
+    .iw_ddr3_fifo_wr_valid              (ddr_wr_valid_w            ),
+    .iw_ddr3_fifo_wr_data               (ddr_wr_data_w             ),// ddr3 预读取
 // tx
     .iw_ddr3_fifo_rd_clk                (clk_100M                  ),
     .iw_ddr3_fifo_rd_rst                (ow_100M_rst               ),
-    .iw_ddr3_fifo_rd_pre_en             (iw_ddr3_fifo_rd_pre_en | w_vio_tx_start   ),
-    .iw_ddr3_fifo_rd_data_valid         (iw_ddr3_fifo_rd_data_valid),
-    .ow_ddr3_fifo_rd_data               (ow_ddr3_fifo_rd_data      ),// [63:0]
-    .ow_ddr3_fifo_rd_data_rdy           (ow_ddr3_fifo_rd_data_rdy  ),
+    .iw_ddr3_fifo_rd_pre_en             (ddr_rd_trigger_w | w_vio_tx_start   ),
+    .iw_ddr3_fifo_rd_data_valid         (ddr_rd_ready_w            ),
+    .ow_ddr3_fifo_rd_data               (ddr_rd_data_w             ),// [511:0]
+    .ow_ddr3_fifo_rd_data_rdy           (ddr_rd_valid_w            ),
 //********** DDR MIG APP interface***********//
     .iw_clk_200M                        (clk_200M                  ),// ddr3 输入时钟 Artix7 为 200MHz
     .iw_200M_rst                        (ow_200M_rst               ),// 时钟复位
@@ -563,8 +598,8 @@ eeprom_module#(
     .iw_sys_clk        (clk_100M          ) ,
     .iw_sys_rst        (ow_100M_rst       ) ,
 
-    .iw_user_cmd_valid (ow_user_cmd_valid ) ,
-    .iw_user_cmd_data  (ow_user_cmd_data  ) ,
+    .iw_user_cmd_valid (user_cmd_valid_w  ) ,
+    .iw_user_cmd_data  (user_cmd_data_w   ) ,
     
     .iw_iic_clk        (clk_400k          ) ,
     .iw_iic_rst        (ow_400k_rst       ) ,
@@ -582,8 +617,8 @@ eeprom_module#(
     .iw_sys_clk        (clk_100M          ) ,
     .iw_sys_rst        (ow_100M_rst       ) ,
 
-    .iw_user_cmd_valid (ow_user_cmd_valid ) ,
-    .iw_user_cmd_data  (ow_user_cmd_data  ) ,
+    .iw_user_cmd_valid (user_cmd_valid_w  ) ,
+    .iw_user_cmd_data  (user_cmd_data_w   ) ,
     
     .iw_iic_clk        (clk_400k          ) ,
     .iw_iic_rst        (ow_400k_rst       ) ,
@@ -598,8 +633,9 @@ eeprom_module#(
 test_data_generator_module test_data_generator_module_inst(
     .iw_user_clk          (clk_100M             ) ,
     .iw_user_rst          (ow_100M_rst          ) ,
-    .iw_user_cmd_valid    (ow_user_cmd_valid    ) ,
-    .iw_user_cmd_data     (ow_user_cmd_data     ) ,
+    .iw_user_cmd_valid    (user_cmd_valid_w     ) ,
+    // 当前子模块命令输入只使用用户命令低64位，不允许本轮修改位宽或连接方式。
+    .iw_user_cmd_data     (user_cmd_data_w      ) ,
 
     .iw_test_clk          (ow_ddr3_clk          ) ,
     .iw_test_rst          (ow_ddr3_clk_sync_rst ) ,
@@ -685,7 +721,7 @@ always @(posedge clk_100M) begin
     end
 end
 
-wire w_vio_tx_start_pulse;
+wire w_vio_tx_start_pulse; // TODO: 当前未使用，待回归验证后清理
 
 assign w_vio_tx_start_pulse =
     w_vio_tx_start & ~r_vio_tx_start_d;
@@ -708,7 +744,7 @@ ila_fft_debug ila_fft_debug_inst (
     .clk    (clk_100M),
 
     // ---------------- UART RX ----------------
-    .probe0 (ow_uart_rx_data_rdy),         // [0:0]  RX一帧完成
+    .probe0 (uart_rx_valid_w),             // [0:0]  RX一帧完成
     .probe1 (ow_uart_rx_num),              // [6:0]  RX帧字节数，应为64
 
     // ---------------- FFT Input ----------------
@@ -734,57 +770,57 @@ ila_fft_debug ila_fft_debug_inst (
 );
 
 // ---------------- UDP DDR3 Write Bridge Debug ----------------
-(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_valid_r;
-(* MARK_DEBUG = "TRUE" *) reg [63:0]  dbg_udp_data_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_rx_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [63:0]  dbg_udp_rx_data_r;
 (* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_wr_ready_r;
 (* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_wr_valid_r;
 (* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_ddr_wr_data_r;
-(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_overflow_r;
-(* MARK_DEBUG = "TRUE" *) reg [2:0]   dbg_pack_count_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_to_ddr_overflow_r;
+(* MARK_DEBUG = "TRUE" *) reg [2:0]   dbg_udp_to_ddr_pack_count_r;
 
 // ---------------- DDR3 UDP Read Bridge Debug ----------------
 (* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_rd_valid_r;
 (* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_ddr_rd_data_r;
 (* MARK_DEBUG = "TRUE" *) reg         dbg_ddr_rd_ready_r;
-(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_ready_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_udp_tx_ready_r;
 (* MARK_DEBUG = "TRUE" *) reg         dbg_udp_tx_valid_r;
 (* MARK_DEBUG = "TRUE" *) reg [63:0]  dbg_udp_tx_data_r;
-(* MARK_DEBUG = "TRUE" *) reg [2:0]   dbg_unpack_count_r;
+(* MARK_DEBUG = "TRUE" *) reg [2:0]   dbg_ddr_to_udp_unpack_count_r;
 
 always @(posedge clk_100M) begin
     if (ow_100M_rst) begin
-        dbg_udp_valid_r      <= 1'b0;
-        dbg_udp_data_r       <= 64'd0;
+        dbg_udp_rx_valid_r   <= 1'b0;
+        dbg_udp_rx_data_r    <= 64'd0;
         dbg_ddr_wr_ready_r   <= 1'b0;
         dbg_ddr_wr_valid_r   <= 1'b0;
         dbg_ddr_wr_data_r    <= 512'd0;
-        dbg_udp_overflow_r   <= 1'b0;
-        dbg_pack_count_r     <= 3'd0;
+        dbg_udp_to_ddr_overflow_r   <= 1'b0;
+        dbg_udp_to_ddr_pack_count_r <= 3'd0;
 
         dbg_ddr_rd_valid_r   <= 1'b0;
         dbg_ddr_rd_data_r    <= 512'd0;
         dbg_ddr_rd_ready_r   <= 1'b0;
-        dbg_udp_ready_r      <= 1'b0;
+        dbg_udp_tx_ready_r   <= 1'b0;
         dbg_udp_tx_valid_r   <= 1'b0;
         dbg_udp_tx_data_r    <= 64'd0;
-        dbg_unpack_count_r   <= 3'd0;
+        dbg_ddr_to_udp_unpack_count_r <= 3'd0;
     end
     else begin
-        dbg_udp_valid_r      <= udp_valid_i;
-        dbg_udp_data_r       <= udp_data_i;
-        dbg_ddr_wr_ready_r   <= ddr_ready_i;
-        dbg_ddr_wr_valid_r   <= ddr_valid_o;
-        dbg_ddr_wr_data_r    <= ddr_data_o;
-        dbg_udp_overflow_r   <= overflow_o;
-        dbg_pack_count_r     <= pack_count_o;
+        dbg_udp_rx_valid_r   <= udp_rx_valid_w;
+        dbg_udp_rx_data_r    <= udp_rx_data_w;
+        dbg_ddr_wr_ready_r   <= ddr_wr_ready_w;
+        dbg_ddr_wr_valid_r   <= ddr_wr_valid_w;
+        dbg_ddr_wr_data_r    <= ddr_wr_data_w;
+        dbg_udp_to_ddr_overflow_r   <= udp_to_ddr_overflow_w;
+        dbg_udp_to_ddr_pack_count_r <= udp_to_ddr_pack_count_w;
 
-        dbg_ddr_rd_valid_r   <= ow_ddr3_fifo_rd_data_rdy;
-        dbg_ddr_rd_data_r    <= ow_ddr3_fifo_rd_data;
-        dbg_ddr_rd_ready_r   <= iw_ddr3_fifo_rd_data_valid;
-        dbg_udp_ready_r      <= ow_ETH_udp_fifo_wr_rdy;
-        dbg_udp_tx_valid_r   <= iw_ETH_udp_fifo_wr_valid;
-        dbg_udp_tx_data_r    <= iw_ETH_udp_fifo_wr_data;
-        dbg_unpack_count_r   <= w_ddr_unpack_count;
+        dbg_ddr_rd_valid_r   <= ddr_rd_valid_w;
+        dbg_ddr_rd_data_r    <= ddr_rd_data_w;
+        dbg_ddr_rd_ready_r   <= ddr_rd_ready_w;
+        dbg_udp_tx_ready_r   <= udp_tx_ready_w;
+        dbg_udp_tx_valid_r   <= udp_tx_valid_w;
+        dbg_udp_tx_data_r    <= udp_tx_data_w;
+        dbg_ddr_to_udp_unpack_count_r <= ddr_to_udp_unpack_count_w;
     end
 end
 // ---------------- RGMII RX Debug ----------------
@@ -830,12 +866,12 @@ always @(posedge clk_100M) begin
     dbg_phy_rst_r      <= phy_rst_o;
     dbg_locked_r       <= ow_locked;
 
-    dbg_eth_rx_valid_r <= udp_valid_i;
-    dbg_eth_rx_data_r  <= udp_data_i;
+    dbg_eth_rx_valid_r <= udp_rx_valid_w;
+    dbg_eth_rx_data_r  <= udp_rx_data_w;
 
-    dbg_eth_tx_ready_r <= ow_ETH_udp_fifo_wr_rdy;
-    dbg_eth_tx_valid_r <= iw_ETH_udp_fifo_wr_valid;
-    dbg_eth_tx_data_r  <= iw_ETH_udp_fifo_wr_data;
+    dbg_eth_tx_ready_r <= udp_tx_ready_w;
+    dbg_eth_tx_valid_r <= udp_tx_valid_w;
+    dbg_eth_tx_data_r  <= udp_tx_data_w;
 end
 
 ila_eth_system ila_eth_system_inst(
@@ -852,19 +888,19 @@ ila_eth_system ila_eth_system_inst(
 (* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_user_cmd_data_r;
 (* MARK_DEBUG = "TRUE" *) reg [6:0]   dbg_user_cmd_num_r;
 
-(* MARK_DEBUG = "TRUE" *) reg         dbg_uart_rx_data_rdy_r;
+(* MARK_DEBUG = "TRUE" *) reg         dbg_uart_rx_valid_r;
 (* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_uart_rx_data_r;
 (* MARK_DEBUG = "TRUE" *) reg [6:0]   dbg_uart_rx_num_r;
 
 (* MARK_DEBUG = "TRUE" *) reg         dbg_test_rdata_pre_en;
 
 always @(posedge clk_100M) begin
-    dbg_user_cmd_valid_r    <= ow_user_cmd_valid;
-    dbg_user_cmd_data_r     <= ow_user_cmd_data;
+    dbg_user_cmd_valid_r    <= user_cmd_valid_w;
+    dbg_user_cmd_data_r     <= user_cmd_data_w;
     dbg_user_cmd_num_r      <= ow_user_cmd_num;
 
-    dbg_uart_rx_data_rdy_r  <= ow_uart_rx_data_rdy;
-    dbg_uart_rx_data_r      <= ow_uart_rx_data;
+    dbg_uart_rx_valid_r     <= uart_rx_valid_w;
+    dbg_uart_rx_data_r      <= uart_rx_data_w;
     dbg_uart_rx_num_r       <= ow_uart_rx_num;
 
     dbg_test_rdata_pre_en       <= ow_test_rdata_pre_en;

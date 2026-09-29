@@ -1,0 +1,18 @@
+# Vivado 自动生成目录，不上传
+.Xil/
+KX7A100.cache/
+KX7A100.gen/
+KX7A100.hw/
+KX7A100.ioplanning/
+KX7A100.ip_user_files/
+KX7A100.runs/
+KX7A100.sim/
+
+# Vivado 工程及日志
+*.xpr
+*.jou
+*.log
+*.str
+
+# 编辑器
+.vscode/
