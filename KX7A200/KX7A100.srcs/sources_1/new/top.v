@@ -193,10 +193,13 @@ wire         ddr_rd_trigger_w;
 wire         ddr_rd_pre_en_w;
 wire         ddr_udp_ready_w;
 wire         ddr_fft_ready_w;
-// UDP TX：DDR3 512-bit 数据按高位至低位拆成 8 个 64-bit 字。
+// UDP TX：DDR→UDP与FFT→UDP输出在顶层互斥选择。
 wire         udp_tx_ready_w;
 wire         udp_tx_valid_w;
 wire [63:0]  udp_tx_data_w;
+wire         ddr_udp_tx_ready_w;
+wire         ddr_udp_valid_w;
+wire [63:0]  ddr_udp_data_w;
 wire [2:0]   ddr_to_udp_unpack_count_w;
 // UART/命令：UART 接收帧由命令模块转换为用户命令。
 wire         uart_rx_valid_w;
@@ -210,6 +213,7 @@ wire         w_vio_clear;
 wire         fft_mode_en_w;
 reg          fft_start_d_r;
 (* MARK_DEBUG = "TRUE" *) wire fft_start_pulse_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_start_guarded_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_start_accept_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_busy_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_done_w;
@@ -231,6 +235,13 @@ wire [7:0]   fft_status_tdata_w;
 wire         fft_status_tvalid_w;
 wire [12:0]  fft_input_count_w;
 wire [12:0]  fft_output_count_w;
+wire         fft_udp_frame_ready_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_udp_valid_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_udp_ready_w;
+(* MARK_DEBUG = "TRUE" *) wire [63:0] fft_udp_data_w;
+(* MARK_DEBUG = "TRUE" *) wire [12:0] fft_udp_rx_count_w;
+(* MARK_DEBUG = "TRUE" *) wire [11:0] fft_udp_tx_count_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_udp_frame_done_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_event_frame_started_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_event_tlast_unexpected_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_event_tlast_missing_w;
@@ -248,9 +259,18 @@ assign iw_test_rdata_rdy          = udp_tx_valid_w && udp_tx_ready_w ;
 // 当前默认选择 DDR→FFT；保留 DDR→UDP 模块及 ready 分支，便于后续恢复回环调试。
 assign fft_mode_en_w = 1'b1;
 assign ddr_rd_ready_w = fft_mode_en_w ? ddr_fft_ready_w : ddr_udp_ready_w;
-// 只有 FFT 桥实际接受启动请求后，才同步触发 DDR3 读取。
+// 仅当FFT→UDP桥空闲时才向FFT输入桥提出新帧请求。
 assign fft_start_pulse_w = w_vio_fft_start && !fft_start_d_r;
+assign fft_start_guarded_w = fft_start_pulse_w && fft_mode_en_w &&
+                             fft_udp_frame_ready_w;
+// 只有FFT输入桥实际接受启动请求后，才同步触发DDR3读取。
 assign ddr_rd_pre_en_w = ddr_rd_trigger_w | w_vio_tx_start | fft_start_accept_w;
+
+// UDP TX只允许当前模式对应的发送源看到ready并驱动valid/data。
+assign udp_tx_valid_w = fft_mode_en_w ? fft_udp_valid_w : ddr_udp_valid_w;
+assign udp_tx_data_w = fft_mode_en_w ? fft_udp_data_w : ddr_udp_data_w;
+assign fft_udp_ready_w = fft_mode_en_w ? udp_tx_ready_w : 1'b0;
+assign ddr_udp_tx_ready_w = fft_mode_en_w ? 1'b0 : udp_tx_ready_w;
 
 // VIO 保持为高电平时仅产生一个 clk_100M 周期的启动请求。
 always @(posedge clk_100M) begin
@@ -573,9 +593,9 @@ ddr3_udp_read_bridge ddr3_udp_read_bridge_inst(
     .ddr_data_i                         (ddr_rd_data_w             ),
     .ddr_ready_o                        (ddr_udp_ready_w           ),
 
-    .udp_ready_i                        (udp_tx_ready_w            ),
-    .udp_valid_o                        (udp_tx_valid_w            ),
-    .udp_data_o                         (udp_tx_data_w             ),
+    .udp_ready_i                        (ddr_udp_tx_ready_w        ),
+    .udp_valid_o                        (ddr_udp_valid_w           ),
+    .udp_data_o                         (ddr_udp_data_w            ),
 
     .unpack_count_o                     (ddr_to_udp_unpack_count_w )
 );
@@ -584,7 +604,7 @@ ddr3_fft_bridge_module ddr3_fft_bridge_module_inst(
     .clk_i                 (clk_100M               ),
     .rst_n_i               (~ow_100M_rst           ),
 
-    .start_i               (fft_start_pulse_w      ),
+    .start_i               (fft_start_guarded_w    ),
     .start_accept_o        (fft_start_accept_w     ),
     .busy_o                (fft_busy_w             ),
     .done_o                (fft_done_w             ),
@@ -604,11 +624,33 @@ ddr3_fft_bridge_module ddr3_fft_bridge_module_inst(
 
     .fft_m_tdata_i         (fft_m_tdata_w          ),
     .fft_m_tvalid_i        (fft_m_tvalid_w         ),
-    .fft_m_tready_o        (fft_m_tready_w         ),
+    .fft_m_tready_i        (fft_m_tready_w         ),
     .fft_m_tlast_i         (fft_m_tlast_w          ),
 
     .fft_input_count_o     (fft_input_count_w      ),
     .fft_output_count_o    (fft_output_count_w     )
+);
+
+// FFT输出按{偶数bin, 奇数bin}打包；输出ready是XFFT输出侧的唯一反压来源。
+fft_udp_tx_bridge_module fft_udp_tx_bridge_module_inst(
+    .clk_i                 (clk_100M                  ),
+    .rst_n_i               (~ow_100M_rst              ),
+
+    .frame_start_i         (fft_start_accept_w        ),
+    .frame_ready_o         (fft_udp_frame_ready_w     ),
+
+    .fft_data_i            (fft_m_tdata_w             ),
+    .fft_valid_i           (fft_m_tvalid_w            ),
+    .fft_ready_o           (fft_m_tready_w            ),
+    .fft_last_i            (fft_m_tlast_w             ),
+
+    .udp_data_o            (fft_udp_data_w            ),
+    .udp_valid_o           (fft_udp_valid_w           ),
+    .udp_ready_i           (fft_udp_ready_w           ),
+
+    .fft_rx_count_o        (fft_udp_rx_count_w        ),
+    .udp_tx_count_o        (fft_udp_tx_count_w        ),
+    .frame_done_o          (fft_udp_frame_done_w      )
 );
 
 xfft_0 xfft_0_ddr_fft_inst(

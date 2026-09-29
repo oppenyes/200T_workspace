@@ -25,7 +25,7 @@ module ddr3_fft_bridge_module(
 
     input  wire [31:0]  fft_m_tdata_i,
     input  wire         fft_m_tvalid_i,
-    output wire         fft_m_tready_o,
+    input  wire         fft_m_tready_i,
     input  wire         fft_m_tlast_i,
 
     output wire [12:0]  fft_input_count_o,
@@ -78,9 +78,8 @@ assign fft_input_fire_w  = fft_s_tvalid_o && fft_s_tready_i;
 assign fft_input_last_fire_w = fft_input_fire_w &&
                                (fft_input_count_r == FFT_POINT_NUM - 1'b1);
 
-// 本阶段始终接收 FFT 输出，输出计数只依据实际 AXI-Stream 握手更新。
-assign fft_m_tready_o    = 1'b1;
-assign fft_output_fire_w = fft_m_tvalid_i && fft_m_tready_o;
+// FFT输出ready由下游FFT→UDP桥统一提供，输出计数只依据真实握手更新。
+assign fft_output_fire_w = fft_m_tvalid_i && fft_m_tready_i;
 assign fft_output_complete_w = (fft_output_count_r == FFT_POINT_NUM) ||
                                (fft_output_fire_w &&
                                 (fft_output_count_r == FFT_POINT_NUM - 1'b1));
