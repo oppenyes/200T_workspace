@@ -146,12 +146,6 @@ wire         ow_uart_tx_cmd_data_valid;
 wire [  63:0] ow_ETH_tx_cmd_data  ;
 wire         ow_ETH_tx_cmd_data_valid;
 
-// DDR3/test 历史接口
-wire [ 511:0] iw_ddr3_fifo_wr_data ;
-
-wire [  63:0] ow_test_wdata       ;
-wire [  63:0] iw_test_rdata       ;
-
 wire [  63:0] iw_smg_cmd_data     ;
 wire [  23:0] iw_ws2812b_GRB      ;
 
@@ -172,53 +166,80 @@ wire iw_EEPROM_IIC_SDI, ow_EEPROM_IIC_SDO, iw_FMC_IIC_SDI, ow_FMC_IIC_SDO;
 wire iw_FMC_PRSNT, ow_FMC_PRSNT, ow_FMC_PRSNT_T;
 wire iw_FMC_PG_M2C, ow_FMC_PG_M2C, ow_FMC_PG_M2C_T;
 wire iw_FMC_PG_C2M, ow_FMC_PG_C2M, ow_FMC_PG_C2M_T;
-wire r_ddr3_rst, ow_ddr3_clk, ow_ddr3_clk_sync_rst, ow_init_calib_complete;
-wire iw_test_wdata_rdy, ow_test_wdata_valid, ow_test_rdata_pre_en;
-wire ow_test_rdata_valid, iw_test_rdata_rdy, ow_test_rdata_error;
+wire ow_ddr3_clk;
+wire ow_ddr3_clk_sync_rst;
+wire ow_init_calib_complete;
+wire ddr_calib_user_w;
+wire ddr_error_w;
 
-// UDP RX：64-bit 数据进入 UDP→DDR3 打包器。
-wire         udp_rx_valid_w;
-wire [63:0]  udp_rx_data_w;
-// DDR3 写：每 8 个 UDP 64-bit 字打包为 1 个 512-bit 字。
-wire         ddr_wr_ready_w;
-wire         ddr_wr_valid_w;
-wire [511:0] ddr_wr_data_w;
-wire         udp_to_ddr_overflow_w;
-wire [2:0]   udp_to_ddr_pack_count_w;
-// DDR3 读：注意：原 ddr3_cache_module 历史接口命名与实际 valid/ready 语义相反。
-wire         ddr_rd_valid_w;
-wire [511:0] ddr_rd_data_w;
-wire         ddr_rd_ready_w;
-wire         ddr_rd_trigger_w;
-wire         ddr_rd_pre_en_w;
-wire         ddr_udp_ready_w;
-wire         ddr_fft_ready_w;
-// UDP TX：DDR→UDP与FFT→UDP输出在顶层互斥选择。
-wire         udp_tx_ready_w;
-wire         udp_tx_valid_w;
-wire [63:0]  udp_tx_data_w;
-wire         ddr_udp_tx_ready_w;
-wire         ddr_udp_valid_w;
-wire [63:0]  ddr_udp_data_w;
-wire [2:0]   ddr_to_udp_unpack_count_w;
-// UART/命令：UART 接收帧由命令模块转换为用户命令。
-wire         uart_rx_valid_w;
+// UART命令与UDP原始数据使用独立入口。
+wire uart_rx_valid_w;
 wire [511:0] uart_rx_data_w;
-wire         user_cmd_valid_w;
+wire user_cmd_valid_w;
 wire [511:0] user_cmd_data_w;
-// Debug VIO 控制信号：fft_start 用于单帧 FFT 触发，tx_start 保持原 DDR3 读触发用途。
-wire         w_vio_fft_start;
-wire         w_vio_tx_start;
-wire         w_vio_clear;
-wire         fft_mode_en_w;
-reg          fft_start_d_r;
+wire usr_batch_start_w;
+wire usr_dataset_clear_w;
+
+wire udp_rx_valid_w;
+wire [63:0] udp_rx_data_w;
+wire udp_tx_ready_w;
+wire udp_tx_valid_w;
+wire [63:0] udp_tx_data_w;
+
+// UDP输入按8个64bit字打包，并使用显式512bit word地址写DDR。
+wire udp_writer_ready_w;
+wire udp_drop_pulse_w;
+(* MARK_DEBUG = "TRUE" *) reg udp_drop_sticky_r;
+wire dataset_write_enable_w;
+wire dataset_clear_w;
+(* MARK_DEBUG = "TRUE" *) wire writer_pending_w;
+(* MARK_DEBUG = "TRUE" *) wire writer_partial_w;
+wire [2:0] udp_pack_count_w;
+(* MARK_DEBUG = "TRUE" *) wire [26:0] writer_word_count_w;
+wire mem_wr_req_valid_w;
+wire mem_wr_req_ready_w;
+wire [26:0] mem_wr_req_addr_w;
+wire [511:0] mem_wr_req_data_w;
+(* MARK_DEBUG = "TRUE" *) wire mem_write_idle_w;
+(* MARK_DEBUG = "TRUE" *) wire [26:0] mem_write_accept_count_w;
+(* MARK_DEBUG = "TRUE" *) wire [26:0] mem_write_commit_count_w;
+
+// DDR显式读请求与返回通道。
+wire mem_rd_req_valid_w;
+wire mem_rd_req_ready_w;
+wire [26:0] mem_rd_req_addr_w;
+wire mem_rd_data_valid_w;
+wire mem_rd_data_ready_w;
+wire [511:0] mem_rd_data_w;
+
+// UART与VIO请求汇合后由batch控制器统一接受。
+wire w_vio_fft_start;
+wire w_vio_tx_start;
+wire w_vio_clear;
+reg vio_fft_start_d_r;
+reg vio_clear_d_r;
+wire vio_fft_start_pulse_w;
+wire vio_clear_pulse_w;
+wire batch_start_request_w;
+wire dataset_clear_request_w;
+(* MARK_DEBUG = "TRUE" *) wire batch_busy_w;
+(* MARK_DEBUG = "TRUE" *) wire batch_done_w;
+(* MARK_DEBUG = "TRUE" *) wire batch_start_error_w;
+(* MARK_DEBUG = "TRUE" *) wire [19:0] batch_frame_index_w;
+(* MARK_DEBUG = "TRUE" *) wire [19:0] batch_frame_count_w;
+(* MARK_DEBUG = "TRUE" *) wire fft_frame_start_w;
+(* MARK_DEBUG = "TRUE" *) wire [26:0] fft_frame_base_addr_w;
+wire fft_frame_reader_ready_w;
+wire fft_frame_reader_busy_w;
+wire fft_frame_input_done_w;
+// 保留现有ila.xdc使用的旧探针名，仅作为调试兼容别名，不参与功能控制。
 (* MARK_DEBUG = "TRUE" *) wire fft_start_pulse_w;
-(* MARK_DEBUG = "TRUE" *) wire fft_start_guarded_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_start_accept_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_busy_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_done_w;
+(* MARK_DEBUG = "TRUE" *) wire dbg_test_rdata_pre_en;
 
-// DDR3 → FFT：配置接口仅在复位后完成一次握手。
+// DDR → FFT：配置接口仅在复位后完成一次握手。
 wire [15:0]  fft_config_tdata_w;
 wire         fft_config_tvalid_w;
 wire         fft_config_tready_w;
@@ -234,7 +255,6 @@ wire         fft_m_tlast_w;
 wire [7:0]   fft_status_tdata_w;
 wire         fft_status_tvalid_w;
 wire [12:0]  fft_input_count_w;
-wire [12:0]  fft_output_count_w;
 wire         fft_udp_frame_ready_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_udp_valid_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_udp_ready_w;
@@ -250,34 +270,47 @@ wire         fft_udp_frame_ready_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_event_data_in_halt_w;
 (* MARK_DEBUG = "TRUE" *) wire fft_event_data_out_halt_w;
 // -------------------------------- assign ------------------------------ //
-// test_data_generator_module 当前仅用于 DDR3 读触发和读数据校验；旧 DDR3 写路径保持断开。
-assign ddr_rd_trigger_w            = ow_test_rdata_pre_en ;
+assign vio_fft_start_pulse_w = w_vio_fft_start && !vio_fft_start_d_r;
+assign vio_clear_pulse_w = w_vio_clear && !vio_clear_d_r;
+assign batch_start_request_w = usr_batch_start_w | vio_fft_start_pulse_w;
+assign dataset_clear_request_w = usr_dataset_clear_w | vio_clear_pulse_w;
+assign fft_start_pulse_w = vio_fft_start_pulse_w;
+assign fft_start_accept_w = fft_frame_start_w;
+assign fft_busy_w = batch_busy_w;
+assign fft_done_w = batch_done_w;
+assign dbg_test_rdata_pre_en = fft_frame_start_w;
+assign udp_tx_valid_w = fft_udp_valid_w;
+assign udp_tx_data_w = fft_udp_data_w;
+assign fft_udp_ready_w = udp_tx_ready_w;
+assign ow_TEST_PIN[0] = ddr_calib_user_w;
+assign ow_TEST_PIN[1] = batch_busy_w;
+assign ow_TEST_PIN[2] = batch_done_w;
+assign ow_TEST_PIN[3] = udp_drop_sticky_r;
+assign ow_TEST_PIN[4] = ddr_error_w;
+assign ow_TEST_PIN[5] = batch_start_error_w;
+assign ow_TEST_PIN[6] = dataset_write_enable_w;
+assign ow_TEST_PIN[7] = mem_write_idle_w;
+assign ow_TEST_PIN[27:8] = batch_frame_index_w;
+assign ow_TEST_PIN[31:28] = 4'd0;
 
-assign iw_test_rdata              = ddr_rd_data_w     ;
-assign iw_test_rdata_rdy          = udp_tx_valid_w && udp_tx_ready_w ;
-
-// 当前默认选择 DDR→FFT；保留 DDR→UDP 模块及 ready 分支，便于后续恢复回环调试。
-assign fft_mode_en_w = 1'b1;
-assign ddr_rd_ready_w = fft_mode_en_w ? ddr_fft_ready_w : ddr_udp_ready_w;
-// 仅当FFT→UDP桥空闲时才向FFT输入桥提出新帧请求。
-assign fft_start_pulse_w = w_vio_fft_start && !fft_start_d_r;
-assign fft_start_guarded_w = fft_start_pulse_w && fft_mode_en_w &&
-                             fft_udp_frame_ready_w;
-// 只有FFT输入桥实际接受启动请求后，才同步触发DDR3读取。
-assign ddr_rd_pre_en_w = ddr_rd_trigger_w | w_vio_tx_start | fft_start_accept_w;
-
-// UDP TX只允许当前模式对应的发送源看到ready并驱动valid/data。
-assign udp_tx_valid_w = fft_mode_en_w ? fft_udp_valid_w : ddr_udp_valid_w;
-assign udp_tx_data_w = fft_mode_en_w ? fft_udp_data_w : ddr_udp_data_w;
-assign fft_udp_ready_w = fft_mode_en_w ? udp_tx_ready_w : 1'b0;
-assign ddr_udp_tx_ready_w = fft_mode_en_w ? 1'b0 : udp_tx_ready_w;
-
-// VIO 保持为高电平时仅产生一个 clk_100M 周期的启动请求。
 always @(posedge clk_100M) begin
-    if (ow_100M_rst)
-        fft_start_d_r <= 1'b0;
-    else
-        fft_start_d_r <= w_vio_fft_start;
+    if (ow_100M_rst) begin
+        vio_fft_start_d_r <= 1'b0;
+        vio_clear_d_r <= 1'b0;
+    end
+    else begin
+        vio_fft_start_d_r <= w_vio_fft_start;
+        vio_clear_d_r <= w_vio_clear;
+    end
+end
+
+always @(posedge clk_100M) begin
+    if (ow_100M_rst || dataset_clear_w) begin
+        udp_drop_sticky_r <= 1'b0;
+    end
+    else if (udp_drop_pulse_w) begin
+        udp_drop_sticky_r <= 1'b1;
+    end
 end
 
 
@@ -426,110 +459,17 @@ uart_module#(
     .ow_tx               (ow_UART_TX          )
 );
 
-// uart_data_loopback_module uart_data_loopback_module_inst(
-//     .iw_sys_clk       (clk_100M            ) ,
-//     .iw_sys_rst       (ow_100M_rst         ) ,
-
-//     .iw_uart_rx_valid (ow_uart_rx_data_rdy ) ,//定义实在是不准确
-//     .iw_uart_rx_data  (ow_uart_rx_data     ) ,
-//     .iw_uart_rx_num   (ow_uart_rx_num      ) ,
-
-//     .iw_uart_tx_rdy   (ow_uart_tx_rdy      ) ,
-//     .iw_uart_tx_done  (ow_uart_tx_done     ) ,
-//     .or_uart_tx_en    (iw_uart_tx_en       ) ,
-//     .or_uart_tx_num   (iw_uart_tx_num      ) ,
-//     .or_uart_tx_data  (iw_uart_tx_data     )
-// );
-
-// uart_fft_bridge_module uart_fft_bridge_module_inst(
-//     .iw_fft_rd_addr                     (w_fft_rd_addr             ),
-//     .or_fft_rd_real                     (w_fft_rd_real             ),
-//     .or_fft_rd_imag                     (w_fft_rd_imag             ),
-//     .ow_debug_fft_input_count           (w_debug_fft_input_count   ),
-//     .ow_debug_fft_input_index           (w_debug_fft_input_index   ),
-//     .ow_debug_fft_output_index          (w_debug_fft_output_index  ),
-//     .iw_sys_clk              (clk_100M                      ) ,
-//     .iw_sys_rst              (ow_100M_rst                   ) ,
-//     .iw_uart_rx_valid        (ow_uart_rx_data_rdy           ) ,
-//     .iw_uart_rx_data         (ow_uart_rx_data               ) ,
-//     .iw_uart_rx_num          (ow_uart_rx_num                ) ,
-//     .ow_uart_frame_ready     (ow_uart_fft_frame_ready       ) ,
-//     .os_axis_config_tdata    (ow_fft_config_tdata           ) ,
-//     .os_axis_config_tvalid   (ow_fft_config_tvalid          ) ,
-//     .iw_s_axis_config_tready (iw_fft_config_tready          ) ,
-//     .os_axis_data_tdata      (ow_fft_data_tdata             ) ,
-//     .os_axis_data_tvalid     (ow_fft_data_tvalid            ) ,
-//     .iw_s_axis_data_tready   (iw_fft_data_tready            ) ,
-//     .os_axis_data_tlast      (ow_fft_data_tlast             ) ,
-//     .iw_m_axis_data_tdata    (iw_fft_data_tdata             ) ,
-//     .iw_m_axis_data_tuser    (iw_fft_data_tuser             ) ,
-//     .iw_m_axis_data_tvalid   (iw_fft_data_tvalid            ) ,
-//     .os_m_axis_data_tready   (ow_fft_data_tready            ) ,
-//     .iw_m_axis_data_tlast    (iw_fft_data_tlast             ) ,
-//     .ow_fft_frame_done       (ow_fft_frame_done             ) ,
-//     .ow_fft_input_count      (ow_fft_input_count            ) ,
-//     .ow_fft_output_count     (ow_fft_output_count           )
-// );
-// fft_uart_tx_module fft_uart_tx_module_inst(
-
-//     .ow_debug_tx_frame_index       (w_debug_tx_frame_index),
-//     .iw_sys_clk       (clk_100M),
-//     .iw_sys_rst       (ow_100M_rst),
-
-//     .iw_fft_frame_done(w_vio_tx_start_pulse),//w_vio_tx_start_pulse
-//     // .iw_fft_frame_done(ow_fft_frame_done),//w_vio_tx_start_pulse
-
-//     .or_fft_rd_addr   (w_fft_rd_addr),
-//     .iw_fft_rd_real   (w_fft_rd_real),
-//     .iw_fft_rd_imag   (w_fft_rd_imag),
-
-//     .iw_uart_tx_rdy   (ow_uart_tx_rdy),
-//     .iw_uart_tx_done  (ow_uart_tx_done),
-
-//     .or_uart_tx_num   (iw_uart_tx_num),
-//     .or_uart_tx_en    (iw_uart_tx_en),
-//     .or_uart_tx_data  (iw_uart_tx_data),
-
-//     .ow_tx_all_done   (w_fft_uart_tx_done)
-// );
-// xfft_0 xfft_0_inst(
-//     .aclk                        (clk_100M                       ) ,
-//     .s_axis_config_tdata         (ow_fft_config_tdata            ) ,
-//     .s_axis_config_tvalid        (ow_fft_config_tvalid           ) ,
-//     .s_axis_config_tready        (iw_fft_config_tready           ) ,
-//     .s_axis_data_tdata           (ow_fft_data_tdata              ) ,
-//     .s_axis_data_tvalid          (ow_fft_data_tvalid             ) ,
-//     .s_axis_data_tready          (iw_fft_data_tready             ) ,
-//     .s_axis_data_tlast           (ow_fft_data_tlast              ) ,
-//     .m_axis_data_tdata           (iw_fft_data_tdata              ) ,
-//     .m_axis_data_tuser           (iw_fft_data_tuser              ) ,
-//     .m_axis_data_tvalid          (iw_fft_data_tvalid             ) ,
-//     .m_axis_data_tready          (ow_fft_data_tready             ) ,
-//     .m_axis_data_tlast           (iw_fft_data_tlast              ) ,
-//     .m_axis_status_tdata         (iw_fft_status_tdata            ) ,
-//     .m_axis_status_tvalid        (iw_fft_status_tvalid           ) ,
-//     .m_axis_status_tready        (1'b1                           ) ,
-//     .event_frame_started         (ow_fft_event_frame_started     ) ,
-//     .event_tlast_unexpected      (ow_fft_event_tlast_unexpected  ) ,
-//     .event_tlast_missing         (ow_fft_event_tlast_missing     ) ,
-//     .event_fft_overflow          (ow_fft_event_overflow          ) ,
-//     .event_status_channel_halt   (ow_fft_event_status_halt       ) ,
-//     .event_data_in_channel_halt  (ow_fft_event_data_in_halt      ) ,
-//     .event_data_out_channel_halt (ow_fft_event_data_out_halt     )
-// );
-
-
 cmd_cov_module cmd_cov_module_inst(
     .iw_sys_clk                (clk_100M                  ) ,
     .iw_sys_rst                (ow_100M_rst               ) ,
 
-    // UART 与 Ethernet 接收数据均进入命令解析模块。
-    .iw_uart_rx_cmd_data_valid (uart_rx_valid_w                         ) ,
-    .iw_uart_rx_cmd_data       (uart_rx_data_w                          ) ,
+    // UDP RX专用于原始采样数据，控制命令仅由UART进入。
+    .iw_uart_rx_cmd_data_valid (uart_rx_valid_w           ) ,
+    .iw_uart_rx_cmd_data       (uart_rx_data_w            ) ,
     .iw_uart_rx_cmd_num        (ow_uart_rx_num                          ) ,
     
-    .iw_ETH_rx_cmd_data        (udp_rx_data_w            ) ,
-    .iw_ETH_rx_cmd_data_valid  (udp_rx_valid_w        ) ,
+    .iw_ETH_rx_cmd_data        (64'd0                    ) ,
+    .iw_ETH_rx_cmd_data_valid  (1'b0                     ) ,
 
     .ow_user_cmd_valid         (user_cmd_valid_w          ) ,
     .ow_user_cmd_data          (user_cmd_data_w           ) ,
@@ -540,9 +480,19 @@ cmd_cov_module cmd_cov_module_inst(
     .ow_uart_tx_cmd_data       (ow_uart_tx_cmd_data       ) ,
     .ow_uart_tx_cmd_num        (ow_uart_tx_cmd_num        ) ,
     
-    .iw_ETH_udp_fifo_wr_rdy    (udp_tx_ready_w            ) ,
+    .iw_ETH_udp_fifo_wr_rdy    (1'b0                      ) ,
     .ow_ETH_tx_cmd_data_valid  (ow_ETH_tx_cmd_data_valid  ) ,
     .ow_ETH_tx_cmd_data        (ow_ETH_tx_cmd_data        ) 
+);
+
+usr_cmd_ctrl_module usr_cmd_ctrl_module_inst(
+    .user_clk(clk_100M),
+    .user_rst(ow_100M_rst),
+    .user_cmd_valid(user_cmd_valid_w),
+    .user_cmd_data(user_cmd_data_w),
+    .user_cmd_num(ow_user_cmd_num),
+    .batch_start(usr_batch_start_w),
+    .dataset_clear(usr_dataset_clear_w)
 );
 
 udp_drive udp_drive_inst(
@@ -572,63 +522,75 @@ udp_drive udp_drive_inst(
     .iw_ETH_udp_fifo_wr_valid           (udp_tx_valid_w            ),
     .iw_ETH_udp_fifo_wr_data            (udp_tx_data_w             )
 );
-// UDP 64-bit 输入按接收顺序打包成 DDR3 512-bit；写握手由 ddr_wr_valid_w/ddr_wr_ready_w 完成。
-udp_ddr3_write_bridge u_udp_ddr3_write_bridge(
-    .sys_clk                            (clk_100M                      ), // (input)// 系统时钟
-    .rst_n                              (~ow_100M_rst                   ), // (input)// 同步低有效复位
-    .udp_valid_i                        (udp_rx_valid_w            ), // (input)// UDP 64bit 数据有效
-    .udp_data_i                         (udp_rx_data_w             ),// (input)// UDP 64bit 数据
-    .ddr_ready_i                        (ddr_wr_ready_w            ),// (input)// DDR3 写FIFO可接收
-    .ddr_valid_o                        (ddr_wr_valid_w            ),// (output)// DDR3 512bit写数据有效
-    .ddr_data_o                         (ddr_wr_data_w             ),// (output)// DDR3 512bit写数据
-    .overflow_o                         (udp_to_ddr_overflow_w     ),// (output)// 数据溢出标志
-    .pack_count_o                       (udp_to_ddr_pack_count_w   ) // (output)// 当前64bit数据计数
+udp_ddr_writer udp_ddr_writer_inst(
+    .user_clk(clk_100M),
+    .user_rst(ow_100M_rst),
+    .dataset_clear(dataset_clear_w),
+    .dataset_write_enable(dataset_write_enable_w),
+    .udp_valid(udp_rx_valid_w),
+    .udp_data(udp_rx_data_w),
+    .udp_ready(udp_writer_ready_w),
+    .drop_pulse(udp_drop_pulse_w),
+    .wr_req_valid(mem_wr_req_valid_w),
+    .wr_req_ready(mem_wr_req_ready_w),
+    .wr_req_addr(mem_wr_req_addr_w),
+    .wr_req_data(mem_wr_req_data_w),
+    .writer_pending(writer_pending_w),
+    .partial_word(writer_partial_w),
+    .write_word_count(writer_word_count_w),
+    .pack_count(udp_pack_count_w)
 );
-// DDR3 512-bit 数据按高位至低位拆为 8 个 UDP 64-bit 字；ready 表示 UDP 发送 FIFO 可接收。
-ddr3_udp_read_bridge ddr3_udp_read_bridge_inst(
-    .sys_clk                            (clk_100M                  ),
-    .rst_n                              (~ow_100M_rst              ),
 
-    .ddr_valid_i                        (ddr_rd_valid_w            ),
-    .ddr_data_i                         (ddr_rd_data_w             ),
-    .ddr_ready_o                        (ddr_udp_ready_w           ),
-
-    .udp_ready_i                        (ddr_udp_tx_ready_w        ),
-    .udp_valid_o                        (ddr_udp_valid_w           ),
-    .udp_data_o                         (ddr_udp_data_w            ),
-
-    .unpack_count_o                     (ddr_to_udp_unpack_count_w )
+fft_batch_ctrl fft_batch_ctrl_inst(
+    .user_clk(clk_100M),
+    .user_rst(ow_100M_rst),
+    .batch_start_request(batch_start_request_w),
+    .dataset_clear_request(dataset_clear_request_w),
+    .writer_pending(writer_pending_w),
+    .write_idle(mem_write_idle_w),
+    .init_calib_complete(ddr_calib_user_w),
+    .udp_drop_sticky(udp_drop_sticky_r | udp_drop_pulse_w),
+    .write_commit_count(mem_write_commit_count_w),
+    .frame_reader_ready(fft_frame_reader_ready_w),
+    .fft_udp_frame_ready(fft_udp_frame_ready_w),
+    .udp_frame_done(fft_udp_frame_done_w),
+    .dataset_write_enable(dataset_write_enable_w),
+    .dataset_clear(dataset_clear_w),
+    .frame_start(fft_frame_start_w),
+    .frame_base_addr(fft_frame_base_addr_w),
+    .batch_busy(batch_busy_w),
+    .batch_done(batch_done_w),
+    .frame_index(batch_frame_index_w),
+    .batch_frame_count(batch_frame_count_w),
+    .start_error(batch_start_error_w)
 );
 // FFT 模式下，DDR 512-bit 数据按 sample0[511:496] 至 sample31[15:0] 依次送入 FFT。
-ddr3_fft_bridge_module ddr3_fft_bridge_module_inst(
-    .clk_i                 (clk_100M               ),
-    .rst_n_i               (~ow_100M_rst           ),
+ddr_fft_frame_reader ddr_fft_frame_reader_inst(
+    .user_clk(clk_100M),
+    .user_rst(ow_100M_rst),
 
-    .start_i               (fft_start_guarded_w    ),
-    .start_accept_o        (fft_start_accept_w     ),
-    .busy_o                (fft_busy_w             ),
-    .done_o                (fft_done_w             ),
+    .frame_start(fft_frame_start_w),
+    .frame_base_addr(fft_frame_base_addr_w),
+    .frame_ready(fft_frame_reader_ready_w),
+    .frame_busy(fft_frame_reader_busy_w),
+    .frame_input_done(fft_frame_input_done_w),
 
-    .ddr_valid_i           (ddr_rd_valid_w         ),
-    .ddr_data_i            (ddr_rd_data_w          ),
-    .ddr_ready_o           (ddr_fft_ready_w        ),
+    .rd_req_valid(mem_rd_req_valid_w),
+    .rd_req_ready(mem_rd_req_ready_w),
+    .rd_req_addr(mem_rd_req_addr_w),
+    .rd_data_valid(mem_rd_data_valid_w),
+    .rd_data_ready(mem_rd_data_ready_w),
+    .rd_data(mem_rd_data_w),
 
-    .fft_config_tdata_o    (fft_config_tdata_w     ),
-    .fft_config_tvalid_o   (fft_config_tvalid_w    ),
-    .fft_config_tready_i   (fft_config_tready_w    ),
+    .fft_config_data(fft_config_tdata_w),
+    .fft_config_valid(fft_config_tvalid_w),
+    .fft_config_ready(fft_config_tready_w),
 
-    .fft_s_tdata_o         (fft_s_tdata_w          ),
-    .fft_s_tvalid_o        (fft_s_tvalid_w         ),
-    .fft_s_tready_i        (fft_s_tready_w         ),
-    .fft_s_tlast_o         (fft_s_tlast_w          ),
-
-    .fft_m_tdata_i         (fft_m_tdata_w          ),
-    .fft_m_tvalid_i        (fft_m_tvalid_w         ),
-    .fft_m_tready_i        (fft_m_tready_w         ),
-    .fft_m_tlast_i         (fft_m_tlast_w          ),
-
-    .fft_input_count_o     (fft_input_count_w      ),
-    .fft_output_count_o    (fft_output_count_w     )
+    .fft_data(fft_s_tdata_w),
+    .fft_valid(fft_s_tvalid_w),
+    .fft_ready(fft_s_tready_w),
+    .fft_last(fft_s_tlast_w),
+    .fft_input_count(fft_input_count_w)
 );
 
 // FFT输出按{偶数bin, 奇数bin}打包；输出ready是XFFT输出侧的唯一反压来源。
@@ -636,7 +598,7 @@ fft_udp_tx_bridge_module fft_udp_tx_bridge_module_inst(
     .clk_i                 (clk_100M                  ),
     .rst_n_i               (~ow_100M_rst              ),
 
-    .frame_start_i         (fft_start_accept_w        ),
+    .frame_start_i         (fft_frame_start_w         ),
     .frame_ready_o         (fft_udp_frame_ready_w     ),
 
     .fft_data_i            (fft_m_tdata_w             ),
@@ -678,45 +640,47 @@ xfft_0 xfft_0_ddr_fft_inst(
     .event_data_in_channel_halt  (fft_event_data_in_halt_w    ),
     .event_data_out_channel_halt (fft_event_data_out_halt_w   )
 );
-// DDR3 缓存：写入来自 UDP 打包器，读取送往 UDP 拆包器。
-ddr3_cache_module ddr3_cache_module_inst(
-    .iw_ddr3_fifo_wr_clk                (clk_100M                  ),
-    .iw_ddr3_fifo_wr_rst                (ow_100M_rst               ),
-// rx
-    .ow_ddr3_fifo_wr_rdy                (ddr_wr_ready_w            ),
-    .iw_ddr3_fifo_wr_valid              (ddr_wr_valid_w            ),
-    .iw_ddr3_fifo_wr_data               (ddr_wr_data_w             ),// ddr3 预读取
-// tx
-    .iw_ddr3_fifo_rd_clk                (clk_100M                  ),
-    .iw_ddr3_fifo_rd_rst                (ow_100M_rst               ),
-    .iw_ddr3_fifo_rd_pre_en             (ddr_rd_pre_en_w          ),
-    .iw_ddr3_fifo_rd_data_valid         (ddr_rd_ready_w            ),
-    .ow_ddr3_fifo_rd_data               (ddr_rd_data_w             ),// [511:0]
-    .ow_ddr3_fifo_rd_data_rdy           (ddr_rd_valid_w            ),
-//********** DDR MIG APP interface***********//
-    .iw_clk_200M                        (clk_200M                  ),// ddr3 输入时钟 Artix7 为 200MHz
-    .iw_200M_rst                        (ow_200M_rst               ),// 时钟复位
-    .iw_ddr3_rst                        (r_ddr3_rst                ),// ddr3 输入复位 设置高有效
-
-    .ow_ddr3_clk                        (ow_ddr3_clk               ),// ddr3 模块返回用户时钟  
-    .ow_ddr3_clk_sync_rst               (ow_ddr3_clk_sync_rst      ),// ddr3 模块返回复位    
-    .ow_init_calib_complete             (ow_init_calib_complete    ),// ddr3 模块初始化校准完成
-//***************** DDR *********************//
-    .ddr3_dq                            (ddr3_dq                   ),// DDR3 数据
-    .ddr3_dqs_n                         (ddr3_dqs_n                ),// DDR3 dqs负
-    .ddr3_dqs_p                         (ddr3_dqs_p                ),// DDR3 dqs正  
-    .ddr3_addr                          (ddr3_addr                 ),// DDR3 地址   
-    .ddr3_ba                            (ddr3_ba                   ),// DDR3 banck 选择
-    .ddr3_ras_n                         (ddr3_ras_n                ),// DDR3 行选择
-    .ddr3_cas_n                         (ddr3_cas_n                ),// DDR3 列选择
-    .ddr3_we_n                          (ddr3_we_n                 ),// DDR3 读写选择
-    .ddr3_reset_n                       (ddr3_reset_n              ),// DDR3 复位
-    .ddr3_ck_p                          (ddr3_ck_p                 ),// DDR3 时钟正
-    .ddr3_ck_n                          (ddr3_ck_n                 ),// DDR3 时钟负
-    .ddr3_cke                           (ddr3_cke                  ),// DDR3 时钟使能
-    .ddr3_cs_n                          (ddr3_cs_n                 ),// DDR3 片选
-    .ddr3_dm                            (ddr3_dm                   ),// DDR3_dm
-    .ddr3_odt                           (ddr3_odt                  ) // DDR3_odt
+// DDR3可寻址访问层：写入来自UDP打包器，指定地址读取送往FFT帧读取器。
+ddr3_mem_subsystem ddr3_mem_subsystem_inst(
+    .user_clk(clk_100M),
+    .user_rst(ow_100M_rst),
+    .dataset_clear(dataset_clear_w),
+    .wr_req_valid(mem_wr_req_valid_w),
+    .wr_req_ready(mem_wr_req_ready_w),
+    .wr_req_addr(mem_wr_req_addr_w),
+    .wr_req_data(mem_wr_req_data_w),
+    .rd_req_valid(mem_rd_req_valid_w),
+    .rd_req_ready(mem_rd_req_ready_w),
+    .rd_req_addr(mem_rd_req_addr_w),
+    .rd_data_valid(mem_rd_data_valid_w),
+    .rd_data_ready(mem_rd_data_ready_w),
+    .rd_data(mem_rd_data_w),
+    .write_idle(mem_write_idle_w),
+    .write_accept_count(mem_write_accept_count_w),
+    .write_commit_count(mem_write_commit_count_w),
+    .clk_200m(clk_200M),
+    .rst_200m(ow_200M_rst),
+    .ddr3_rst(1'b0),
+    .ddr3_clk(ow_ddr3_clk),
+    .ddr3_clk_sync_rst(ow_ddr3_clk_sync_rst),
+    .init_calib_complete(ow_init_calib_complete),
+    .init_calib_complete_user(ddr_calib_user_w),
+    .error_flag(ddr_error_w),
+    .ddr3_dq(ddr3_dq),
+    .ddr3_dqs_n(ddr3_dqs_n),
+    .ddr3_dqs_p(ddr3_dqs_p),
+    .ddr3_addr(ddr3_addr),
+    .ddr3_ba(ddr3_ba),
+    .ddr3_ras_n(ddr3_ras_n),
+    .ddr3_cas_n(ddr3_cas_n),
+    .ddr3_we_n(ddr3_we_n),
+    .ddr3_reset_n(ddr3_reset_n),
+    .ddr3_ck_p(ddr3_ck_p),
+    .ddr3_ck_n(ddr3_ck_n),
+    .ddr3_cke(ddr3_cke),
+    .ddr3_cs_n(ddr3_cs_n),
+    .ddr3_dm(ddr3_dm),
+    .ddr3_odt(ddr3_odt)
 );
 
 eeprom_module#(
@@ -755,27 +719,6 @@ eeprom_module#(
 
     .ow_IIC_SCL        (ow_FMC_SCL        ) ,
     .io_IIC_SDA        (io_FMC_SDA        )
-);
-
-test_data_generator_module test_data_generator_module_inst(
-    .iw_user_clk          (clk_100M             ) ,
-    .iw_user_rst          (ow_100M_rst          ) ,
-    .iw_user_cmd_valid    (user_cmd_valid_w     ) ,
-    // 当前子模块命令输入只使用用户命令低64位，不允许本轮修改位宽或连接方式。
-    .iw_user_cmd_data     (user_cmd_data_w      ) ,
-
-    .iw_test_clk          (ow_ddr3_clk          ) ,
-    .iw_test_rst          (ow_ddr3_clk_sync_rst ) ,
-    .iw_test_wdata_rdy    (iw_test_wdata_rdy    ) ,
-    .ow_test_wdata        (ow_test_wdata        ) ,
-    .ow_test_wdata_valid  (ow_test_wdata_valid  ) ,
-
-    .ow_test_rdata_pre_en (ow_test_rdata_pre_en ) ,
-    .ow_test_rdata_valid  (ow_test_rdata_valid  ) ,
-    .iw_test_rdata        (iw_test_rdata        ) ,
-    .iw_test_rdata_rdy    (iw_test_rdata_rdy    ) ,
-    
-    .ow_test_rdata_error  (ow_test_rdata_error  )
 );
 
 // -------------------------------- Language Template ------------------------------ //
@@ -837,9 +780,9 @@ IOBUF IOBUF_inst_FMC_RES1(
 vio_fft_debug vio_fft_debug_inst (
     .clk        (clk_100M),
 
-    .probe_out0 (w_vio_fft_start), // 0→1 请求启动一帧 FFT
-    .probe_out1 (w_vio_tx_start),  // 保留原 DDR3 读调试触发
-    .probe_out2 (w_vio_clear)      // 本轮保留，未扩展新功能
+    .probe_out0 (w_vio_fft_start), // 0→1 请求启动全部完整帧
+    .probe_out1 (w_vio_tx_start),  // 保留探针，本架构未使用
+    .probe_out2 (w_vio_clear)      // 0→1 请求清空并开始新数据集
 );
 // ============================================================
 // DDR3 / FFT Debug ILA
@@ -850,8 +793,8 @@ ila_fft_debug ila_fft_debug_inst (
     .clk    (clk_100M),
 
     // ---------------- DDR3 Read Control ----------------
-    .probe0 (ddr_rd_valid_w),              // [0:0]  DDR3 读数据有效
-    .probe1 ({6'd0, ddr_rd_ready_w}),      // [6:0]  DDR3 读数据消费使能
+    .probe0 (mem_rd_data_valid_w),          // [0:0]  DDR3读返回有效
+    .probe1 ({6'd0, mem_rd_data_ready_w}),  // [6:0]  DDR3读返回消费
 
     // ---------------- FFT Input ----------------
     .probe2 (fft_input_count_w),           // [12:0] 实际完成握手的输入点数
@@ -864,7 +807,7 @@ ila_fft_debug ila_fft_debug_inst (
     .probe7 (fft_s_tdata_w),               // [31:0] FFT实际输入数据
 
     // ---------------- FFT Output ----------------
-    .probe8 (fft_output_count_w[11:0]),    // [11:0] 已完成握手的输出点数低12位
+    .probe8 (fft_udp_rx_count_w[11:0]),    // [11:0] 已完成握手的输出点数低12位
     .probe9 (fft_m_tvalid_w),              // [0:0]  FFT输出Valid
     .probe10(fft_m_tlast_w),               // [0:0]  FFT输出Last
     .probe11(fft_m_tdata_w),               // [31:0] FFT输出Real/Imag
@@ -913,19 +856,19 @@ always @(posedge clk_100M) begin
     else begin
         dbg_udp_rx_valid_r   <= udp_rx_valid_w;
         dbg_udp_rx_data_r    <= udp_rx_data_w;
-        dbg_ddr_wr_ready_r   <= ddr_wr_ready_w;
-        dbg_ddr_wr_valid_r   <= ddr_wr_valid_w;
-        dbg_ddr_wr_data_r    <= ddr_wr_data_w;
-        dbg_udp_to_ddr_overflow_r   <= udp_to_ddr_overflow_w;
-        dbg_udp_to_ddr_pack_count_r <= udp_to_ddr_pack_count_w;
+        dbg_ddr_wr_ready_r   <= mem_wr_req_ready_w;
+        dbg_ddr_wr_valid_r   <= mem_wr_req_valid_w;
+        dbg_ddr_wr_data_r    <= mem_wr_req_data_w;
+        dbg_udp_to_ddr_overflow_r   <= udp_drop_pulse_w;
+        dbg_udp_to_ddr_pack_count_r <= udp_pack_count_w;
 
-        dbg_ddr_rd_valid_r   <= ddr_rd_valid_w;
-        dbg_ddr_rd_data_r    <= ddr_rd_data_w;
-        dbg_ddr_rd_ready_r   <= ddr_rd_ready_w;
+        dbg_ddr_rd_valid_r   <= mem_rd_data_valid_w;
+        dbg_ddr_rd_data_r    <= mem_rd_data_w;
+        dbg_ddr_rd_ready_r   <= mem_rd_data_ready_w;
         dbg_udp_tx_ready_r   <= udp_tx_ready_w;
         dbg_udp_tx_valid_r   <= udp_tx_valid_w;
         dbg_udp_tx_data_r    <= udp_tx_data_w;
-        dbg_ddr_to_udp_unpack_count_r <= ddr_to_udp_unpack_count_w;
+        dbg_ddr_to_udp_unpack_count_r <= batch_frame_index_w[2:0];
     end
 end
 // ---------------- RGMII RX Debug ----------------
@@ -957,27 +900,23 @@ end
 //     .probe1 (dbg_rgmii_txd_r    )
 // );
 // ---------------- Ethernet System Debug ----------------
-// (* MARK_DEBUG = "TRUE" *) reg        dbg_phy_rst_r;
-// (* MARK_DEBUG = "TRUE" *) reg        dbg_locked_r;
+(* MARK_DEBUG = "TRUE" *) reg        dbg_phy_rst_r;
+(* MARK_DEBUG = "TRUE" *) reg        dbg_locked_r;
+(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_rx_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_rx_data_r;
+(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_ready_r;
+(* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_valid_r;
+(* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_tx_data_r;
 
-// (* MARK_DEBUG = "TRUE" *) reg        dbg_eth_rx_valid_r;
-// (* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_rx_data_r;
-
-// (* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_ready_r;
-// (* MARK_DEBUG = "TRUE" *) reg        dbg_eth_tx_valid_r;
-// (* MARK_DEBUG = "TRUE" *) reg [63:0] dbg_eth_tx_data_r;
-
-// always @(posedge clk_100M) begin
-//     dbg_phy_rst_r      <= phy_rst_o;
-//     dbg_locked_r       <= ow_locked;
-
-//     dbg_eth_rx_valid_r <= udp_rx_valid_w;
-//     dbg_eth_rx_data_r  <= udp_rx_data_w;
-
-//     dbg_eth_tx_ready_r <= udp_tx_ready_w;
-//     dbg_eth_tx_valid_r <= udp_tx_valid_w;
-//     dbg_eth_tx_data_r  <= udp_tx_data_w;
-// end
+always @(posedge clk_100M) begin
+    dbg_phy_rst_r <= phy_rst_o;
+    dbg_locked_r <= ow_locked;
+    dbg_eth_rx_valid_r <= udp_rx_valid_w;
+    dbg_eth_rx_data_r <= udp_rx_data_w;
+    dbg_eth_tx_ready_r <= udp_tx_ready_w;
+    dbg_eth_tx_valid_r <= udp_tx_valid_w;
+    dbg_eth_tx_data_r <= udp_tx_data_w;
+end
 
 ila_eth_system ila_eth_system_inst(
     .clk    (clk_100M           ),
@@ -997,8 +936,6 @@ ila_eth_system ila_eth_system_inst(
 (* MARK_DEBUG = "TRUE" *) reg [511:0] dbg_uart_rx_data_r;
 (* MARK_DEBUG = "TRUE" *) reg [6:0]   dbg_uart_rx_num_r;
 
-(* MARK_DEBUG = "TRUE" *) reg         dbg_test_rdata_pre_en;
-
 always @(posedge clk_100M) begin
     dbg_user_cmd_valid_r    <= user_cmd_valid_w;
     dbg_user_cmd_data_r     <= user_cmd_data_w;
@@ -1007,8 +944,6 @@ always @(posedge clk_100M) begin
     dbg_uart_rx_valid_r     <= uart_rx_valid_w;
     dbg_uart_rx_data_r      <= uart_rx_data_w;
     dbg_uart_rx_num_r       <= ow_uart_rx_num;
-
-    dbg_test_rdata_pre_en       <= ow_test_rdata_pre_en;
 
 end
 (* MARK_DEBUG = "TRUE" *) reg [15:0] dbg_udp_rx_count_r;
@@ -1022,14 +957,17 @@ always @(posedge clk_100M) begin
         dbg_ddr_rd_count_r <= 16'd0;
     end
     else begin
-        if (udp_rx_valid_w)
+        if (udp_rx_valid_w) begin
             dbg_udp_rx_count_r <= dbg_udp_rx_count_r + 1'b1;
+        end
 
-        if (ddr_wr_valid_w && ddr_wr_ready_w)
+        if (mem_wr_req_valid_w && mem_wr_req_ready_w) begin
             dbg_ddr_wr_count_r <= dbg_ddr_wr_count_r + 1'b1;
+        end
 
-        if (ddr_rd_valid_w && ddr_rd_ready_w)
+        if (mem_rd_data_valid_w && mem_rd_data_ready_w) begin
             dbg_ddr_rd_count_r <= dbg_ddr_rd_count_r + 1'b1;
+        end
     end
 end
 endmodule
