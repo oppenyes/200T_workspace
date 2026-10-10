@@ -291,9 +291,22 @@ reg rx_fifo_overflow_src_r;
 (* ASYNC_REG = "TRUE" *) reg rx_fifo_overflow_sync2_r;
 (* ASYNC_REG = "TRUE" *) reg dataset_clear_sync1_r;
 (* ASYNC_REG = "TRUE" *) reg dataset_clear_sync2_r;
+   xpm_cdc_async_rst #(
+      .DEST_SYNC_FF(4),    // DECIMAL; range: 2-10
+      .INIT_SYNC_FF(0),    // DECIMAL; 0=disable simulation init values, 1=enable simulation init values
+      .RST_ACTIVE_HIGH(0)  // DECIMAL; 0=active low reset, 1=active high reset
+   )
+   xpm_cdc_async_rst_inst (
+      .dest_arst(rx_fifo_reset), // 1-bit output: src_arst asynchronous reset signal synchronized to destination
+                             // clock domain. This output is registered. NOTE: Signal asserts asynchronously
+                             // but deasserts synchronously to dest_clk. Width of the reset signal is at least
+                             // (DEST_SYNC_FF*dest_clk) period.
 
+      .dest_clk(clk_15M625),   // 1-bit input: Destination clock.
+      .src_arst(iw_sys_rst || iw_ETH_rx_dataset_clear)    // 1-bit input: Source asynchronous reset signal.
+   );
 assign rx_fifo_din = {udp_rx_error, app_rx_data_length, app_rx_data_last, app_rx_data_keep, app_rx_data};
-assign rx_fifo_reset = iw_sys_rst || iw_ETH_rx_dataset_clear;
+// assign rx_fifo_reset = iw_sys_rst || iw_ETH_rx_dataset_clear;
 assign rx_fifo_wr_ready = !rx_fifo_full_src && !rx_fifo_wr_rst_busy && !rx_fifo_reset;
 assign rx_fifo_wr_en = app_rx_data_valid && rx_fifo_wr_ready;
 assign ow_ETH_rx_data_rdy = !rx_fifo_empty_sys && !rx_fifo_rd_rst_busy;
