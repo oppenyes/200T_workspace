@@ -53,7 +53,7 @@ module mclk_rst_module(
     output         ow_1k_rst
 );
 
-// Ö÷Ê±ÖÓ IP ºË
+// ä¸»æ—¶é’Ÿ IP æ ¸
 clk_wiz_mclk clk_wiz_mclk(
     .clk_in1   (iw_sys_clk ) ,
     .reset     (w_sys_rst  ) , // input resetn
@@ -67,7 +67,7 @@ clk_wiz_mclk clk_wiz_mclk(
     .clk_out7  (clk_10M    )   // output clk_out7
 ); 
 
-// ÊäÈëÒì²½µÍµçÆ½¸´Î»ĞÅºÅ£¬Êä³ö¸ßµçÆ½Í¬²½¸´Î»ĞÅºÅ
+// è¾“å…¥å¼‚æ­¥ä½ç”µå¹³å¤ä½ä¿¡å·ï¼Œè¾“å‡ºé«˜ç”µå¹³åŒæ­¥å¤ä½ä¿¡å·
 (*KEEP_HIERARCHY = "yes"*) 
 reset_module reset_module_inst(
     .iw_sys_clk          (iw_sys_clk    ) ,
@@ -75,7 +75,7 @@ reset_module reset_module_inst(
     .ow_sys_rst          (w_sys_rst     ) 
 );
 
-// Ê±ÖÓ locked ĞÅºÅ£¨Ê¹ÄÜĞÅºÅ£©ÑÓ³ÙÒ»ÅÄÉÏÉıÑØ¼ì²â
+// æ—¶é’Ÿ locked ä¿¡å·ï¼ˆä½¿èƒ½ä¿¡å·ï¼‰å»¶è¿Ÿä¸€æ‹ä¸Šå‡æ²¿æ£€æµ‹
 edge_module edge_module_mclk_rst(
     .edge_clk  (clk_100M  ),
     .edge_rst  (   ),
@@ -93,7 +93,7 @@ edge_module edge_module_mclk_rst(
 (*KEEP_HIERARCHY="yes"*)clk_div_module#(.P_CLK_DIV(100  ))clk_div_module_inst5(.iw_sys_clk(clk_10M ),.iw_sys_rst(ow_10M_rst ),.clk_div(clk_100k ));
 (*KEEP_HIERARCHY="yes"*)clk_div_module#(.P_CLK_DIV(10000))clk_div_module_inst6(.iw_sys_clk(clk_10M ),.iw_sys_rst(ow_10M_rst ),.clk_div(clk_1k   ));
 
-// 100M_rst - 15M625_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 15M625_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_15M625_rst (
     .wr_clk        (clk_100M            ) , // input wire wr_clk
     .din           (ow_100M_rst         ) , // input wire [0 : 0] din   
@@ -107,7 +107,7 @@ fifo_bit_cov mclk_rst_cov_15M625_rst (
     .valid         (ow_15M625_rst       )    // output wire valid
 );
 
-// 100M_rst - 200M_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 200M_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_200M_rst (
     .wr_clk        (clk_100M          ) , // input wire wr_clk
     .din           (ow_100M_rst       ) , // input wire [0 : 0] din   
@@ -121,7 +121,7 @@ fifo_bit_cov mclk_rst_cov_200M_rst (
     .valid         (ow_200M_rst       )    // output wire valid
 );
 
-// 100M_rst - 125M_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 125M_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_125M_rst (
     .wr_clk        (clk_100M          ) , // input wire wr_clk
     .din           (ow_100M_rst       ) , // input wire [0 : 0] din   
@@ -135,7 +135,7 @@ fifo_bit_cov mclk_rst_cov_125M_rst (
     .valid         (ow_125M_rst       )    // output wire valid
 );
 
-// 100M_rst - 50M_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 50M_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_50M_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -149,7 +149,7 @@ fifo_bit_cov mclk_rst_cov_50M_rst (
     .valid         (ow_50M_rst       )    // output wire valid
 );
 
-// 100M_rst - 31M25_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 31M25_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_31M25_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -163,7 +163,7 @@ fifo_bit_cov mclk_rst_cov_31M25_rst (
     .valid         (ow_31M25_rst       )    // output wire valid
 );
 
-// 100M_rst - 25M_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 25M_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_25M_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -177,7 +177,7 @@ fifo_bit_cov mclk_rst_cov_25M_rst (
     .valid         (ow_25M_rst       )    // output wire valid
 );
 
-// 100M_rst - 10M_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 10M_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_10M_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -191,7 +191,7 @@ fifo_bit_cov mclk_rst_cov_10M_rst (
     .valid         (ow_10M_rst       )    // output wire valid
 );
 
-// 100M_rst - 5M_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 5M_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_5M_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -205,7 +205,7 @@ fifo_bit_cov mclk_rst_cov_5M_rst (
     .valid         (ow_5M_rst        )    // output wire valid
 );
 
-// 100M_rst - 1M_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 1M_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_1M_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -219,7 +219,7 @@ fifo_bit_cov mclk_rst_cov_1M_rst (
     .valid         (ow_1M_rst        )    // output wire valid
 );
 
-// 100M_rst - 400k_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 400k_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_400k_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -233,7 +233,7 @@ fifo_bit_cov mclk_rst_cov_400k_rst (
     .valid         (ow_400k_rst        )    // output wire valid
 );
 
-// 100M_rst - 100k_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 100k_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_100k_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
@@ -247,7 +247,7 @@ fifo_bit_cov mclk_rst_cov_100k_rst (
     .valid         (ow_100k_rst        )    // output wire valid
 );
 
-// 100M_rst - 1k_rst ĞÅºÅ¿çÊ±ÖÓÓò×ª»»
+// 100M_rst - 1k_rst ä¿¡å·è·¨æ—¶é’ŸåŸŸè½¬æ¢
 fifo_bit_cov mclk_rst_cov_1k_rst (
     .wr_clk        (clk_100M         ) , // input wire wr_clk
     .din           (ow_100M_rst      ) , // input wire [0 : 0] din   
