@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Oct 10 09:48:35 2026
+# Process ID: 18456
+# Current directory: D:/200T_workspace
+# Command line: wbtcv.exe -mode batch -source D:/200T_workspace/xsim.dir/udp_packet_ingress_tb_sim/webtalk/xsim_webtalk.tcl -notrace
+# Log file: D:/200T_workspace/webtalk.log
+# Journal file: D:/200T_workspace\webtalk.jou
+#-----------------------------------------------------------
+source D:/200T_workspace/xsim.dir/udp_packet_ingress_tb_sim/webtalk/xsim_webtalk.tcl -notrace

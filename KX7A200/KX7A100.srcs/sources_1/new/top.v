@@ -182,6 +182,22 @@ wire usr_dataset_clear_w;
 
 wire udp_rx_valid_w;
 wire [63:0] udp_rx_data_w;
+wire udp_rx_last_w;
+wire [7:0] udp_rx_keep_w;
+wire [15:0] udp_rx_length_w;
+wire udp_rx_error_w;
+wire udp_rx_ready_w;
+(* MARK_DEBUG = "TRUE" *) wire [11:0] ingress_fifo_level_w;
+(* MARK_DEBUG = "TRUE" *) wire ingress_fifo_empty_w;
+(* MARK_DEBUG = "TRUE" *) wire ingress_fifo_full_w;
+(* MARK_DEBUG = "TRUE" *) wire ingress_fifo_overflow_w;
+wire ingress_writer_valid_w;
+wire [63:0] ingress_writer_data_w;
+(* MARK_DEBUG = "TRUE" *) wire packet_ingress_idle_w;
+(* MARK_DEBUG = "TRUE" *) wire packet_forward_active_w;
+(* MARK_DEBUG = "TRUE" *) wire packet_length_error_w;
+(* MARK_DEBUG = "TRUE" *) wire [22:0] udp_packet_count_w;
+(* MARK_DEBUG = "TRUE" *) wire [26:0] udp_word_count_w;
 wire udp_tx_ready_w;
 wire udp_tx_valid_w;
 wire [63:0] udp_tx_data_w;
@@ -285,7 +301,7 @@ assign fft_udp_ready_w = udp_tx_ready_w;
 assign ow_TEST_PIN[0] = ddr_calib_user_w;
 assign ow_TEST_PIN[1] = batch_busy_w;
 assign ow_TEST_PIN[2] = batch_done_w;
-assign ow_TEST_PIN[3] = udp_drop_sticky_r;
+assign ow_TEST_PIN[3] = udp_drop_sticky_r | ingress_fifo_overflow_w | packet_length_error_w;
 assign ow_TEST_PIN[4] = ddr_error_w;
 assign ow_TEST_PIN[5] = batch_start_error_w;
 assign ow_TEST_PIN[6] = dataset_write_enable_w;
@@ -307,9 +323,6 @@ end
 always @(posedge clk_100M) begin
     if (ow_100M_rst || dataset_clear_w) begin
         udp_drop_sticky_r <= 1'b0;
-    end
-    else if (udp_drop_pulse_w) begin
-        udp_drop_sticky_r <= 1'b1;
     end
 end
 
@@ -517,18 +530,50 @@ udp_drive udp_drive_inst(
 
     .ow_ETH_rx_data_rdy                 (udp_rx_valid_w            ),
     .ow_ETH_rx_data                     (udp_rx_data_w             ),
+    .ow_ETH_rx_data_last                (udp_rx_last_w             ),
+    .ow_ETH_rx_data_keep                (udp_rx_keep_w             ),
+    .ow_ETH_rx_data_length              (udp_rx_length_w           ),
+    .ow_ETH_rx_data_error               (udp_rx_error_w            ),
+    .iw_ETH_rx_data_ready               (udp_rx_ready_w            ),
+    .iw_ETH_rx_dataset_clear            (dataset_clear_w           ),
+    .ow_ETH_rx_fifo_level               (ingress_fifo_level_w      ),
+    .ow_ETH_rx_fifo_empty               (ingress_fifo_empty_w      ),
+    .ow_ETH_rx_fifo_full                (ingress_fifo_full_w       ),
+    .ow_ETH_rx_fifo_overflow            (ingress_fifo_overflow_w   ),
 
     .ow_ETH_udp_fifo_wr_rdy             (udp_tx_ready_w            ),
     .iw_ETH_udp_fifo_wr_valid           (udp_tx_valid_w            ),
     .iw_ETH_udp_fifo_wr_data            (udp_tx_data_w             )
+);
+// 仅将完整1024 Byte UDP包转发给DDR写打包器，保持已验证的64bit内部字节序。
+udp_packet_ingress_module udp_packet_ingress_module_inst(
+    .user_clk(clk_100M),
+    .user_rst(ow_100M_rst),
+    .dataset_clear(dataset_clear_w),
+    .dataset_write_enable(dataset_write_enable_w),
+    .rx_valid(udp_rx_valid_w),
+    .rx_ready(udp_rx_ready_w),
+    .rx_data(udp_rx_data_w),
+    .rx_keep(udp_rx_keep_w),
+    .rx_last(udp_rx_last_w),
+    .rx_length(udp_rx_length_w),
+    .rx_error(udp_rx_error_w),
+    .writer_valid(ingress_writer_valid_w),
+    .writer_ready(udp_writer_ready_w),
+    .writer_data(ingress_writer_data_w),
+    .packet_length_error(packet_length_error_w),
+    .udp_packet_count(udp_packet_count_w),
+    .udp_word_count(udp_word_count_w),
+    .packet_ingress_idle(packet_ingress_idle_w),
+    .packet_forward_active(packet_forward_active_w)
 );
 udp_ddr_writer udp_ddr_writer_inst(
     .user_clk(clk_100M),
     .user_rst(ow_100M_rst),
     .dataset_clear(dataset_clear_w),
     .dataset_write_enable(dataset_write_enable_w),
-    .udp_valid(udp_rx_valid_w),
-    .udp_data(udp_rx_data_w),
+    .udp_valid(ingress_writer_valid_w),
+    .udp_data(ingress_writer_data_w),
     .udp_ready(udp_writer_ready_w),
     .drop_pulse(udp_drop_pulse_w),
     .wr_req_valid(mem_wr_req_valid_w),
@@ -549,7 +594,14 @@ fft_batch_ctrl fft_batch_ctrl_inst(
     .writer_pending(writer_pending_w),
     .write_idle(mem_write_idle_w),
     .init_calib_complete(ddr_calib_user_w),
-    .udp_drop_sticky(udp_drop_sticky_r | udp_drop_pulse_w),
+    // ingress模块遵守valid/ready；writer的drop_pulse在下游反压时仅表示暂停，不表示丢失。
+    .udp_drop_sticky(1'b0),
+    .ingress_fifo_empty(ingress_fifo_empty_w),
+    .packet_ingress_idle(packet_ingress_idle_w),
+    .packet_forward_active(packet_forward_active_w),
+    .writer_partial(writer_partial_w),
+    .input_error_sticky(ingress_fifo_overflow_w | packet_length_error_w),
+    .udp_packet_count(udp_packet_count_w),
     .write_commit_count(mem_write_commit_count_w),
     .frame_reader_ready(fft_frame_reader_ready_w),
     .fft_udp_frame_ready(fft_udp_frame_ready_w),

@@ -1,0 +1,1 @@
+-debug "typical" -top "udp_packet_ingress_tb" -snapshot "udp_packet_ingress_tb_sim" 

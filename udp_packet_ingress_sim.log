@@ -1,0 +1,28 @@
+Vivado Simulator 2020.2
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -debug typical -top udp_packet_ingress_tb -snapshot udp_packet_ingress_tb_sim 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.udp_packet_ingress_module
+Compiling module work.udp_packet_ingress_tb
+Built simulation snapshot udp_packet_ingress_tb_sim
+
+****** xsim v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/udp_packet_ingress_tb_sim/xsim_script.tcl
+# xsim {udp_packet_ingress_tb_sim} -autoloadwcfg -runall
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+run -all
+PASS udp_packet_ingress_tb
+$finish called at time : 6735 ns : File "D:/200T_workspace/udp_packet_ingress_tb.v" Line 99
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Oct 10 09:48:53 2026...

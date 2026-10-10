@@ -1,0 +1,8 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/fft_batch_ctrl.v,1791597341,verilog,,D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v,,fft_batch_ctrl,,,,,,,,
+D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_packet_ingress_module.v,1791596793,verilog,,D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/fft_batch_ctrl.v,,udp_packet_ingress_module,,,,,,,,
+D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_ddr_writer.v,1791543403,verilog,,D:/200T_workspace/udp_ingress_writer_tb.v,,udp_ddr_writer,,,,,,,,
+D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v,1791596664,verilog,,,,udp_drive,,,,,,,,

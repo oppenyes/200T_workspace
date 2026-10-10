@@ -1,0 +1,7 @@
+Running: xsim.dir/udp_ingress_writer_tb_sim/xsimk.exe -runall -simmode gui -wdb udp_ingress_writer_tb_sim.wdb -simrunnum 0 -socket 50151
+Design successfully loaded
+Design Loading Memory Usage: 7560 KB (Peak: 7560 KB)
+Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 8204 KB (Peak: 8204 KB)
+Simulation CPU Usage: 0 ms

@@ -23,6 +23,16 @@ module udp_drive(
     
     output        ow_ETH_rx_data_rdy  ,
     output [63:0] ow_ETH_rx_data      ,
+    output        ow_ETH_rx_data_last ,
+    output [7:0]  ow_ETH_rx_data_keep ,
+    output [15:0] ow_ETH_rx_data_length,
+    output        ow_ETH_rx_data_error,
+    input         iw_ETH_rx_data_ready,
+    input         iw_ETH_rx_dataset_clear,
+    output [11:0] ow_ETH_rx_fifo_level,
+    output        ow_ETH_rx_fifo_empty,
+    output        ow_ETH_rx_fifo_full,
+    output        ow_ETH_rx_fifo_overflow,
 
     output       ow_ETH_udp_fifo_wr_rdy   ,
     input        iw_ETH_udp_fifo_wr_valid ,
@@ -47,6 +57,8 @@ wire [7:0]      app_rx_data_keep;
 wire            app_rx_data_last;
 wire [15:0]     app_rx_data_length;
 wire [15:0]     app_rx_port_num;
+wire            udp_rx_error;
+wire            ip_rx_error;
 wire            udp_tx_ready;
 wire            app_tx_ack;
 reg             app_tx_data_request;
@@ -259,44 +271,87 @@ master_wrapper master_wrapper_inst(
     .rgmii_txc           (rgmii_txc)                           
 );
 
-reg [1:0] rx_data_clk_cnt = 1'b0 ;
-always@(posedge clk_15M625)begin
-    if(app_rx_data_valid)begin
-        rx_data_clk_cnt <= rx_data_clk_cnt + 1'b1 ;
+// UDP RX应用侧本身是连续64-bit AXI-Stream。旧代码只在last后保留一个字，
+// 这里将每个beat及其包边界元数据直接写入跨时钟ingress FIFO。
+wire [89:0] rx_fifo_din;
+wire [89:0] rx_fifo_dout;
+wire rx_fifo_full_src;
+wire rx_fifo_empty_sys;
+wire rx_fifo_wr_en;
+wire rx_fifo_rd_en;
+wire rx_fifo_wr_rst_busy;
+wire rx_fifo_rd_rst_busy;
+wire [11:0] rx_fifo_rd_data_count;
+wire rx_fifo_reset;
+wire rx_fifo_wr_ready;
+reg rx_fifo_overflow_src_r;
+(* ASYNC_REG = "TRUE" *) reg rx_fifo_full_sync1_r;
+(* ASYNC_REG = "TRUE" *) reg rx_fifo_full_sync2_r;
+(* ASYNC_REG = "TRUE" *) reg rx_fifo_overflow_sync1_r;
+(* ASYNC_REG = "TRUE" *) reg rx_fifo_overflow_sync2_r;
+(* ASYNC_REG = "TRUE" *) reg dataset_clear_sync1_r;
+(* ASYNC_REG = "TRUE" *) reg dataset_clear_sync2_r;
+
+assign rx_fifo_din = {udp_rx_error, app_rx_data_length, app_rx_data_last, app_rx_data_keep, app_rx_data};
+assign rx_fifo_reset = iw_sys_rst || iw_ETH_rx_dataset_clear;
+assign rx_fifo_wr_ready = !rx_fifo_full_src && !rx_fifo_wr_rst_busy && !rx_fifo_reset;
+assign rx_fifo_wr_en = app_rx_data_valid && rx_fifo_wr_ready;
+assign ow_ETH_rx_data_rdy = !rx_fifo_empty_sys && !rx_fifo_rd_rst_busy;
+assign rx_fifo_rd_en = ow_ETH_rx_data_rdy && iw_ETH_rx_data_ready;
+assign {ow_ETH_rx_data_error, ow_ETH_rx_data_length, ow_ETH_rx_data_last,
+        ow_ETH_rx_data_keep, ow_ETH_rx_data} = rx_fifo_dout;
+assign ow_ETH_rx_fifo_level = rx_fifo_rd_data_count;
+assign ow_ETH_rx_fifo_empty = rx_fifo_empty_sys || rx_fifo_rd_rst_busy;
+assign ow_ETH_rx_fifo_full = rx_fifo_full_sync2_r;
+assign ow_ETH_rx_fifo_overflow = rx_fifo_overflow_sync2_r;
+
+always @(posedge clk_15M625) begin
+    if (iw_15M625_rst) begin
+        dataset_clear_sync1_r <= 1'b0;
+        dataset_clear_sync2_r <= 1'b0;
+        rx_fifo_overflow_src_r <= 1'b0;
     end
     else begin
-        rx_data_clk_cnt <= 1'b0 ;
+        dataset_clear_sync1_r <= iw_ETH_rx_dataset_clear;
+        dataset_clear_sync2_r <= dataset_clear_sync1_r;
+        if (dataset_clear_sync2_r) begin
+            rx_fifo_overflow_src_r <= 1'b0;
+        end
+        else if (app_rx_data_valid && !rx_fifo_wr_ready) begin
+            rx_fifo_overflow_src_r <= 1'b1;
+        end
     end
 end
 
-reg         ETH_rx_ok      = 1'b0 ;
-reg [63:0]  ETH_rx_cache = 1'b0 ;
-reg        r_ETH_rx_data_rdy = 1'b0 ;
-reg [63:0] r_ETH_rx_data     = 1'b0 ;
-always@(posedge clk_15M625)begin
-    if(app_rx_data_valid)begin
-        case(rx_data_clk_cnt)
-            2'd0 : ETH_rx_cache[63 :0  ] = app_rx_data ;
-            2'd1 : ETH_rx_cache[63 :0  ] = app_rx_data ; 
-            2'd2 : ETH_rx_cache[63 :0  ] = app_rx_data ;
-            2'd3 : ETH_rx_cache[63 :0  ] = app_rx_data ;      
-            default : ETH_rx_cache = 1'b0 ;
-        endcase
-    end
-    if(ETH_rx_ok)begin
-        r_ETH_rx_data_rdy <= 1'b1 ;
-        r_ETH_rx_data     <= ETH_rx_cache ;
+always @(posedge iw_sys_clk) begin
+    if (iw_sys_rst || iw_ETH_rx_dataset_clear) begin
+        rx_fifo_full_sync1_r <= 1'b0;
+        rx_fifo_full_sync2_r <= 1'b0;
+        rx_fifo_overflow_sync1_r <= 1'b0;
+        rx_fifo_overflow_sync2_r <= 1'b0;
     end
     else begin
-        r_ETH_rx_data_rdy <= 1'b0 ;
-        r_ETH_rx_data  <= 1'b0 ;
+        rx_fifo_full_sync1_r <= rx_fifo_full_src;
+        rx_fifo_full_sync2_r <= rx_fifo_full_sync1_r;
+        rx_fifo_overflow_sync1_r <= rx_fifo_overflow_src_r;
+        rx_fifo_overflow_sync2_r <= rx_fifo_overflow_sync1_r;
     end
 end
 
-always@(posedge clk_15M625)begin
-    if(app_rx_data_last) ETH_rx_ok <= 1'b1 ;
-    else ETH_rx_ok <= 1'b0 ;
-end
+xpm_fifo_async #(
+    .FIFO_MEMORY_TYPE("block"), .ECC_MODE("no_ecc"), .RELATED_CLOCKS(0),
+    .FIFO_WRITE_DEPTH(2048), .WRITE_DATA_WIDTH(90), .READ_DATA_WIDTH(90),
+    .READ_MODE("fwft"), .FIFO_READ_LATENCY(0), .CDC_SYNC_STAGES(2),
+    .DOUT_RESET_VALUE("0"), .FULL_RESET_VALUE(0), .USE_ADV_FEATURES("0707"),
+    .WAKEUP_TIME(0)
+) udp_rx_ingress_fifo_inst(
+    .rst(rx_fifo_reset), .wr_clk(clk_15M625), .wr_en(rx_fifo_wr_en), .din(rx_fifo_din),
+    .full(rx_fifo_full_src), .wr_rst_busy(rx_fifo_wr_rst_busy),
+    .rd_clk(iw_sys_clk), .rd_en(rx_fifo_rd_en), .dout(rx_fifo_dout),
+    .empty(rx_fifo_empty_sys), .rd_rst_busy(rx_fifo_rd_rst_busy),
+    .rd_data_count(rx_fifo_rd_data_count),
+    .sleep(1'b0), .injectsbiterr(1'b0), .injectdbiterr(1'b0)
+);
 
 // phy_rst
 reg [15:0] phy_rst_delay_cnt  ;
@@ -311,19 +366,5 @@ always @(posedge clk_25M) begin
 		    phy_rst_delay_cnt <= phy_rst_delay_cnt + 1'b1;
    end
 end
-
-// r_fifo_rd_en_wr_clk - r_fifo_rd_en_rd_clk 信号跨时钟域转换 (慢转快)
-fifo_bits_cov ETH_rx_data_cov_sys_clk(
-    .wr_clk        (clk_15M625        ) , // input wire wr_clk
-    .din           (r_ETH_rx_data     ) , // input wire [0 : 0] din   
-    .wr_en         (r_ETH_rx_data_rdy ) , // input wire wr_en
-    .full          (                  ) , // output wire full
-  
-    .rd_clk        (iw_sys_clk           ) , // input wire rd_clk
-    .dout          (ow_ETH_rx_data       ) , // output wire [0 : 0] dout
-    .rd_en         (1'b1                 ) , // input wire rd_en
-    .empty         (                     ) , // output wire empty
-    .valid         (ow_ETH_rx_data_rdy   )    // output wire valid
-);
 
 endmodule

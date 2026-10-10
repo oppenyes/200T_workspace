@@ -1,0 +1,1 @@
+-debug "typical" -top "udp_ingress_writer_tb" -snapshot "udp_ingress_writer_tb_sim" 

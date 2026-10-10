@@ -1,0 +1,9 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_packet_ingress_module.v" into library work
+INFO: [VRFC 10-311] analyzing module udp_packet_ingress_module
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/fft_batch_ctrl.v" into library work
+INFO: [VRFC 10-311] analyzing module fft_batch_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v" into library work
+INFO: [VRFC 10-311] analyzing module udp_drive
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_rd_en_wr_clk, assumed default net type wire [D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:102]
+INFO: [VRFC 10-2458] undeclared symbol r_fifo_wr_delay_en, assumed default net type wire [D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:104]
+INFO: [VRFC 10-2458] undeclared symbol ow_fifo_rd_data_rdy, assumed default net type wire [D:/200T_workspace/KX7A200/KX7A100.srcs/sources_1/new/udp_rtl/udp_drive.v:114]

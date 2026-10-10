@@ -1,0 +1,37 @@
+Vivado Simulator 2020.2
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -debug typical -top udp_ingress_writer_tb -snapshot udp_ingress_writer_tb_sim 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.udp_packet_ingress_module
+Compiling module work.udp_ddr_writer
+Compiling module work.udp_ingress_writer_tb
+Built simulation snapshot udp_ingress_writer_tb_sim
+
+****** Webtalk v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source D:/200T_workspace/xsim.dir/udp_ingress_writer_tb_sim/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Sat Oct 10 09:49:30 2026...
+
+****** xsim v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/udp_ingress_writer_tb_sim/xsim_script.tcl
+# xsim {udp_ingress_writer_tb_sim} -autoloadwcfg -runall
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+run -all
+PASS udp_ingress_writer_tb: 16 packets -> 256 DDR words
+$finish called at time : 61335 ns : File "D:/200T_workspace/udp_ingress_writer_tb.v" Line 85
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Oct 10 09:49:35 2026...
